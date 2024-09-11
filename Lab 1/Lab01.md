@@ -1,8 +1,7 @@
 # Lab 01: Provisioning Azure OpenAI resource
 
 **Introduction**
-
-!!Azure OpenAI!! Service brings the generative AI models developed by OpenAI
+Azure OpenAI Service brings the generative AI models developed by OpenAI
 to the Azure platform, enabling you to develop powerful AI solutions
 that benefit from the security, scalability, and integration of services
 provided by the Azure cloud platform. The first step to use an Azure
