@@ -1,3 +1,5 @@
+# **Use case 03 -Deploying and Testing a Conversational AI Solution with Azure RAG Accelerator**
+
 **Introduction**
 
 The *Chat with your data* Solution accelerator is a powerful tool that
@@ -37,7 +39,7 @@ query your data. The practical steps will guide you through deploying
 the necessary infrastructure, verifying the resources, testing the
 solution, and cleaning up the environment.
 
-![Solution Architecture - Chat with your data](./media/image1.png)
+     ![](./media/image1.png)
 
 **Objectives**
 
@@ -55,20 +57,17 @@ solution, and cleaning up the environment.
 ## Task 1: Deploy infrastructure from template
 
 1.  Open your browser, navigate to the address bar, and type or paste
-    the following UR: !!
-    [www.portal.azure.com/](https://portal.azure.com/) !!then press the
+    the following UR:+++www.portal.azure.com/+++then press the
     **Enter** button.
 
 2.  In the **Microsoft Azure** window, enter your **Sign-in**
     credentials, and click on the **Next** button.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image2.png)
+       ![](./media/image2.png)
 
 3.  Then, enter the password and click on the **Sign in** button**.**
 
-> ![A screenshot of a login box Description automatically
-> generated](./media/image3.png)
+      ![](./media/image3.png)
 
 4.  In **Stay signed in?** window, click on the **Yes** button.
 
@@ -76,7 +75,7 @@ solution, and cleaning up the environment.
 > generated](./media/image4.png)
 
 5.  Open a new browser and enter the following URL in the address bar:
-    <https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fchat-with-your-data-solution-accelerator%2Fmain%2Finfra%2Fmain.json>
+    +++https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fchat-with-your-data-solution-accelerator%2Fmain%2Finfra%2Fmain.json+++
     to open the Azure Portal.
 
 6.  On **Custom deployment** window, under the **Basics** tab, enter the
@@ -84,30 +83,29 @@ solution, and cleaning up the environment.
     **Review + create.**
 
 [TABLE]
-
-![](./media/image5.png)
+      ![](./media/image5.png)
 
 7.  On **Review + create** tab, once the Validation is Passed, click on
     the **Create** button.
 
-![](./media/image6.png)
+     ![](./media/image6.png)
 
 8.  Wait for the deployment to complete. The deployment will take around
     17-19 minutes.
 
 9.  Click on the **Go to Subscription** button
 
-![](./media/image7.png)
+      ![](./media/image7.png)
 
 ## Task 2: Verify deployed resources in the Azure portal
 
 1.  On the Home page, click on **Resource Groups**.
 
-> ![](./media/image8.png)
+     ![](./media/image8.png)
 
 2.  Click on your resource group name **rg-RAGSolutionXX**
 
-> ![](./media/image9.png)
+      ![](./media/image9.png)
 
 3.  Make sure the below resource got deployed successfully into East US
     region
@@ -130,93 +128,90 @@ solution, and cleaning up the environment.
 
 - Azure Speech Service
 
-![](./media/image10.png)
+    ![](./media/image10.png)
 
-![](./media/image11.png)
+    ![](./media/image11.png)
 
 ## Task 3: Testing the deployment
 
 1.  On the resource group and click on **Web-** {RESOURCE_TOKEN} **-
     admin-docker** resource name.
 
-![](./media/image12.png)
+      ![](./media/image12.png)
 
 2.  Navigate to the admin site
     https://web-{RESOURCE_TOKEN}-admin.azurewebsites.net/
 
-![](./media/image13.png)
+      ![](./media/image13.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image14.png)
+      ![](./media/image14.png)
 
 3.  In **Chat with your data Solution Accelerator** page, from the left
     navigation menu select **Ingest Data.**
 
-![](./media/image15.png)
+      ![](./media/image15.png)
 
 4.  In the Add documents Batch pane, Click on **Browse file** and
     navigate to **C:\Labfiles \data** location and select **all files,**
     then click on **Open** button.
 
-![](./media/image16.png)
+     ![](./media/image16.png)
 
-![](./media/image17.png)
+     ![](./media/image17.png)
 
 5.  To upload files will take 1-2 minutes
 
-![](./media/image18.png)
+     ![](./media/image18.png)
 
 6.  Click on the **Reprocess all documents in the Azure Storage
     account.**
 
-![](./media/image19.png)
+      ![](./media/image19.png)
 
-![A screenshot of a chat Description automatically
-generated](./media/image20.png)
+      ![](./media/image20.png)
 
 7.  In **Chat with your data Solution Accelerator** page, from the left
     navigation menu select **Configuration** and select the **check box-
     Enable post-answering prompt.**
 
-![](./media/image21.png)
+      ![](./media/image21.png)
 
 8.  In the configuration pane , Click on the **Save configuration.**
 
-![](./media/image22.png)
+     ![](./media/image22.png)
 
-![](./media/image23.png)
+     ![](./media/image23.png)
 
 9.  Go back to the resource group page and click on **the Storage
     account** name
 
-![](./media/image24.png)
+      ![](./media/image24.png)
 
 10. From the left navigation menu, click on **Containers.**
 
-![](./media/image25.png)
+     ![](./media/image25.png)
 
 11. In the Containers page, select **documents**.
 
-![](./media/image26.png)
+    ![](./media/image26.png)
 
 12. Make sure all the files should be deployed successfully
 
-![A screenshot of a computer Description automatically
-generated](./media/image27.png)
+     ![](./media/image27.png)
 
 13. Go back to the resource group page
 
-![](./media/image28.png)
+     ![](./media/image28.png)
 
 14. In the resource group page, select App service as
     **web-{RESOURCE_TOKEN}-docker**
 
-![](./media/image29.png)
+      ![](./media/image29.png)
 
 15. On Web App **Overview** page, navigate to the command bar and click
     on **Browse**, it will navigate you to the web application.
 
-![](./media/image30.png)
+      ![](./media/image30.png)
 
 ![A screenshot of a computer Description automatically
 generated](./media/image31.png)
@@ -224,35 +219,28 @@ generated](./media/image31.png)
 16. In the **Azure AI** web app page, enter the following text and click
     on the **Submit icon** as shown in the below image.
 
-**Describe in more detail the risks from market volatility**
-
-![](./media/image32.png)
-
-![](./media/image33.png)
++++Describe in more detail the risks from market volatility+++
+      ![](./media/image32.png)
+      ![](./media/image33.png)
 
 17. In the **Chat session** section, select the references link and
     observe the details of search document on right side of the page.
 
-![](./media/image34.png)
+     ![](./media/image34.png)
 
 18. In the **Azure AI** web app page, enter the following text and click
     on the **Submit icon** as shown in the below image.
 
-**CodeCopy**
-
-**How does Woodgrove Financial handle payroll taxes for employees
-outside the U.S.?**
-
-![](./media/image35.png)
-
-![](./media/image36.png)
++++How does Woodgrove Financial handle payroll taxes for employees
+outside the U.S.?+++
+      ![](./media/image35.png)
+      ![](./media/image36.png)
 
 19. In the **Azure AI** web app page, enter the following text and click
     on the **Submit icon** as shown in the below image.
 
-What is FORM 10-K and explain?
-
-![](./media/image37.png)
++++What is FORM 10-K and explain?+++
+     ![](./media/image37.png)
 
 ## **Task 4: Delete Azure OpenAI Resource**
 
@@ -260,26 +248,25 @@ What is FORM 10-K and explain?
     portal search bar, navigate and click on **Resource groups** under
     **Services**.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image38.png)
+      ![](./media/image38.png)
 
 2.  Click on your resource group.
 
-> ![](./media/image9.png)
+       ![](./media/image9.png)
 
 3.  On an overview page of resource group Select the **Delete resource
     group**
 
-![](./media/image39.png)
+      ![](./media/image39.png)
 
 4.  In the **Delete Resources** pane that appears on the right side,
     enter the **resource group name** and click on **Delete** button.
 
-![](./media/image40.png)
+      ![](./media/image40.png)
 
 5.  On **Delete confirmation** dialog box, click on D**elete** button.
 
-![](./media/image41.png)
+      ![](./media/image41.png)
 
 **Summary**:
 
