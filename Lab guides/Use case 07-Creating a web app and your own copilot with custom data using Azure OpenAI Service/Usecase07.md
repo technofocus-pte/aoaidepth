@@ -45,46 +45,39 @@ uses this information to provide a completion.
 
 1.  Open your browser, navigate to the address bar, and type or paste
     the following URL:
-    [*https://portal.azure.com/*](https://portal.azure.com/), then press
+   +++https://portal.azure.com/+++ , then press
     the **Enter** button.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image1.png)
+     ![](./media/image1.png)
 
 2.  In the **Microsoft Azure** window, use the **User Credentials** to
     login to Azure.
 
-![A screenshot of a computer Description automatically
-generated](./media/image2.png)
+      ![](./media/image2.png)
 
 3.  Then, enter the password and click on the **Sign in** button**.**
 
-> ![A screenshot of a login box Description automatically
-> generated](./media/image3.png)
+     ![](./media/image3.png)
 
 4.  In **Stay signed in?** window, click on the **Yes** button.
 
-> ![Graphical user interface, application Description automatically
-> generated](./media/image4.png)
+      ![](./media/image4.png)
 
 5.  From the Azure portal home page, click on **Azure portal menu**
     represented by three horizontal bars on the left side of the
     Microsoft Azure command bar as shown in the below image.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image5.png)
+      ![](./media/image5png)
 
 6.  Navigate and click on **+ Create a resource**.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image6.png)
+      ![](./media/image6.png)
 
 7.  On **Create a resource** page, in the **Search services and
     marketplace** search bar, type **Azure OpenAI**, then press the
     **Enter** button.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image7.png)
+    ![](./media/image7.png)
 
 8.  In the **Marketplace** page, navigate to the **Azure OpenAI**
     section, click on the Create button dropdown, then select **Azure
@@ -92,31 +85,24 @@ generated](./media/image2.png)
     the **Azure** **OpenAI** tile, then click on the **Create** button
     on the **Azure OpenAI page**).
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image8.png)
+      ![](./media/image8.png)
 
 9.  In the **Create Azure OpenAI** window, under the **Basics** tab,
     enter the following details and click on the **Next** button.
 
 [TABLE]
-
-> ![A screenshot of a computer Description automatically
-> generated](./media/image9.png)
->
-> ![A screenshot of a computer Description automatically
-> generated](./media/image10.png)
+    ![](./media/image9.png)
+      ![](./media/image10.png)
 
 10. In the **Network** tab, leave all the radio buttons in the default
     state, and click on the **Next** button.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image11.png)
+      ![](./media/image11.png)
 
 11. In the **Tags** tab, leave all the fields in the default state, and
     click on the **Next** button.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image12.png)
+     ![](./media/image12.png)
 
 12. In the **Review+submit** tab, once the Validation is Passed, click
     on the **Create** button.
@@ -127,190 +113,167 @@ generated](./media/image2.png)
 13. Wait for the deployment to complete. The deployment will take around
     2-3 minutes.
 
-![A screenshot of a computer Description automatically
-generated](./media/image14.png)
+     ![](./media/image1420.png)
 
 14. On **Microsoft.CognitiveServicesOpenAI** window, after the
     deployment is completed, click on the **Go to resource** button.
 
-![A screenshot of a computer Description automatically
-generated](./media/image15.png)
+       ![](./media/image15.png)
 
 ## Task 2: Cognitive Services Usages Reader for the Azure OpenAI resource
 
 1.  Type in **Subscriptions** in the search bar and select
     **Subscriptions**.
 
-![A screenshot of a computer Description automatically
-generated](./media/image16.png)
+      ![](./media/image16.png)
 
 2.  Click on your assigned **subscription**.
 
-![A screenshot of a computer Description automatically
-generated](./media/image17.png)
+     ![](./media/image17.png)
 
 3.  From the left menu, click on the **Access control(IAM).**
 
-![](./media/image18.png)
+      ![](./media/image18.png)
 
 4.  On the Access control(IAM) page, Click +**Add** and select **Add
     role assignments.**
 
-![](./media/image19.png)
+      ![](./media/image19.png)
 
 5.  Type the **Cognitive Services Usages Reader** in the search box and
     select it. Click **Next**
 
-![](./media/image20.png)
+      ![](./media/image20.png)
 
 6.  In the **Add role assignment** tab, select Assign access to User
     group or service principal. Under Members, click **+Select members**
 
-![A screenshot of a computer Description automatically
-generated](./media/image21.png)
+      ![](./media/image21.png)
 
 7.  On the Select members tab , search your Azure OpenAI subscription
     and click **Select.**
 
-![A screenshot of a computer Description automatically
-generated](./media/image22.png)
+      ![](./media/image22.png)
 
 8.  In the **Add role assignment** page, Click **Review + Assign**, you
     will get a notification once the role assignment is complete.
 
-![A screenshot of a computer Description automatically
-generated](./media/image23.png)
+      ![](./media/image23.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image24.png)
+      ![](./media/image24.png)
 
 9.  You will see a notification – added as Cognitive Services Usage
     Reader for Azure Pass-Sponsorship.
 
-![A screenshot of a computer Description automatically
-generated](./media/image25.png)
+      ![](./media/image25.png)
 
 10. In Azure subscription page from the left menu, click on the **Access
     control(IAM).**
 
-![](./media/image18.png)
+      ![](./media/image18.png)
 
 11. On the Access control(IAM) page, Click +**Add** and select **Add
     role assignments.**
 
-![](./media/image19.png)
+      ![](./media/image19.png)
 
 12. Type the [**Cognitive Services
     Contributor**](https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/role-based-access-control#cognitive-services-contributor)
     in the search box and select it. Click **Next**
 
-![](./media/image26.png)
+      ![](./media/image26.png)
 
 13. In the **Add role assignment** tab, select Assign access to User
     group or service principal. Under Members, click **+Select members**
 
-![](./media/image27.png)
+      ![](./media/image27.png)
 
 14. On the Select members tab , search your Azure OpenAI subscription
     and click **Select.**
 
-![A screenshot of a computer Description automatically
-generated](./media/image22.png)
+       ![](./media/image22.png)
 
 15. In the **Add role assignment** page, Click **Review + Assign**, you
     will get a notification once the role assignment is complete.
 
-![](./media/image28.png)
+        ![](./media/image28.png)
 
 ![](./media/image29.png)
 
 16. You will see a notification – added as Cognitive Services Usage
     Reader for Azure Pass-Sponsorship.
 
-![](./media/image30.png)
+      ![](./media/image30.png)
 
 17. Go back to **Azure portal** home page, type in **Azure OpenAI** in
     the search bar and select **Azure OpenAI** created in **Lab 1**
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image31.png)
+     ![](./media/image31.png)
 
 18. Click on your **Azure OpenAI** service.
 
-![A screenshot of a computer Description automatically
-generated](./media/image32.png)
+     ![](./media/image32.png)
 
 19. From the left menu, click on the **Access control(IAM).**
 
-![A screenshot of a computer Description automatically
-generated](./media/image33.png)
+     ![](./media/image33.png)
 
 20. On the Access control(IAM) page, Click +**Add** and select **Add
     role assignments.**
 
-![A screenshot of a computer Description automatically
-generated](./media/image34.png)
+      ![](./media/image34.png)
 
 21. Type the [**Cognitive Services
     Contributor**](https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/role-based-access-control#cognitive-services-contributor)
     in the search box and select it. Click **Next**
 
-![A screenshot of a computer Description automatically
-generated](./media/image35.png)
+     ![](./media/image35.png)
 
 22. In the **Add role assignment** tab, select Assign access to User
     group or service principal. Under Members, click **+Select members**
 
-![A screenshot of a computer Description automatically
-generated](./media/image27.png)
+      ![](./media/image27.png)
 
 23. On the Select members tab , search your Azure OpenAI subscription
     and click **Select.**
 
-![A screenshot of a computer Description automatically
-generated](./media/image22.png)
+      ![](./media/image22.png)
 
 24. In the **Add role assignment** page, Click **Review + Assign**, you
     will get a notification once the role assignment is complete.
 
-![A screenshot of a computer Description automatically
-generated](./media/image28.png)
+      ![](./media/image28.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image29.png)
+      ![](./media/image29.png)
 
 25. You will see a notification – added as Cognitive Services Usage
     Reader for Azure Pass-Sponsorship.
 
-![A screenshot of a computer Description automatically
-generated](./media/image36.png)
+      ![](./media/image36.png)
 
 ## Task 3: Create an Azure Storage Account by using the portal
 
 1.  Sign in to the
-    [**https://portal.azure.com/**](https://portal.azure.com/)
+    +++https://portal.azure.com/+++
+   
 
 2.  Click on the **Portal Menu**, then select **+ Create a resource**
 
-![Graphical user interface, application Description automatically
-generated](./media/image37.png)
+      ![](./media/image37.png)
 
 3.  In the **Create a resource** window search box, type **Storage
     account** and then click on the **storage account**.
 
-![Graphical user interface, application Description automatically
-generated](./media/image38.png)
+      ![](./media/image38.png)
 
 4.  In the **Marketplace** page, click on the **Storage account**
     section.
 
-![A screenshot of a computer Description automatically
-generated](./media/image39.png)
+     ![](./media/image39.png)
 
 5.  In the **Storage account** window, click on the **Create** button.
 
-![A screenshot of a computer Description automatically
-generated](./media/image40.png)
+      ![](./media/image40.png)
 
 6.  On **Create a storage account** window, under the **Basics** tab,
     enter the below details to create a storage account and then click
@@ -319,115 +282,110 @@ generated](./media/image40.png)
 - 
 
 [TABLE]
-
-![](./media/image41.png)
+     ![](./media/image41.png)
 
 7.  On the **Review** tab, click on the **Create** button.
 
-![](./media/image42.png)
+      ![](./media/image42.png)
 
 8.  This new Azure Storage account is now set up to host data for an
     Azure Data Lake. Click on the **Go to resource** button.
 
-![](./media/image43.png)
+       ![](./media/image43.png)
 
 9.  After the account has been deployed, you will find options related
     to Azure Data Lake in the Overview page. In the left-side navigation
     pane, navigate to **Data storage** section, then click on
     **Containers**.
 
-![](./media/image44.png)
+      ![](./media/image44.png)
 
 10. On **azureopenaistorageXX | Containers** page, click on
     **+Container.**
 
-> ![](./media/image45.png)
+      ![](./media/image45.png)
 
 11. On the New container pane that appear on the right side, enter the
     container **Name** as **source** and click on **Create** button.
 
-> ![](./media/image46.png)
+     ![](./media/image46.png)
 
 12. On **azureopenaistorageXX | Containers** page, select **source**
     container**.**
 
-> ![](./media/image47.png)
+      ![](./media/image47.png)
 
 13. On **source** container page, click on **Upload** button.
 
-> ![](./media/image48.png)
+     ![](./media/image48.png)
 
 14. In the **Upload blob** pane, click on **Browse for file**, navigate
     to **C:\Labfiles** location and select **TF-AzureOpenAI.pdf**, then
     click on the **Open** button.
 
-> ![](./media/image49.png)
->
-> ![](./media/image50.png)
+     ![](./media/image49.png)
+ 
+     ![](./media/image50.png)
 
 15. In **Upload blob** pane, click on the **Upload** button.
 
-> ![](./media/image51.png)
+     ![](./media/image51.png)
 
 16. You will see a notification – **Successfully uploaded blob** when
     the uploaded is succeeded.
 
-> ![](./media/image52.png)
->
-> ![](./media/image53.png)
+     ![](./media/image52.png)
+ 
+     ![](./media/image53.png)
 
 ## Task 4: Create an Azure Cognitive Search service in the portal
 
 1.  On the **azureopenaistorageXX | Containers** page, click on **Home**
     to go back to Azure portal home page.
 
-> ![](./media/image54.png)
+     ![](./media/image54.png)
 
 2.  In Azure portal home page, click on **+ Create Resource**.
 
-> ![](./media/image55.png)
+      ![](./media/image55.png)
 
 3.  In the **Create a resource** page search bar, type **Azure AI
     Search** and click on the appeared **azure ai search**.
 
-![](./media/image56.png)
+     ![](./media/image56.png)
 
 4.  Click on **azure ai search** section.
 
-![](./media/image57.png)
+     ![](./media/image57.png)
 
 5.  In the **Azure AI Search** page, click on the **Create** button.
 
-> ![](./media/image58.png)
+      ![](./media/image58.png)
 
 6.  On the **Create a search service** page, provide the following
     information and click on **Review+create** button.
 
 [TABLE]
-
-![](./media/image59.png)
-
-![](./media/image60.png)
-
-![](./media/image61.png)
+    ![](./media/image59.png)
+    ![](./media/image60.png)
+    ![](./media/image61.png)
 
 7.  Once the Validation is passed, click on the **Create** button.
 
-![](./media/image62.png)
+     ![](./media/image62.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image63.png)
+      ![](./media/image63.png)
 
 8.  After the deployment is completed, click on the **Go to resource**
     button.
 
-![](./media/image64.png)
+       ![](./media/image64.png)
 
 9.  In the **mysearchserviceXX** Overview page. In the left-side
     navigation pane, under **Settings** section, select **Semantic
     ranker**.
 
-![](./media/image65.png)
+     ![](./media/image65.png)
 
 10. On the **Semantic ranker** tab**,** select **Free** tile and click
     on the **Select plan.**
