@@ -57,12 +57,12 @@ features are available:
     following URL:<https://portal.azure.com/> then press the **Enter**
     button.
 
-> ![](./media/image1.png)
+      ![](./media/image1.png)
 
 2.  In the **Sign in** window, enter the **Username** and click on the
     **Next** button.
 
-![](./media/image2.png)
+     ![](./media/image2.png)
 
 3.  Then, enter the password and click on the **Sign in** button**.**
 
@@ -71,20 +71,17 @@ features are available:
 
 4.  In **Stay signed in?** window, click on the **Yes** button.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image4.png)
+     ![](./media/image4.png)
 
 5.  From the Azure portal home page, click on **Azure portal menu**
     represented by three horizontal bars on the left side of the
     Microsoft Azure command bar as shown in the below image.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image5.png)
+     ![](./media/image5.png)
 
 6.  Navigate and click on **+ Create a resource**.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image6.png)
+      ![](./media/image6.png)
 
 7.  In the **Marketplace** page, in the **Search services and
     marketplace** search bar, type **Azure AI Content Safety**, then
@@ -92,22 +89,21 @@ features are available:
     Safety** section, click on the **Create** button dropdown, then
     select **Azure AI Content Safety** as shown in the below image.
 
-> ![](./media/image7.png)
->
-> ![](./media/image8.png)
+      ![](./media/image7.png)
+ 
+       ![](./media/image8.png)
 
 8.  In the **Create Azure OpenAI** window, under the **Basics** tab,
     enter the following details and click on the
     **Review+create**button.
 
 [TABLE]
-
-> ![](./media/image9.png)
+     ![](./media/image9.png)
 
 9.  In the **Review+submit** tab, once the Validation is Passed, click
     on the **Create** button.
 
-> ![](./media/image10.png)
+      ![](./media/image10.png)
 
 10. Wait for the deployment to complete. The deployment will take around
     2-3 minutes.
@@ -115,41 +111,41 @@ features are available:
 11. On **Microsoft.CognitiveServicesContentSafety** window, after the
     deployment is completed, click on the **Go to resource** button.
 
-![](./media/image11.png)
+     ![](./media/image11.png)
 
-![](./media/image12.png)
+     ![](./media/image12.png)
 
-![](./media/image13.png)
+    ![](./media/image13.png)
 
 ## Task 2: Analyze text content
 
 1.  In the **Content Safety** page, navigate to **Moderate text
     content** tile, click on **Try it out** link.
 
-![](./media/image14.png)
+      ![](./media/image14.png)
 
 2.  In **Settings** pane, select **AOAI-ContentSafetyXX** and click on
     **Use resource**.
 
-![](./media/image15.png)
+      ![](./media/image15.png)
 
 3.  In the **Content Safety** page, navigate to **Moderate text
     content** tile, click on **Try it out** link.
 
-![](./media/image14.png)
+     ![](./media/image14.png)
 
 4.  Under **Run a simple test** tab, select **Safe content** tile as
     shown in the below image.
 
-![](./media/image16.png)
+      ![](./media/image16.png)
 
 5.  Optionally, you can use slide controls in the **Configure
     filters** tab to modify the allowed or prohibited severity levels
     for each category. Then, click on **Run test** button**.**
 
-![](./media/image17.png)
+     ![](./media/image17.png)
 
-![](./media/image18.png)
+     ![](./media/image18.png)
 
 6.  Scroll down to view the results. The service returns all the
     categories that were detected, the severity level for each (0-Safe,
@@ -157,73 +153,71 @@ features are available:
     binary **Allowed** or **Reject** judgment. The result is based on
     the filters that you’ve configured.
 
-![](./media/image19.png)
+      ![](./media/image19.png)
 
 7.  Scroll down and click on **View Code** button as shown in the below
     image to view and copy the sample code, which includes configuration
     for severity filtering, blocklists, and moderation functions. You
     can then deploy the code on your end.
 
-![](./media/image20.png)
+     ![](./media/image20.png)
 
-![A screenshot of a computer program Description automatically
-generated](./media/image21.png)
+     ![](./media/image21.png)
 
 ## Task 3:Detect user input attacks
 
 1.  Go back to the **Content Safety Studio**
 
-![](./media/image22.png)
+      ![](./media/image22.png)
 
 2.  In the **Content Safety** page, under **Explore safety solutions for
     Gen-AI** navigate to **Prompt Shields** tile, click on **Try it
     out** link.
 
-![](./media/image23.png)
+      ![](./media/image23.png)
 
 3.  Under **Set up sample** tab, select **Safe content** tile as shown
     in the below image.
 
-![](./media/image24.png)
+      ![](./media/image24.png)
 
 4.  Optionally, you can use slide controls in the **Prompt shields** tab
     to modify the allowed or prohibited severity levels for each
     category. Then, click on **Run test** button**.**
 
-![](./media/image25.png)
+       ![](./media/image25.png)
 
 8.  Scroll down and click on **View Code** button as shown in the below
     image to view and copy the sample code, which includes configuration
     for severity filtering, blocklists, and moderation functions. You
     can then deploy the code on your end.
 
-![](./media/image26.png)
+      ![](./media/image26.png)
 
-![](./media/image27.png)
+      ![](./media/image27.png)
 
 5.  Under **Set up sample** tab, select **User prompt attack content**
     tile and click on **Run test** as shown in the below image.
 
-![](./media/image28.png)
+     ![](./media/image28.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image29.png)
+     ![](./media/image29.png)
 
 ## Task 4: Analyze image content
 
 1.  Under the Prompt Shields pane , click on **Back**
 
-![](./media/image30.png)
+      ![](./media/image30.png)
 
 2.  In **Content Safety** page, navigate to **Moderate image
     content** tile and click on **Try it out** link.
 
-![](./media/image31.png)
+      ![](./media/image31.png)
 
 3.  Under select a sample or upload your own section, navigate and click
     on **Browse for a file** link.
 
-![](./media/image32.png)
+      ![](./media/image32.png)
 
 **Note**: The maximum size for image submissions is 4 MB, and image
 dimensions must be between 50 x 50 pixels and 2,048 x 2,048 pixels.
@@ -232,7 +226,7 @@ Images can be in JPEG, PNG, GIF, BMP, TIFF, or WEBP formats.
 4.  Navigate to **C:\Labfiles** location and select **car-accident**
     image**,** then click on **Open** button.
 
-![](./media/image33.png)
+      ![](./media/image33.png)
 
 5.  Optionally, you can use slide controls in the **Configure
     filters** tab to modify the allowed or prohibited severity levels
@@ -240,7 +234,7 @@ Images can be in JPEG, PNG, GIF, BMP, TIFF, or WEBP formats.
 
 6.  Click on **Run test** button.
 
-![](./media/image34.png)
+      ![](./media/image34.png)
 
 7.  Scroll down to view the results of the test. The service returns all
     the categories that were detected, the severity level for each
@@ -248,16 +242,16 @@ Images can be in JPEG, PNG, GIF, BMP, TIFF, or WEBP formats.
     binary **Accept** or **Reject** judgment. The result is based on the
     filters that you’ve configured
 
-![](./media/image35.png)
+      ![](./media/image35.png)
 
 8.  Scroll down and click on **View Code** button as shown in the below
     image to view and copy the sample code, which includes configuration
     for severity filtering, blocklists, and moderation functions. You
     can then deploy the code on your end.
 
-![](./media/image36.png)
+     ![](./media/image36.png)
 
-![](./media/image37.png)
+     ![](./media/image37.png)
 
 ## Task 5: Delete the resource group
 
@@ -265,35 +259,31 @@ Images can be in JPEG, PNG, GIF, BMP, TIFF, or WEBP formats.
     Azure portal search bar, navigate and click on **Resource groups**
     under **Services**.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image38.png)
+     ![](./media/image38.png)
 
 2.  Click on the resource group that you’ve for Azure AI resource.
 
-> ![](./media/image39.png)
+     ![](./media/image39.png)
 
 3.  In the **Resource group** home page, select the **delete resource
     group**
 
-![](./media/image40.png)
+     ![](./media/image40.png)
 
 4.  In the **Delete Resources** pane that appears on the right side,
     navigate to **Enter “resource group name” to confirm deletion**
     field, then click on the **Delete** button.
 
-![](./media/image41.png)
+     ![](./media/image41.png)
 
 5.  On **Delete confirmation** dialog box, click on **Delete** button.
 
-> ![A screenshot of a computer error Description automatically
-> generated](./media/image42.png)
+       ![](./media/image42.png)
 
 6.  Click on the bell icon, you’ll see the notification –**Deleted
     resource group AOAI-RG89.**
 
-![A screenshot of a computer Description automatically
-generated](./media/image43.png)
-
+      ![](./media/image43.png)
 **Summary**
 
 In this lab, you’ve created and configured Azure resources for Azure AI
