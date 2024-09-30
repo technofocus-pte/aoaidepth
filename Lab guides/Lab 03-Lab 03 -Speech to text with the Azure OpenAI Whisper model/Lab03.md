@@ -1,3 +1,5 @@
+# **Lab 03 -Speech to text with the Azure OpenAI Whisper model**
+
 **Introduction**
 
 The OpenAI Whisper model is an encoder-decoder Transformer that can
@@ -35,39 +37,33 @@ and larger file sizes.
 
 1.  Open your browser, navigate to the address bar, and type or paste
     the following URL:
-    [*https://portal.azure.com/*](https://techcommunity.microsoft.com/t5/azure-ai-services-blog/announcing-the-public-preview-of-real-time-diarization-in-azure/ba-p/3876802),
+     +++https://portal.azure.com/+++
     then press the **Enter** button.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image1.png)
+     ![](./media/image1.png)
 
 2.  In the **Microsoft Azure** window, enter your **Sign-in**
     credentials, and click on the **Next** button.
 
-![A screenshot of a computer Description automatically
-generated](./media/image2.png)
+       ![](./media/image2.png)
 
 3.  Then, enter the password and click on the **Sign in** button**.**
 
-> ![A screenshot of a login box Description automatically
-> generated](./media/image3.png)
+      ![](./media/image3.png)
 
 4.  In **Stay signed in?** window, click on the **Yes** button.
 
-> ![Graphical user interface, application Description automatically
-> generated](./media/image4.png)
+      ![](./media/image4.png)
 
 5.  On the Azure portal menu, click on **+ Create a resource**.
 
-> ![Graphical user interface, application Description automatically
-> generated](./media/image5.png)
+     ![](./media/image5.png)
 
 6.  On the **Create a resource** page, in the search services and
     marketplace field, type **Azure OpenAI**, then press the **Enter**
     button.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image6.png)
+      ![](./media/image6.png)
 
 7.  In the Marketplace page, navigate to the Azure OpenAI section, click
     on the Create V chevron button, then click on **Azure OpenAI** as
@@ -75,8 +71,7 @@ generated](./media/image2.png)
     section**, then click on the **Create** button on the **Azure OpenAI
     page**).
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image7.png)
+      ![](./media/image7.png)
 
 8.  In the **Create Azure OpenAI** window, under the **Basics** tab,
     enter the following details and click on the **Next** button.
@@ -88,46 +83,43 @@ generated](./media/image2.png)
 9.  In the **Network** tab, leave all the radio buttons in the default
     state, and click on the **Next** button.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image9.png)
+      ![](./media/image9.png)
 
 10. In the **Tags** tab, leave all the fields in the default state, and
     click on the **Next** button.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image10.png)
+      ![](./media/image10.png)
 
 11. In the **Review+submit** tab, once the Validation is Passed, click
     on the **Create** button.
 
-> ![](./media/image11.png)
+      ![](./media/image11.png)
 
 12. Wait for the deployment to complete. The deployment will take around
     10-15 minutes.
 
-![](./media/image12.png)
+     ![](./media/image12.png)
 
 13. On **Microsoft.CognitiveServicesOpenAI** window, after the
     deployment is completed, click on the **Go to resource** button.
 
-![](./media/image13.png)
+     ![](./media/image13.png)
 
 ## Task 2: Retrieve the key and endpoint of Azure OpenAI service
 
 1.  In your **AOAIWestEurope-XXX** page, navigate to the **Resource
     Management** section, and click on **Keys and Endpoints**.
 
-![](./media/image14.png)
+     ![](./media/image14.png)
 
 2.  In **Keys and Endpoints** page, copy **KEY1, KEY 2,** (*You can use
     either KEY1 or KEY2)* and **Endpoint** and paste them on a notepad
     (as shown in the image), and then **Save** the notepad to use the
     information in the upcoming lab.
 
-![](./media/image15.png)
-
-![A screenshot of a computer Description automatically
-generated](./media/image16.png)
+      ![](./media/image15.png)
+ 
+       ![](./media/image16.png)
 
 ***Note:** You will have different KEY values.* *This value can be found
 in the **Keys and Endpoint** section when examining your resource from
@@ -142,58 +134,58 @@ service disruption*.
     the **Go to Azure OpenAI Studio** button to open **Azure OpenAI
     Studio** in a new browser.
 
-> ![](./media/image17.png)
+       ![](./media/image17.png)
 
 2.  In the **Azure AI | Azure AI Studio** window, click on **Create a
     new deployment** button**.**
 
-> ![](./media/image18.png)
+      ![](./media/image18.png)
 
 3.  In the **Deployments** window, click on **+Create new deployment**.
 
-> ![](./media/image19.png)
+      ![](./media/image19.png)
 
 4.  In the **Deploy model dialog** box, under the **Model name** field,
     click on the V chevron button; navigate and select carefully
     **whisper**.
 
-> ![](./media/image20.png)
+       ![](./media/image20.png)
 
 5.  In the **Deployment name field**, enter **whisper,** and click on
     the **Create** button.
 
-> ![](./media/image21.png)
+       ![](./media/image21.png)
 
 6.  You will see a notification stating **Successfully Created
     deployment** (In case, the notification did not appear on your
     window by default, click on the bell icon beside **Azure AI | Azure
     AI Studio** bar).
 
-> ![](./media/image22.png)
+      ![](./media/image22.png)
 
 7.  In the **Deployments** page, click on +**Create new deployment**.
 
-> ![](./media/image23.png)
+       ![](./media/image23.png)
 
 8.  In the **Deploy model** dialog box, under the **Model name** field,
     click on the V chevron button; navigate and select carefully
     **gpt-35-turbo**.
 
 9.  Select the **Model version** as **0301(Default),** in the
-    **Deployment name field**, enter **gpt-35-turbo**, and click on the
+    **Deployment name field**, enter +++gpt-35-turbo+++, and click on the
     **Create** button.
 
-> ![](./media/image24.png)
+      ![](./media/image24.png)
 
 10. You will see a notification – **Successfully Created deployment**
     when the deployment is succeeded (You can also view the notification
     by clicking on the bell icon beside **Azure AI | Azure AI Studio**.
 
-> ![](./media/image25.png)
+      ![](./media/image25.png)
 
 11. Click on **Azure OpenAI Home icon** to go back to the home page.
 
-> ![](./media/image26.png)
+      ![](./media/image26.png)
 
 ## **Task 4: Speech to text using Whisper model**
 
@@ -202,10 +194,9 @@ service disruption*.
     Speech-to-Text** to open **Azure AI Speech Studio** in a new
     browser.
 
-![](./media/image27.png)
+      ![](./media/image27.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image28.png)
+     ![](./media/image28.png)
 
 2.  In **Azure AI Speech Studio** Home page, under **Whisper Model in
     Azure OpenAI Service**, in **Try it out** section, select your
@@ -215,33 +206,31 @@ generated](./media/image28.png)
 3.  **Select the check box**- I acknowledge that running this demo will
     incur costs to my Azure resource
 
-![](./media/image29.png)
+      ![](./media/image29.png)
 
 4.  Click on **Browse file** and navigate to **C:\Labfiles \audiofiles**
     location and select **all audio files ,** then click on **Open**
     button.
 
-![](./media/image30.png)
+     ![](./media/image30.png)
 
-![](./media/image31.png)
+     ![](./media/image31.png)
 
 5.  To upload audio files will take 2-3 minutes
 
-![A screenshot of a computer Description automatically
-generated](./media/image32.png)
+     ![](./media/image32.png)
 
-![A screenshot of a chat Description automatically
-generated](./media/image33.png)
+    ![](./media/image33.png)
 
 6.  Under the Audio files pane select **aboutSpeechSdk.wav( or select
     any audio file of your choice)** file and select play button. You
     will receive a response similar to the below screenshot
 
-![](./media/image34.png)
+     ![](./media/image34.png)
 
 7.  Use the **JSON** button to view the code for the interaction.
 
-![](./media/image35.png)
+     ![](./media/image35.png)
 
 ## **Task 5: Enhancing Whisper transcriptions: pre- & post-processing techniques**
 
@@ -256,51 +245,50 @@ remember, customization based on your unique use-case may be beneficial.
 1.  In your Windows search box, type Visual Studio, then click on
     **Visual Studio Code**.
 
-> ![](./media/image36.png)
+      ![](./media/image36.png)
 
 2.  In the **Visual Studio Code** editor, click on **File**, then
     navigate and click on **Open Folder**.
 
-![](./media/image37.png)
+     ![](./media/image37.png)
 
 3.  Navigate and select **Whisper** notebook from **C:\LabFiles** and
     click on the **Select Folder** button.
 
-![](./media/image38.png)
+      ![](./media/image38.png)
 
 4.  In case, **Do you trust the authors of the files in this folder?**
     dialog box appears, then click on the **Yes, I trust the author**
     button.
 
-![](./media/image39.png)
+      ![](./media/image39.png)
 
 5.  In case, a notification stating **Do you want to install the
     recommended extension for Python?** appears, then click on the
     **Install** button.
 
-![A screenshot of a computer Description automatically
-generated](./media/image40.png)
+      ![](./media/image40.png)
 
 6.  In Visual Studio Code, under **WHISPER**, click on **dotnet**, then
     click on **Whishper_processing_guide.ipynb** notebook.
 
-![](./media/image41.png)
+      ![](./media/image41.png)
 
 8.  Install the Azure Open AI SDK using the command. Click on **Execute
     cell start icon** as shown in the image.
 
-![](./media/image42.png)
+      ![](./media/image42.png)
 
 9.  If prompted to select the environment, then select **.NET
     Interactive** as shown in the image.
 
-![](./media/image43.png)
+     ![](./media/image43.png)
 
-![](./media/image44.png)
+      ![](./media/image44.png)
 
 10. Execute the **2^(nd) cell** by clicking on the **start icon**.
 
-![](./media/image45.png)
+     ![](./media/image45.png)
 
 11. Run this cell, it will prompt you for the apiKey, endPoint, and
     imageGeneration deployment name.
@@ -311,65 +299,65 @@ generated](./media/image40.png)
     add Whisper deployment model as **whisper** . Then, execute the cell
     by clicking on the **start icon**.
 
-![](./media/image46.png)
+      ![](./media/image46.png)
 
 13. In case, a notification stating **enter to API key** appears, then
     click on the **enter**.
 
-![](./media/image47.png)
+      ![](./media/image47.png)
 
 14. In case, a notification stating **enter to Endpoint** appears, then
     click on the **enter**.
 
-![](./media/image48.png)
+     ![](./media/image48.png)
 
 15. In case, a notification stating **chat model** appears, then click
     on the **enter**.
 
-![](./media/image49.png)
+     ![](./media/image49.png)
 
 16. In case, a notification stating **whisper** appears, then click on
     the **enter**.
 
-![](./media/image50.png)
+     ![](./media/image50.png)
 
 17. Import namesapaces and create an instance of OpenAiClient using the
     azureOpenAIEndpoint and the azureOpenAIKey. Then, execute the cell
     by clicking on the **start icon**.
 
-![](./media/image51.png)
+     ![](./media/image51.png)
 
-![](./media/image52.png)
+     ![](./media/image52.png)
 
 18. To get started let's import a few different libraries: execute the
     cell by clicking on the **start icon**.
 
-![](./media/image53.png)
+     ![](./media/image53.png)
 
-![](./media/image54.png)
+      ![](./media/image54.png)
 
 19. At times, files with long silences at the beginning can cause
     Whisper to transcribe the audio incorrectly. We'll use \`NAudio\`\`
     to detect and trim the silence. Then, execute the cell by clicking
     on the **start icon**.
 
-![](./media/image55.png)
+     ![](./media/image55.png)
 
-![](./media/image56.png)
+      ![](./media/image56.png)
 
 20. Here, we've set the decibel threshold of -19. You can change this if
     you would like. Then, execute the cell by clicking on the **start
     icon**.
 
-![](./media/image57.png)
+     ![](./media/image57.png)
 
 21. Now that we have audio segments we can create trimmed files to use
     with the Whisper model. Then, execute the cells by clicking on the
     **start icon**.
 
-![](./media/image58.png)
+      ![](./media/image58.png)
 
-![](./media/image59.png)
+     ![](./media/image59.png)
 
 22. This function will add formatting and punctuation to our transcript.
     Whisper generates a transcript with punctuation but without
@@ -377,7 +365,7 @@ generated](./media/image40.png)
 
 23. Then, execute the cell by clicking on the **start icon**.
 
-![](./media/image60.png)
+      ![](./media/image60.png)
 
 24. Our audio file is a recording from a fake earnings call that
     includes a lot of financial products. This function can help ensure
@@ -385,7 +373,7 @@ generated](./media/image40.png)
     incorrectly, that they can be corrected. Then, execute the cell by
     clicking on the **start icon**.
 
-![](./media/image61.png)
+      ![](./media/image61.png)
 
 ## **Task 6: Whisper prompting guide**
 
@@ -427,22 +415,21 @@ To get good results, craft examples that portray your desired style.
 1.  In Visual Studio Code, under **WHISPER**, click on **dotnet**, then
     click on Whisper_prompting_guide.ipynb notebook.
 
-![](./media/image62.png)
+     ![](./media/image62.png)
 
 2.  Install the Azure Open AI SDK using the command. Click on **Execute
     cell start icon** as shown in the image.
 
-![](./media/image63.png)
+     ![](./media/image63.png)
 
 3.  If prompted to select the environment, then select **.NET
     Interactive** as shown in the image.
 
-![](./media/image64.png)
+     ![](./media/image64.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image65.png)
+     ![](./media/image65.png)
 
-![](./media/image66.png)
+     ![](./media/image66.png)
 
 4.  Run this cell, it will prompt you for the apiKey, endPoint, and
     imageGeneration deployment name.
@@ -453,46 +440,45 @@ generated](./media/image65.png)
     add Whisper deployment model as **whisper** . Then, execute the cell
     by clicking on the **start icon**.
 
-![](./media/image67.png)
+      ![](./media/image67.png)
 
 6.  In case, a notification stating **enter to API key** appears, then
     click on the **enter**.
 
-![](./media/image47.png)
+      ![](./media/image47.png)
 
 7.  In case, a notification stating **enter to Endpoint** appears, then
     click on the **enter**.
 
-![A screenshot of a computer Description automatically
-generated](./media/image48.png)
+      ![](./media/image48.png)
 
 8.  In case, a notification stating **chat model** appears, then click
     on the **enter**.
 
-![](./media/image49.png)
+     ![](./media/image49.png)
 
 9.  In case, a notification stating **whisper** appears, then click on
     the **enter**.
 
-![](./media/image50.png)
+     ![](./media/image50.png)
 
 10. Import namesapaces and create an instance of OpenAiClient using the
     azureOpenAIEndpoint and the azureOpenAIKey. Then, execute the cell
     by clicking on the **start icon**.
 
-![](./media/image68.png)
+     ![](./media/image68.png)
 
 11. Download a few example audio files. Then, execute the cell by
     clicking on the **start icon**.
 
-![](./media/image69.png)
+     ![](./media/image69.png)
 
 12. As a baseline, we'll transcribe an NPR podcast segment. Execute the
     cell by clicking on the **start icon**.
 
-![](./media/image70.png)
+     ![](./media/image70.png)
 
-![](./media/image71.png)
+    ![](./media/image71.png)
 
 13. In the unprompted transcript, 'President Biden' is capitalized.
     However, if we pass in a fictitious prompt of 'president biden' in
@@ -501,17 +487,17 @@ generated](./media/image48.png)
 
 14. Then, execute the cell by clicking on the **start icon**.
 
-![](./media/image72.png)
+     ![](./media/image72.png)
 
 15. Long prompts may be more reliable at steering Whisper. Then, execute
     the cell by clicking on the **start icon**.
 
-![](./media/image73.png)
+     ![](./media/image73.png)
 
 16. Whisper is also less likely to follow rare or odd styles. Execute
     the cell by clicking on the **start icon**.
 
-![](./media/image74.png)
+     ![](./media/image74.png)
 
 17. Whisper may incorrectly transcribe uncommon proper nouns such as
     names of products, companies, or people. We'll illustrate with an
@@ -519,20 +505,20 @@ generated](./media/image48.png)
 
 18. Then, execute the cell by clicking on the **start icon**.
 
-![](./media/image75.png)
+     ![](./media/image75.png)
 
 19. To get Whisper to use our preferred spellings, let's pass the
     product and company names in the prompt, as a glossary for Whisper
     to follow. Then, execute the cell by clicking on the **start icon**.
 
-![](./media/image76.png)
+     ![](./media/image76.png)
 
 20. Now, let's switch to another audio recording authored specifically
     for this demonstration, on the topic of a odd barbecue.To begin,
     we'll establish our baseline transcript using Whisper. Execute the
     cell by clicking on the **start icon**.
 
-> ![](./media/image77.png)
+      ![](./media/image77.png)
 
 21. While Whisper's transcription was accurate, it had to guess at
     various spellings. For example, it assumed the friends' names were
@@ -540,18 +526,18 @@ generated](./media/image48.png)
     can steer the spelling with a prompt. Then, execute the cell by
     clicking on the **start icon**.
 
-> ![](./media/image78.png)
->
-> ![](./media/image79.png)
+      ![](./media/image78.png)
+
+      ![](./media/image79.png)
 
 22. One potential tool to generate fictitious prompts is GPT. We can
     give GPT instructions and use it to generate long fictitious
     transcripts with which to prompt Whisper. Then, execute the cell by
     clicking on the **start icon**.
 
-> ![](./media/image80.png)
+      ![](./media/image80.png)
 
-![](./media/image81.png)
+      ![](./media/image81.png)
 
 23. Whisper prompts are best for specifying otherwise ambiguous styles.
     The prompt will not override the model's comprehension of the audio.
@@ -559,8 +545,7 @@ generated](./media/image48.png)
     accent, a prompt will not cause the transcript to do so.
 
 24. Then, execute the cell by clicking on the **start icon**.
-
-![](./media/image82.png)
+     ![](./media/image82.png)
 
 ## **Task 7: Clean up resources**
 
@@ -568,24 +553,22 @@ generated](./media/image48.png)
     portal search bar, navigate and click on **Resource groups** under
     **Services**.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image83.png)
+      ![](./media/image83.png)
 
 2.  Click on your resource group.
 
-> ![](./media/image84.png)
+      ![](./media/image84.png)
 
 3.  In the **Resource group** home page, select the **delete resource
     group** .
 
-> ![](./media/image85.png)
+      ![](./media/image85.png)
 
 4.  In the Delete a resource group tab, enter your resource group name
     and click on **Delete button**
 
-![](./media/image86.png)
+      ![](./media/image86.png)
 
 5.  On **Delete confirmation** dialog box, click on D**elete** button.
 
-> ![A screenshot of a computer error Description automatically
-> generated](./media/image87.png)
+       ![](./media/image87.png)
