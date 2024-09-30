@@ -40,8 +40,7 @@ template to Azure with both of these accounts.
 
 1.  Open a new browser and enter the following URL in the address
     bar: +++https://portal.azure.com/+++ to open the Azure Portal.
-
-     ![](./media/image1.png)
+      ![](./media/image1.png)
 
 2.  In the Azure portal, click on the **\[\>\_\] (Cloud Shell)** button
     at the top of the page to the right of the search box. A Cloud Shell
@@ -49,14 +48,11 @@ template to Azure with both of these accounts.
     the Cloud Shell, you may be prompted to choose the type of shell you
     want to use (**Bash** or **PowerShell**). Select **Bash**. If you
     don't see this option, then skip this step.
-
-     ![](./media/image2.png)
-
+      ![](./media/image2.png)
       ![](./media/image3.png)
 
 3.  In **You have no storage mounted** dialog box, click on the **Create
     storage.**
-
      ![](./media/image4.png)
      ![](./media/image5.png)
      ![](./media/image6.png)
