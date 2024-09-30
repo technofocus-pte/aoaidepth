@@ -398,6 +398,6 @@ resources efficiently. Overall, the lab offers a comprehensive
 walkthrough for users to create, deploy, and interact with computer
 vision and language models within the Azure environment.
 
-**Important Note: Please do not delete the Resource Group. If deleted,
+
 you’ll not be able to proceed with the next lab or create a new Resource
 Group.**
