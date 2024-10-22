@@ -191,14 +191,12 @@ service disruption*.
 ## Task 2: Install Microsoft .NET SDK
 
 1.  Open your browser, navigate to the address bar, type or paste the
-    following URL:
-    ++++https://download.visualstudio.microsoft.com/download/pr/9f9ad302-a698-4fab-9765-e313f7e14151/8ad751b6cfc11276b4e2adef4e319db7/dotnet-sdk-8.0.200-win-x64.exe+++
-    , then press the **Enter** button
+    following URL:++++https://download.visualstudio.microsoft.com/download/pr/9f9ad302-a698-4fab-9765-e313f7e14151/8ad751b6cfc11276b4e2adef4e319db7/dotnet-sdk-8.0.200-win-x64.exe+++, then press the **Enter** button
 
 2.  **Dotnet-sdk-8.0.200-win-x64.exe** file will be downloaded. Click on
     the downloaded file to install the .NET SDK software
 
-!     [](./media/image33.png)
+     ![](./media/image33.png)
 
 3.  Click on **Install** button.
 
