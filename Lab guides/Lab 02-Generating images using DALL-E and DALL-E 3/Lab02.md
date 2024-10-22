@@ -108,7 +108,7 @@ changing the available region
 allows you to securely rotate and regenerate keys without causing a
 service disruption*.
 
-## Task 3: [Cognitive Services OpenAI Contributor](https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/role-based-access-control#cognitive-services-contributor) for the Azure OpenAI resource
+## Task 3: Cognitive Services OpenAI Contributor for the Azure OpenAI resource
 
 1.  From the left menu, click on the **Access control(IAM).**
 
@@ -119,9 +119,7 @@ service disruption*.
 
       ![](./media/image16.png)
 
-3.  Type the [**Cognitive Services OpenAI
-    Contributor**](https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/role-based-access-control#cognitive-services-contributor)
-    in the search box and select it. Click **Next**
+3.  Type the **+++Cognitive Services OpenAI Contributor+++**
 
       ![](./media/image17.png)
 
@@ -142,47 +140,39 @@ service disruption*.
 
      ![](./media/image21.png)
 
-7.  You will see a notification – added as [**Cognitive Services OpenAI
-    Contributor**](https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/role-based-access-control#cognitive-services-contributor)
+7.  You will see a notification – added as **Cognitive Services OpenAI Contributor**
     for Azure Pass-Sponsorship.
-
-##  Task 4: Create image-generation in the DALL-E playground
-
-1.  In **Azure-openai-testXX** page, click on **Overview** in the
-    left-sided navigation menu, scroll down and click on **Go to Azure
-    OpenAI Studio** button as shown in the below image.
-
-     ![](./media/image22.png)
-
-2.  Wait for the Azure OpenAI studio to launch.
-
-      ![](./media/image23.png)
-
-3.  In the **Azure AI Studio** landing page, navigate and click on
-    **DALL-E playground** to use the image generation APIs.
-
-      ![](./media/image24.png)
-
-4.  Start exploring Azure OpenAI capabilities with a no-code approach
-    through the **DALL-E playground** .
-
-     ![](./media/image25.png)
 
 # Exercise 2: Generate images using DALl-E-3 with Azure OpenAI Service
 
 ## Task 1: Generate images using DALL-E-3
 
-1.  In Azure OpenAI Studio Home page, under **Playground**, select the
+1. In **Azure-openai-testXX** page, click on Overview in the left-sided navigation menu, scroll down and click on **Go to Azure OpenAI Studio** button as shown in the below image
+   
+    ![](./media/new.png)
+   
+2.	Wait for the Azure OpenAI studio to launch.
+    ![](./media/new.png)
+3.	In the **Azure OpenAI Studio** landing page, navigate and click on **Images** to use the image generation APIs.
+    ![](./media/new.png)
+  	
+4.	On the **Image playground** ,click on **+ Create a deployment** .
+   
+    ![](./media/new.png)
+5.	In the select a chat completion model tab select dall-e-3 and click on the Confirm button.
+
+     ![](./media/new.png)
+6.  In Azure OpenAI Studio Home page, under **Playground**, select the
     **DALL-E**.
 
      ![](./media/image26.png)
 
-2.  Make sure to choose the **dall-e-3** model from the Deployment
+8.  Make sure to choose the **dall-e-3** model from the Deployment
     dropdown.
 
      ![](./media/image27.png)
 
-3.  In **DALL-E playground** window, under **Prompt**, enter your image
+9.  In **DALL-E playground** window, under **Prompt**, enter your image
     prompt in the text box - **An elephant on a skateboard** as shown in
     the below image and click on the **Generate** button.
 
@@ -190,14 +180,14 @@ service disruption*.
 
      ![](./media/image29.png)
 
-4.  Select **View code** near the top of the page, you can use this code
+10.  Select **View code** near the top of the page, you can use this code
     to write an application that completes the same task.
 
      ![](./media/image30.png)
 
      ![](./media/image31.png)
 
-5.  In the **Deployments** window, copy **Deployment name** and paste
+11.  In the **Deployments** window, copy **Deployment name** and paste
     them in a notepad (as shown in the image), and then **Save** the
     notepad to use the information in the upcoming task.
 
