@@ -161,8 +161,7 @@ provisioning Azure OpenAI resource in the Azure portal.
     |Region	|East US 2 |
     |Name|+++Azure-openai-testXX+++ (XX can be a unique number, you can add more digits after XX to make the name unique) (here, we entered Azure-open-test39)|
     |Pricing tier|	Select Standard S0|
-    ***Note**:For this lab, you will use a GPT-4O model. This model is currently only available in certain regions. Please select a region from this list, In 
-             this lab East US 2 is using for this resource.
+ **Note**:For this lab, you will use a GPT-4O model. This model is currently only available in [certain regions](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#embeddings-models). Please select a region from this list, In this lab East US 2 is using for this resource.
      ![](./media/image22.png)
      ![](./media/image23.png)
 
@@ -203,7 +202,13 @@ provisioning Azure OpenAI resource in the Azure portal.
 2.  On the **Create Speech Services** page, enter the following
     information, then click on **Review+create** button.
 
-[TABLE]
+    |Field	|Description|
+    |-----|----|
+    |Subscription	|Select your Azure OpenAI subscription|
+    |Resource group|	Select your Resource group (that you have created in Task 2)|
+    |Region|	East US|
+    |Name|SpeechChat-testXX (XX can be unique number)|
+    |Pricing Tier|	Standard S0|
 
      ![](./media/image30.png)
 
@@ -231,7 +236,7 @@ provisioning Azure OpenAI resource in the Azure portal.
 3.  In the **AOAI-RGXX Resource group** page, navigate and click on
     **Azure-openai-testXX** as shown in the below image.
 
->     ![](./media/image36.png)
+    ![](./media/image36.png)
 
 4.  In **Azure-openai-testXX** page, click on **Overview** in the
     left-sided navigation menu, scroll down and click on **Explore Azure
