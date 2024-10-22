@@ -335,16 +335,22 @@ them in **Playground Settings**.
 
 9.  On the **Playground Settings** page, provide the following
     information and then click on the **Save** button.
+    
+    |  |   |
+    |----|---|
+    |Language	|Select the language locale and voice you want to use for speaking and hearing. (In this lab, we are selecting English).|
+    |Subscription|Select your Azure OpenAI subscription|
+    |Speech resource |Select your speech resource group that you’ve created in Task #1.|
+    |Voice configuration|	Emma|
 
-[TABLE]
 
-- **Select the check box**-I acknowledge that spoken chat will incur
-  usage to my subscription.
-
-- Select **Enable speech to text** and **Enable text to speech**.
-
-**Note**: Optionally, you can enter some sample text and
-select **Play** to try the voice.
+    - **Select the check box**-I acknowledge that spoken chat will incur
+      usage to my subscription.
+    
+    - Select **Enable speech to text** and **Enable text to speech**.
+    
+    **Note**: Optionally, you can enter some sample text and
+    select **Play** to try the voice.
 
      ![](./media/image55.png)
 
@@ -387,13 +393,13 @@ in the chat session pane.
     following content under **System message** box, then click on
     **Apply changes** as shown in the below image.
 
-> Copy
->
-> "You're an AI assistant that helps people find information. Answers
-> shouldn't be longer than 20 words because you are on a phone. You
-> could use 'um' or 'let me see' to make it more natural and add some
-> disfluency."
->
+     Copy
+      ```
+     "You're an AI assistant that helps people find information. Answers
+     shouldn't be longer than 20 words because you are on a phone. You
+     could use 'um' or 'let me see' to make it more natural and add some
+     disfluency."
+     ```
      ![](./media/image62.png)
 
 17. In the **Update system message?** dialog box, click on the
@@ -443,15 +449,15 @@ in the chat session pane.
     ```
     pip install openai num2words matplotlib plotly scipy scikit-learn pandas
     tiktoken
-   ``` 
+    ``` 
      ![](./media/image70.png)
      ![](./media/image71.png)
 4.  Run the below command to install the Transformers package:
 
-```
- pip install transformers
-```
-![](./media/image72.png)
+    ```
+    pip install transformers
+    ```
+   ![](./media/image72.png)
 
 ## **Task 7: Clean up resources**
 
