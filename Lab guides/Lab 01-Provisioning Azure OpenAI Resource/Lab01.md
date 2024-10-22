@@ -46,8 +46,7 @@ provisioning Azure OpenAI resource in the Azure portal.
 ## **Task 1: Register the required Resource providers**
 
 1.  Open your browser, navigate to the address bar, type or paste the
-    following URL:
-    [*https://portal.azure.com/*](https://portal.azure.com/), then press
+    following URL:+++https://portal.azure.com/+++, then press
     the **Enter** button.
 
       ![](./media/image6.png)
@@ -57,7 +56,7 @@ provisioning Azure OpenAI resource in the Azure portal.
 
       ![](./media/image7.png)
 
-3.  Then, enter the password and click on the **Sign in** button**.**
+3.  Then, enter the password and click on the **Sign in** button.
 
        ![](./media/image8.png)
 
@@ -87,7 +86,7 @@ provisioning Azure OpenAI resource in the Azure portal.
       ![](./media/image13.png)
 
 9.  In the **Azure Pass – Sponsorship | Resource providers** page,
-    navigate to the search box and type **Microsoft.Storage**. Select
+    navigate to the search box and type **+++Microsoft.Storage+++**. Select
     the **Microsoft.Storage** under **Provider**, then click on the
     **Register** as shown in the below image.
 
@@ -101,7 +100,7 @@ provisioning Azure OpenAI resource in the Azure portal.
       ![](./media/image15.png)
 
 11. In the **Azure Pass – Sponsorship | Resource providers** page,
-    navigate to the search box and type **Microsoft.Security**. Select
+    navigate to the search box and type **+++Microsoft.Security+++**. Select
     the **Microsoft.Security** under **Provider**, then click on the
     **Register** as shown in the below image.
 
@@ -117,15 +116,15 @@ provisioning Azure OpenAI resource in the Azure portal.
 13. Repeat the steps \#10 and \#11 to register the following Resource
     providers.
 
-    - **Microsoft.CognitiveServices**
+    - **+++Microsoft.CognitiveServices+++**
 
-    - **Microsoft.Search**
+    - **+++Microsoft.Search+++**
 
-    - **Microsoft.Sql**
+    - **+++Microsoft.Sql+++**
 
-    - **Microsoft.Web**
+    - **+++Microsoft.Web+++**
 
-    - **Microsoft.ManagedIdentity**
+    - **+++Microsoft.ManagedIdentity+++**
 
 ## **Task 2: Create Azure OpenAI resource**
 
@@ -155,33 +154,39 @@ provisioning Azure OpenAI resource in the Azure portal.
 
 5.  In the **Create Azure OpenAI** window, under the **Basics** tab,
     enter the following details and click on the **Next** button.
+    |  |  |
+    |-----|-----|
+    |Subscription	|Select the assigned subscription|
+    |Resource group	|Click on Create new> enter +++AOAI-RGXX+++(XX can be a unique number, you can add more digits after XX to make the name unique)|
+    |Region	|East US 2 |
+    |Name|+++Azure-openai-testXX+++ (XX can be a unique number, you can add more digits after XX to make the name unique) (here, we entered Azure-open-test39)|
+    |Pricing tier|	Select Standard S0|
+    ***Note**:For this lab, you will use a GPT-4O model. This model is currently only available in certain regions. Please select a region from this list, In 
+             this lab East US 2 is using for this resource.
+     ![](./media/image22.png)
+     ![](./media/image23.png)
 
-[TABLE]
-
-      ![](./media/image22.png)
-       ![](./media/image23.png)
-
-6.  In the **Network** tab, leave all the radio buttons in the default
+7.  In the **Network** tab, leave all the radio buttons in the default
     state, and click on the **Next** button.
 
       ![](./media/image24.png)
 
-7.  In the **Tags** tab, leave all the fields in the default state, and
+8.  In the **Tags** tab, leave all the fields in the default state, and
     click on the **Next** button.
 
       ![](./media/image25.png)
 
-8.  In the **Review+submit** tab, once the Validation is Passed, click
+9.  In the **Review+submit** tab, once the Validation is Passed, click
     on the **Create** button.
 
      ![](./media/image26.png)
 
-9.  Wait for the deployment to complete. The deployment will take around
+10.  Wait for the deployment to complete. The deployment will take around
     2-3 minutes.
 
      ![](./media/image27.png)
 
-10. On **Microsoft.CognitiveServicesOpenAI** window, after the
+11. On **Microsoft.CognitiveServicesOpenAI** window, after the
     deployment is completed, click on the **Go to resource** button.
 
      ![](./media/image28.png)
