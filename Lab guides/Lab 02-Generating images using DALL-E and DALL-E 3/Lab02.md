@@ -45,7 +45,7 @@ changing the available region
     the **Azure** **OpenAI** tile, then click on the **Create** button
     on the **Azure OpenAI page**).
 
-    ![](./media/image4.png)
+    ![](./media/new1.png)
 
 5.  In the **Create Azure OpenAI** window, under the **Basics** tab,
     enter the following details and click on the **Next** button.
@@ -80,12 +80,12 @@ changing the available region
 9.  Wait for the deployment to complete. The deployment will take around
     2-3 minutes.
 
-     ![](./media/image10.png)
+     ![](./media/new2.png)
 
 10. On **Microsoft.CognitiveServicesOpenAI** window, after the
     deployment is completed, click on the **Go to resource** button.
 
-      ![](./media/image11.png)
+      ![](./media/new3.png)
 
 ## Task 2: Retrieve the key and endpoint of Azure OpenAI service
 
@@ -93,7 +93,7 @@ changing the available region
     to the **Resource Management** section, and click on **Keys and
     Endpoints**.
 
-      ![](./media/image12.png)
+      ![](./media/new4.png)
 
 2.  In **Keys and Endpoints** page, copy **KEY1, KEY 2,** and
     **Endpoint** values and paste them in a notepad as shown in the
@@ -112,7 +112,7 @@ service disruption*.
 
 1.  From the left menu, click on the **Access control(IAM).**
 
-     ![](./media/image15.png)
+     ![](./media/new5.png)
 
 2.  On the Access control(IAM) page, Click +**Add** and select **Add
     role assignments.**
@@ -149,44 +149,44 @@ service disruption*.
 
 1. In **Azure-openai-testXX** page, click on Overview in the left-sided navigation menu, scroll down and click on **Go to Azure OpenAI Studio** button as shown in the below image
    
-    ![](./media/new.png)
+    ![](./media/new6.png)
    
 2.	Wait for the Azure OpenAI studio to launch.
-    ![](./media/new.png)
+    ![](./media/new7.png)
 3.	In the **Azure OpenAI Studio** landing page, navigate and click on **Images** to use the image generation APIs.
-    ![](./media/new.png)
+    ![](./media/new8.png)
   	
 4.	On the **Image playground** ,click on **+ Create a deployment** .
    
-    ![](./media/new.png)
+    ![](./media/new9.png)
 5.	In the select a chat completion model tab select dall-e-3 and click on the Confirm button.
 
-     ![](./media/new.png)
+     ![](./media/new10.png)
 6.	Click on the **Deploy** button
    
-     ![](./media/new.png)
-  	 ![](./media/new.png)
+     ![](./media/new11.png)
+  	 ![](./media/new12.png)
   	
 7.  In **DALL-E playground** window, under **Prompt**, enter your image
     prompt in the text box - **+++An elephant on a skateboard+++** as shown in
     the below image and click on the **Generate** button.
 
-     ![](./media/new.png)
+     ![](./media/new13.png)
 
-     ![](./media/new.png)
+     ![](./media/new14.png)
 
 8.  Select **View code** near the top of the page, you can use this code
     to write an application that completes the same task.
 
-     ![](./media/new.png)
+     ![](./media/new15.png)
 
-     ![](./media/new.png)
+     ![](./media/new16.png)
 
 9.  In the **Deployments** window, copy **Deployment name** and paste
     them in a notepad (as shown in the image), and then **Save** the
     notepad to use the information in the upcoming task.
 
-      ![](./media/new.png)
+      ![](./media/new17.png)
 
 ## Task 2: Install Microsoft .NET SDK
 
