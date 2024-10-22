@@ -162,36 +162,31 @@ service disruption*.
 5.	In the select a chat completion model tab select dall-e-3 and click on the Confirm button.
 
      ![](./media/new.png)
-6.  In Azure OpenAI Studio Home page, under **Playground**, select the
-    **DALL-E**.
-
-     ![](./media/image26.png)
-
-8.  Make sure to choose the **dall-e-3** model from the Deployment
-    dropdown.
-
-     ![](./media/image27.png)
-
-9.  In **DALL-E playground** window, under **Prompt**, enter your image
-    prompt in the text box - **An elephant on a skateboard** as shown in
+6.	Click on the **Deploy** button
+   
+     ![](./media/new.png)
+  	 ![](./media/new.png)
+  	
+7.  In **DALL-E playground** window, under **Prompt**, enter your image
+    prompt in the text box - **+++An elephant on a skateboard+++** as shown in
     the below image and click on the **Generate** button.
 
-     ![](./media/image28.png)
+     ![](./media/new.png)
 
-     ![](./media/image29.png)
+     ![](./media/new.png)
 
-10.  Select **View code** near the top of the page, you can use this code
+8.  Select **View code** near the top of the page, you can use this code
     to write an application that completes the same task.
 
-     ![](./media/image30.png)
+     ![](./media/new.png)
 
-     ![](./media/image31.png)
+     ![](./media/new.png)
 
-11.  In the **Deployments** window, copy **Deployment name** and paste
+9.  In the **Deployments** window, copy **Deployment name** and paste
     them in a notepad (as shown in the image), and then **Save** the
     notepad to use the information in the upcoming task.
 
-      ![](./media/image32.png)
+      ![](./media/new.png)
 
 ## Task 2: Install Microsoft .NET SDK
 
