@@ -472,8 +472,7 @@ portal](https://portal.azure.com/?azure-portal=true).
      ![](./media/image34.png)
 
 2.  Click on the resource group that you’ve created.
-
-     ![](./media/image73png)
+    ![](./media/image73png)
 
 3.  In the **Resource group** home page, select the **delete resource
     group** .
@@ -482,7 +481,6 @@ portal](https://portal.azure.com/?azure-portal=true).
 
 4.  In the Delete a resource group tab, enter your resource group name
     and click on **Delete button**.
-
      ![](./media/image75.png)
 
 5.  In the **Delete Resources** pane that appears on the right side,
