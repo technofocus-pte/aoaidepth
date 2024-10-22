@@ -50,9 +50,16 @@ changing the available region
 5.  In the **Create Azure OpenAI** window, under the **Basics** tab,
     enter the following details and click on the **Next** button.
 
-[TABLE]
+    |  |  |
+    |----|---|
+    |Subscription|	Select the assigned subscription|
+    |Resource group|Click on Create new> enter AOAI-RGXX(XX can be a unique number, you can add more digits after XX to make the name unique)|
+    |Region|	For this lab, you will use a DALL-E3 model. This model is currently only available in certain regions. Please select a region from this list, In 
+     this lab Sweden Central is using for this resource.|
+    |Name|	Azure-openai-testXX (XX can be a unique number, you can add more digits after XX to make the name unique) (here, we entered Azure-open-test39)|
+    |Pricing tier|	Select Standard S0|
 
-   ![](./media/image5.png)
+    ![](./media/image5.png)
     ![](./media/image6.png)
 
 6.  In the **Network** tab, leave all the radio buttons in the default
