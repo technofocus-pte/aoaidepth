@@ -75,10 +75,16 @@ and larger file sizes.
 
 8.  In the **Create Azure OpenAI** window, under the **Basics** tab,
     enter the following details and click on the **Next** button.
+    |  |  |
+    |---|--|
+    |Subscription|Select the assigned subscription|
+    |Resource group	|Click on Create new> enter +++AOAI-RGXX+++(XX can be a unique number, you can add more digits after XX to make the name unique)|
+    |Region|For this lab, you will use a whishper model. This model is currently only available in certain regions. Please select a region from this list, In 
+            this lab West Europe is using for this resource. Select West Europe|
+    |Name|+++AOAIWestEurope-XXXX+++ (XXXX can be a unique number) |
+    |Pricing tier	|Select Standard S0|
 
-[TABLE]
-
-> ![](./media/image8.png)
+     ![](./media/image8.png)
 
 9.  In the **Network** tab, leave all the radio buttons in the default
     state, and click on the **Next** button.
