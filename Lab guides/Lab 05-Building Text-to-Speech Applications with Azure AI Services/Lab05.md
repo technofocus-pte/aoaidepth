@@ -1,4 +1,4 @@
-#**Lab 05-Building Text-to-Speech Applications with Azure AI Services**
+# **Lab 05-Building Text-to-Speech Applications with Azure AI Services**
 
 **Introduction**
 
@@ -54,8 +54,14 @@ services**  **Azure AI services multi-service account** in the portal.
 
 5.  In the **Create Azure AI** window, under the **Basics** tab, enter
     the following details and click on the **Review+create** button.
-
-[TABLE]
+    |  |  |
+    |---|---|
+    |Subscription	|Select the assigned subscription|
+    |Resource group	|Click on Create new> enter +++AOAI-RGXXX+++(XXX can be a unique number, you can add more digits after XX to make the name unique
+    |Region|	Select East US|
+    |Name	|+++AzureAI-text-speechXX+++ (XX can be a unique number, you can add more digits after XX to make the name unique)| 
+    |Pricing tier|	Select Standard S0|
+    |By checking this box I acknowledge that I have read and understood all the terms below	|Select the check box
 
      ![](./media/image4.png)
 
@@ -115,46 +121,46 @@ services**  **Azure AI services multi-service account** in the portal.
 5.  In the Cloud Shell on the right, create a directory for your
     application, then switch folders to your new folder. Enter the
     following command
-```
-mkdir text-to-speech
-```
-```
-cd text-to-speech
-```
-      ![](./media/image14.png)
+    ```
+    mkdir text-to-speech
+    ```
+    ```
+    cd text-to-speech
+    ```
+   ![](./media/image14.png)
 
 6.  Enter the following command to create a new .NET Core application.
     This command should take a few seconds to complete.
-```
- dotnet new console
-```
-  ![](./media/image15.png)
+    ```
+     dotnet new console
+    ```
+    ![](./media/image15.png)
 
 7.  When your .NET Core application has been created, add the Speech SDK
     package to your application. This command should take a few seconds
     to complete.
 
-```
- dotnet add package Microsoft.CognitiveServices.Speech
-```
-  ![](./media/image16.png)
+    ```
+     dotnet add package Microsoft.CognitiveServices.Speech
+    ```
+    ![](./media/image16.png)
 
 ## Task 3:Add the code for your text to speech application
 
 1.  In the Cloud Shell on the right, open the ***Program.cs*** file
     using the following command.
-```
-code Program.cs
-````
+    ```
+    code Program.cs
+    ```
 2.  Replace the existing code with the following using statements, which
     enable the Azure AI Speech APIs for your application:
-```
-using System.Text;
-
-using Microsoft.CognitiveServices.Speech;
-
-using Microsoft.CognitiveServices.Speech.Audio;
-```
+    ```
+    using System.Text;
+    
+    using Microsoft.CognitiveServices.Speech;
+    
+    using Microsoft.CognitiveServices.Speech.Audio;
+    ```
      ![](./media/image17.png)
 
 3.  Below the using statements, add the following code, which uses Azure
@@ -163,34 +169,34 @@ using Microsoft.CognitiveServices.Speech.Audio;
     the **azureKey** and **azureLocation** values with the ones you
     copied in the last task 1.
 
-```
-
-string azureKey = "ENTER YOUR KEY FROM THE FIRST EXERCISE";
-string azureLocation = "ENTER YOUR LOCATION FROM THE FIRST EXERCISE";
-string textFile = "Shakespeare.txt";
-string waveFile = "Shakespeare.wav";
-
-try
-{
-    FileInfo fileInfo = new FileInfo(textFile);
-    if (fileInfo.Exists)
+    ```
+    
+    string azureKey = "ENTER YOUR KEY FROM THE FIRST EXERCISE";
+    string azureLocation = "ENTER YOUR LOCATION FROM THE FIRST EXERCISE";
+    string textFile = "Shakespeare.txt";
+    string waveFile = "Shakespeare.wav";
+    
+    try
     {
-        string textContent = File.ReadAllText(fileInfo.FullName);
-        var speechConfig = SpeechConfig.FromSubscription(azureKey, azureLocation);
-        using var speechSynthesizer = new SpeechSynthesizer(speechConfig, null);
-        var speechResult = await speechSynthesizer.SpeakTextAsync(textContent);
-        using var audioDataStream = AudioDataStream.FromResult(speechResult);
-        await audioDataStream.SaveToWaveFileAsync(waveFile);       
+        FileInfo fileInfo = new FileInfo(textFile);
+        if (fileInfo.Exists)
+        {
+            string textContent = File.ReadAllText(fileInfo.FullName);
+            var speechConfig = SpeechConfig.FromSubscription(azureKey, azureLocation);
+            using var speechSynthesizer = new SpeechSynthesizer(speechConfig, null);
+            var speechResult = await speechSynthesizer.SpeakTextAsync(textContent);
+            using var audioDataStream = AudioDataStream.FromResult(speechResult);
+            await audioDataStream.SaveToWaveFileAsync(waveFile);       
+        }
     }
-}
-catch (Exception ex)
-{
-    Console.WriteLine(ex.Message);
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex.Message);
+    
+    }
+    ```
 
-}
-```
-
-  ![](./media/image18.png)
+    ![](./media/image18.png)
  
 4.  This code uses your key and location to initialize a connection to
     Azure AI services, then reads the contents of the text file you'll
@@ -206,23 +212,23 @@ catch (Exception ex)
 1.  In the Cloud Shell on the right, create a new text file that your
     application will read:
 
-+++code Shakespeare.txt+++
+  +++code Shakespeare.txt+++
 
 2.  When the code editor appears, enter the following text.
-```
-The following quotes are from act 2, scene 7, of William Shakespeare's play "As You Like It."
-
-Thou seest we are not all alone unhappy:
-This wide and universal theatre
-Presents more woeful pageants than the scene
-Wherein we play in.
-
-All the world's a stage,
-And all the men and women merely players:
-They have their exits and their entrances;
-And one man in his time plays many parts,
-His acts being seven ages.
-```
+    ```
+    The following quotes are from act 2, scene 7, of William Shakespeare's play "As You Like It."
+    
+    Thou seest we are not all alone unhappy:
+    This wide and universal theatre
+    Presents more woeful pageants than the scene
+    Wherein we play in.
+    
+    All the world's a stage,
+    And all the men and women merely players:
+    They have their exits and their entrances;
+    And one man in his time plays many parts,
+    His acts being seven ages.
+    ```
   ![](./media/image19.png)
 
 3.  To save your changes, press **Ctrl+S** to save the file, and then
@@ -233,13 +239,13 @@ His acts being seven ages.
 1.  To run your application, use the following command in the Cloud
     Shell on the right:
 
-+++dotnet run+++
+ +++dotnet run+++
 
 2.  If you don't see any errors, your application has run successfully.
     To verify, run the following command to get a list of files in the
     directory.
 
-+++ls -l+++
+   +++ls -l+++
 
 3.  You should get a response like the following example, and you should
     have the **Shakespeare.wav** file in the list of files.
@@ -254,7 +260,7 @@ first need to download it. To do so, use the following steps.
 1.  In the Cloud Shell on the right, use the following command to copy
     the WAV file to your temporary cloud drive:
 
-+++cp Shakespeare.wav ~/clouddrive+++
+ +++cp Shakespeare.wav ~/clouddrive+++
      ![](./media/image21.png)
 
 2.  In the Azure portal search box, type !!**Storage account**!!, then
@@ -265,7 +271,7 @@ first need to download it. To do so, use the following steps.
 3.  In the **Storage accounts** page, navigate and click on **cloud
     storage account** .
 
-      ![](./media/image23.png)
+    ![](./media/image23.png)
 
 4.  In the **Storage account** page left-sided navigation menu, navigate
     to the **Data storage** section, then click on the **File shares**.
@@ -304,15 +310,15 @@ audio output from the Azure AI speech APIs.
 1.  In the Cloud Shell on the right, create a new XML file that your
     application will read:
 
-+++code Shakespeare.xml+++
+ +++code Shakespeare.xml+++
 
 2.  When the code editor appears, enter the following XML:
 
-```
-<speak xmlns="http://www.w3.org/2001/10/synthesis" version="1.0" xml:lang="en-US">
-
-</speak>
-```
+    ```
+    <speak xmlns="http://www.w3.org/2001/10/synthesis" version="1.0" xml:lang="en-US">
+    
+    </speak>
+    ```
 
 This code excerpt defines the root \<speak\> element that will contain a
 series of \<voice\> elements that specify other voices to use.
@@ -320,61 +326,61 @@ series of \<voice\> elements that specify other voices to use.
 
 3.  Within the \<speak\> element, add the following XML to define text
     that the en-GB-LibbyNeural voice will read:
-```
-<voice name="en-GB-LibbyNeural">
-  <prosody rate="-10%" pitch="-5%">
-  The following quotes are from act 2, scene 7, of William Shakespeare's play "As You Like It."
-  </prosody>
-</voice>
-```
-This code excerpt defines a \<voice\> element that specifies a different
-voice than the default, and wraps the text within a \<prosody\> element
-that slows the speaking rate by 10% and lowers the pitch by 5%.
+    ```
+    <voice name="en-GB-LibbyNeural">
+      <prosody rate="-10%" pitch="-5%">
+      The following quotes are from act 2, scene 7, of William Shakespeare's play "As You Like It."
+      </prosody>
+    </voice>
+    ```
+    This code excerpt defines a \<voice\> element that specifies a different
+    voice than the default, and wraps the text within a \<prosody\> element
+    that slows the speaking rate by 10% and lowers the pitch by 5%.
 
 4.  Add the following XML after the previous \<voice\> element to define
     text that the en-GB-RyanNeural voice will read.
-```
-<voice name="en-GB-RyanNeural">
-  <prosody rate="-5%" pitch="-10%">
-    <break time="1s" />
-    All the world's a stage,
-    And all the men and women merely players:
-    <break time="1s" />
-    They have their exits and their entrances;
-    And one man in his time plays many parts,
-    His acts being seven ages.
-  </prosody>
-</voice>
-```
+    ```
+    <voice name="en-GB-RyanNeural">
+      <prosody rate="-5%" pitch="-10%">
+        <break time="1s" />
+        All the world's a stage,
+        And all the men and women merely players:
+        <break time="1s" />
+        They have their exits and their entrances;
+        And one man in his time plays many parts,
+        His acts being seven ages.
+      </prosody>
+    </voice>
+    ```
 
-> Like the previous code excerpt, this excerpt defines
-> a \<voice\> element that specifies a different voice and wraps the
-> text within a \<prosody\> element that alters the speaking rate and
-> pitch. However, this excerpt also contains \<break\> elements that add
-> pauses between phrases.
+     Like the previous code excerpt, this excerpt defines
+     a \<voice\> element that specifies a different voice and wraps the
+     text within a \<prosody\> element that alters the speaking rate and
+     pitch. However, this excerpt also contains \<break\> elements that add
+     pauses between phrases.
 
 5.  Add the following XML after the previous \<voice\> element to define
     text that the en-IE-ConnorNeural voice will read.
-```
-<voice name="en-IE-ConnorNeural">
-  <prosody rate="-10%" pitch="-5%">
-    <break time="1s" />
-    Thou <phoneme alphabet="sapi" ph="s i eh s t">seest</phoneme> we are not all alone unhappy:
-    <break time="1s" />
-    This wide and universal theatre
-    Presents more woeful pageants than the scene
-    Wherein we play in.
-  </prosody>
-</voice>
-```
+    ```
+    <voice name="en-IE-ConnorNeural">
+      <prosody rate="-10%" pitch="-5%">
+        <break time="1s" />
+        Thou <phoneme alphabet="sapi" ph="s i eh s t">seest</phoneme> we are not all alone unhappy:
+        <break time="1s" />
+        This wide and universal theatre
+        Presents more woeful pageants than the scene
+        Wherein we play in.
+      </prosody>
+    </voice>
+    ```
 
-Like the last two code excerpts, this excerpt defines
-a \<voice\> element that specifies a different voice and wraps the text
-within a \<prosody\> element that alters the speaking rate and pitch,
-and also contains \<break\> elements that add a pause between phrases.
-However, this excerpt also contains a \<phoneme\> element that helps the
-text to speech engine to pronounce an older English word that it might
-not know how to pronounce.
+    Like the last two code excerpts, this excerpt defines
+    a \<voice\> element that specifies a different voice and wraps the text
+    within a \<prosody\> element that alters the speaking rate and pitch,
+    and also contains \<break\> elements that add a pause between phrases.
+    However, this excerpt also contains a \<phoneme\> element that helps the
+    text to speech engine to pronounce an older English word that it might
+    not know how to pronounce.
      ![](./media/image32.png)
 
 6.  To save your changes, press **Ctrl+S** to save the file, and then
@@ -384,47 +390,47 @@ not know how to pronounce.
 
 1.  In the Cloud Shell on the right, open the **Program.cs** file:
 
-+++code Program.cs+++
+  +++code Program.cs+++
 
 2.  Leave the existing using statements unmodified, but replace the rest
     with the following code, which will modify the application to use
     the contents of an SSML file instead of a text file. Replace
     the azureKey and azureLocation values with the ones you copied in
     the first exercise.
-```
-string azureKey = "ENTER YOUR KEY FROM THE FIRST EXERCISE";
-string azureLocation = "ENTER YOUR LOCATION FROM THE FIRST EXERCISE";
-string ssmlFile = "Shakespeare.xml";
-string waveFile = "Shakespeare.wav";
-
-try
-{
-    FileInfo fileInfo = new FileInfo(ssmlFile);
-    if (fileInfo.Exists)
+    ```
+    string azureKey = "ENTER YOUR KEY FROM THE FIRST EXERCISE";
+    string azureLocation = "ENTER YOUR LOCATION FROM THE FIRST EXERCISE";
+    string ssmlFile = "Shakespeare.xml";
+    string waveFile = "Shakespeare.wav";
+    
+    try
     {
-        string ssmlContent = File.ReadAllText(fileInfo.FullName);
-        var speechConfig = SpeechConfig.FromSubscription(azureKey, azureLocation);
-        using var speechSynthesizer = new SpeechSynthesizer(speechConfig, null);
-        var speechResult = await speechSynthesizer.SpeakSsmlAsync(ssmlContent);
-        using var audioDataStream = AudioDataStream.FromResult(speechResult);
-        await audioDataStream.SaveToWaveFileAsync(waveFile);       
+        FileInfo fileInfo = new FileInfo(ssmlFile);
+        if (fileInfo.Exists)
+        {
+            string ssmlContent = File.ReadAllText(fileInfo.FullName);
+            var speechConfig = SpeechConfig.FromSubscription(azureKey, azureLocation);
+            using var speechSynthesizer = new SpeechSynthesizer(speechConfig, null);
+            var speechResult = await speechSynthesizer.SpeakSsmlAsync(ssmlContent);
+            using var audioDataStream = AudioDataStream.FromResult(speechResult);
+            await audioDataStream.SaveToWaveFileAsync(waveFile);       
+        }
     }
-}
-catch (Exception ex)
-{
-    Console.WriteLine(ex.Message);
-}
-```
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex.Message);
+    }
+    ```
 
-This code excerpt is largely the same as the code from the previous
-exercise. The main differences are the lines that specify the XML file
-instead of the text file, and using the SpeakSsmlAsync() method to
-process the SSML code.
+    This code excerpt is largely the same as the code from the previous
+    exercise. The main differences are the lines that specify the XML file
+    instead of the text file, and using the SpeakSsmlAsync() method to
+    process the SSML code.
     ![](./media/image33.png)
 
-As with the previous exercise, make sure that you update the values for
-the azureKey and azureLocation variables with your key and location from
-the first exercise.
+    As with the previous exercise, make sure that you update the values for
+    the azureKey and azureLocation variables with your key and location from
+    the first exercise.
 
 3.  To save your changes, press **Ctrl+S** to save the file, and then
     press **Ctrl+Q** to exit the editor.
@@ -433,17 +439,17 @@ the first exercise.
 
 1.  To run your application, use the following command in the Cloud
     Shell on the right.
-+++dotnet run+++
+ +++dotnet run+++
 
 2.  If you don't see any errors, your application has run successfully.
     To verify, run the following command to get a list of files in the
     directory.
 
-+++ls -l+++
+  +++ls -l+++
 
-You should get a response like the following example, and you should
-have the ***Shakespeare.wav*** file in the list of files.
-    ![](./media/image34.png)
+    You should get a response like the following example, and you should
+    have the ***Shakespeare.wav*** file in the list of files.
+  ![](./media/image34.png)
 
 ## Task 4:Listen to your WAV file
 
