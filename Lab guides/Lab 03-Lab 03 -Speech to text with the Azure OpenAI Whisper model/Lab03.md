@@ -79,8 +79,7 @@ and larger file sizes.
     |---|--|
     |Subscription|Select the assigned subscription|
     |Resource group	|Click on Create new> enter +++AOAI-RGXX+++(XX can be a unique number, you can add more digits after XX to make the name unique)|
-    |Region|For this lab, you will use a whishper model. This model is currently only available in certain regions. Please select a region from this list, In 
-            this lab West Europe is using for this resource. Select West Europe|
+    |Region|For this lab, you will use a whishper model. This model is currently only available in [certain regions](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#embeddings-models). Please select a region from this list, In this lab West Europe is using for this resource .|  
     |Name|+++AOAIWestEurope-XXXX+++ (XXXX can be a unique number) |
     |Pricing tier	|Select Standard S0|
 
