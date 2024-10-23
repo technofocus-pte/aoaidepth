@@ -71,7 +71,7 @@ and larger file sizes.
     section**, then click on the **Create** button on the **Azure OpenAI
     page**).
 
-      ![](./media/image7.png)
+      ![](./media/new1.png)
 
 8.  In the **Create Azure OpenAI** window, under the **Basics** tab,
     enter the following details and click on the **Next** button.
@@ -103,19 +103,19 @@ and larger file sizes.
 12. Wait for the deployment to complete. The deployment will take around
     10-15 minutes.
 
-     ![](./media/image12.png)
+     ![](./media/new2.png)
 
 13. On **Microsoft.CognitiveServicesOpenAI** window, after the
     deployment is completed, click on the **Go to resource** button.
 
-     ![](./media/image13.png)
+     ![](./media/new3.png)
 
 ## Task 2: Retrieve the key and endpoint of Azure OpenAI service
 
 1.  In your **AOAIWestEurope-XXX** page, navigate to the **Resource
     Management** section, and click on **Keys and Endpoints**.
 
-     ![](./media/image14.png)
+     ![](./media/new4.png)
 
 2.  In **Keys and Endpoints** page, copy **KEY1, KEY 2,** (*You can use
     either KEY1 or KEY2)* and **Endpoint** and paste them on a notepad
@@ -149,47 +149,37 @@ service disruption*.
 
       ![](./media/new8.png)
 
-5.  In the **Deploy model dialog** box, under the **Model name** field,
-    click on the V chevron button; navigate and select carefully
-    **whisper**.
+4.  In the **Select a model** box, select **whisper** model and click on the **Confirm** button.
 
-       ![](./media/image20.png)
+       ![](./media/new9.png)
 
-6.  In the **Deployment name field**, enter **whisper,** and click on
-    the **Create** button.
+5.  In the Deploy model whisper tab, click on the **Deploy** button..
+     ![](./media/new10.png)
 
-       ![](./media/image21.png)
+6.  You will see a whisper model.
 
-7.  You will see a notification stating **Successfully Created
-    deployment** (In case, the notification did not appear on your
-    window by default, click on the bell icon beside **Azure AI | Azure
-    AI Studio** bar).
+    ![](./media/new11.png)
 
-      ![](./media/image22.png)
+7.  In the **Azure OpenAI Studio** window, select **Deployment** under **Shared resources**.
 
-8.  In the **Deployments** page, click on +**Create new deployment**.
+    ![](./media/new12.png)
 
-       ![](./media/image23.png)
+8.	In the Model Deployments tab, under the Model deployment click on Deploy base model.
 
-9.  In the **Deploy model** dialog box, under the **Model name** field,
-    click on the V chevron button; navigate and select carefully
-    **gpt-35-turbo**.
+    ![](./media/new13.png)
 
-10.  Select the **Model version** as **0301(Default),** in the
-    **Deployment name field**, enter +++gpt-35-turbo+++, and click on the
-    **Create** button.
+9.	Select the **gpt-35-turbo**, and click on the **Confirm** button.
 
-      ![](./media/image24.png)
+    ![](./media/new14.png)
 
-11. You will see a notification – **Successfully Created deployment**
-    when the deployment is succeeded (You can also view the notification
-    by clicking on the bell icon beside **Azure AI | Azure AI Studio**.
+10.	In the Deploy model whisper tab, click on the **Deploy** button..
 
-      ![](./media/image25.png)
+      ![](./media/new15.png)
+11.	In the Deployments window, copy Deployment names i.e Whiper, gpt-35-turbo and paste them in a notepad , and then Save the notepad to use the information in 
+    the upcoming task.
 
-12. Click on **Azure OpenAI Home icon** to go back to the home page.
-
-      ![](./media/image26.png)
+12.	Click on **Switch to the old look** and click on Azure OpenAI Home icon to go back to the home page.
+      ![](./media/new16.png)
 
 ## **Task 4: Speech to text using Whisper model**
 
@@ -330,17 +320,21 @@ remember, customization based on your unique use-case may be beneficial.
     by clicking on the **start icon**.
 
      ![](./media/image51.png)
-
+18.	Import namesapaces and create an instance of OpenAiClient using the azureOpenAIEndpoint and the azureOpenAIKey. Replace the existing code with the below 
+    code. Then, execute the cell by clicking on the start icon.
+   	```
+    OpenAIClient client = new (new Uri(azureOpenAIEndpoint), new AzureKeyCredential(azureOpenAIKey));
+    ```
      ![](./media/image52.png)
 
-18. To get started let's import a few different libraries: execute the
+19. To get started let's import a few different libraries: execute the
     cell by clicking on the **start icon**.
 
      ![](./media/image53.png)
 
       ![](./media/image54.png)
 
-19. At times, files with long silences at the beginning can cause
+20. At times, files with long silences at the beginning can cause
     Whisper to transcribe the audio incorrectly. We'll use \`NAudio\`\`
     to detect and trim the silence. Then, execute the cell by clicking
     on the **start icon**.
@@ -349,13 +343,13 @@ remember, customization based on your unique use-case may be beneficial.
 
       ![](./media/image56.png)
 
-20. Here, we've set the decibel threshold of -19. You can change this if
+21. Here, we've set the decibel threshold of -19. You can change this if
     you would like. Then, execute the cell by clicking on the **start
     icon**.
 
      ![](./media/image57.png)
 
-21. Now that we have audio segments we can create trimmed files to use
+22. Now that we have audio segments we can create trimmed files to use
     with the Whisper model. Then, execute the cells by clicking on the
     **start icon**.
 
@@ -363,15 +357,15 @@ remember, customization based on your unique use-case may be beneficial.
 
      ![](./media/image59.png)
 
-22. This function will add formatting and punctuation to our transcript.
+23. This function will add formatting and punctuation to our transcript.
     Whisper generates a transcript with punctuation but without
     formatting.
 
-23. Then, execute the cell by clicking on the **start icon**.
+24. Then, execute the cell by clicking on the **start icon**.
 
       ![](./media/image60.png)
 
-24. Our audio file is a recording from a fake earnings call that
+25. Our audio file is a recording from a fake earnings call that
     includes a lot of financial products. This function can help ensure
     that if Whisper transcribes these financial product names
     incorrectly, that they can be corrected. Then, execute the cell by
