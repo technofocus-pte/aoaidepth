@@ -73,15 +73,13 @@ advanced functionality including:
 
      1.  **Subscription**: Select the assigned subscription
 
-    2.  **Resource group**: Click on **Create new**\> enter
-        **AOAI-RGXX**(XX can be a unique number, you can add more digits
-        after XX to make the name unique
+     2.  **Resource group**: Click on **Create new**\> enter **+++AOAI-RGXX+++**(XX can be a unique number, you can add more digits after XX to make the name unique
 
-    3.  **Region**: Select **West US**
+     3.  **Region**: Select **West US**
 
-    4.  **Name**: Enter **Computer-vision-aoaiXX**
+     4.  **Name**: Enter **+++Computer-vision-aoaiXX+++**
 
-    5.  **Pricing tier**: Select **Free F0**
+     5.  **Pricing tier**: Select **Free F0**
 
 6.  Select the check box –**By checking this box I certify that I have
     reviewed and acknowledge the all the term above.**
