@@ -138,57 +138,56 @@ service disruption*.
     left navigation menu, then under the **Get Started** tab, click on
     the **Go to Azure OpenAI Studio** button to open **Azure OpenAI
     Studio** in a new browser.
+    ![](./media/new5.png)
+    
+     ![](./media/new6.png)
+2.  In the **Azure OpenAI Studio** window, select  **Deployment** under **Shared resources**.
 
-       ![](./media/image17.png)
+      ![](./media/new7.png)
 
-2.  In the **Azure AI | Azure AI Studio** window, click on **Create a
-    new deployment** button**.**
+3.  In the **Model Deployments** tab, under the **Model deployment** click on **Deploy base model**
 
-      ![](./media/image18.png)
+      ![](./media/new8.png)
 
-3.  In the **Deployments** window, click on **+Create new deployment**.
-
-      ![](./media/image19.png)
-
-4.  In the **Deploy model dialog** box, under the **Model name** field,
+5.  In the **Deploy model dialog** box, under the **Model name** field,
     click on the V chevron button; navigate and select carefully
     **whisper**.
 
        ![](./media/image20.png)
 
-5.  In the **Deployment name field**, enter **whisper,** and click on
+6.  In the **Deployment name field**, enter **whisper,** and click on
     the **Create** button.
 
        ![](./media/image21.png)
 
-6.  You will see a notification stating **Successfully Created
+7.  You will see a notification stating **Successfully Created
     deployment** (In case, the notification did not appear on your
     window by default, click on the bell icon beside **Azure AI | Azure
     AI Studio** bar).
 
       ![](./media/image22.png)
 
-7.  In the **Deployments** page, click on +**Create new deployment**.
+8.  In the **Deployments** page, click on +**Create new deployment**.
 
        ![](./media/image23.png)
 
-8.  In the **Deploy model** dialog box, under the **Model name** field,
+9.  In the **Deploy model** dialog box, under the **Model name** field,
     click on the V chevron button; navigate and select carefully
     **gpt-35-turbo**.
 
-9.  Select the **Model version** as **0301(Default),** in the
+10.  Select the **Model version** as **0301(Default),** in the
     **Deployment name field**, enter +++gpt-35-turbo+++, and click on the
     **Create** button.
 
       ![](./media/image24.png)
 
-10. You will see a notification – **Successfully Created deployment**
+11. You will see a notification – **Successfully Created deployment**
     when the deployment is succeeded (You can also view the notification
     by clicking on the bell icon beside **Azure AI | Azure AI Studio**.
 
       ![](./media/image25.png)
 
-11. Click on **Azure OpenAI Home icon** to go back to the home page.
+12. Click on **Azure OpenAI Home icon** to go back to the home page.
 
       ![](./media/image26.png)
 
