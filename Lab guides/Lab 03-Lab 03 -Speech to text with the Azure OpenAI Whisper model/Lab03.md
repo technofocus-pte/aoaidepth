@@ -463,62 +463,68 @@ To get good results, craft examples that portray your desired style.
 10. Import namesapaces and create an instance of OpenAiClient using the
     azureOpenAIEndpoint and the azureOpenAIKey. Then, execute the cell
     by clicking on the **start icon**.
+11. Import namesapaces and create an instance of OpenAiClient using the azureOpenAIEndpoint and the azureOpenAIKey. Replace the existing code with the below 
+    code. Then, execute the cell by clicking on the start icon.
+   	```
+    OpenAIClient client = new (new Uri(azureOpenAIEndpoint), new AzureKeyCredential(azureOpenAIKey));
+    ```
+     ![](./media/image52.png)
 
      ![](./media/image68.png)
 
-11. Download a few example audio files. Then, execute the cell by
+12. Download a few example audio files. Then, execute the cell by
     clicking on the **start icon**.
 
      ![](./media/image69.png)
 
-12. As a baseline, we'll transcribe an NPR podcast segment. Execute the
+13. As a baseline, we'll transcribe an NPR podcast segment. Execute the
     cell by clicking on the **start icon**.
 
      ![](./media/image70.png)
 
     ![](./media/image71.png)
 
-13. In the unprompted transcript, 'President Biden' is capitalized.
+14. In the unprompted transcript, 'President Biden' is capitalized.
     However, if we pass in a fictitious prompt of 'president biden' in
     lowercase, Whisper matches the style and generates a transcript in
     all lowercase.
 
-14. Then, execute the cell by clicking on the **start icon**.
+15. Then, execute the cell by clicking on the **start icon**.
 
      ![](./media/image72.png)
 
-15. Long prompts may be more reliable at steering Whisper. Then, execute
+16. Long prompts may be more reliable at steering Whisper. Then, execute
     the cell by clicking on the **start icon**.
 
      ![](./media/image73.png)
 
-16. Whisper is also less likely to follow rare or odd styles. Execute
+17. Whisper is also less likely to follow rare or odd styles. Execute
     the cell by clicking on the **start icon**.
 
      ![](./media/image74.png)
 
-17. Whisper may incorrectly transcribe uncommon proper nouns such as
+18. Whisper may incorrectly transcribe uncommon proper nouns such as
     names of products, companies, or people. We'll illustrate with an
     example audio file full of product names.
 
-18. Then, execute the cell by clicking on the **start icon**.
+19. Then, execute the cell by clicking on the **start icon**.
 
      ![](./media/image75.png)
 
-19. To get Whisper to use our preferred spellings, let's pass the
+20. To get Whisper to use our preferred spellings, let's pass the
     product and company names in the prompt, as a glossary for Whisper
     to follow. Then, execute the cell by clicking on the **start icon**.
 
      ![](./media/image76.png)
 
-20. Now, let's switch to another audio recording authored specifically
+21. Now, let's switch to another audio recording authored specifically
     for this demonstration, on the topic of a odd barbecue.To begin,
     we'll establish our baseline transcript using Whisper. Execute the
     cell by clicking on the **start icon**.
 
       ![](./media/image77.png)
 
-21. While Whisper's transcription was accurate, it had to guess at
+22. While Whisper's transcription was accurate, it had to guess at
     various spellings. For example, it assumed the friends' names were
     spelled Amy and Sean rather than Aimee and Shawn. Let's see if we
     can steer the spelling with a prompt. Then, execute the cell by
@@ -528,7 +534,7 @@ To get good results, craft examples that portray your desired style.
 
       ![](./media/image79.png)
 
-22. One potential tool to generate fictitious prompts is GPT. We can
+23. One potential tool to generate fictitious prompts is GPT. We can
     give GPT instructions and use it to generate long fictitious
     transcripts with which to prompt Whisper. Then, execute the cell by
     clicking on the **start icon**.
@@ -537,12 +543,12 @@ To get good results, craft examples that portray your desired style.
 
       ![](./media/image81.png)
 
-23. Whisper prompts are best for specifying otherwise ambiguous styles.
+24. Whisper prompts are best for specifying otherwise ambiguous styles.
     The prompt will not override the model's comprehension of the audio.
     For example, if the speakers are not speaking in a deep Southern
     accent, a prompt will not cause the transcript to do so.
 
-24. Then, execute the cell by clicking on the **start icon**.
+25. Then, execute the cell by clicking on the **start icon**.
      ![](./media/image82.png)
 
 ## **Task 7: Clean up resources**
