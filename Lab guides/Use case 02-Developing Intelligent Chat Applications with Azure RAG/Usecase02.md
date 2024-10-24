@@ -51,15 +51,17 @@ aspects such as employee benefits, internal policies, and job roles.
 
 2.  Run the following command to install Azure Cli on the PowerShell
 
-PowerShell copy
-
-+++winget install microsoft.azd+++
+    PowerShell copy
+    ```
+    winget install microsoft.azd
+    ```
      ![](./media/image3.png)
 
 3.  Run the below command to set the policy to **Unrestricted** and
     enter **A** when asked to change the execution policy.
-
-   +++Set-ExecutionPolicy Unrestricted+++
+    ```
+    Set-ExecutionPolicy Unrestricted
+    ```
      ![](./media/image4.png)
 
 ## Task 2: Install Node.js
@@ -192,7 +194,7 @@ PowerShell copy
 
 2.  Open your browser, navigate to the address bar, type or paste the
     following URL:
-    +++https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers%20+++ then press the **Enter** button.
+    +++https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers+++ then press the **Enter** button.
 
      ![](./media/image33.png)
 
@@ -214,9 +216,8 @@ PowerShell copy
 1.  Open your browser, navigate to the address bar, type or paste the
     following URL:
     +++https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/azure-samples/azure-search-openai-demo+++
-
-then press the **Enter** button.
-      ![](./media/image37.png)
+    then press the **Enter** button.
+    ![](./media/image37.png)
 
 2.  Open Visual Studio Code? dialog box appears, then click on the
     **Open Visual Studio Code** button.
@@ -230,7 +231,7 @@ then press the **Enter** button.
 4.  Sign in to Azure with the Azure Developer CLI. Run the following
     command on the Terminal
 
-+++azd auth login+++
+  +++azd auth login+++
      ![](./media/image40.png)
 
 5.  Default browser opens to sign in .Sign in with your Azure
@@ -256,38 +257,37 @@ then press the **Enter** button.
 
      +++azd up+++
 
-      ![](./media/image45.png)
+     ![](./media/image45.png)
 
 2.  prompted to enter an environment name, enter the **chatsampleRAG**
 
-       ![](./media/image46.png)
-       ![](./media/image47.png)
+    ![](./media/image46.png)
+    ![](./media/image47.png)
 
-4.  When prompted, **enter a value for the ‘openAiResourceGroupLocation’
+3.  When prompted, **enter a value for the ‘openAiResourceGroupLocation’
     infrastructure parameter** select **East US2.**
 
       ![](./media/image48.png)
 
-5.  When prompted, enter a values for openai resource group locatin
-    infrastructure parameter then select **East US 2
+4.  When prompted, enter a values for openai resource group locatin
+    infrastructure parameter then select **East US 2**
      ![](./media/image49.png)
 
-6.  save the value in the environment for future use (y/N) enter **Y.**
+5.  save the value in the environment for future use (y/N) enter **Y**
 
      ![](./media/image50.png)
 
-7.  Wait until app is deployed. It may take 35-40 minutes for the
+6.  Wait until app is deployed. It may take 35-40 minutes for the
     deployment to complete.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image51.png)
+    ![](./media/image51.png)
 
-8.  After the application has been successfully deployed, you see a URL
+7.  After the application has been successfully deployed, you see a URL
     displayed in the terminal. Copy the **URL**.
 
-![](./media/image52.png)
+    ![](./media/image52.png)
 
-9.  Open your browser, navigate to the address bar, paste the link. Now,
+8.  Open your browser, navigate to the address bar, paste the link. Now,
     resource group will open in a new browser
 
       ![](./media/image53.png)
@@ -302,9 +302,8 @@ then press the **Enter** button.
     following text and click on the **Submit icon** as shown in the
     below image.
 
-+++What happens in a performence review?+++
+ +++What happens in a performence review?+++
      ![](./media/image56.png)
-
      ![](./media/image57.png)
 
 3.  From the answer, select a **citation**.
@@ -313,31 +312,47 @@ then press the **Enter** button.
 
 4.  In the right-pane, use the tabs to understand how the answer was
     generated.
+    |  |  |
+    |---|---|
+    |Tab|	Description|
+    |Thought process|	This is a script of the interactions in chat. You can view the system prompt (content) and your user question (content).|
+    |Supporting content|	This includes the information to answer your question and the source material. The number of source material citations is noted in the Developer settings. The default value is 3.|
+    |Citation	|This displays the original page that contains the citation.|
 
-[TABLE]
     ![](./media/image59.png)
     ![](./media/image60.png)
     ![](./media/image61.png)
 
-5.  Select the selected tab again to close the pane.
+6.  Select the selected tab again to close the pane.
 
-6.  The intelligence of the chat is determined by the OpenAI model and
+7.  The intelligence of the chat is determined by the OpenAI model and
     the settings that are used to interact with the model.
 
-7.  Select the **Developer settings**.
+8.  Select the **Developer settings**.
 
     ![](./media/image62.png)
 
    ![](./media/image63.png)
 
-[TABLE]
+    |  |  |
+    |---|----|
+    |Setting|	Description|
+    |Override prompt template|	This is the prompt that is used to generate the answer.|
+    |Retrieve this many search results|	This is the number of search results that are used to generate the answer. You can see these sources returned in the Thought process and Supporting content tabs of the citation.|
+    |Exclude category|	This is the category of documents that are excluded from the search results.|
+    |Use semantic ranker for retrieval	|This is a feature of Azure AI Search that uses machine learning to improve the relevance of search results.
+    Use query-contextual summaries instead of whole documents|	When both Use semantic ranker and Use query-contextual summaries are checked, the LLM uses captions extracted from key passages, instead of all the passages, in the highest ranked documents.|
+    |Suggest follow-up questions	|Have the chat app suggest follow-up questions based on the answer.|
+    |Retrieval mode|	Vectors + Text means that the search results are based on the text of the documents and the embeddings of the documents. Vectors means that the search results are based on the embeddings of the documents. Text means that the search results are based on the text of the documents.|
+    |Stream chat completion responses|	Stream response instead of waiting until the complete answer is available for a respon|
 
-8.  Check the **Suggest follow-up questions** checkbox and ask the same
+
+9.  Check the **Suggest follow-up questions** checkbox and ask the same
     question again.
 
      ![](./media/image64.png)
 
-9.  Enter the following text and click on the **Submit icon** as shown
+10.  Enter the following text and click on the **Submit icon** as shown
     in the below image.
 
 +++What happens in a performance review?+++
