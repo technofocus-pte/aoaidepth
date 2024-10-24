@@ -78,7 +78,7 @@ combine AI-driven insights with geospatial data.**Objectives**
 9.  Replace the region with whatever location you want to use for lab
     resources.In this lab we are using eastus
 
-      +++REGION=eastus+++
+      +++REGION=eastus2+++
        ![](./media/image8.png)
 
 10. Run the following Azure CLI command to create a resource group,
@@ -94,15 +94,13 @@ combine AI-driven insights with geospatial data.**Objectives**
 11. Provision an Azure Database for PostgreSQL database instance within
     the resource group you created above by running the following Azure
     CLI command(10 Min)
-    +++az postgres flexible-server create --name $DATABASE_NAME --location
-        $REGION --resource-group $RG_NAME+++
-```
-az postgres flexible-server create --name $DATABASE_NAME --location $REGION --resource-group $RG_NAME \
+     ```   
+     az postgres flexible-server create --name $DATABASE_NAME --location $REGION --resource-group $RG_NAME \
     --admin-user s2admin --admin-password Seattle123Seattle123 --database-name airbnb \
     --public-access 0.0.0.0-255.255.255.255 --version 16 \
-    --sku-name Standard_D2ds_v5 --storage-size 32 –yes
-```
+    --sku-name Standard_D2s_v3 --storage-size 32 --yes
 
+    ```
   ![](./media/image10.png)
 
 ## Task 2: Connect to the database using psql in the Azure Cloud Shell
