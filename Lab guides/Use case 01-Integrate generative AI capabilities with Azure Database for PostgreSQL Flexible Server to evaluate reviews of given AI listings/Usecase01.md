@@ -186,6 +186,8 @@ and try again.
 Using the psql command prompt, you will create tables and populate them
 with data for use in the lab.
 >[!Alert]Important Note: Copy all the scripts into Notepad and perform the necessary actions.
+
+
 1.  Run the following commands to create temporary tables for importing
     JSON data from a public blob storage account.
     ```
@@ -325,7 +327,7 @@ extensions](https://learn.microsoft.com/azure/postgresql/flexible-server/concept
        ![](./media/image30.png)
 
 4.  From the database's left-hand navigation menu, select **Server
-    parameters** under **Settings**, then enter azure.extensions into
+    parameters** under **Settings**, then enter +++azure.extensions+++ into
     the search box. Expand the **VALUE** dropdown list, then locate and
     check the box next to each of the following extensions:
 
@@ -384,7 +386,14 @@ In this task, you create a new Azure OpenAI service.
 5.  On the Create Azure OpenAI **Basics** tab, enter the following
     information and click on **Next** button.
 
-[TABLE]
+    |  |  |
+    |----|---|
+    |Subscription|	Select Azure subscription|
+    |Resource group|	Select resource group rg-postgresql-labs(which you have created in Ex1> Task 1)|
+    |Region	|Select East US2|
+    |Name	|Enter a globally unique name, such as +++aoai-postgres-labs-XXXX+++(XXXX can be a unique number)|
+    |Pricing tier|	Select Standard S0|
+
       ![](./media/image39.png)
 
 6.  In the **Network** tab, leave all the radio buttons in the default
@@ -406,11 +415,11 @@ In this task, you create a new Azure OpenAI service.
     2-3 minutes.
 
 > **Note**: If you see a message that the Azure OpenAI Service is
-> currently available to customers via an application form. The selected
-> subscription has not been enabled for the service and does not have a
-> quota for any pricing tiers; you will need to click the link to
-> request access to the Azure OpenAI service and fill out the request
-> form.
+  currently available to customers via an application form. The selected
+  subscription has not been enabled for the service and does not have a
+  quota for any pricing tiers; you will need to click the link to
+  request access to the Azure OpenAI service and fill out the request
+  form.
 
 ## Task 2: Retrieve the key and endpoint of Azure OpenAI service
 
@@ -433,7 +442,7 @@ In this task, you create a new Azure OpenAI service.
 
     ![](./media/image46.png)
 
-***Note:** You can use either KEY1 or KEY2. Always having two keys
+**Note:** You can use either KEY1 or KEY2. Always having two keys
 allows you to securely rotate and regenerate keys without causing a
 service disruption*.
 
@@ -503,7 +512,7 @@ Shell to connect to your database.
 4.  Connect to your database using the psql command-line utility by
     entering the following at the prompt:
 
-+++psql+++
+ +++psql+++
 
    ![](./media/image21.png)
 
@@ -519,8 +528,7 @@ database, follow the steps below:
 +++SHOW azure.extensions;+++
      ![](./media/image53.png)
 
-2.  Install the azure_ai extension using the [CREATE
-    EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) command.
+2.  Install the azure_ai extension using the CREATE EXTENSION command.
 
 +++CREATE EXTENSION IF NOT EXISTS azure_ai;+++
      ![](./media/image54.png)
@@ -532,20 +540,23 @@ understanding of its capabilities. In this task, you inspect the various
 schemas, user-defined functions (UDFs), and composite types added to the
 database by the extension.
 
-1.  You can use
-    the [\dx meta-command](https://www.postgresql.org/docs/current/app-psql.html#APP-PSQL-META-COMMAND-DX-LC) from
-    the **psq**l command prompt to list the objects contained within the
+1.  You can use the  from the **psq**l command prompt to list the objects contained within the
     extension.
        +++\dx+ azure_ai+++
         ![](./media/image55.png)
         ![](./media/image56.png)
 
-> The meta-command output shows the azure_ai extension creates three
-> schemas, multiple user-defined functions (UDFs), and several composite
-> types in the database. The table below lists the schemas added by the
-> extension and describes each.
+  The meta-command output shows the azure_ai extension creates three
+  schemas, multiple user-defined functions (UDFs), and several composite
+  types in the database. The table below lists the schemas added by the
+  extension and describes each.
+    |  |  |
+    |---|---|
+    |Schema|	Description|
+    |azure_ai|	The principal schema where the configuration table and UDFs for interacting with it reside.|
+    |azure_openai	|Contains the UDFs that enable calling an Azure OpenAI endpoint.|
+    |azure_cognitive|	Provides UDFs and composite types related to integrating the database with Azure Cognitive Services.|
 
-[TABLE]
 
 2.  The functions and types are all associated with one of the schemas.
     To review the functions defined in the azure_ai schema, use
@@ -555,15 +566,17 @@ database by the extension.
     output from the command easier to view in the Azure Cloud Shell.
 
       +++\x auto+++
-      +++\df+ azure_ai.\+++
-         ![](./media/image57.png)
+    
+      +++\df+ azure_ai.*+++
+    
+    ![](./media/image57.png)
 
-The azure_ai.set_setting() function lets you set the endpoint and key
-values for Azure AI services. It accepts a **key** and the **value** to
-assign it. The azure_ai.get_setting() function provides a way to
-retrieve the values you set with the set_setting() function. It accepts
-the **key** of the setting you want to view. For both methods, the key
-must be one of the following:
+    The azure_ai.set_setting() function lets you set the endpoint and key
+    values for Azure AI services. It accepts a **key** and the **value** to
+    assign it. The azure_ai.get_setting() function provides a way to
+    retrieve the values you set with the set_setting() function. It accepts
+    the **key** of the setting you want to view. For both methods, the key
+    must be one of the following:
 
 ## Task 4: Set the Azure OpenAI endpoint and key
 
@@ -587,8 +600,8 @@ Azure OpenAI service endpoint and key.
     SELECT azure_ai.get_setting('azure_openai.endpoint');
     SELECT azure_ai.get_setting('azure_openai.subscription_key');
     ```
-The azure_ai extension is now connected to your Azure OpenAI account and
-ready to generate vector embeddings.
+    The azure_ai extension is now connected to your Azure OpenAI account and
+    ready to generate vector embeddings.
 
      ![](./media/image59.png)
 
@@ -619,21 +632,22 @@ data in the database, you must install the pgvector extension by
 following the guidance in the [enable vector support in your
 database](https://learn.microsoft.com/azure/postgresql/flexible-server/how-to-use-pgvector#enable-extension) documentation.
 
-1.  Install the pgvector extension using the [CREATE
-    EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) command.
+1.  Install the pgvector extension using the CREATE EXTENSION command.
 
-+++CREATE EXTENSION IF NOT EXISTS vector;+++
+ +++CREATE EXTENSION IF NOT EXISTS vector;+++
+ 
       ![](./media/image60.png)
 
 2.  With vector supported added to your database, add a new column to
     the listings table using the vector data type to store embeddings
     within the table. The text-embedding-ada-002 model produces vectors
     with 1536 dimensions, so you must specify 1536 as the vector size.
+    
     ```
     ALTER TABLE listings
     ADD COLUMN description_vector vector(1536);
     ```
-      ![](./media/image61.png)
+   ![](./media/image61.png)
 
 ## Task 2: Generate and store vector embeddings
 
@@ -649,11 +663,17 @@ created description_vector column in the listings table.
 
       ![](./media/image62.png)
 
-The Argument data types property in the output of the \df+
-azure_openai.\* command reveals the list of arguments the function
-expects.
+    The Argument data types property in the output of the \df+
+    azure_openai.\* command reveals the list of arguments the function
+    expects.
+    |  |  |
+    |---|---|
+    |Argument	Type|	Default	Description|
+    |deployment_name	|text		Name of the deployment in Azure OpenAI studio that contains the text-embeddings-ada-002 model.|
+    |input	text	|	Input text used to create embeddings.|
+    |timeout_ms	|integer	3600000	Timeout in milliseconds after which the operation is stopped.|
+    |throw_on_error|	boolean	true	Flag indicating whether the function should, on error, throw an exception resulting in a rollback of the wrapping transactions.|
 
-[TABLE]
 
 2.  Using the deployment name, run the following query to update each
     record in the listings table, inserting the generated vector
@@ -663,63 +683,63 @@ expects.
     Replace {your-deployment-name} with the **Deployment name** value
     you copied from the Azure OpenAI Studio **Deployments** page. Note
     that this query takes approximately five minutes to complete.
-```
-DO $$
-
-DECLARE counter integer := (SELECT COUNT(*) FROM listings WHERE description <> '' AND description_vector IS NULL);
-DECLARE r record;
-BEGIN
-    RAISE NOTICE 'Total descriptions to embed: %', counter;
-    WHILE counter > 0 LOOP
-        BEGIN
-            FOR r IN
-                SELECT listing_id FROM listings WHERE description <> '' AND description_vector IS NULL
-            LOOP
-                BEGIN
-                    UPDATE listings
-                    SET description_vector = azure_openai.create_embeddings('{your-deployment-name}', description)
-                    WHERE listing_id = r.listing_id;
-                EXCEPTION
-                    WHEN OTHERS THEN
-                        RAISE NOTICE 'Waiting 1 second before trying again...';
-                        PERFORM pg_sleep(1);
-                END;
-                counter := (SELECT COUNT(*) FROM listings WHERE description <> '' AND description_vector IS NULL);
-                IF counter % 25 = 0 THEN
-                    RAISE NOTICE 'Remaining descriptions to embed: %', counter;
-                END IF;
-            END LOOP;
-        END;
-    END LOOP;
-END;
-$$;
-  ```
+    ```
+    DO $$
+    
+    DECLARE counter integer := (SELECT COUNT(*) FROM listings WHERE description <> '' AND description_vector IS NULL);
+    DECLARE r record;
+    BEGIN
+        RAISE NOTICE 'Total descriptions to embed: %', counter;
+        WHILE counter > 0 LOOP
+            BEGIN
+                FOR r IN
+                    SELECT listing_id FROM listings WHERE description <> '' AND description_vector IS NULL
+                LOOP
+                    BEGIN
+                        UPDATE listings
+                        SET description_vector = azure_openai.create_embeddings('{your-deployment-name}', description)
+                        WHERE listing_id = r.listing_id;
+                    EXCEPTION
+                        WHEN OTHERS THEN
+                            RAISE NOTICE 'Waiting 1 second before trying again...';
+                            PERFORM pg_sleep(1);
+                    END;
+                    counter := (SELECT COUNT(*) FROM listings WHERE description <> '' AND description_vector IS NULL);
+                    IF counter % 25 = 0 THEN
+                        RAISE NOTICE 'Remaining descriptions to embed: %', counter;
+                    END IF;
+                END LOOP;
+            END;
+        END LOOP;
+    END;
+    $$;
+    ```
  ![](./media/image63.png)
 
-> The above query uses a WHILE loop to retrieve records from
-> the listings table where the description_vector field is null, and
-> the description field is not an empty string. The query then attempts
-> to update the description_vector column with a vector representation
-> of the description column using
-> the azure_openai.create_embeddings function. The loop is used when
-> performing this update to prevent calls to create embeddings function
-> from exceeding the call rate limit of the Azure OpenAI service. If the
-> call rate limit is exceeded, you will see warnings similar to the
-> following in the output:
->
-> **NOTICE**: Waiting 1 second before trying again...
+ The above query uses a WHILE loop to retrieve records from
+ the listings table where the description_vector field is null, and
+ the description field is not an empty string. The query then attempts
+ to update the description_vector column with a vector representation
+ of the description column using
+ the azure_openai.create_embeddings function. The loop is used when
+ performing this update to prevent calls to create embeddings function
+ from exceeding the call rate limit of the Azure OpenAI service. If the
+ call rate limit is exceeded, you will see warnings similar to the
+ following in the output:
+
+**NOTICE**: Waiting 1 second before trying again...
     ![](./media/image64.png)
      ![](./media/image65.png)
 
 3.  You can verify that the description_vector column has been populated
     for all listings records by running the following query:
-```
-SELECT COUNT(*) FROM listings WHERE description_vector IS NULL AND description <> '';
-```
+    ```
+    SELECT COUNT(*) FROM listings WHERE description_vector IS NULL AND description <> '';
+    ```
 
-> The result of the query should be a count of 0.
+   The result of the query should be a count of 0.
 
-![](./media/image66.png)
+   ![](./media/image66.png)
 
 ## Task 3: Perform a vector similarity search
 
@@ -738,75 +758,73 @@ between two inputs in the original format.
     using the ILIKE clause to observe the results of searching for
     records using a natural language query without using vector
     similarity:
-```
-SELECT listing_id, name, description FROM listings WHERE description ILIKE '%Properties with a private room near Discovery Park%';
-```
+    ```
+    SELECT listing_id, name, description FROM listings WHERE description ILIKE '%Properties with a private room near Discovery Park%';
+    ```
   ![](./media/image67.png)
 
-> The query returns zero results because it is attempting to match the
-> text in the description field with the natural language query
-> provided.
+   The query returns zero results because it is attempting to match the
+   text in the description field with the natural language query
+   provided.
 
-2.  Now, execute a [cosine
-    similarity](https://learn.microsoft.com/azure/ai-services/openai/concepts/understand-embeddings#cosine-similarity) search
-    query against the listings table to perform a vector similarity
+2.  Now, execute a cosine similarity search query against the listings table to perform a vector similarity
     search against listing descriptions. The embeddings are generated
     for an input question and then cast to a vector array (::vector),
     which allows it to be compared against the vectors stored in
     the listings table. Replace {your-deployment-name} with
     the **Deployment name** value you copied from the Azure OpenAI
     Studio **Deployments** page.
-```
-SELECT listing_id, name, description FROM listings
-ORDER BY description_vector <=> azure_openai.create_embeddings('{your-deployment-name}', 'Properties with a private room near Discovery Park')::vector
-LIMIT 3;
-```
-![](./media/image68.png)
+    ```
+    SELECT listing_id, name, description FROM listings
+    ORDER BY description_vector <=> azure_openai.create_embeddings('{your-deployment-name}', 'Properties with a private room near Discovery Park')::vector
+    LIMIT 3;
+    ```
+ ![](./media/image68.png)
 
-The query uses the \<=\> [vector
-operator](https://github.com/pgvector/pgvector#vector-operators), which
-represents the "cosine distance" operator used to calculate the distance
-between two vectors in a multi-dimensional space.
+    The query uses the \<=\> [vector
+    operator](https://github.com/pgvector/pgvector#vector-operators), which
+    represents the "cosine distance" operator used to calculate the distance
+    between two vectors in a multi-dimensional space.
 
 3.  Run the same query again using the EXPLAIN ANALYZE clause to view
     the query planning and execution times.
     Replace {your-deployment-name} with the **Deployment name** value
     you copied from the Azure OpenAI Studio **Deployments** page.
-```
-EXPLAIN ANALYZE
-SELECT listing_id, name, description FROM listings
-ORDER BY description_vector <=> azure_openai.create_embeddings('{your-deployment-name}', 'Properties with a private room near Discovery Park')::vector
-LIMIT 3;
-```
-![](./media/image69.png)
+    ```
+    EXPLAIN ANALYZE
+    SELECT listing_id, name, description FROM listings
+    ORDER BY description_vector <=> azure_openai.create_embeddings('{your-deployment-name}', 'Properties with a private room near Discovery Park')::vector
+    LIMIT 3;
+    ```
+   ![](./media/image69.png)
 
-![](./media/image70.png)
+   ![](./media/image70.png)
 
-![](./media/image71.png)g)
+   ![](./media/image71.png)g)
 
-In the output, notice the query plan, which will start with something
-similar to:
+    In the output, notice the query plan, which will start with something
+    similar to:
 
-> Limit (cost=1098.54..1098.55 rows=3 width=261) (actual
-> time=10.505..10.507 rows=3 loops=1)
->
-> -\> Sort (cost=1098.54..1104.10 rows=2224 width=261) (actual
-> time=10.504..10.505 rows=3 loops=1)
->
-> ...
->
-> Sort Method: top-N heapsort Memory: 27kB
->
-> -\> Seq Scan on listings (cost=0.00..1069.80 rows=2224 width=261)
-> (actual time=0.005..9.997 rows=2224 loops=1)
->
-> The query is using a sequential scan sort to perform the lookup. The
-> planning and execution times will be listed at the end of the results,
-> and should look similar to the following:
->
-> Planning Time: 62.020 ms
->
-> Execution Time: 10.530 ms
+      > Limit (cost=1098.54..1098.55 rows=3 width=261) (actual
+      > time=10.505..10.507 rows=3 loops=1)
+      >
+      > -\> Sort (cost=1098.54..1104.10 rows=2224 width=261) (actual
+      > time=10.504..10.505 rows=3 loops=1)
+      >
+      > ...
+      >
+      > Sort Method: top-N heapsort Memory: 27kB
+      >
+      > -\> Seq Scan on listings (cost=0.00..1069.80 rows=2224 width=261)
+      > (actual time=0.005..9.997 rows=2224 loops=1)
+      >
+      > The query is using a sequential scan sort to perform the lookup. The
+      > planning and execution times will be listed at the end of the results,
+      > and should look similar to the following:
+      >
+      > Planning Time: 62.020 ms
+      >
+      > Execution Time: 10.530 ms
 
 4.  To enable more efficient searching over the vector field, create an
     index on listings using cosine distance
@@ -823,21 +841,21 @@ similar to:
     and execution times. Replace {your-deployment-name} with
     the **Deployment name** value you copied from the Azure OpenAI
     Studio **Deployments** page.
-```
-EXPLAIN ANALYZE
-SELECT listing_id, name, description FROM listings
-ORDER BY description_vector <=> azure_openai.create_embeddings('{your-deployment-name}', 'Properties with a private room near Discovery Park')::vector
-LIMIT 3;
-```
-  ![](./media/image73.png)
+    ```
+    EXPLAIN ANALYZE
+    SELECT listing_id, name, description FROM listings
+    ORDER BY description_vector <=> azure_openai.create_embeddings('{your-deployment-name}', 'Properties with a private room near Discovery Park')::vector
+    LIMIT 3;
+    ```
+    ![](./media/image73.png)
 
-  ![](./media/image74.png)
+    ![](./media/image74.png)
 
-  ![](./media/image75.png)
+    ![](./media/image75.png)
 
-In the output, notice the query plan now includes a more efficient index
-scan:
-
+  In the output, notice the query plan now includes a more efficient index
+  scan:
+>
 Limit (cost=116.48..119.33 rows=3 width=261) (actual time=1.112..1.130
 rows=3 loops=1)
 
@@ -884,9 +902,9 @@ service.
 2.  On the **Create a resource** page, select AI + Machine Learning from
     the left-hand menu, then select **Language service**.
 
-       ![](./media/image77.png)
+    ![](./media/image77.png)
 
-      ![](./media/image78.png)
+    ![](./media/image78.png)
 
 3.  On the **Select additional features** dialog, select **Continue to
     create your resource**.
@@ -895,13 +913,22 @@ service.
 
 4.  On the Create Language **Basics** tab, enter the following:
 
-[TABLE]
-    ![](./media/image80.png)
-        ![](./media/image81.png)
+    |Parameter	|Value|
+    |---|---|
+    |Project details	|  |
+    |Subscription|	Select the subscription you use for lab resources.|
+    |Resource group	|Select the resource group you created in Exercise 1>Task 1.|
+    |Instance details	|     |
+    |Region	|Select the region you used for your Azure Database for PostgreSQL Flexible Server resource.|
+    |Name	|Enter a globally unique name, such as lang-postgres-labs-SUFFIX, where SUFFIX is a unique string, such as your initials.|
+    |Pricing tier|	Select the standard pricing tier, S (1K Calls per minute).|
+    |Responsible AI Notice|Check the box to certify you have reviewed and acknowledged the Responsible AI Notice.|
+
+     ![](./media/image80.png)
+     ![](./media/image81.png)
 
 5.  The default settings will be used for the remaining tabs of the
-    Language service configuration, so select the **Review +
-    create** button.
+    Language service configuration, so select the **Review + create** button.
 
 6.  Select the **Create** button on the **Review + create** tab to
     provision the Language service.
@@ -934,11 +961,11 @@ endpoint and a key for your Azure AI Language service.
     retrieved from the Azure portal. Run the commands from
     the psql command prompt in the Cloud Shell to add your values to the
     configuration table.
-```
-SELECT azure_ai.set_setting('azure_cognitive.endpoint','{endpoint}');
-SELECT azure_ai.set_setting('azure_cognitive.subscription_key', '{api-key}');
-```
- ![](./media/image85.png)
+    ```
+    SELECT azure_ai.set_setting('azure_cognitive.endpoint','{endpoint}');
+    SELECT azure_ai.set_setting('azure_cognitive.subscription_key', '{api-key}');
+    ```
+    ![](./media/image85.png)
 
 ## Task 3: Analyze the sentiment of reviews
 
@@ -950,19 +977,19 @@ Airbnb listings.
     the azure_ai extension, you use the analyze_sentiment function. Run
     the command below to review that function:
 
-+++\df azure_cognitive.analyze_sentiment+++
+  +++\df azure_cognitive.analyze_sentiment+++
      ![](./media/image86.png)
 
-The output shows the function's schema, name, result data type, and
-argument data types. This information helps in gaining an understanding
-of how to use the function.
+    The output shows the function's schema, name, result data type, and
+    argument data types. This information helps in gaining an understanding
+    of how to use the function.
 
 2.  It is also essential to understand the structure of the result data
     type the function outputs so you can correctly handle its return
     value. Run the following command to inspect
     the sentiment_analysis_result type:
 
-+++\dT+ azure_cognitive.sentiment_analysis_result+++
+  +++\dT+ azure_cognitive.sentiment_analysis_result+++
       ![](./media/image87.png)
 
 3.  The output of the above command reveals
@@ -971,24 +998,19 @@ of how to use the function.
     columns contained within the sentiment_analysis_result composite
     type:
 
-+++\d+ azure_cognitive.sentiment_analysis_result+++
+  +++\d+ azure_cognitive.sentiment_analysis_result+++
      ![](./media/image88.png)
 
-The output of that command should look similar to the following:
+   The output of that command should look similar to the following:
 
-> Composite type "azure_cognitive.sentiment_analysis_result"
 >
-> Column | Type | Collation | Nullable | Default | Storage | Description
->
-> ----------------+------------------+-----------+----------+---------+----------+-------------
->
-> sentiment | text | | | | extended |
->
-> positive_score | double precision | | | | plain |
->
-> neutral_score | double precision | | | | plain |
->
-> negative_score | double precision | | | | plain |
+     Composite type "azure_cognitive.sentiment_analysis_result"
+     Column     |       Type       | Collation | Nullable | Default | Storage  | Description 
+----------------+------------------+-----------+----------+---------+----------+-------------
+ sentiment      | text             |           |          |         | extended | 
+ positive_score | double precision |           |          |         | plain    | 
+ neutral_score  | double precision |           |          |         | plain    | 
+ negative_score | double precision |           |          |         | plain    |
 
 The azure_cognitive.sentiment_analysis_result is a composite type
 containing the sentiment predictions of the input text. It includes the
@@ -1002,21 +1024,22 @@ score of 0.26, neutral of 0.64, and negative at 0.09.
     the extension and the shape of the return type, execute the
     following query that looks for overwhelmingly positive reviews:
 
-```
-WITH cte AS (
-    SELECT id, azure_cognitive.analyze_sentiment(comments, 'en') AS sentiment FROM reviews LIMIT 100
-)
-SELECT
-    id,
-    (sentiment).sentiment,
-    (sentiment).positive_score,
-    (sentiment).neutral_score,
-    (sentiment).negative_score,
-    comments
-FROM cte
-WHERE (sentiment).positive_score > 0.98
-LIMIT 10;
-```
+      ```
+      WITH cte AS (
+          SELECT id, azure_cognitive.analyze_sentiment(comments, 'en') AS sentiment FROM reviews LIMIT 100
+      )
+      SELECT
+          id,
+          (sentiment).sentiment,
+          (sentiment).positive_score,
+          (sentiment).neutral_score,
+          (sentiment).negative_score,
+          comments
+      FROM cte
+      WHERE (sentiment).positive_score > 0.98
+      LIMIT 10;
+      
+      ```
    ![](./media/image89.png)
 
 The above query uses a common table expression or CTE to get the
@@ -1032,8 +1055,7 @@ the azure_ai, postgis, and pgvector extensions across labs 3 and 4.
 
 ## Task 1: Install pgAdmin
 
-1.  Open a web browser and navigate to the
-   +++https://www.pgadmin.org/download/pgadmin-4-windows/+++
+1.  Open a web browser and navigate to the +++https://www.pgadmin.org/download/pgadmin-4-windows/+++
 
 2.  Click on the latest version of **pgAdmin**
 
@@ -1128,37 +1150,37 @@ the CREATE EXTENSION command.
 1.  In the query window you opened above, run the CREATE
     EXTENSION command with the IF NOT EXISTS clause to install
     the postgis extension in your database.
-```
- CREATE EXTENSION IF NOT EXISTS postgis;
-```
+    ```
+     CREATE EXTENSION IF NOT EXISTS postgis;
+    ```
    ![](./media/image109.png)
->
-> With the PostGIS extension now loaded, you are ready to begin working
-> with geospatial data in the database. The listings table you created
-> and populated above contains the latitude and longitude of all listed
-> properties. To use these data for geospatial analysis, you must alter
-> the listings table to add a geometry column that accepts
-> the point data type. These new data types are included in
-> the postgis extension.
+
+   With the PostGIS extension now loaded, you are ready to begin working
+   with geospatial data in the database. The listings table you created
+   and populated above contains the latitude and longitude of all listed
+   properties. To use these data for geospatial analysis, you must alter
+   the listings table to add a geometry column that accepts
+   the point data type. These new data types are included in
+   the postgis extension.
 
 2.  To accommodate point data, add a new geometry column to the table
     that accepts point data. Copy and paste the following query into the
     open pgAdmin query window:
-```
-ALTER TABLE listings
-ADD COLUMN listing_location geometry(point, 4326);
-```
+    ```
+    ALTER TABLE listings
+    ADD COLUMN listing_location geometry(point, 4326);
+    ```
 
 3.  Next, update the table with geospatial data associated with each
     listing by adding the longitude and latitude values into
     the geometry column.
 
-```
-UPDATE listings
-SET listing_location = ST_SetSRID(ST_Point(longitude, latitude), 4326);
-```
+    ```
+    UPDATE listings
+    SET listing_location = ST_SetSRID(ST_Point(longitude, latitude), 4326);
+    ```
 
-![](./media/image110.png)
+    ![](./media/image110.png)
 
 ## Task 4: Execute a query and view results on a map
 
@@ -1171,7 +1193,7 @@ You run a final query in this task that ties your work across labs 3 and
     the **Deployment name** value you copied from the Azure OpenAI
     Studio **Deployments** page.
 
-```
+    ```
     WITH listings_cte AS (
     SELECT l.listing_id, name, listing_location, summary FROM listings l
     INNER JOIN calendar c ON l.listing_id = c.listing_id
@@ -1186,24 +1208,24 @@ You run a final query in this task that ties your work across labs 3 and
     AND l.listing_id IN (SELECT listing_id FROM reviews)
     ORDER BY description_vector <=> azure_openai.create_embeddings('{your-deployment-name}', 'Properties with a private room near Discovery Park')::vector
     LIMIT 3
-),
-sentiment_cte AS (
-    SELECT r.listing_id, comments, azure_cognitive.analyze_sentiment(comments, 'en') AS sentiment
-    FROM reviews r
-    INNER JOIN listings_cte l ON r.listing_id = l.listing_id
-)
-SELECT
-    l.listing_id,
-    name,
-    listing_location,
-    summary,
-    avg((sentiment).positive_score) as avg_positive_score,
-    avg((sentiment).neutral_score) as avg_neutral_score,
-    avg((sentiment).negative_score) as avg_negative_score
-FROM sentiment_cte s
-INNER JOIN listings_cte l on s.listing_id = l.listing_id
-GROUP BY l.listing_id, name, listing_location, summary;
-```
+   ),
+  sentiment_cte AS (
+      SELECT r.listing_id, comments, azure_cognitive.analyze_sentiment(comments, 'en') AS sentiment
+      FROM reviews r
+      INNER JOIN listings_cte l ON r.listing_id = l.listing_id
+    )
+    SELECT
+        l.listing_id,
+        name,
+        listing_location,
+        summary,
+        avg((sentiment).positive_score) as avg_positive_score,
+        avg((sentiment).neutral_score) as avg_neutral_score,
+        avg((sentiment).negative_score) as avg_negative_score
+    FROM sentiment_cte s
+    INNER JOIN listings_cte l on s.listing_id = l.listing_id
+    GROUP BY l.listing_id, name, listing_location, summary;
+    ```
 
 2.  In the **Data Output** panel, select the **View all geometries in
     this column** button displayed in the listing_location column of the
@@ -1211,8 +1233,8 @@ GROUP BY l.listing_id, name, listing_location, summary;
 
      ![](./media/image111.png)
 
-The **View all geometries in this column** button opens the **Geometry
-Viewer**, allowing you to view the query results on a map.
+    The **View all geometries in this column** button opens the **Geometry
+    Viewer**, allowing you to view the query results on a map.
 
 3.  Select one of the three points displayed on the map to view details
     about the location, including the average positive, neutral, and
