@@ -185,122 +185,122 @@ and try again.
 
 Using the psql command prompt, you will create tables and populate them
 with data for use in the lab.
-
+>[!Alert]Important Note: Copy all the scripts into Notepad and perform the necessary actions.
 1.  Run the following commands to create temporary tables for importing
     JSON data from a public blob storage account.
-```
-CREATE TABLE temp_calendar (data jsonb);
-CREATE TABLE temp_listings (data jsonb);
-CREATE TABLE temp_reviews (data jsonb
-```
-  ![](./media/image22.png)
+    ```
+    CREATE TABLE temp_calendar (data jsonb);
+    CREATE TABLE temp_listings (data jsonb);
+    CREATE TABLE temp_reviews (data jsonb);
+    ```
+     ![](./media/image22.png)
 
 2.  Using the COPY command, populate each temporary table with data from
     JSON files in a public storage account.
-```
-\COPY temp_calendar (data) FROM PROGRAM 'curl https://solliancepublicdata.blob.core.windows.net/ms-postgresql-labs/calendar.json'
-```
-```
-\COPY temp_listings (data) FROM PROGRAM 'curl
-https://solliancepublicdata.blob.core.windows.net/ms-postgresql-labs/listings.json'
-```
-```
-\COPY temp_reviews (data) FROM PROGRAM 'curl
-https://solliancepublicdata.blob.core.windows.net/ms-postgresql-labs/reviews.json'
-```
-   ![](./media/image23.png)
+    ```
+    \COPY temp_calendar (data) FROM PROGRAM 'curl https://solliancepublicdata.blob.core.windows.net/ms-postgresql-labs/calendar.json'
+    ```
+    ```
+    \COPY temp_listings (data) FROM PROGRAM 'curl
+    https://solliancepublicdata.blob.core.windows.net/ms-postgresql-labs/listings.json'
+    ```
+    ```
+    \COPY temp_reviews (data) FROM PROGRAM 'curl
+    https://solliancepublicdata.blob.core.windows.net/ms-postgresql-labs/reviews.json'
+    ```
+     ![](./media/image23.png)
        ![](./media/image24.png)
 
 3.  Run the following command to create the tables for storing data in
     the shape used by this lab:
-```
-CREATE TABLE listings (
-listing_id int,
-name varchar(50),
-street varchar(50),
-city varchar(50),
-state varchar(50),
-country varchar(50),
-zipcode varchar(50),
-bathrooms int,
-bedrooms int,
-latitude decimal(10,5), 
-longitude decimal(10,5), 
-summary varchar(2000),
-description varchar(2000),
-host_id varchar(2000),
-host_url varchar(2000),
-listing_url varchar(2000),
-room_type varchar(2000),
-amenities jsonb,
-host_verifications jsonb,
-data jsonb
-);
-```
-```
-CREATE TABLE reviews (
-    id int, 
-    listing_id int, 
-    reviewer_id int, 
-    reviewer_name varchar(50), 
-    date date,
-    comments varchar(2000)
-);
-CREATE TABLE calendar (
-    listing_id int, 
-    date date,
-    price decimal(10,2), 
-    available boolean
-);
-
-```
+    ```
+    CREATE TABLE listings (
+    listing_id int,
+    name varchar(50),
+    street varchar(50),
+    city varchar(50),
+    state varchar(50),
+    country varchar(50),
+    zipcode varchar(50),
+    bathrooms int,
+    bedrooms int,
+    latitude decimal(10,5), 
+    longitude decimal(10,5), 
+    summary varchar(2000),
+    description varchar(2000),
+    host_id varchar(2000),
+    host_url varchar(2000),
+    listing_url varchar(2000),
+    room_type varchar(2000),
+    amenities jsonb,
+    host_verifications jsonb,
+    data jsonb
+    );
+    ```
+    ```
+    CREATE TABLE reviews (
+        id int, 
+        listing_id int, 
+        reviewer_id int, 
+        reviewer_name varchar(50), 
+        date date,
+        comments varchar(2000)
+    );
+    CREATE TABLE calendar (
+        listing_id int, 
+        date date,
+        price decimal(10,2), 
+        available boolean
+    );
+    
+    ```
   ![](./media/image26.png)
 
 4.  Finally, run the following INSERT INTO statements to load data from
     the temporary tables to the main tables, extracting data from the
     JSON data field into individual columns:
-```
-INSERT INTO listings
-SELECT 
-    data['id']::int, 
-    replace(data['name']::varchar(50), '"', ''),
-    replace(data['street']::varchar(50), '"', ''),
-    replace(data['city']::varchar(50), '"', ''),
-    replace(data['state']::varchar(50), '"', ''),
-    replace(data['country']::varchar(50), '"', ''),
-    replace(data['zipcode']::varchar(50), '"', ''),
-    data['bathrooms']::int,
-    data['bedrooms']::int,
-    data['latitude']::decimal(10,5),
-    data['longitude']::decimal(10,5),
-    replace(data['description']::varchar(2000), '"', ''),        
-    replace(data['summary']::varchar(2000), '"', ''),        
-    replace(data['host_id']::varchar(50), '"', ''),
-    replace(data['host_url']::varchar(50), '"', ''),
-    replace(data['listing_url']::varchar(50), '"', ''),
-    replace(data['room_type']::varchar(50), '"', ''),
-    data['amenities']::jsonb,
-    data['host_verifications']::jsonb,
-    data::jsonb
-FROM temp_listings;
-INSERT INTO reviews
-SELECT 
-    data['id']::int,
-    data['listing_id']::int,
-    data['reviewer_id']::int,
-    replace(data['reviewer_name']::varchar(50), '"', ''), 
-    to_date(replace(data['date']::varchar(50), '"', ''), 'YYYY-MM-DD'),
-    replace(data['comments']::varchar(2000), '"', '')
-FROM temp_reviews;
-INSERT INTO calendar
-SELECT 
-    data['listing_id']::int,
-    to_date(replace(data['date']::varchar(50), '"', ''), 'YYYY-MM-DD'),
-    data['price']::decimal(10,2),
-    replace(data['available']::varchar(50), '"', '')::boolean
-FROM temp_calendar;
-```
-![](./media/image27.png)
+    ```
+    INSERT INTO listings
+    SELECT 
+        data['id']::int, 
+        replace(data['name']::varchar(50), '"', ''),
+        replace(data['street']::varchar(50), '"', ''),
+        replace(data['city']::varchar(50), '"', ''),
+        replace(data['state']::varchar(50), '"', ''),
+        replace(data['country']::varchar(50), '"', ''),
+        replace(data['zipcode']::varchar(50), '"', ''),
+        data['bathrooms']::int,
+        data['bedrooms']::int,
+        data['latitude']::decimal(10,5),
+        data['longitude']::decimal(10,5),
+        replace(data['description']::varchar(2000), '"', ''),        
+        replace(data['summary']::varchar(2000), '"', ''),        
+        replace(data['host_id']::varchar(50), '"', ''),
+        replace(data['host_url']::varchar(50), '"', ''),
+        replace(data['listing_url']::varchar(50), '"', ''),
+        replace(data['room_type']::varchar(50), '"', ''),
+        data['amenities']::jsonb,
+        data['host_verifications']::jsonb,
+        data::jsonb
+    FROM temp_listings;
+    INSERT INTO reviews
+    SELECT 
+        data['id']::int,
+        data['listing_id']::int,
+        data['reviewer_id']::int,
+        replace(data['reviewer_name']::varchar(50), '"', ''), 
+        to_date(replace(data['date']::varchar(50), '"', ''), 'YYYY-MM-DD'),
+        replace(data['comments']::varchar(2000), '"', '')
+    FROM temp_reviews;
+    INSERT INTO calendar
+    SELECT 
+        data['listing_id']::int,
+        to_date(replace(data['date']::varchar(50), '"', ''), 'YYYY-MM-DD'),
+        data['price']::decimal(10,2),
+        replace(data['available']::varchar(50), '"', '')::boolean
+    FROM temp_calendar;
+    ```
+  ![](./media/image27.png)
 
 # Exercise 2: Add Azure AI and Vector extensions to allowlist
 
