@@ -41,348 +41,188 @@ advanced functionality including:
 - Extend interactions to video prompts, configuring enhancements and
   evaluating the assistant's responses.
 
-## **Task 1: Create Computer Vision**
+## **Task 1: Create Azure OpenAI resource**
 
 1.  In Azure portal, click on **portal menu** represented by three
     horizontal bars on the top left corner of page, as shown in the
     below image.
 
-      ![](./media/image1.png)
+    ![](./media/image1.png)
 
 2.  Navigate and click on **+ Create a resource**.
 
-      ![](./media/image2.png)
-
-3.  On **Create a resource** page, in the **Search services and
-    marketplace** search bar, type **computer vision**, then press the
-    **Enter** button.
-
-      ![](./media/image3.png)
-
-4.  In the **Marketplace** page, navigate to the **Computer Vision**
-    tile, click on the V chevron button beside **Create**, then navigate
-    and click on **Computer Vision** as shown in the below image. (In
-    case, you clicked on the **Computer Vision** tile, then on
-    **Computer Vision** page, navigate and click on the **Create**
-    button).
-
-       ![](./media/image4.png)
-
-5.  In the **Create Computer Vision** window, under the **Basics** tab,
-    enter the following details and click on the **Next** button.
-
-     1.  **Subscription**: Select the assigned subscription
-
-     2.  **Resource group**: Click on **Create new**\> enter **+++AOAI-RGXX+++**(XX can be a unique number, you can add more digits after XX to make the name unique
-
-     3.  **Region**: Select **West US**
-
-     4.  **Name**: Enter **+++Computer-vision-aoaiXX+++**
-
-     5.  **Pricing tier**: Select **Free F0**
-
-6.  Select the check box –**By checking this box I certify that I have
-    reviewed and acknowledge the all the term above.**
-
-      ![](./media/image5.png)
-
-7.  In the **Network** tab, leave all the radio buttons in the default
-    state and click on the **Next** button.
-
-      ![](./media/image6.png)
-
-8.  In the **Identity** tab, navigate to **System assigned managed
-    identity section,** select the **On** radio button, then click on
-    the **Review+create** button.
-
-      ![](./media/image7.png)
-
-9.  In the **Review+submit** tab, once the Validation is Passed, click
-    on the **Create** button.
-
-     ![](./media/image8.png)
-
-10. After the deployment is completed, click on **Home** link at the top
-    left corner of the page to go back to Azure portal Home page.
-
-      ![](./media/image9.png)
-
-## **Task 2: Create Azure OpenAI resource**
-
-1.  In Azure portal, click on **portal menu** represented by three
-    horizontal bars on the top left corner of page, as shown in the
-    below image.
-
-     ![](./media/image1.png)
-
-2.  Navigate and click on **+ Create a resource**.
-
-      ![](./media/image2.png)
+     ![](./media/image2.png))
 
 3.  On **Create a resource** page, in the **Search services and
     marketplace** search bar, type **Azure OpenAI**, then press the
     **Enter** button.
 
-      ![](./media/image10.png)
+    ![](./media/image3.png)
 
 4.  In the **Marketplace** page, navigate to the **Azure OpenAI** tile,
     click on the V chevron button beside **Create**, then navigate and
     click on the **Azure OpenAI** as shown in the below image.
 
-      ![](./media/image11.png))
-
+     ![](./media/image4.png)
 5.  In the **Create Azure OpenAI** window, under the **Basics** tab,
     enter the following details and click on the **Next** button.
 
-    1.  **Subscription**: Select the assigned subscription
+    a.  **Subscription**: Select the assigned subscription
 
-    2.  **Resource group:** select the resource group that you created
-        in Task 1
+    b.  **Resource group**: Click on **Create new**\> enter
+        **AOAI-RGXX**(XX can be a unique number, you can add more digits
+        after XX to make the name unique
 
-    3.  **Region**: Select **West US**
+    c.  **Region**: Select **West US**
 
-    4.  **Name**: +++aoai-gpt4-visionXX+++ (XX can be a unique number)
+    d.  **Name**: aoai-gpt4-visionXX (XX can be a unique number)
 
-    5.  **Pricing tier**: Select **Standard S0**
+    e.  **Pricing tier**: Select **Standard S0**
 
-      ![](./media/image12.png)
+    ![](./media/image5.png)
 
 6.  In the **Network** tab, leave all the radio buttons in the default
     state, and click on the **Next** button.
 
-      ![](./media/image13.png)
+     ![](./media/image6.png)
 
 7.  In the **Tags** tab, leave all the fields in the default state, and
     click on the **Next** button.
 
-      ![](./media/image14.png)
+    ![](./media/image7.png)
 
 8.  In the **Review + submit** tab, once the Validation is Passed, click
     on the **Create** button.
 
-     ![](./media/image15.png)
+    ![](./media/image8.png)
 
 9.  Wait for the deployment to complete. The deployment will take around
     2-3 minutes.
 
-      ![](./media/image16.png)
+    ![](./media/image9.png)
 
 10. On **Microsoft.CognitiveServicesOpenAI** window, after the
     deployment is completed, click on **Go to resource** button.
 
-     ![](./media/image17.png)
+     ![](./media/image10.png)
 
 11. On the **aoai-gpt4-visionXX** window, click on **Overview** in the
     left-sided navigation menu, scroll down to **Get Started** tile and
     click on **Go to AzureOpenAI Studio** button as shown in the below
     image to open **Azure OpenAI Studio** in a new browser.
 
-      ![](./media/image18.png)
+    ![](./media/image11.png)
 
-## **Task 3: Deploying an Azure OpenAI model gpt-4**
+## **Task 2: Deploying an Azure OpenAI model gpt-4**
 
-1.  On the **Azure OpenAI Studio** homepage, click on **Create new
-    deployment** button.
+1.  On the **Azure OpenAI Studio** homepage, select **Deployment** under
+    Shared resources .
 
-      ![](./media/image19.png)
-2.  In the **Deployments** page, click on +**Create new deployment**.
+     ![](./media/image12.png)
 
-      ![](./media/image20.png)
-3.  In the **Deploy model dialog** box, under the **Model name** field,
-    click on the V chevron button; navigate and select carefully
-    **gpt-4**.
+2.  In the **Model deployments** page, drop down the **+Deployment**.
+    **model** and select **Deploy base model**
+
+    ![](./media/image13.png)
+
+3.  In the **select a model** box, select carefully **gpt-4** and click
+    on the **Confirm** button.
+
+     ![](./media/image14.png)
 
 4.  Select the **Model version** as **vision-preview,** in the
     **Deployment type** as **Standard, Deployment name field**, enter
-    +++gpt-4-vision+++, and click on the **Create** button.
+    +++gpt-4 +++, and click on the **Deploy** button.
 
-      ![](./media/image21.png)
+   ![](./media/image15.png)
 
-5.  You will see a notification – **Successfully Created deployment**
-    when the deployment is succeeded.
+   ![](./media/image16.png)
 
-      ![](./media/image22.png)
-
-## **Task 4: Vision in the Azure AI Studio chat playground** 
+## **Task 3: Vision in the Azure AI Studio chat playground** 
 
 1.  In Azure OpenAI Studio Home page, under **Playground** select
     **Chat.**
 
-      ![](./media/image23.png)
+    ![](./media/image17.png)
 
-2.  Navigate to the **Configuration** section, under the **Deployment**
-    field, ensure that **gpt-4-vision** is selected
+2.  In the **Assistant setup** pane, provide a System Message to guide
+    the assistant.: "**+++You are an AI assistant that helps people find
+    information+++**." Click on **Save** button.
 
-      ![](./media/image24.png)
+    ![](./media/image18.png)
 
-3.  Navigate to **Enhancements** section and **turn on** the toggle
-    for **Vision** as shown in the below image.
+3.  Save your changes, and when prompted to confirm updating the system
+    message, select **Continue**.
 
-      ![](./media/image25.png)
+    ![](./media/image19.png)
 
-4.  In **Vision enhancements setting** dialog box, select **Azure
-    Computer Vision resource name** as **computer-vision-aoaiXX**, then
-    click on the **Save** button.
+4.  Navigate to **Chat session** section and click on the dropdown
+    beside **attachment icon** under the chat session text box as shown
+    in the below image and select **Upload image**.
 
-> **Note**: If you did not find **Azure Computer Vision resource name**
-> in the dropdown, then click on **Create an Azure Computer Vision
-> Resource** link below the field and create a new Computer Vision
-> resource in **West US**.
-
-    ![](./media/image26.png)
-
-## **Task 5: Image prompt enhancements**
-
-1.  Navigate to the **Assistant setup** section, in the **System
-    message** text box, enter the following prompt to guide the
-    assistant: **You're an AI assistant that helps people find
-    information.** You can tailor the prompt image or scenario that
-    you're uploading.
-
-2.  Click on **Apply changes** to save your changes.
-       ![](./media/image27.png)
-
-3.  On **Update system message?** dialog box, click on the **Continue**
-    button.
-
-       ![](./media/image28.png)
-
-4.  . Navigate to the **Configuration** section, under the
-    **Deployment** field, ensure that **gpt-4-vision** is selected.
-    Navigate to **Chat session** section and click on the dropdown
-    beside attachment icon under the chat session text box as shown in
-    the below image and select **Upload image**.
-
-       ![](./media/image29.png)
+     ![](./media/image20.png)
 
 5.  Navigate and select **car-accident** image from **C:\LabFiles**,
     then click on the **Open** button.
 
-      ![](./media/image30.png)
-      ![](./media/image31.png)
+    ![](./media/image21.png)
+
+    ![](./media/image22.png)
 
 6.  In the **chat session** pane, under the image enter the following
-    question: +++**Describe this image+++**, and then click on the right
+    question: **+++Describe this image+++**, and then click on the right
     arrow icon to send.
 
-      ![](./media/image32.png)
+     ![](./media/image23.png)
 
-7.  The square icon replaces the right arrow icon. If you select the
-    square icon, the assistant stops processing your request. For this
-    let the assistant finish its reply. Don't select the square icon.
+7.  The assistant replies with a description of the image.
 
-      ![](./media/image33.png)
+    ![](./media/image24.png)
 
-8.  The assistant replies with a description of the image.
+8.  Ask a follow-up question related to the analysis of your image.
+    Enter “**+++What should I highlight about this image to my insurance
+    company+++**” and then click on the right arrow icon to send.
 
-       ![](./media/image34.png)
+    ![](./media/image25.png)
 
-9.  Ask a follow-up question related to the analysis of your image.
-    Enter “**What should I highlight about this image to my insurance
-    company**” and then click on the right arrow icon to send.
+9.  You should receive a relevant response similar to what's shown here:
 
-      ![](./media/image35.png)
+     ![](./media/image26.png)
 
-10. You should receive a relevant response similar to what's shown here:
-
-      ![](./media/image36.png)
-
-11. At any point in the chat session, select the **Show raw
+10. At any point in the chat session, select the **Show raw
     JSON** option to see the conversation formatted as JSON.
 
-     ![](./media/image37.png)
-12. In the Chat session pane, click on **Clear chat.**
+     ![](./media/image27.png)
 
-      ![](./media/image38.png)
-
-13. In the **Clear chat?** dialog box, click on the **Clear** button.
-
-      ![](./media/image39.png)
-
-## **Task 6: Video prompt enhancements**
-
-1.  . Navigate to **Chat session** section and click on the dropdown
-    beside attachment icon under the chat session text box, then select
-    **Upload video** as shown in the below image**.**
-
-      ![](./media/image40.png)
-
-2.  Navigate and select **car-accident-video** MP4 file from
-    **C:\LabFiles**, then click on the **Open** button.
-
-      ![](./media/image41.png)
-
-       ![](./media/image42.png)
-
-3.  Navigate to **Assistant setup** section, in the **System
-    message** text box, provide the following prompt to guide the
-    assistant: "**You're a car insurance and accident expert. Extract
-    detailed information about the car's make, model, damage extent,
-    license plate, airbag deployment status, mileage, and any other
-    observations.**" You can tailor the prompt for the video or
-    scenario.
-
-4.  Click on **Apply changes** to save your changes. On **Update system
-    message?** dialog box, click on the **Continue** button.
-
-      ![](./media/image43.png)
-
-       ![](./media/image28.png)
-
-5.  In the chat session pane, under the video, enter the following
-    question: +++Provide details from this car accident video+++ and
-    then select the right arrow icon to send.
-
-      ![](./media/image44.png)
-
-6.  The assistant replies with a description of the video.
-
-       ![](./media/image45.png)
-
-7.  Ask a follow-up question related to the analysis of your video.
-    Enter +++What should I highlight about this video to my insurance
-    company+++ and then select the right arrow icon to send.
-
-      ![](./media/image46.png)
-
-8.  You should receive a relevant response similar to what's shown here:
-
-       ![](./media/image47.png)
-
-9.  At any point in the chat session, you can select the **Show raw
-    JSON** option to see the conversation in JSON format.
-
-     ![](./media/image48.png)
-
-## Task 7: Delete the resources
+## Task 4: Delete the resources
 
 1.  To delete the storage account, navigate to **Azure portal Home**
     page, click on **Resource groups**.
 
-      ![](./media/image49.png)
+     ![](./media/image28.png)
 
 2.  Click on the AOAI-RGXXX resource group.
 
-      ![](./media/image50.png)
+    ![](./media/image29.png)
 
 3.  In the **Resource group** home page, select the **delete resource
     group**
 
-      ![](./media/image51.png)
+    ![](./media/image30.png)
 
 4.  In the Delete a resource group tab, enter your resource group name
     and click on **Delete button**.
 
-       ![](./media/image52.png)
+     ![](./media/image31.png)
 
-6.  On **Delete confirmation** dialog box, click on **Delete** button.
+5. On **Delete confirmation** dialog box, click on **Delete** button.
 
-      ![](./media/image53.png)
+    ![](./media/image32.png)
 
-7.  Click on the bell icon, you’ll see the notification –**Deleted
+12. Click on the bell icon, you’ll see the notification –**Deleted
     resource group AOAI-RG89.**
 
-      ![](./media/image54.png))
+    ![](./media/image33.png)
 
 **Summary**
 
@@ -397,5 +237,3 @@ walkthrough for users to create, deploy, and interact with computer
 vision and language models within the Azure environment.
 
 
-you’ll not be able to proceed with the next lab or create a new Resource
-Group.**
