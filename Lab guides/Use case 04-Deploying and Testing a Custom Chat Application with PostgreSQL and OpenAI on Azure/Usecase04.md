@@ -116,7 +116,7 @@ PowerShell copy
 ## Task 3: Assign a user as an owner of an Azure subscription
 
 1.  Open your browser, navigate to the address bar, and type or paste
-    the following URL: !!https://portal.azure.com/!!, then press the
+    the following URL: +++https://portal.azure.com/+++, then press the
     **Enter** button.
 
       ![](./media/image15.png)
@@ -263,9 +263,9 @@ PowerShell copy
 
 2.  Sign in to Azure with the Azure Developer CLI. Run the following
     command on the Terminal
-
-> BashCopy
-+++azd auth login+++
+    ```
+    azd auth login
+    ```
       ![](./media/image46.png)
 
 3.  Default browser opens to sign in. Sign in with your Azure
@@ -280,16 +280,17 @@ PowerShell copy
 
 5.  To create an environment for Azure resources, run the following
     Azure Developer CLI command.
-
-+++azd env new+++
+    ```
+    azd env new
+    ```
       ![](./media/image50.png)
 
 6.  prompted to enter an environment name, enter the **ragsqlXX**(XX can
     be a unique number, you can add more digits after XX to make the
     name unique)
 
-**Note:** When creating an environment, ensure that the name consists of
-lowercase letters.
+  **Note:** When creating an environment, ensure that the name consists of
+  lowercase letters.
      ![](./media/image51.png)
 
 7.  Run the following Azure Developer CLI command to provision the Azure
@@ -343,19 +344,19 @@ https://ragpsql-3vlvcq6uzuk-ca.wonderfulcliff-01f39f01.eastus2.azurecontainerapp
 
 4.  Make sure the below resource got deployed successfully
 
-- Container App
-
-- Application Insights
-
-- Container Apps Environment
-
-- Log Analytics workspace
-
-- Azure OpenAI
-
-- Azure Database for PostgreSQL flexible server
-
-- Container registry
+      - Container App
+      
+      - Application Insights
+      
+      - Container Apps Environment
+      
+      - Log Analytics workspace
+      
+      - Azure OpenAI
+      
+      - Azure Database for PostgreSQL flexible server
+      
+      - Container registry
       ![](./media/image63.png)
 
 5.  On the resource group and click on **Azure OpenAI** resource name.
