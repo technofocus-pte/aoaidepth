@@ -268,6 +268,9 @@ aspects such as employee benefits, internal policies, and job roles.
     infrastructure parameter** select **East US2.**
 
       ![](./media/image48.png)
+    
+>[!Alert]Note: Select the appropriate near by region ,In this lab **East US2** is taken
+
 
 4.  When prompted, enter a values for openai resource group locatin
     infrastructure parameter then select **East US 2**
