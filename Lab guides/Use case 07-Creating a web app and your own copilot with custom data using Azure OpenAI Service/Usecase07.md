@@ -343,7 +343,7 @@ uses this information to provide a completion.
  
      ![](./media/image53.png)
 
-## Task 4: Create an Azure Cognitive Search service in the portal
+## Task 4: Create an Azure AI Search service in the portal
 
 1.  On the **azureopenaistorageXX | Containers** page, click on **Home**
     to go back to Azure portal home page.
@@ -370,7 +370,14 @@ uses this information to provide a completion.
 6.  On the **Create a search service** page, provide the following
     information and click on **Review+create** button.
 
-[TABLE]
+    |Field|	Description|
+    |----|----|
+    |Subscription	|Select your Azure OpenAI subscription|
+    |Resource group|	Select your Resource group(that you have created in Task 1)|
+    |Region|	EastUS |
+    |Name|mysearchserviceXX (XXcan be unique number)|
+    |Pricing Tier|	Click on change Price Tire>select Basic|
+
     ![](./media/image59.png)
     ![](./media/image60.png)
     ![](./media/image61.png)
@@ -392,79 +399,54 @@ uses this information to provide a completion.
 
      ![](./media/image65.png)
 
-10. On the **Semantic ranker** tab**,** select **Free** tile and click
+10. On the **Semantic ranker** tab**,** select **Standard** tile and click
     on the **Select plan.**
 
-     ![](./media/image66.png)
+     ![](./media/new9.png)
 
 11. You will see a notification -**Successfully updated semantic ranker
     to free plan**
 
-     ![](./media/image67.png)
+     ![](./media/new10.png)
 
 # Exercise-2: Add your data using Azure OpenAI Studio
 
 ## Task 1: Deploy gpt-35-turbo and embedded models in Azure AI Studio
 
-1.  Open your browser, navigate to the address bar, and type or paste
-    the following URL:+++https://oai.azure.com/+++ then press the
-    **Enter** button.
+1. Switch back to Azure OpenAI
+    ![](./media/new11.png)
+   
+2. Click on Overview in the left-sided navigation menu, scroll down to Get Started tile and click on Go to AzureOpenAI Studio button as shown in the below image to open Azure OpenAI Studio in a new browser.
+    ![](./media/new13.png)
+   
+3. In Azure OpenAI Studio **swich the old look**
+   ![](./media/new12.png)
 
-      ![](./media/image68.png)
-
-> **Note**: If you are directed to the **Azure OpenAI Studio** home
-> page, then skip steps from \#2 to \#4, else continue.
-
-2.  In the **Microsoft Azure** window, enter your **Sign-in**
-    credentials, and click on the **Next** button.
-
-      ![](./media/image2.png)
-
-3.  Then, enter the password and click on the **Sign in** button**.**
-
-       ![](./media/image3.png)
-
-4.  In **Stay signed in?** window, click on the **Yes** button.
-
-      ![](./media/image4.png)
-
-5.  On the **Welcome to Azure OpenAI Studio** dialog box, under the
-    **Subscription** field, enter the subscription assigned to you, and
-    in the **Resource** field, select the existing Resource name that
-    you’ve created in Lab \#1, and then click on the **Use resource**
-    button.
-
-      ![](./media/image69.png)
-
-6.  Within few minutes **Azure AI Studio** page will appear.
-
-      ![](./media/image70.png)
-
-7.  On the **Azure AI Studio** homepage, click on **Create new
+4.  On the **Azure AI Studio** homepage, click on **Create new
     deployment** button.
 
       ![](./media/image71.png)
 
-8.  In the **Deployments** page, click on +**Create new deployment**.
+5.  In the **Deployments** page, click on +**Create new deployment**.
 
        ![](./media/image72.png)
 
-9.  Select the **Deployment type** as **Standard,** in the **Deployment
+6.  Select the **Deployment type** as **Standard,** in the **Deployment
     name field**, enter **gpt-35-turbo**, and click on the **Create**
     button. 
 
       ![](./media/image73.png)
-> You will see a notification – **Successfully
-> Created deployment** when the deployment is succeeded. (You can also
-> view the notification by clicking on the bell icon beside **Azure AI |
-> Azure AI Studio)**.
+      You will see a notification – **Successfully
+      Created deployment** when the deployment is succeeded. (You can also
+       view the notification by clicking on the bell icon beside **Azure AI |
+       Azure AI Studio)**.
       ![](./media/image74.png)
 
-10. In the **Deployments** page, click on +**Create new deployment**.
+7. In the **Deployments** page, click on +**Create new deployment**.
 
        ![](./media/image75.png)
 
-11. In the **Deploy model** dialog box, under **Select a model** click
+8. In the **Deploy model** dialog box, under **Select a model** click
     on the dropdown select **text-embedding-ada-002** field, under
     **Deployment type** select **Standard** and under **Deployment
     name** enter **text-embedding-ada-002.** Click on the **Create**
@@ -472,13 +454,13 @@ uses this information to provide a completion.
 
       ![](./media/image76.png)
 
-12. You will see a notification – **Successfully Created deployment**
+9. You will see a notification – **Successfully Created deployment**
     when the deployment is succeeded. (You can also view the
     notification by clicking on the bell icon beside **Cognitive
     Services | Azure OpenAI Studio)**.
 
       ![](./media/image77.png)
-** *Important: ****We strongly recommend using **text-embedding-ada-002
+**Important**:We strongly recommend using **text-embedding-ada-002
 (Version 2**). This model/version provides parity with
 OpenAI's text-embedding-ada-002. To learn more about the improvements
 offered by this model, please refer to [**OpenAI's blog
