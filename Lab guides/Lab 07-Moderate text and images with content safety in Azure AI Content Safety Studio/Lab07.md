@@ -54,7 +54,7 @@ features are available:
 ## **Task 1: Create Azure AI Content Safety resource**
 
 1.  Open your browser, navigate to the address bar, type or paste the
-    following URL:<https://portal.azure.com/> then press the **Enter**
+    following URL:+++https://portal.azure.com/+++ then press the **Enter**
     button.
 
       ![](./media/image1.png)
@@ -66,9 +66,7 @@ features are available:
 
 3.  Then, enter the password and click on the **Sign in** button**.**
 
-> ![A screenshot of a login box Description automatically
-> generated](./media/image3.png)
-
+    ![](./media/image3.png)
 4.  In **Stay signed in?** window, click on the **Yes** button.
 
      ![](./media/image4.png)
@@ -97,7 +95,14 @@ features are available:
     enter the following details and click on the
     **Review+create**button.
 
-[TABLE]
+    |    |   |
+    |----|---|
+    |Subscription|	Select your subscription|
+    |Resource group|	Click on Create new> enter AOAI-RGXXX(XXX can be a unique number, you can add more digits after XX to make the name unique|
+    |Region	|Select East US|
+    |Name	|+++AOAI-ContentSafetyXX+++ (XX can be unique number)|
+    |Pricing tier	|Select Free|
+
      ![](./media/image9.png)
 
 9.  In the **Review+submit** tab, once the Validation is Passed, click
