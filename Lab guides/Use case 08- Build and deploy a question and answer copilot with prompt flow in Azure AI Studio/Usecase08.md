@@ -84,40 +84,47 @@ using AI Studio for resource creation.
 
       ![](./media/image6.png)
 
-[TABLE]
 
 7.  On the **Azure AI** Create a search service page, provide the
     following information and click on **Next: Storage** button.
 
-      ![](./media/image7.png)
+    |   |   |
+    |---|---|
+    |Field|	Description|
+    |Subscription	|Select your Azure OpenAI subscription|
+    |Resource group|	Click on Create new> enter +++AOAI-RGXX+++(XX can be a unique number, you can add more digits after XX to make the name unique)|
+    |Region|	For this lab, you will use a GPT-4 model. This model is currently only available in certain regions. Please select a region from this list, In this lab East US 2 is using for this resource.|
+    |Name	|+++Copilot-AzureAIXX+++ (XXcan be unique number)|
 
-8.  In the **Storage** tab, leave all in the default state, and click on
+     ![](./media/image7.png)
+
+9.  In the **Storage** tab, leave all in the default state, and click on
     the **Next: Networking** button.
 
       ![](./media/image8.png)
 
-9.  In the **Networking** tab, select the Public radio buttons, and
+10.  In the **Networking** tab, select the Public radio buttons, and
     click on the **Next: Encryption** button.
 
       ![](./media/image9.png)
 
-10. In the **Encryption** tab, click the check box on
+11. In the **Encryption** tab, click the check box on
     **Microsoft-managed keys** , and click on the **Next: Identity**
     button.
 
       ![](./media/image10.png)
 
-11. In the **Identity** tab, leave all the fields in the default state,
+12. In the **Identity** tab, leave all the fields in the default state,
     and click on the **Review+create** button.
 
       ![](./media/image11.png)
 
-12. In the **Review+submit** tab, once the Validation is Passed, click
+13. In the **Review+submit** tab, once the Validation is Passed, click
     on the **Create** button.
 
       ![](./media/image12.png)
 
-13. After the deployment is completed, click on the **Go to resource**
+14. After the deployment is completed, click on the **Go to resource**
     button.
 
      ![](./media/image13.png)
@@ -213,8 +220,15 @@ using AI Studio for resource creation.
 
 5.  On the **Create a search service** page, provide the following
     information and click on **Review+create** button.
+    |  |  |
+    |----|----|
+    |Field	|Description|
+    |Subscription|	Select your Azure OpenAI subscription|
+    |Resource group|	Select your Resource group(that you have created in Task 1)|
+    |Region|	East US|
+    |Name|	+++mysearchserviceXX+++  (XXcan be unique number)|
+    |Pricing Tier|	Click on change Price Tire>select Basic|
 
-[TABLE]
      ![](./media/image31.png)
      ![](./media/image32.png)
      ![](./media/image33.png)
@@ -317,7 +331,12 @@ To create a compute instance in Azure AI Studio:
 3.  In **Create compute instance** pane, enter the following details and
     click on **Next** button.
 
-[TABLE]
+    |   |  |
+    |----|----|
+    |Compute name|	copilotcomputeXX(XX can be a unique number)|
+    |Virtual machine type|	CPU|
+    |Virtual machine size	|Select from recommended options                                                                                                         •	Standard_E4ds_v44 cores, 32GB RAM, 150GB storage|
+
       ![](./media/image51.png)
 
 4.  In **Scheduling** pane, click on **Add schedule** and leave all the
@@ -422,7 +441,7 @@ model to help it better answer questions about your products.
     hiking shoes.
 
      ![](./media/image71.png)
->
+
 > In the task, you'll add your data to the model to help it answer
 > questions about your products.
 
@@ -498,9 +517,7 @@ your Azure subscription.
 11. In the **Chat session** section, enter the following prompt in the
     **User message** text box and click on the **Send** icon
 
-CodeCopy
-
-+++How much do the TrailWalker hiking shoes cost+++
+ +++How much do the TrailWalker hiking shoes cost+++
      ![](./media/image87.png)
 
 12. You can expand the **references** button to see the data that was
@@ -510,10 +527,10 @@ CodeCopy
 
 ## **Task 7: Create a prompt flow from the playground**
 
-1.  Select **P**r**ompt flow** from the menu above the **Chat
+1.  Select **Prompt flow** from the menu above the **Chat
     playground** pane.
 
-> ![](./media/image89.png)
+    ![](./media/image89.png)
 
 2.  Enter a folder name for your prompt flow as +++**Contoso outdoor
     flow+++** . Then select **Open**. Azure AI Studio exports the
@@ -612,7 +629,7 @@ customer information to the flow.
       ![](./media/image104.png)
 
 ** Note:** The embedding model is listed with other model deployments in
-the Deployments page.
+    the Deployments page.
 
 11. Review the details you entered, and select **Create**.
 
@@ -663,7 +680,7 @@ follow these steps to add the customer info to the flow:
 
      ![](./media/image114.png)
 
-7.  Name the new node +++**queryCustomerIndex+++** and select **Add**.
+7.  Name the new node +++queryCustomerIndex+++ and select **Add**.
 
      ![](./media/image115.png)
 
@@ -684,13 +701,26 @@ follow these steps to add the customer info to the flow:
 11. In the **Generate** dialog, Select or enter the following values and
     Select **Save** to save the settings.
 
-[TABLE]
+    |Name	|Value|
+    |---|---|
+    |acs_index_connection|	The name of your Azure AI Search service connection (such as mysearchserviceXX)|
+    |acs_index_name|	customer-info|
+    |acs_content_field|	content|
+    |acs_metadata_field	|meta_json_string|
+    |semantic_configuration	|azuremldefault|
+    |embedding_type	|None|
+
      ![](./media/image118.png)
 
 12. Select or enter the following values for
     the **queryCustomerIndex** node
 
-[TABLE]
+    |  |  |
+    |---|---|
+    |Name	|Value|
+    |queries	|${extractSearchIntent.output}|
+    |query_type|	Keyword|
+    |top	|5|
 
 13. You can see the **queryCustomerIndex node** is connected to the
     **extractSearchIntent** node in the graph
@@ -753,31 +783,31 @@ you need to connect the customer info to the flow.
     create similar nodes for the customer info. Rename the new
     nodes **chunkCustomerDocuments** and **selectCustomerChunks** respectively.Simllarly
     like below code
- ```
-- name: chunkCustomerDocuments
-  type: python
-  source:
-    type: code
-    path: chunkProductDocuments.py
-  inputs:
-    data_source: Azure AI Search
-    max_tokens: 1050
-    queries: ${extractSearchIntent.output}
-    query_type: Hybrid (vector + keyword)
-    results: ${queryCustomerIndex.output}
-    top_k: 5
-  use_variants: false
-- name: selectCustomerChunks
-  type: python
-  source:
-    type: code
-    path: filterChunks.py
-  inputs:
-    min_score: 0.3
-    results: ${chunkCustomerDocuments.output}
-    top_k: 5
-  use_variants: false
-```
+    ```
+    - name: chunkCustomerDocuments
+      type: python
+      source:
+        type: code
+        path: chunkProductDocuments.py
+      inputs:
+        data_source: Azure AI Search
+        max_tokens: 1050
+        queries: ${extractSearchIntent.output}
+        query_type: Hybrid (vector + keyword)
+        results: ${queryCustomerIndex.output}
+        top_k: 5
+      use_variants: false
+    - name: selectCustomerChunks
+      type: python
+      source:
+        type: code
+        path: filterChunks.py
+      inputs:
+        min_score: 0.3
+        results: ${chunkCustomerDocuments.output}
+        top_k: 5
+      use_variants: false
+    ```
    ![](./media/image133.png)
 
 14. Within the **chunkCustomerDocuments** node, replace
@@ -796,243 +826,243 @@ you need to connect the customer info to the flow.
 
      ![](./media/image136.png)
  
-> By now, the **flow.dag.yaml** file should include nodes (among others)
-> that look similar to the following:
+   By now, the **flow.dag.yaml** file should include nodes (among others)
+   that look similar to the following:
 
-```
-id: template_chat_flow
-name: Template Chat Flow
-inputs:
-  chat_history:
-    type: list
-    default: []
-    is_chat_input: false
-    is_chat_history: true
-  query:
-    type: string
-    default: ""
-    is_chat_input: true
-outputs:
-  reply:
-    type: string
-    reference: ${generateReply.output}
-    is_chat_output: true
-  documents:
-    type: string
-    reference: ${aggregateChunks.output}
-    is_chat_output: false
-nodes:
-- name: formatRewriteIntentInputs
-  type: python
-  source:
-    type: code
-    path: formatConversationForIntentRewriting.py
-  inputs:
-    history: ${inputs.chat_history}
-    max_tokens: 2000
-    query: ${inputs.query}
-  use_variants: false
-- name: rewriteIntent
-  type: llm
-  source:
-    type: code
-    path: ragcore/prompt_templates/rewriteIntent.jinja2
-  inputs:
-    deployment_name: gpt-4
-    temperature: 0.7
-    top_p: 0.95
-    max_tokens: 120
-    presence_penalty: 0
-    frequency_penalty: 0
-    conversation: ${formatRewriteIntentInputs.output}
-  provider: AzureOpenAI
-  connection: copilotazureai3640805165_aoai
-  api: chat
-  module: promptflow.tools.aoai
-  use_variants: false
-- name: extractSearchIntent
-  type: python
-  source:
-    type: code
-    path: extractSearchIntent.py
-  inputs:
-    intent: ${rewriteIntent.output}
-  use_variants: false
-- name: queryProductIndex
-  type: python
-  source:
-    type: package
-    tool: promptflow_vectordb.tool.common_index_lookup.search
-  inputs:
-    mlindex_content: >
-      embeddings:
-        api_base: https://copilotazureai3640805165.openai.azure.com
-        api_type: Azure
-        api_version: 2023-07-01-preview
-        batch_size: '16'
-        connection:
-          id: >-
-            /subscriptions/2ad97659-df19-4123-ab60-775764ea635a/resourceGroups/AOAI-RG351/providers/Microsoft.MachineLearningServices/workspaces/contoso-outdoor-proj/connections/copilotazureai3640805165_aoai
-        connection_type: workspace_connection
-        deployment: text-embedding-ada-002
-        dimension: 1536
-        file_format_version: '2'
-        kind: open_ai
-        model: text-embedding-ada-002
-        schema_version: '2'
-      index:
-        api_version: 2023-07-01-preview
-        connection:
-          id: >-
-            /subscriptions/2ad97659-df19-4123-ab60-775764ea635a/resourceGroups/AOAI-RG351/providers/Microsoft.MachineLearningServices/workspaces/contoso-outdoor-proj/connections/mysearchservice345
-        connection_type: workspace_connection
-        endpoint: https://mysearchservice345.search.windows.net/
-        engine: azure-sdk
-        field_mapping:
-          content: content
-          embedding: contentVector
-          filename: filepath
-          metadata: meta_json_string
-          title: title
-          url: url
-        index: product-info
-        kind: acs
-        semantic_configuration_name: azureml-default
-    queries: ${extractSearchIntent.output}
-    query_type: Hybrid (vector + keyword)
-    top_k: 5
-  use_variants: false
-- name: chunkCustomerDocuments
-  type: python
-  source:
-    type: code
-    path: chunkProductDocuments.py
-  inputs:
-    data_source: Azure AI Search
-    max_tokens: 1050
-    queries: ${extractSearchIntent.output}
-    query_type: Hybrid (vector + keyword)
-    results: ${queryCustomerIndex.output}
-    top_k: 5
-  use_variants: false
-- name: selectCustomerChunks
-  type: python
-  source:
-    type: code
-    path: filterChunks.py
-  inputs:
-    min_score: 0.3
-    results: ${chunkCustomerDocuments.output}
-    top_k: 5
-  use_variants: false
-- name: chunkProductDocuments
-  type: python
-  source:
-    type: code
-    path: chunkProductDocuments.py
-  inputs:
-    data_source: Azure AI Search
-    max_tokens: 1050
-    queries: ${extractSearchIntent.output}
-    query_type: Hybrid (vector + keyword)
-    results: ${queryProductIndex.output}
-    top_k: 5
-  use_variants: false
-- name: selectProductChunks
-  type: python
-  source:
-    type: code
-    path: filterChunks.py
-  inputs:
-    min_score: 0.3
-    results: ${chunkProductDocuments.output}
-    top_k: 5
-  use_variants: false
-- name: shouldGenerateReply
-  type: python
-  source:
-    type: code
-    path: shouldGenerateReply.py
-  inputs:
-    chunks: ${aggregateChunks.output}
-    queries: ${extractSearchIntent.output}
-  use_variants: false
-- name: formatGenerateReplyInputs
-  type: python
-  source:
-    type: code
-    path: formatReplyInputs.py
-  inputs:
-    chunks: ${aggregateChunks.output}
-    history: ${inputs.chat_history}
-    max_conversation_tokens: 2000
-    max_tokens: 5000
-    query: ${inputs.query}
-  use_variants: false
-- name: generateReply
-  type: llm
-  source:
-    type: code
-    path: ragcore/prompt_templates/generateReply.jinja2
-  inputs:
-    inputs: ${formatGenerateReplyInputs.output}
-    deployment_name: gpt-4
-    temperature: 0.7
-    top_p: 0.95
-    max_tokens: 800
-    presence_penalty: 0
-    frequency_penalty: 0
-    indomain: "True"
-    role_info: You are an AI assistant that helps people find information.
-  provider: AzureOpenAI
-  connection: copilotazureai3640805165_aoai
-  api: chat
-  module: promptflow.tools.aoai
-  activate:
-    when: ${shouldGenerateReply.output}
-    is: true
-  use_variants: false
-- name: queryCustomerIndex
-  type: python
-  source:
-    type: package
-    tool: promptflow_vectordb.tool.common_index_lookup.search
-  inputs:
-    mlindex_content: >
-      embeddings:
-        kind: none
-        schema_version: '2'
-      index:
-        api_version: 2023-07-01-preview
-        connection:
-          id: /subscriptions/2ad97659-df19-4123-ab60-775764ea635a/resourceGroups/AOAI-RG351/providers/Microsoft.MachineLearningServices/workspaces/contoso-outdoor-proj/connections/mysearchservice345
-        connection_type: workspace_connection
-        endpoint: https://mysearchservice345.search.windows.net/
-        engine: azure-sdk
-        field_mapping:
-          content: content
-          embedding: null
-          metadata: meta_json_string
-        index: customer-info
-        kind: acs
-        semantic_configuration_name: azureml-default
-    queries: ${extractSearchIntent.output}
-    query_type: Keyword
-    top_k: 5
-  use_variants: false
-- name: aggregateChunks
-  type: python
-  source:
-    type: code
-    path: aggregateChunks.py
-  inputs:
-    input1: ${selectProductChunks.output}
-    input2: ${selectCustomerChunks.output}
-  use_variants: false
-node_variants: {}
-environment:
-  python_requirements_txt: requirements.txt
-```
+    ```
+    id: template_chat_flow
+    name: Template Chat Flow
+    inputs:
+      chat_history:
+        type: list
+        default: []
+        is_chat_input: false
+        is_chat_history: true
+      query:
+        type: string
+        default: ""
+        is_chat_input: true
+    outputs:
+      reply:
+        type: string
+        reference: ${generateReply.output}
+        is_chat_output: true
+      documents:
+        type: string
+        reference: ${aggregateChunks.output}
+        is_chat_output: false
+    nodes:
+    - name: formatRewriteIntentInputs
+      type: python
+      source:
+        type: code
+        path: formatConversationForIntentRewriting.py
+      inputs:
+        history: ${inputs.chat_history}
+        max_tokens: 2000
+        query: ${inputs.query}
+      use_variants: false
+    - name: rewriteIntent
+      type: llm
+      source:
+        type: code
+        path: ragcore/prompt_templates/rewriteIntent.jinja2
+      inputs:
+        deployment_name: gpt-4
+        temperature: 0.7
+        top_p: 0.95
+        max_tokens: 120
+        presence_penalty: 0
+        frequency_penalty: 0
+        conversation: ${formatRewriteIntentInputs.output}
+      provider: AzureOpenAI
+      connection: copilotazureai3640805165_aoai
+      api: chat
+      module: promptflow.tools.aoai
+      use_variants: false
+    - name: extractSearchIntent
+      type: python
+      source:
+        type: code
+        path: extractSearchIntent.py
+      inputs:
+        intent: ${rewriteIntent.output}
+      use_variants: false
+    - name: queryProductIndex
+      type: python
+      source:
+        type: package
+        tool: promptflow_vectordb.tool.common_index_lookup.search
+      inputs:
+        mlindex_content: >
+          embeddings:
+            api_base: https://copilotazureai3640805165.openai.azure.com
+            api_type: Azure
+            api_version: 2023-07-01-preview
+            batch_size: '16'
+            connection:
+              id: >-
+                /subscriptions/2ad97659-df19-4123-ab60-775764ea635a/resourceGroups/AOAI-RG351/providers/Microsoft.MachineLearningServices/workspaces/contoso-outdoor-proj/connections/copilotazureai3640805165_aoai
+            connection_type: workspace_connection
+            deployment: text-embedding-ada-002
+            dimension: 1536
+            file_format_version: '2'
+            kind: open_ai
+            model: text-embedding-ada-002
+            schema_version: '2'
+          index:
+            api_version: 2023-07-01-preview
+            connection:
+              id: >-
+                /subscriptions/2ad97659-df19-4123-ab60-775764ea635a/resourceGroups/AOAI-RG351/providers/Microsoft.MachineLearningServices/workspaces/contoso-outdoor-proj/connections/mysearchservice345
+            connection_type: workspace_connection
+            endpoint: https://mysearchservice345.search.windows.net/
+            engine: azure-sdk
+            field_mapping:
+              content: content
+              embedding: contentVector
+              filename: filepath
+              metadata: meta_json_string
+              title: title
+              url: url
+            index: product-info
+            kind: acs
+            semantic_configuration_name: azureml-default
+        queries: ${extractSearchIntent.output}
+        query_type: Hybrid (vector + keyword)
+        top_k: 5
+      use_variants: false
+    - name: chunkCustomerDocuments
+      type: python
+      source:
+        type: code
+        path: chunkProductDocuments.py
+      inputs:
+        data_source: Azure AI Search
+        max_tokens: 1050
+        queries: ${extractSearchIntent.output}
+        query_type: Hybrid (vector + keyword)
+        results: ${queryCustomerIndex.output}
+        top_k: 5
+      use_variants: false
+    - name: selectCustomerChunks
+      type: python
+      source:
+        type: code
+        path: filterChunks.py
+      inputs:
+        min_score: 0.3
+        results: ${chunkCustomerDocuments.output}
+        top_k: 5
+      use_variants: false
+    - name: chunkProductDocuments
+      type: python
+      source:
+        type: code
+        path: chunkProductDocuments.py
+      inputs:
+        data_source: Azure AI Search
+        max_tokens: 1050
+        queries: ${extractSearchIntent.output}
+        query_type: Hybrid (vector + keyword)
+        results: ${queryProductIndex.output}
+        top_k: 5
+      use_variants: false
+    - name: selectProductChunks
+      type: python
+      source:
+        type: code
+        path: filterChunks.py
+      inputs:
+        min_score: 0.3
+        results: ${chunkProductDocuments.output}
+        top_k: 5
+      use_variants: false
+    - name: shouldGenerateReply
+      type: python
+      source:
+        type: code
+        path: shouldGenerateReply.py
+      inputs:
+        chunks: ${aggregateChunks.output}
+        queries: ${extractSearchIntent.output}
+      use_variants: false
+    - name: formatGenerateReplyInputs
+      type: python
+      source:
+        type: code
+        path: formatReplyInputs.py
+      inputs:
+        chunks: ${aggregateChunks.output}
+        history: ${inputs.chat_history}
+        max_conversation_tokens: 2000
+        max_tokens: 5000
+        query: ${inputs.query}
+      use_variants: false
+    - name: generateReply
+      type: llm
+      source:
+        type: code
+        path: ragcore/prompt_templates/generateReply.jinja2
+      inputs:
+        inputs: ${formatGenerateReplyInputs.output}
+        deployment_name: gpt-4
+        temperature: 0.7
+        top_p: 0.95
+        max_tokens: 800
+        presence_penalty: 0
+        frequency_penalty: 0
+        indomain: "True"
+        role_info: You are an AI assistant that helps people find information.
+      provider: AzureOpenAI
+      connection: copilotazureai3640805165_aoai
+      api: chat
+      module: promptflow.tools.aoai
+      activate:
+        when: ${shouldGenerateReply.output}
+        is: true
+      use_variants: false
+    - name: queryCustomerIndex
+      type: python
+      source:
+        type: package
+        tool: promptflow_vectordb.tool.common_index_lookup.search
+      inputs:
+        mlindex_content: >
+          embeddings:
+            kind: none
+            schema_version: '2'
+          index:
+            api_version: 2023-07-01-preview
+            connection:
+              id: /subscriptions/2ad97659-df19-4123-ab60-775764ea635a/resourceGroups/AOAI-RG351/providers/Microsoft.MachineLearningServices/workspaces/contoso-outdoor-proj/connections/mysearchservice345
+            connection_type: workspace_connection
+            endpoint: https://mysearchservice345.search.windows.net/
+            engine: azure-sdk
+            field_mapping:
+              content: content
+              embedding: null
+              metadata: meta_json_string
+            index: customer-info
+            kind: acs
+            semantic_configuration_name: azureml-default
+        queries: ${extractSearchIntent.output}
+        query_type: Keyword
+        top_k: 5
+      use_variants: false
+    - name: aggregateChunks
+      type: python
+      source:
+        type: code
+        path: aggregateChunks.py
+      inputs:
+        input1: ${selectProductChunks.output}
+        input2: ${selectCustomerChunks.output}
+      use_variants: false
+    node_variants: {}
+    environment:
+      python_requirements_txt: requirements.txt
+    ```
 
 **Note**: **flow.dag.yaml** file is available in the C:\Labfiles
 
@@ -1068,21 +1098,21 @@ to aggregate the product and customer info:
 
 4.  Copy and paste the following Python code to replace all contents in
     the **aggregateChunks** code block.
-```
-from promptflow import tool
-from typing import List
-
-@tool
-def aggregate_chunks(input1: List, input2: List) -> str:
-    interleaved_list = []
-    for i in range(max(len(input1), len(input2))):
-        if i < len(input1):
-            interleaved_list.append(input1[i])
-        if i < len(input2):
-            interleaved_list.append(input2[i])
-    return interleaved_list
-```
-   ![](./media/image140.png)
+    ```
+    from promptflow import tool
+    from typing import List
+    
+    @tool
+    def aggregate_chunks(input1: List, input2: List) -> str:
+        interleaved_list = []
+        for i in range(max(len(input1), len(input2))):
+            if i < len(input1):
+                interleaved_list.append(input1[i])
+            if i < len(input2):
+                interleaved_list.append(input2[i])
+        return interleaved_list
+    ```
+     ![](./media/image140.png)
 
 5.  Select the **Validate and parse input** button to validate the
     inputs for the **aggregateChunks** node. If the inputs are valid,
@@ -1094,7 +1124,12 @@ def aggregate_chunks(input1: List, input2: List) -> str:
 6.  Edit the **aggregateChunks** node to connect the product and
     customer info. Set the **inputs** to the following values:
 
-[TABLE]
+    |  |  |  |
+    |---|---|--|
+    |Name	|Type|	Value|
+    |input1|	list|	${selectProductChunks.output}|
+    |input2	|list	|${selectCustomerChunks.output}|
+
      ![](./media/image142.png)
 
 7.  Select the **shouldGenerateReply** node from the graph. Select or
@@ -1201,9 +1236,9 @@ the deployed flow.
 1.  To view the status of your deployment AI studio,
     select **Deployments** from the left navigation.
 
-      ![](./media/image157.png)
+    ![](./media/image157.png)
  
-       ![](./media/image158.png)
+    ![](./media/image158.png)
 
 2.  Select the contoso-outdoor-proj deployment. If you see a message
     that says "Currently this endpoint has no deployments" or the State
@@ -1238,8 +1273,8 @@ the deployed flow.
 5.  Select **Question and answer without context** from the scenario
     options.
 
-6.  Select the flow to evaluate. In this example, select ***Contoso
-    outdoor flow*** or whatever you named your flow. Then
+6.  Select the flow to evaluate. In this example, select **Contoso
+    outdoor flow** or whatever you named your flow. Then
     select **Next**.
 
       ![](./media/image164.png)
@@ -1260,8 +1295,13 @@ the deployed flow.
     values for each data set mapping for prompt flow.
 
 10. Select **Next**.
+    
+    |   |  |
+    |-----|----|
+    |Name|	Description	Type	Data source|
+    |chat_history|	The chat history	list	${data.chat_history}|
+    |query	|The query	string	${data.question}|
 
-[TABLE]
      ![](./media/image167.png)
 
 11. Select the metrics you want to use to evaluate your flow. In this
@@ -1285,7 +1325,13 @@ Then return to this step and select the model you deployed.
     the dataset to the evaluation properties and click on **Next**
     button.
 
-[TABLE]
+    |  |  |  |   |
+    |---|---|---|----|
+    |Name|	Description|	Type|	Data source|
+    |question	|A query seeking specific information.	|string	|${data.question}|
+    |answer	|The response to question generated by the model as answer.|	string|	${run.outputs.reply}|
+    |documents|	String with context from retrieved documents.|	string|	${run.outputs.documents}|
+
      ![](./media/image169.png)
 
 14. Review the evaluation details and then select **Submit**. You're
@@ -1295,9 +1341,7 @@ Then return to this step and select the model you deployed.
 
 ## **Task 4: View the evaluation status and results**
 
-1.  After you [create an
-    evaluation](https://learn.microsoft.com/en-us/azure/ai-studio/tutorials/deploy-copilot-ai-studio#create-an-evaluation),
-    if you aren't there already go to the **Evaluation**. On
+1.  After you, if you aren't there already go to the **Evaluation**. On
     the **Metric evaluations** page, you can see the evaluation status
     and the metrics that you selected. You might need to
     select **Refresh** after a couple of minutes to see
