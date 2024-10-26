@@ -49,7 +49,15 @@ processing.
 4.  On the **Create a search service** page, provide the following
     information and click on **Review+create** button.
 
-[TABLE]
+    |Field|	Description|
+    |---|---|
+    |Subscription|	Select the subscription assigned to|
+    |Resource group	|Click on Create new> enter AOAI-RGXXX(XXX can be a unique number)|
+    |Resource group location|	West US|
+    |Name|+++bingsearchaoaiXX+++(XXcan be unique number)|
+    |Pricing Tier|	F1|
+    |Select the check box	|I confirm I have read and understood the notice above|
+
     ![](./media/image4.png)
    ![](./media/image5.png)
 
@@ -100,40 +108,48 @@ processing.
 
 5.  In the **Create Azure OpenAI** window, under the **Basics** tab,
     enter the following details and click on the **Next** button.
+    |   |   |
+    |----|----|
+    |Subscription	|Select the assigned subscription|
+    |Resource group|	Select resource group which you have created in Task 1|
+    |Region|For this lab, you will use a GPT-4 model. This model is currently only available in certain regions. Please select a region from this list, In this lab Sweden Central is using for this resource|
+    |Name|+++AzureOpenAI-AssistantsXX+++ (XX can be a unique number, you can add more digits after XX to make the name unique) |
+    |Pricing tier|	Select Standard S0|
 
-[TABLE]
      ![](./media/image14.png)
 
-6.  In the **Network** tab, leave all the radio buttons in the default
+7.  In the **Network** tab, leave all the radio buttons in the default
     state, and click on the **Next** button.
 
       ![](./media/image15.png)
 
-7.  In the **Tags** tab, leave all the fields in the default state, and
+8.  In the **Tags** tab, leave all the fields in the default state, and
     click on the **Next** button.
 
       ![](./media/image16.png)
 
-8.  In the **Review+submit** tab, once the Validation is Passed, click
+9.  In the **Review+submit** tab, once the Validation is Passed, click
     on the **Create** button.
 
       ![](./media/image17.png)
 
-9.  Wait for the deployment to complete. The deployment will take around
+10.  Wait for the deployment to complete. The deployment will take around
     **2-3** minutes.
 
-10. On **Microsoft.CognitiveServicesOpenAI** window, after the
+11. On **Microsoft.CognitiveServicesOpenAI** window, after the
     deployment is completed, click on the **Go to resource** button.
 
       ![](./media/image18.png)
 
-11. Click on **Keys and Endpoints** from the left navigation menu and
+12. Click on **Keys and Endpoints** from the left navigation menu and
     then copy the endpoint value in a notepad to **AzureAI ENDPOINT**
     and key to a variable **AzureAIKey**.
 
       ![](./media/image19.png)
 
 ## Task 3: Deploying an Azure OpenAI models
+
+[!Alert] Important: If you’re in the new Azure OpenAI Studio, switch to the old look of Azure OpenAI Studio.
 
 1.  On the **AzureOpenAI-AssistantsXX** window, click on **Overview** in
     the left navigation menu, then under the **Get Started** tab, click
@@ -154,14 +170,14 @@ processing.
 4.  In the **Deploy model dialog** box, enter the following details and
     click on the **Create** button.
 
-- Select Model: **gpt-4**
+    - Select Model: **gpt-4**
+    
+    - Model Version**: 1106-Preview**
+    
+    - Deployment Name: enter +++gpt-4+++
 
-- Model Version**: 1106-Preview**
-
-- Deployment Name: enter +++gpt-4+++
-
-- Select the **Advanced options** and select the **Standard** as
-  **Deployment type**
+    - Select the **Advanced options** and select the **Standard** as
+      **Deployment type**
       ![](./media/image23.png)
 
 5.  You will see a notification stating **Successfully Created
@@ -221,28 +237,28 @@ processing.
 
 3.  From the Assistant setup pane enter the below details
 
-- Assistant a name: **Math Assist**
-
-- Instructions: Enter the following instructions !!**You are an AI
-  assistant that can write code to help answer math questions**!!
-
-- Deployment: **gpt-4**
-
-- Select the toggle **enabling code interpreter**
+      - Assistant a name: **Math Assist**
+      
+      - Instructions: Enter the following instructions !!**You are an AI
+        assistant that can write code to help answer math questions**!!
+      
+      - Deployment: **gpt-4**
+      
+      - Select the toggle **enabling code interpreter**
       ![](./media/image32.png)
 
 4.  Under the Assistant setup click on **Save**
 
       ![](./media/image33.png)
 
-5.  Enter a question for the assistant to answer: !!**I need to solve
-    the equation 3x + 11 = 14. Can you help me?**!!
+5.  Enter a question for the assistant to answer: +++I need to solve
+    the equation 3x + 11 = 14. Can you help me?+++
 
 6.  Select the **Add and run button** .
 
      ![](./media/image34.png)
 
-    ![](./media/image35.png)
+      ![](./media/image35.png)
 
 While we can see that answer is correct, to confirm that the model used
 code interpreter to get to this answer, and that the code it wrote is
@@ -319,7 +335,7 @@ grounding.
 8.  Update the parameters ,replace **Azure OpenAI Endpoint, Azure OpenAI
     Key(**The values that you have saved in your notepad in the **Task
     2), Bing search subscription key** with the values that you have
-    saved in your notepad in the **Task 1 .**
+    saved in your notepad in the **Task 1**
      ![](./media/image46.png)
      ![](./media/image47.png)
 
