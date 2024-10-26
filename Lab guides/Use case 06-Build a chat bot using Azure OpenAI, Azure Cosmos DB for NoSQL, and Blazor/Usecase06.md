@@ -78,15 +78,14 @@ template to Azure with both of these accounts.
 
       ![](./media/image9.jpeg)
 
-You should get a success message for the file upload.
-
+    You should get a success message for the file upload.
      ![](./media/image10.jpeg)
+     
 7.  Create a new shell variable named **resourceGroupName** with the
     name of the Azure resource group that you create
     (mslearn-cosmos-openai).
 
 +++resourceGroupName="mslearn-cosmos-openai"+++
-
       ![](./media/image11.jpeg)
 
 8.  Create a resource group using the **az group create** command. Then,
@@ -222,32 +221,32 @@ dotnet build
 2.  This code block creates a new string variable named
     \_systemPromptText with a static block of text to send to the AI
     assistant before each prompt.
-```
-private readonly string _systemPrompt = @"
-    You are an AI assistant that helps people find information.
-    Provide concise answers that are polite and professional." + Environment.NewLine;
-```
+    ```
+    private readonly string _systemPrompt = @"
+        You are an AI assistant that helps people find information.
+        Provide concise answers that are polite and professional." + Environment.NewLine;
+    ```
 
 3.  This code block creates another new string variable named
     _summarizePrompt with a static block of text to send to the AI
     assistant with instructions on how to summarize a conversation.
-```
-private readonly string _summarizePrompt = @"
-    Summarize this prompt in one or two words to use as a label in a button on a web page.
-    Do not use any punctuation." + Environment.NewLine;
-```
+    ```
+    private readonly string _summarizePrompt = @"
+        Summarize this prompt in one or two words to use as a label in a button on a web page.
+        Do not use any punctuation." + Environment.NewLine;
+    ```
 
 4.  This code block creates a new instance of the OpenAIClient class
     using the endpoint to build a Uri and the key to build an
     AzureKeyCredential.
-```
-Uri uri = new(endpoint);
-    AzureKeyCredential credential = new(key);
-    _client = new(
-        endpoint: uri,
-        keyCredential: credential
-    );
-```
+    ```
+    Uri uri = new(endpoint);
+        AzureKeyCredential credential = new(key);
+        _client = new(
+            endpoint: uri,
+            keyCredential: credential
+        );
+    ```
 
 ### **Task 2: Ask the AI model a question**
 
@@ -261,41 +260,41 @@ completion in this context).
     ChatCompletionsOptions. Adds the two message variables to the
     Messages list and sets the value of User to the sessionId
     constructor parameter.
-```
-ChatCompletionsOptions options = new()
-    {
-        DeploymentName = "chatmodel",
-        Messages = {
-            new ChatRequestSystemMessage(_systemPrompt),
-            new ChatRequestUserMessage(userPrompt)
-        },
-        User = sessionId,
-        MaxTokens = 4000,
-        Temperature = 0.3f,
-        NucleusSamplingFactor = 0.5f,
-        FrequencyPenalty = 0,
-        PresencePenalty = 0
-    };
-```
+      ```
+      ChatCompletionsOptions options = new()
+          {
+              DeploymentName = "chatmodel",
+              Messages = {
+                  new ChatRequestSystemMessage(_systemPrompt),
+                  new ChatRequestUserMessage(userPrompt)
+              },
+              User = sessionId,
+              MaxTokens = 4000,
+              Temperature = 0.3f,
+              NucleusSamplingFactor = 0.5f,
+              FrequencyPenalty = 0,
+              PresencePenalty = 0
+          };
+      ```
 2.  The GetChatCompletionsAsync method of the Azure OpenAI client
     variable (\_client) is invoked Asynchronously. The result is stored
     in a variable named completions of type ChatCompletions.
-```
-Response<ChatCompletions> completionsResponse = await_client.GetChatCompletionsAsync(options);
-
-ChatCompletions completions = completionsResponse.Value;
-```
+    ```
+    Response<ChatCompletions> completionsResponse = await_client.GetChatCompletionsAsync(options);
+    
+    ChatCompletions completions = completionsResponse.Value;
+    ```
 
 3.  Finally, the below block of code, returns a tuple as the result of
     the GetChatCompletionAsync method with the content of the completion
     as a string, the number of tokens associated with the prompt, and
     the number of tokens for the response.
-```
-return (
-        completionText: completions.Choices[0].Message.Content,
-        completionTokens: completions.Usage.CompletionTokens
-    );
-```
+    ```
+    return (
+            completionText: completions.Choices[0].Message.Content,
+            completionTokens: completions.Usage.CompletionTokens
+        );
+    ```
 
 ### **Task 3: Ask the AI model to summarize a conversation**
 
@@ -307,36 +306,35 @@ conversation in a couple of words.
     options with the two message variables in the Messages list, User
     set to the sessionId constructor parameter, MaxTokens set to 200,
     and the remaining properties.
-```
-ChatCompletionsOptions options = new()
-    {
-         DeploymentName = "chatmodel",
-        Messages = {
-             new ChatRequestSystemMessage(_systemPrompt),
-            new ChatRequestUserMessage(conversationText)
-        },
-        User = sessionId,
-        MaxTokens = 200,
-        Temperature = 0.0f,
-        NucleusSamplingFactor = 1.0f,
-        FrequencyPenalty = 0,
-        PresencePenalty = 0
-    };
-```
+    ```
+    ChatCompletionsOptions options = new()
+        {
+             DeploymentName = "chatmodel",
+            Messages = {
+                 new ChatRequestSystemMessage(_systemPrompt),
+                new ChatRequestUserMessage(conversationText)
+            },
+            User = sessionId,
+            MaxTokens = 200,
+            Temperature = 0.0f,
+            NucleusSamplingFactor = 1.0f,
+            FrequencyPenalty = 0,
+            PresencePenalty = 0
+        };
+    ```
 2.  The below code invokes the \_client.GetChatCompletionsAsync
     asynchronously with the model name (\_modelName) and the options
     variable as parameter and stores the result in a variable named
     completions of type ChatCompletions. It returns the content of the
     completion as a string as the result of the SummarizeAsync method.
-```
-Response<ChatCompletions> completionsResponse = await _client.GetChatCompletionsAsync(options);
-ChatCompletions completions = completionsResponse.Value;
-string completionText = completions.Choices[0].Message.Content;
-return completionText;
-```
+    ```
+    Response<ChatCompletions> completionsResponse = await _client.GetChatCompletionsAsync(options);
+    ChatCompletions completions = completionsResponse.Value;
+    string completionText = completions.Choices[0].Message.Content;
+    return completionText;
+    ```
 
-![A screenshot of a computer program Description automatically
-generated](./media/image32.jpeg)
+    ![](./media/image32.jpeg)
 
 ### **Task 4 - Connect to Azure Cosmos DB for NoSQL**
 
@@ -353,25 +351,25 @@ client required to access Azure Cosmos DB for NoSQL using the client.
     ![](./media/image33.jpeg)
 
 2.  The below code creates a variable named options of type
-```
-CosmosSerializationOptions options = new()
-{
-    PropertyNamingPolicy = CosmosPropertyNamingPolicy.CamelCase
-};
-```  
-
-**Note:** Setting this property will ensure that the JSON produced by
-the SDK is both serialized and deserialized in camel case regardless of
-how it's corresponding property is cased in the .NET class.
+    ```
+    CosmosSerializationOptions options = new()
+    {
+        PropertyNamingPolicy = CosmosPropertyNamingPolicy.CamelCase
+    };
+    ```  
+    
+    **Note:** Setting this property will ensure that the JSON produced by
+    the SDK is both serialized and deserialized in camel case regardless of
+    how it's corresponding property is cased in the .NET class.
 
 3.  The below code creates a new instance of type CosmosClient named
     client using the CosmosClientBuilder class, endpoint, key, and
     serialization options you specified earlier.
-```
-CosmosClient client = new CosmosClientBuilder(endpoint, key)
-    .WithSerializerOptions(options)
-    .Build();
-```
+    ```
+    CosmosClient client = new CosmosClientBuilder(endpoint, key)
+        .WithSerializerOptions(options)
+        .Build();
+    ```
 4.  The below code create a new nullable variable of type Database named
     database by calling the GetDatabase method of the client variable.
 
@@ -379,10 +377,10 @@ CosmosClient client = new CosmosClientBuilder(endpoint, key)
 
 5.  The below code assigns the constructor's container variable to the
     class'
-```
-_container = container ??
-throw new ArgumentException("Unable to connect to existing Azure Cosmos DB container or database.");
-```
+    ```
+    _container = container ??
+    throw new ArgumentException("Unable to connect to existing Azure Cosmos DB container or database.");
+    ```
    ![](./media/image34.jpeg)
 
 ### **Task 5 - Implement the Azure Cosmos DB for NoSQL service**
@@ -423,12 +421,12 @@ differentiate between these types using a simple type field.
 3.  The below code invokes the CreateItemAsync method of the container
     passing in the session parameter and partitionKey variable. Returns
     the response as the result of the InsertSessionAsync method.
-```
-return await _container.CreateItemAsync<Session>(
-    item: session,
-    partitionKey: partitionKey
-); 
-```
+    ```
+    return await _container.CreateItemAsync<Session>(
+        item: session,
+        partitionKey: partitionKey
+    ); 
+    ```
 
 4.  The below code creates a PartitionKey variable using
     session.SessionId as the value of the partition key.Creates a new
@@ -436,15 +434,15 @@ return await _container.CreateItemAsync<Session>(
     updated to the current UTC timestamp. Invoke the CreateItemAsync
     passing in both the new message and partition key variables. Return
     the response as the result of InsertMessageAsync.
-```
-PartitionKey partitionKey = new(message.SessionId);
-Message newMessage = message with { TimeStamp = DateTime.UtcNow };
-return await _container.CreateItemAsync<Message>(
-    item: newMessage,
-    partitionKey: partitionKey
-);
-```
-![](./media/image35.jpeg)
+    ```
+    PartitionKey partitionKey = new(message.SessionId);
+    Message newMessage = message with { TimeStamp = DateTime.UtcNow };
+    return await _container.CreateItemAsync<Message>(
+        item: newMessage,
+        partitionKey: partitionKey
+    );
+    ```
+   ![](./media/image35.jpeg)
 
 ### **Task 6: Retrieve multiple sessions or messages**
 
@@ -462,39 +460,39 @@ queries are here implemented using the .NET SDK and a feed iterator.
     \_container variable passing in the generic type Session and the
     query variable as a parameter. Store the result in a variable of
     type FeedIterator named response.
-```
-QueryDefinition query = new QueryDefinition("SELECT DISTINCT * FROM c WHERE c.type = @type")
-.WithParameter("@type", nameof(Session));
-FeedIterator<Session> response = _container.GetItemQueryIterator<Session>(query);
-```
+    ```
+    QueryDefinition query = new QueryDefinition("SELECT DISTINCT * FROM c WHERE c.type = @type")
+    .WithParameter("@type", nameof(Session));
+    FeedIterator<Session> response = _container.GetItemQueryIterator<Session>(query);
+    ```
 
 2.  The below code within the while loop, asynchronously get the next
     page of results by invoking ReadNextAsync on the response variable
     and then add those results to the list variable named output.
     Outside the while loop, the output variable is returned with a list
     of sessions as the result of the GetSessionsAsync method.
-```
-FeedResponse<Session> results = await response.ReadNextAsync();
-output.AddRange(results);
-return output;
-```
+    ```
+    FeedResponse<Session> results = await response.ReadNextAsync();
+    output.AddRange(results);
+    return output;
+    ```
 
 3.  The below code uses the fluent WithParameter method to assign the
     @sessionId parameter to the session identifier passed in as a
     parameter, and the @type parameter to the name of the Message class.
-```
-QueryDefinition query = new QueryDefinition("SELECT * FROM c WHERE  c.sessionId = @sessionId AND c.type = @type")
-    .WithParameter("@sessionId", sessionId)
-    .WithParameter("@type", nameof(Message));
-```
+    ```
+    QueryDefinition query = new QueryDefinition("SELECT * FROM c WHERE  c.sessionId = @sessionId AND c.type = @type")
+        .WithParameter("@sessionId", sessionId)
+        .WithParameter("@type", nameof(Message));
+    ```
 
 
 4.  Create a FeedIterator\< Message \> using the query variable and the
     GetItemQueryIterator\<\> method.
-```
-FeedIterator<Message> response = _container.GetItemQueryIterator<Message>(query);
-```
-![](./media/image36.jpeg)
+    ```
+    FeedIterator<Message> response = _container.GetItemQueryIterator<Message>(query);
+    ```
+   ![](./media/image36.jpeg)
 
 ## **Exercise 4: Execute the app**
 
@@ -513,26 +511,26 @@ solution.
 
 +++dotnet watch run --non-interactive+++
 
-![](./media/image38.jpeg)
+   ![](./media/image38.jpeg)
 
 3.  Visual Studio Code launches the in-tool simple browser with the web
     application running. In the web application, create a new chat
     session by clicking on **+ Create New Chat** and ask the AI
     assistant a question. Then, close the running web application.
 
-![](./media/image39.jpeg)
+    ![](./media/image39.jpeg)
 
 4.  Paste the following text in the text box and click on
     the **Send** icon.
 
-+++How many wins does it take to promote to the Premier League?+++
+  +++How many wins does it take to promote to the Premier League?+++
     ![](./media/image40.jpeg)
      ![](./media/image41.jpeg)
 
 5.  Paste the following text in the text box and click on
     the **Send** icon.
 
-+++What is Azure OpenAI?+++
+  +++What is Azure OpenAI?+++
     ![](./media/image42.jpeg)
     ![](./media/image43.jpeg)
 
