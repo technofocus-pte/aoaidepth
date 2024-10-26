@@ -51,7 +51,14 @@ the question.
 5.  In the **Create Azure OpenAI** window, under the **Basics** tab,
     enter the following details and click on the **Next** button.
 
-[TABLE]
+    |  |   |
+    |----|---|
+    |Subscription|	Select the assigned subscription|
+    |Resource group|Click on Create new> enter AOAI-RGXX(XX can be a unique number, you can add more digits after XX to make the name unique)|
+    |Region|	Select East US|
+    |Name|	Azure-openai-testXX (XX can be a unique number, you can add more digits after XX to make the name unique) (here, we entered Azure-open-test39)|
+    |Pricing tier	|Select Standard S0|
+
       ![](./media/image6.png)
       ![](./media/image7.png)
 
@@ -160,7 +167,20 @@ the question.
     following details to deploy the custom template and then click on
     **Review + create.**
 
-[TABLE]
+    |   |  |
+    |-----|----|
+    |Subscription	|Select your Azure OpenAI subscription|
+    |Resource group|	Select the Resource group that you’ve created in Task 1|
+    |Resource Prefix	|+++aoaichatsearchXXXX+++(can be a unique name) |
+    |Azure Cognitive Search Sku|	Standard |
+    |Hosting plan Sku	|B3|
+    |OpenAI Name|	Enter your OpenAI name that you have created in Task#1 (here, we entered Azure-openai-test21)|
+    |OpenAI Key|	Enter your OpenAI key that you have saved in your notepad in Task #2|
+    |Open AI Engine|	gpt-4 |
+    |Open AI Deployment Type|	Chat |
+    |Open AI Embeddings Engine Doc	|text-embeddeding-ada-002|
+    |Open AI Embeddings Engine Query	|text-embeddeding-ada-002|
+
       ![](./media/image24.png)
       ![](./media/image25.png)
 
@@ -271,8 +291,8 @@ each paycheck in Contoso Electronics+++
 17. In the **Chat session** section, enter the following prompt, then
     press the **Enter** button and view the response.
 
-**You**: +++How do I file a complaint or appeal with Northwind Health
-Plus?+++
+  **You**: +++How do I file a complaint or appeal with Northwind Health
+  Plus?+++
      ![](./media/image49.png)
 
 18. In the **Chat session** section, click on the **Clear chat** button.
@@ -282,7 +302,7 @@ Plus?+++
 19. In the **Chat session** section, enter the following prompt. then
     press the **Enter** button and view the response.
 
-**You**: +++Does my plan covers my eye exams?+++
+  **You**: +++Does my plan covers my eye exams?+++
       ![](./media/image51.png)
 
 20. Click on **Utils-Document Summary** on the left-hand side.
