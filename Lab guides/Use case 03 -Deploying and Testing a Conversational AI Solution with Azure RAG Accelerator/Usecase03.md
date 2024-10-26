@@ -38,7 +38,6 @@ application that uses natural language processing to interact with and
 query your data. The practical steps will guide you through deploying
 the necessary infrastructure, verifying the resources, testing the
 solution, and cleaning up the environment.
-
      ![](./media/image1.png)
 
 **Objectives**
@@ -71,8 +70,7 @@ solution, and cleaning up the environment.
 
 4.  In **Stay signed in?** window, click on the **Yes** button.
 
-> ![Graphical user interface, application Description automatically
-> generated](./media/image4.png)
+     ![](./media/image4.png)
 
 5.  Open a new browser and enter the following URL in the address bar:
     +++https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fchat-with-your-data-solution-accelerator%2Fmain%2Finfra%2Fmain.json+++
@@ -82,7 +80,11 @@ solution, and cleaning up the environment.
     following details to deploy the custom template and then click on
     **Review + create.**
 
-[TABLE]
+     |   |   |
+     |---|---|
+     |Environment Name|	Enter RAGSolutionXX(XXXcan be a unique name)|
+     |Location|	Select near by available region, in this lab East US is using for this resource|
+
       ![](./media/image5.png)
 
 7.  On **Review + create** tab, once the Validation is Passed, click on
@@ -110,23 +112,23 @@ solution, and cleaning up the environment.
 3.  Make sure the below resource got deployed successfully into East US
     region
 
-- Azure App Service
-
-- Azure Application Insights
-
-- Azure Bot
-
-- Azure OpenAI
-
-- Azure Document Intelligence
-
-- Azure Function App
-
-- Azure Search Service
-
-- Azure Storage Account
-
-- Azure Speech Service
+     - Azure App Service
+     
+     - Azure Application Insights
+     
+     - Azure Bot
+     
+     - Azure OpenAI
+     
+     - Azure Document Intelligence
+     
+     - Azure Function App
+     
+     - Azure Search Service
+     
+     - Azure Storage Account
+     
+     - Azure Speech Service
 
     ![](./media/image10.png)
 
@@ -213,13 +215,12 @@ solution, and cleaning up the environment.
 
       ![](./media/image30.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image31.png)
+      ![](./media/image31.png)
 
 16. In the **Azure AI** web app page, enter the following text and click
     on the **Submit icon** as shown in the below image.
 
-+++Describe in more detail the risks from market volatility+++
+ +++Describe in more detail the risks from market volatility+++
       ![](./media/image32.png)
       ![](./media/image33.png)
 
@@ -231,8 +232,7 @@ generated](./media/image31.png)
 18. In the **Azure AI** web app page, enter the following text and click
     on the **Submit icon** as shown in the below image.
 
-+++How does Woodgrove Financial handle payroll taxes for employees
-outside the U.S.?+++
++++How does Woodgrove Financial handle payroll taxes for employees outside the U.S.?+++
       ![](./media/image35.png)
       ![](./media/image36.png)
 
