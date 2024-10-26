@@ -88,17 +88,17 @@ Service**](https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/man
 5.  In the **Create Azure OpenAI** window, under the **Basics** tab,
     enter the following details and click on the **Next** button.
 
-    1.  **Subscription**: Select the assigned subscription
-
-    2.  **Resource group**: Select **AOAI-RGXX**(that you have created
-        in **Lab 1**)
-
-    3.  **Region**: Select **North Central US**
-
-    4.  **Name**: **AzureOpenAI-FinetuneXX** (XX can be a unique number)
-        (here, we entered **AzureOpenAI-Finetune21**)
-
-    5.  **Pricing tier**: Select **Standard S0**
+      a.  **Subscription**: Select the assigned subscription
+  
+      b.  **Resource group**: Select **AOAI-RGXX**(that you have created
+          in **Lab 1**)
+  
+      c.  **Region**: Select **North Central US**
+  
+      d.  **Name**: **AzureOpenAI-FinetuneXX** (XX can be a unique number)
+          (here, we entered **AzureOpenAI-Finetune21**)
+  
+      e.  **Pricing tier**: Select **Standard S0**
 
        ![](./media/image5.png)
 
@@ -329,22 +329,22 @@ service disruption*.
 1.  In the **Command Prompt**, go to **Labfiles** directory. Set the
     environment variables by running the following commands.
 
-> ***Note:** Update the Key value and Endpoint with the values that you
-> have saved on your notepad in the in **Lab \#1***
+ ***Note:** Update the Key value and Endpoint with the values that you
+ have saved on your notepad in the in **Lab \#1***
   +++setx AZURE_OPENAI_API_KEY "REPLACE_WITH_YOUR_KEY_VALUE_HERE+++
->
-> (here in this lab, we have used the Key1 that you have saved in **Task
-> \#3**
->
-> **setx AZURE_OPENAI_API_KEY "97baXXXXXXXXXXXXXXXXXXXXXX4f94")**
+
+(here in this lab, we have used the Key1 that you have saved in **Task
+ \#3**
+
+ **setx AZURE_OPENAI_API_KEY "97baXXXXXXXXXXXXXXXXXXXXXX4f94")**
 
 +++setx AZURE_OPENAI_ENDPOINT "REPLACE_WITH_YOUR_ENDPOINT_HERE"+++
       ![](./media/image43.png)
 
 2.  **Close** the command prompt.
 
-**Note**: After setting the environment variables, you may need to close
-and reopen Jupyter notebooks.
+  **Note**: After setting the environment variables, you may need to close
+  and reopen Jupyter notebooks.
 
 ### **Task 6: Create a sample dataset**
 
@@ -363,15 +363,15 @@ files **training_set.jsonl** and **validation_set.jsonl** are placed in
 
       ![](./media/image44.png)
 
-**Important Note**: You need to change the current directory to the
-**Labfiles** directory (The command used to move back to the previous
-directory is **cd .. \[space after cd then two dots\],** the command
-used to move to the next directory is **cd \<name of the directory\>)**
+    **Important Note**: You need to change the current directory to the
+    **Labfiles** directory (The command used to move back to the previous
+    directory is **cd .. \[space after cd then two dots\],** the command
+    used to move to the next directory is **cd \<name of the directory\>)**
 
 3.  Open the **Jupyter Notebook** by running the following command in
     the Command Prompt **C:\Labfiles**.
 
-   +++jupyter-lab+++
+    +++jupyter-lab+++
      ![](./media/image45.png)
 
 4.  Under the **Jupyter Notebook**, click on **Python 3(ipykernel**).
@@ -383,30 +383,30 @@ used to move to the next directory is **cd \<name of the directory\>)**
 
 6.  Copy and paste the below Python code into the **Jupyter Notebook**
     and click on the **Run** icon as shown in the image.
-```
-import json
-
-# Load the training set
-with open('training_set.jsonl', 'r', encoding='utf-8') as f:
-    training_dataset = [json.loads(line) for line in f]
-
-# Training dataset stats
-print("Number of examples in training set:", len(training_dataset))
-print("First example in training set:")
-for message in training_dataset[0]["messages"]:
-    print(message)
-
-# Load the validation set
-with open('validation_set.jsonl', 'r', encoding='utf-8') as f:
-    validation_dataset = [json.loads(line) for line in f]
-
-# Validation dataset stats
-print("\nNumber of examples in validation set:", len(validation_dataset))
-print("First example in validation set:")
-for message in validation_dataset[0]["messages"]:
-    print(message)
-```
-   ![](./media/image47.png)
+      ```
+      import json
+      
+      # Load the training set
+      with open('training_set.jsonl', 'r', encoding='utf-8') as f:
+          training_dataset = [json.loads(line) for line in f]
+      
+      # Training dataset stats
+      print("Number of examples in training set:", len(training_dataset))
+      print("First example in training set:")
+      for message in training_dataset[0]["messages"]:
+          print(message)
+      
+      # Load the validation set
+      with open('validation_set.jsonl', 'r', encoding='utf-8') as f:
+          validation_dataset = [json.loads(line) for line in f]
+      
+      # Validation dataset stats
+      print("\nNumber of examples in validation set:", len(validation_dataset))
+      print("First example in validation set:")
+      for message in validation_dataset[0]["messages"]:
+          print(message)
+      ```
+    ![](./media/image47.png)
     ![](./media/image48.png)
 
 7.  Then run some additional code from OpenAI using the tiktoken library
@@ -416,59 +416,59 @@ for message in validation_dataset[0]["messages"]:
 
 8.  Copy and paste the below Python code into the **Jupyter Notebook**
     and click on the **Run** icon as shown in the image.
-```
-# Validate token counts
-
-import json
-import tiktoken
-import numpy as np
-from collections import defaultdict
-
-encoding = tiktoken.get_encoding("cl100k_base") # default encoding used by gpt-4, turbo, and text-embedding-ada-002 models
-
-def num_tokens_from_messages(messages, tokens_per_message=3, tokens_per_name=1):
-    num_tokens = 0
-    for message in messages:
-        num_tokens += tokens_per_message
-        for key, value in message.items():
-            num_tokens += len(encoding.encode(value))
-            if key == "name":
-                num_tokens += tokens_per_name
-    num_tokens += 3
-    return num_tokens
-
-def num_assistant_tokens_from_messages(messages):
-    num_tokens = 0
-    for message in messages:
-        if message["role"] == "assistant":
-            num_tokens += len(encoding.encode(message["content"]))
-    return num_tokens
-
-def print_distribution(values, name):
-    print(f"\n#### Distribution of {name}:")
-    print(f"min / max: {min(values)}, {max(values)}")
-    print(f"mean / median: {np.mean(values)}, {np.median(values)}")
-    print(f"p5 / p95: {np.quantile(values, 0.1)}, {np.quantile(values, 0.9)}")
-
-files = ['training_set.jsonl', 'validation_set.jsonl']
-
-for file in files:
-    print(f"Processing file: {file}")
-    with open(file, 'r', encoding='utf-8') as f:
-        dataset = [json.loads(line) for line in f]
-
-    total_tokens = []
-    assistant_tokens = []
-
-    for ex in dataset:
-        messages = ex.get("messages", {})
-        total_tokens.append(num_tokens_from_messages(messages))
-        assistant_tokens.append(num_assistant_tokens_from_messages(messages))
-
-    print_distribution(total_tokens, "total tokens")
-    print_distribution(assistant_tokens, "assistant tokens")
-    print('*' * 50)   
-```
+    ```
+    # Validate token counts
+    
+    import json
+    import tiktoken
+    import numpy as np
+    from collections import defaultdict
+    
+    encoding = tiktoken.get_encoding("cl100k_base") # default encoding used by gpt-4, turbo, and text-embedding-ada-002 models
+    
+    def num_tokens_from_messages(messages, tokens_per_message=3, tokens_per_name=1):
+        num_tokens = 0
+        for message in messages:
+            num_tokens += tokens_per_message
+            for key, value in message.items():
+                num_tokens += len(encoding.encode(value))
+                if key == "name":
+                    num_tokens += tokens_per_name
+        num_tokens += 3
+        return num_tokens
+    
+    def num_assistant_tokens_from_messages(messages):
+        num_tokens = 0
+        for message in messages:
+            if message["role"] == "assistant":
+                num_tokens += len(encoding.encode(message["content"]))
+        return num_tokens
+    
+    def print_distribution(values, name):
+        print(f"\n#### Distribution of {name}:")
+        print(f"min / max: {min(values)}, {max(values)}")
+        print(f"mean / median: {np.mean(values)}, {np.median(values)}")
+        print(f"p5 / p95: {np.quantile(values, 0.1)}, {np.quantile(values, 0.9)}")
+    
+    files = ['training_set.jsonl', 'validation_set.jsonl']
+    
+    for file in files:
+        print(f"Processing file: {file}")
+        with open(file, 'r', encoding='utf-8') as f:
+            dataset = [json.loads(line) for line in f]
+    
+        total_tokens = []
+        assistant_tokens = []
+    
+        for ex in dataset:
+            messages = ex.get("messages", {})
+            total_tokens.append(num_tokens_from_messages(messages))
+            assistant_tokens.append(num_assistant_tokens_from_messages(messages))
+    
+        print_distribution(total_tokens, "total tokens")
+        print_distribution(assistant_tokens, "assistant tokens")
+        print('*' * 50)   
+    ```
    ![](./media/image49.png)
 
   ![](./media/image50.png)
@@ -477,104 +477,104 @@ for file in files:
 
 1.  To upload fine-tuning files, copy and paste the below Python code
     into the **Jupyter Notebook** and click on the **Run** icon.
-```
-# Upload fine-tuning files
-import openai
-import os
-
-openai.api_key = os.getenv("AZURE_OPENAI_API_KEY") 
-openai.api_base =  os.getenv("AZURE_OPENAI_ENDPOINT")
-openai.api_type = 'azure'
-openai.api_version = '2023-09-15-preview' # This API version or later is required to access fine-tuning for turbo/babbage-002/davinci-002
-
-training_file_name = 'training_set.jsonl'
-validation_file_name = 'validation_set.jsonl'
-
-# Upload the training and validation dataset files to Azure OpenAI with the SDK.
-
-training_response = openai.File.create(
-    file=open(training_file_name, "rb"), purpose="fine-tune", user_provided_filename="training_set.jsonl"
-)
-training_file_id = training_response["id"]
-
-validation_response = openai.File.create(
-    file=open(validation_file_name, "rb"), purpose="fine-tune", user_provided_filename="validation_set.jsonl"
-)
-validation_file_id = validation_response["id"]
-
-print("Training file ID:", training_file_id)
-print("Validation file ID:", validation_file_id)
-```
-  ![](./media/image51.png)
+    ```
+    # Upload fine-tuning files
+    import openai
+    import os
+    
+    openai.api_key = os.getenv("AZURE_OPENAI_API_KEY") 
+    openai.api_base =  os.getenv("AZURE_OPENAI_ENDPOINT")
+    openai.api_type = 'azure'
+    openai.api_version = '2023-09-15-preview' # This API version or later is required to access fine-tuning for turbo/babbage-002/davinci-002
+    
+    training_file_name = 'training_set.jsonl'
+    validation_file_name = 'validation_set.jsonl'
+    
+    # Upload the training and validation dataset files to Azure OpenAI with the SDK.
+    
+    training_response = openai.File.create(
+        file=open(training_file_name, "rb"), purpose="fine-tune", user_provided_filename="training_set.jsonl"
+    )
+    training_file_id = training_response["id"]
+    
+    validation_response = openai.File.create(
+        file=open(validation_file_name, "rb"), purpose="fine-tune", user_provided_filename="validation_set.jsonl"
+    )
+    validation_file_id = validation_response["id"]
+    
+    print("Training file ID:", training_file_id)
+    print("Validation file ID:", validation_file_id)
+    ```
+     ![](./media/image51.png)
       ![](./media/image52.png)
 
 2.  Now that the fine-tuning files have been successfully uploaded, then
     submit fine-tuning training job. Copy and paste the below Python
     code into the **Jupyter Notebook** and click on the **Run** icon.
-```
-response = openai.FineTuningJob.create(
-    training_file=training_file_id,
-    validation_file=validation_file_id,
-    model="gpt-35-turbo-0613",
-)
-
-job_id = response["id"]
-
-# You can use the job ID to monitor the status of the fine-tuning job.
-# The fine-tuning job will take some time to start and complete.
-
-print("Job ID:", response["id"])
-print("Status:", response["status"])
-print(response)
-```
+    ```
+    response = openai.FineTuningJob.create(
+        training_file=training_file_id,
+        validation_file=validation_file_id,
+        model="gpt-35-turbo-0613",
+    )
+    
+    job_id = response["id"]
+    
+    # You can use the job ID to monitor the status of the fine-tuning job.
+    # The fine-tuning job will take some time to start and complete.
+    
+    print("Job ID:", response["id"])
+    print("Status:", response["status"])
+    print(response)
+    ```
   ![](./media/image53.png)
 
 3.  To retrieve the training job ID, copy and paste the below Python
     code into the **Jupyter Notebook** and click on the **Run** icon.
-```
-response = openai.FineTuningJob.retrieve(job_id)
-
-print("Job ID:", response["id"])
-print("Status:", response["status"])
-print(response)
-```
-   ![](./media/image54.png)
+    ```
+    response = openai.FineTuningJob.retrieve(job_id)
+    
+    print("Job ID:", response["id"])
+    print("Status:", response["status"])
+    print(response)
+    ```
+    ![](./media/image54.png)
       ![](./media/image55.png)
 
 4.  Track training job status, copy and paste the below Python code into
     the **Jupyter Notebook** and click on the **Run** icon.
-```
-# Track training status
-
-from IPython.display import clear_output
-import time
-
-start_time = time.time()
-
-# Get the status of our fine-tuning job.
-response = openai.FineTuningJob.retrieve(job_id)
-
-status = response["status"]
-
-# If the job isn't done yet, poll it every 10 seconds.
-while status not in ["succeeded", "failed"]:
-    time.sleep(10)
+    ```
+    # Track training status
     
+    from IPython.display import clear_output
+    import time
+    
+    start_time = time.time()
+    
+    # Get the status of our fine-tuning job.
     response = openai.FineTuningJob.retrieve(job_id)
-    print(response)
-    print("Elapsed time: {} minutes {} seconds".format(int((time.time() - start_time) // 60), int((time.time() - start_time) % 60)))
+    
     status = response["status"]
-    print(f'Status: {status}')
-    clear_output(wait=True)
-
-print(f'Fine-tuning job {job_id} finished with status: {status}')
-
-# List all fine-tuning jobs for this resource.
-print('Checking other fine-tune jobs for this resource.')
-response = openai.FineTuningJob.list()
-print(f'Found {len(response["data"])} fine-tune jobs.')
-```
-  ![](./media/image56.png)
+    
+    # If the job isn't done yet, poll it every 10 seconds.
+    while status not in ["succeeded", "failed"]:
+        time.sleep(10)
+        
+        response = openai.FineTuningJob.retrieve(job_id)
+        print(response)
+        print("Elapsed time: {} minutes {} seconds".format(int((time.time() - start_time) // 60), int((time.time() - start_time) % 60)))
+        status = response["status"]
+        print(f'Status: {status}')
+        clear_output(wait=True)
+    
+    print(f'Fine-tuning job {job_id} finished with status: {status}')
+    
+    # List all fine-tuning jobs for this resource.
+    print('Checking other fine-tune jobs for this resource.')
+    response = openai.FineTuningJob.list()
+    print(f'Found {len(response["data"])} fine-tune jobs.')
+    ```
+    ![](./media/image56.png)
      ![](./media/image57.png)
 
 5.  Training your model can take more than an hour to complete.
@@ -586,14 +586,14 @@ print(f'Found {len(response["data"])} fine-tune jobs.')
 
 7.  To get the full results, copy and paste the below Python code into
     the **Jupyter Notebook** and click on the **Run** icon.
-```
-#Retrieve fine_tuned_model name
-
-response = openai.FineTuningJob.retrieve(job_id)
-
-print(response)
-fine_tuned_model = response["fine_tuned_model"]
-```
+    ```
+    #Retrieve fine_tuned_model name
+    
+    response = openai.FineTuningJob.retrieve(job_id)
+    
+    print(response)
+    fine_tuned_model = response["fine_tuned_model"]
+    ```
    ![](./media/image60.png)
 
 ### **Task 8: Deploy fine-tuned model**
@@ -644,41 +644,41 @@ fine_tuned_model = response["fine_tuned_model"]
     YOUR_CUSTOM_MODEL_DEPLOYMENT_NAME **as gpt-35-turbo-fine-tune(** can
     be a unique name). Then, execute the cell by clicking on the **start
     icon**.
-```
-import json
-import requests
-
-token= ("TEMP_AUTH_TOKEN") 
-subscription = "<YOUR_SUBSCRIPTION_ID>"  
-resource_group = "<YOUR_RESOURCE_GROUP_NAME>"
-resource_name = "<YOUR_AZURE_OPENAI_RESOURCE_NAME>"
-model_deployment_name ="YOUR_CUSTOM_MODEL_DEPLOYMENT_NAME"
-
-deploy_params = {'api-version': "2023-05-01"} 
-deploy_headers = {'Authorization': 'Bearer {}'.format(token), 'Content-Type': 'application/json'}
-
-deploy_data = {
-    "sku": {"name": "standard", "capacity": 1}, 
-    "properties": {
-        "model": {
-            "format": "OpenAI",
-            "name": "<YOUR_FINE_TUNED_MODEL>", #retrieve this value from the previous call, it will look like gpt-35-turbo-0613.ft-b044a9d3cf9c4228b5d393567f693b83
-            "version": "1"
-        }
-    }
-}
-deploy_data = json.dumps(deploy_data)
-
-request_url = f'https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resource_group}/providers/Microsoft.CognitiveServices/accounts/{resource_name}/deployments/{model_deployment_name}'
-
-print('Creating a new deployment...')
-
-r = requests.put(request_url, params=deploy_params, headers=deploy_headers, data=deploy_data)
-
-print(r)
-print(r.reason)
-print(r.json())
-```
+      ```
+      import json
+      import requests
+      
+      token= ("TEMP_AUTH_TOKEN") 
+      subscription = "<YOUR_SUBSCRIPTION_ID>"  
+      resource_group = "<YOUR_RESOURCE_GROUP_NAME>"
+      resource_name = "<YOUR_AZURE_OPENAI_RESOURCE_NAME>"
+      model_deployment_name ="YOUR_CUSTOM_MODEL_DEPLOYMENT_NAME"
+      
+      deploy_params = {'api-version': "2023-05-01"} 
+      deploy_headers = {'Authorization': 'Bearer {}'.format(token), 'Content-Type': 'application/json'}
+      
+      deploy_data = {
+          "sku": {"name": "standard", "capacity": 1}, 
+          "properties": {
+              "model": {
+                  "format": "OpenAI",
+                  "name": "<YOUR_FINE_TUNED_MODEL>", #retrieve this value from the previous call, it will look like gpt-35-turbo-0613.ft-b044a9d3cf9c4228b5d393567f693b83
+                  "version": "1"
+              }
+          }
+      }
+      deploy_data = json.dumps(deploy_data)
+      
+      request_url = f'https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resource_group}/providers/Microsoft.CognitiveServices/accounts/{resource_name}/deployments/{model_deployment_name}'
+      
+      print('Creating a new deployment...')
+      
+      r = requests.put(request_url, params=deploy_params, headers=deploy_headers, data=deploy_data)
+      
+      print(r)
+      print(r.reason)
+      print(r.json())
+      ```
    ![](./media/image66.png)
        ![](./media/image67.png)
 
@@ -755,9 +755,9 @@ print(r.json())
 
       ![](./media/image80.png)
 
-**Note**: **+Add an example** provides the model with examples of the
-types of responses that are expected. The model will attempt to reflect
-the tone and style of the examples in its own responses.
+    **Note**: **+Add an example** provides the model with examples of the
+    types of responses that are expected. The model will attempt to reflect
+    the tone and style of the examples in its own responses.
 
 5.  After clicking on **+Add an example**, you will observe the **User**
     box and **Assistant** box and enter the following message and
