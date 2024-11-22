@@ -644,8 +644,7 @@ database](https://learn.microsoft.com/azure/postgresql/flexible-server/how-to-us
     with 1536 dimensions, so you must specify 1536 as the vector size.
     
     ```
-    ALTER TABLE listings
-    ADD COLUMN description_vector vector(1536);
+    ALTER TABLE listings ADD COLUMN description_vector vector(1536);
     ```
    ![](./media/image61.png)
 
@@ -920,7 +919,7 @@ service.
     |Resource group	|Select the resource group you created in Exercise 1>Task 1.|
     |Instance details	|     |
     |Region	|Select the region you used for your Azure Database for PostgreSQL Flexible Server resource.|
-    |Name	|Enter a globally unique name, such as lang-postgres-labs-SUFFIX, where SUFFIX is a unique string, such as your initials.|
+    |Name	|Enter a globally unique name, such as **+++lang-postgres-labs-SUFFIX+++**, where SUFFIX is a unique string, such as your initials.|
     |Pricing tier|	Select the standard pricing tier, S (1K Calls per minute).|
     |Responsible AI Notice|Check the box to certify you have reviewed and acknowledged the Responsible AI Notice.|
 
