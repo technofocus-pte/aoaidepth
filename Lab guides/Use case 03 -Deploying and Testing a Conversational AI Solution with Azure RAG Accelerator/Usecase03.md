@@ -83,7 +83,7 @@ solution, and cleaning up the environment.
      |   |   |
      |---|---|
      |Environment Name|	Enter RAGSolutionXX(XXXcan be a unique name)|
-     |Location|	Select near by available region, in this lab East US is using for this resource|
+     |Location|	Select near by available region, in this lab East US2 is using for this resource|
 
       ![](./media/image5.png)
 
