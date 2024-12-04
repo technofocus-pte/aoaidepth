@@ -1,5 +1,4 @@
-# **Lab 06-Exploring Azure OpenAI Assistants with Bing Search Integration and Multi-Agent Framework**
-
+# **Lab 06- Exploring Azure OpenAI Assistants with Bing Search Integration and Multi-Agent Framework** 
 # **Introduction**
 
 Azure OpenAI Assistants (Preview) allows you to create AI assistants
@@ -36,7 +35,6 @@ processing.
 1.  Click on the **Portal Menu**, then select **+ Create a resource**
 
       ![](./media/image1.png)
-
 2.  In the **Create a resource** page search bar, type **Bing Search
     v7** and click on the appeared **bing search v7**.
 
@@ -44,26 +42,27 @@ processing.
 
 3.  Click on **Bing Search v7** section.
 
-     ![](./media/image3.png)
+      ![](./media/image3.png)
 
 4.  On the **Create a search service** page, provide the following
     information and click on **Review+create** button.
 
-    |Field|	Description|
-    |---|---|
-    |Subscription|	Select the subscription assigned to|
-    |Resource group	|Click on Create new> enter AOAI-RGXXX(XXX can be a unique number)|
-    |Resource group location|	West US|
-    |Name|+++bingsearchaoaiXX+++(XXcan be unique number)|
-    |Pricing Tier|	F1|
-    |Select the check box	|I confirm I have read and understood the notice above|
+      |Field	|Description|
+      |----|---|
+      |Subscription|	Select the subscription assigned to|
+      |Resource group|Click on Create new> enter +++AOAI-RGXXX+++(XXX can be a unique number)|
+      |Resource group location|	West US|
+      |Name	|+++bingsearchaoaiXX+++(XXcan be unique number)|
+      |Pricing Tier	|F1|
+      |Select the check box	|I confirm I have read and understood the notice above|
 
-    ![](./media/image4.png)
-   ![](./media/image5.png)
+      ![](./media/image4.png)
+
+      ![](./media/image5.png)
 
 5.  Once the Validation is passed, click on the **Create** button.
 
-     ![](./media/image6.png)
+      ![](./media/image6.png)
 
 6.  Once the deployment is completed, click on **Go to resource group**
     button.
@@ -87,9 +86,11 @@ processing.
 1.  From the Azure portal home page, click on **Azure portal menu**
     represented by three horizontal bars on the left side of the
     Microsoft Azure command bar as shown in the below image.
+
      ![](./media/image10.png)
 
 2.  Navigate and click on **+ Create a resource**.
+
       ![](./media/image11.png)
 
 3.  On **Create a resource** page, in the **Search services and
@@ -108,48 +109,46 @@ processing.
 
 5.  In the **Create Azure OpenAI** window, under the **Basics** tab,
     enter the following details and click on the **Next** button.
-    |   |   |
-    |----|----|
-    |Subscription	|Select the assigned subscription|
-    |Resource group|	Select resource group which you have created in Task 1|
-    |Region|For this lab, you will use a GPT-4 model. This model is currently only available in certain regions. Please select a region from this list, In this lab Sweden Central is using for this resource|
-    |Name|+++AzureOpenAI-AssistantsXX+++ (XX can be a unique number, you can add more digits after XX to make the name unique) |
-    |Pricing tier|	Select Standard S0|
+      |   |  |
+      |---|----|
+      |Subscription	|Select the assigned subscription|
+      |  Resource group|	Select resource group which you have created in Task 1|
+      |Region|For this lab, you will use a GPT-4 model. This model is currently only available in certain regions. Please select a region from this list, In this lab Sweden Central is using for this resource|
+      |Name|	+++AzureOpenAI-AssistantsXX+++ (XX can be a unique number, you can add more digits after XX to make the name unique) |
+      |Pricing tier	|Select Standard S0|
 
      ![](./media/image14.png)
 
-7.  In the **Network** tab, leave all the radio buttons in the default
+6.  In the **Network** tab, leave all the radio buttons in the default
     state, and click on the **Next** button.
 
       ![](./media/image15.png)
 
-8.  In the **Tags** tab, leave all the fields in the default state, and
+7.  In the **Tags** tab, leave all the fields in the default state, and
     click on the **Next** button.
 
       ![](./media/image16.png)
 
-9.  In the **Review+submit** tab, once the Validation is Passed, click
+8.  In the **Review+submit** tab, once the Validation is Passed, click
     on the **Create** button.
 
       ![](./media/image17.png)
 
-10.  Wait for the deployment to complete. The deployment will take around
+9.  Wait for the deployment to complete. The deployment will take around
     **2-3** minutes.
 
-11. On **Microsoft.CognitiveServicesOpenAI** window, after the
+10. On **Microsoft.CognitiveServicesOpenAI** window, after the
     deployment is completed, click on the **Go to resource** button.
 
       ![](./media/image18.png)
 
-12. Click on **Keys and Endpoints** from the left navigation menu and
+11. Click on **Keys and Endpoints** from the left navigation menu and
     then copy the endpoint value in a notepad to **AzureAI ENDPOINT**
     and key to a variable **AzureAIKey**.
 
       ![](./media/image19.png)
 
 ## Task 3: Deploying an Azure OpenAI models
-
-[!Alert] Important: If you’re in the new Azure OpenAI Studio, switch to the old look of Azure OpenAI Studio.
 
 1.  On the **AzureOpenAI-AssistantsXX** window, click on **Overview** in
     the left navigation menu, then under the **Get Started** tab, click
@@ -158,84 +157,99 @@ processing.
 
       ![](./media/image20.png)
 
-2.  In the **Azure AI | Azure OpenAI Studio** window, click on **Create
-    a new deployment** button**.**
+2.  In the **Azure AI Foundary | Azure OpenAI Service** window, select
+    **Deployment** from the left navigation menu**.**
 
       ![](./media/image21.png)
 
-3.  In the **Deployments** window, click on **+Create new deployment**.
+3. In the **Deployments** window, drop down the **+Deploy model** and
+    select **Deploy base model.**
 
-      ![](./media/image22.png)
+    ![](./media/image22.png)
 
-4.  In the **Deploy model dialog** box, enter the following details and
-    click on the **Create** button.
+4. In the **Select a model** dialog box, navigate and carefully select
+    **gpt-4**, then click on **Confirm** button.
 
-    - Select Model: **gpt-4**
-    
-    - Model Version**: 1106-Preview**
-    
-    - Deployment Name: enter +++gpt-4+++
-
-    - Select the **Advanced options** and select the **Standard** as
-      **Deployment type**
       ![](./media/image23.png)
 
-5.  You will see a notification stating **Successfully Created
-    deployment**. (In case, the notification did not appear on your
-    window by default, click on the bell icon beside **Azure AI | Azure
-    AI Studio** bar.
+5.  In the **Deploy model dialog** box, enter the following details and
+    click on the **Create** button.
 
+      - Select Model: **gpt-4**
+      
+      - Model Version**: 1106-Preview**
+      
+      - Deployment Name: enter **gpt-4**
+      
+      - Select the **Advanced options** and select the **Standard** as
+        **Deployment type**
+      
       ![](./media/image24.png)
-
-6.  In the **Deployments** page, click on +**Create new deployment**.
 
       ![](./media/image25.png)
 
-7.  In the **Deploy model** dialog box, under **Select a model** click
+      ![](./media/image26.png)
+
+6.  In the **Deployments** page, click on +**Create new deployment**.
+
+7.  In the **Deployments** window, drop down the **+Deploy model** and
+    select **Deploy base model.**
+
+      ![](./media/image22.png)
+
+8. In the **Select a model** dialog box, navigate and carefully select
+    **gpt-4**, then click on **Confirm** button.
+
+      ![](./media/image23.png)
+
+9.  In the **Deploy model** dialog box, under **Select a model** click
     on the dropdown select **gpt-4** field, under **Model version**
     select **vision-preview** and under **Deployment name** enter
-    +++gpt-4-vision+++ Click on the **Create** button.
+    !!gpt-4-vision!!. Click on the **Create** button.
 
-       ![](./media/image26.png)
+      ![](./media/image27.png)
+     
+      ![](./media/image28.png)
 
-8.  You will see a notification – **Successfully Created deployment**
-    when the deployment is succeeded. (You can also view the
-    notification by clicking on the bell icon beside **Cognitive
-    Services | Azure OpenAI Studio)**.
+      ![](./media/image29.png)
 
-       ![](./media/image27.png)
+10.  In the **Deployments** window, drop down the **+Deploy model** and
+    select **Deploy base model.**
 
-9.  In the **Deployments** page, click on +**Create new deployment**.
+      ![](./media/image22.png)
 
-       ![](./media/image28.png)
-
-10. In the **Deploy model** dialog box, under **Select a model** click
-    on the dropdown select **dall-e-3** field, under **Model version**
-    select **Auto-update to default** and under **Deployment name**
-    enter +++dall-e-3+++.** Click on the **Create** button.
-
-       ![](./media/image29.png)
-
-11. You will see a notification – **Successfully Created deployment**
-    when the deployment is succeeded. (You can also view the
-    notification by clicking on the bell icon beside **Cognitive
-    Services | Azure OpenAI Studio)**.
+11. In the **Select a model** dialog box, navigate and carefully select
+    **dall-e-3**, then click on **Confirm** button.
 
       ![](./media/image30.png)
 
+12.  In the **Deploy model** dialog box, under **Select a model** click
+    on the dropdown select **dall-e-3** field, under **Model version**
+    select **Auto-update to default** and under **Deployment name**
+    enter !!dall-e-3!!**.** Click on the **Create** button.
+
+      ![](./media/image31.png)
+      ![](./media/image32.png)
+
 ## Task 4: Explore the Assistant's playground
 
-1.  In Azure OpenAI Studio Home page, under **Welcome to** **Azure
-    OpenAI Service**, in **Get started** section, click on the
-    **Assistants playground**.
+1.  In Azure AI Foundry |Azure OpenAI Service Home page, under
+    **Playgrounds** section, click on the **Assistants playground**.
 
-       ![](./media/image31.png)
+      ![](./media/image33.png)
 
-2.  The Assistants playground allows you to explore, prototype, and test
+2.  In the **Assistants playground** pane, select **+Create an
+    assistant**.
+
+      ![](./media/image34.png)
+
+3.  The Assistants playground allows you to explore, prototype, and test
     AI Assistants without needing to run any code. From this page, you
     can quickly iterate and experiment with new ideas.
 
-3.  From the Assistant setup pane enter the below details
+    ![](./media/image35.png)
+
+4.  From the Assistant setup pane enter the below details
 
       - Assistant a name: **Math Assist**
       
@@ -245,41 +259,47 @@ processing.
       - Deployment: **gpt-4**
       
       - Select the toggle **enabling code interpreter**
-      ![](./media/image32.png)
+      
+       ![](./media/image36.png)
+      
+      ![](./media/image37.png)
 
-4.  Under the Assistant setup click on **Save**
+5.  From the Assistant setup pane, select the **Select assistant**
 
-      ![](./media/image33.png)
+     ![](./media/image38.png)
 
-5.  Enter a question for the assistant to answer: +++I need to solve
-    the equation 3x + 11 = 14. Can you help me?+++
+6.  In the Select an assistant tab select **Math Assist** and click on
+    **Select** button.
 
-6.  Select the **Add and run button** .
+      ![](./media/image39.png)
 
-     ![](./media/image34.png)
+7.  Enter a question for the assistant to answer: !!**I need to solve
+    the equation 3x + 11 = 14. Can you help me?**!!
 
-      ![](./media/image35.png)
+8.  Select the Run button** .
 
-While we can see that answer is correct, to confirm that the model used
-code interpreter to get to this answer, and that the code it wrote is
-valid rather than just repeating an answer from the model's training
-data we'll ask another question.
+      ![](./media/image40.png)
 
-7.  Enter the follow-up question: +++Show me the code you ran to get
-    this solution.+++ Select the **Add and run button** 
+    While we can see that answer is correct, to confirm that the model used
+    code interpreter to get to this answer, and that the code it wrote is
+    valid rather than just repeating an answer from the model's training
+    data we'll ask another question.
 
-     ![](./media/image36.png)
+9.  Enter the follow-up question: +++Show me the code you ran to get
+    this solution+++ .Select the **Add and run button** 
 
-     ![](./media/image37.png)
+    ![](./media/image41.png)
+    
+    ![](./media/image42.png)
 
-You could also consult the logs in the right-hand panel to confirm that
-code interpreter was used and to validate the code that was run to
-generate the response. It is important to remember that while code
-interpreter gives the model the capability to respond to more complex
-math questions by converting the questions into code and running in a
-sandboxed Python environment, you still need to validate the response to
-confirm that the model correctly translated your question into a valid
-representation in code.
+    You could also consult the logs in the right-hand panel to confirm that
+    code interpreter was used and to validate the code that was run to
+    generate the response. It is important to remember that while code
+    interpreter gives the model the capability to respond to more complex
+    math questions by converting the questions into code and running in a
+    sandboxed Python environment, you still need to validate the response to
+    confirm that the model correctly translated your question into a valid
+    representation in code.
 
 ## Task 5: Assistants function calling with Bing Search
 
@@ -295,70 +315,72 @@ grounding.
 1.  In your Windows search box, type Visual Studio, then click on
     **Visual Studio Code**.
 
-      ![](./media/image38.png)
+    ![](./media/image43.png)
 
 2.  In the **Visual Studio Code** editor, click on **File**, then
     navigate and click on **Open Folder**.
 
-      ![](./media/image39.png)
-
+    ![](./media/image44.png)
 3.  Navigate and select **Assistants** folder from **C:\LabFiles** and
     click on the **Select Folder** button.
 
-       ![](./media/image40.png)
+      ![](./media/image45.png)
 
 4.  If you see a dialog box - **Do you trust the authors of the files in
     this folder?**, then click on **Yes, I trust the author**.
 
-      ![](./media/image41.png)
+      ![](./media/image46.png)
 
 5.  In Visual Studio Code dropdown the **ASSISTANTS**, under
     **function_calling** navigate and click on
     **assistants_function_calling_with_bing_search.ipynb** notebook.
 
-      ![](./media/image42.png)
+      ![](./media/image47.png)
 
 6.  In the main page of Visual Studio Code editor, scroll down to
     **install requirements** heading and run the 1^(st) cell. If
     prompted to select the environment, then select **Python
     Environments** as shown in the image.
 
-      ![](./media/image43.png)
-
-      ![](./media/image44.png)
-
-7.  If prompted to select the path, then select the **Python version
-    3.12.2(or later version)** path as shown in the image.
-
-      ![](./media/image45.png)
-
-8.  Update the parameters ,replace **Azure OpenAI Endpoint, Azure OpenAI
-    Key(**The values that you have saved in your notepad in the **Task
-    2), Bing search subscription key** with the values that you have
-    saved in your notepad in the **Task 1**
-     ![](./media/image46.png)
-     ![](./media/image47.png)
-
-9.  Define a function to call the Bing Search APIs, select 3^(rd),
-    4^(th) cells. Then, execute the cell by clicking on the **start
-    icon**.
       ![](./media/image48.png)
 
       ![](./media/image49.png)
 
+7.  If prompted to select the path, then select the **Python version
+    3.12.2(or later version)** path as shown in the image.
+
+      ![](./media/image50.png)
+
+8.  Update the parameters ,replace **Azure OpenAI Endpoint, Azure OpenAI
+    Key(**The values that you have saved in your notepad in the **Task
+    2), Bing search subscription key** with the values that you have
+    saved in your notepad in the **Task 1 .**
+
+      ![](./media/image51.png)
+
+      ![](./media/image52.png)
+
+9.  Define a function to call the Bing Search APIs, select 3^(rd),
+    4^(th) cells. Then, execute the cell by clicking on the **start
+    icon**.
+
+    ![](./media/image53.png)
+    
+    ![](./media/image54.png)
+
 10. Get things running end to end, select 5^(th) ,6^(th) ,7^(th),8^(th)
     cells. Then, execute the cell by clicking on the **start icon**.
 
-     ![](./media/image50.png)
-
-     ![](./media/image51.png)
-
-     ![](./media/image52.png)
-
-     ![](./media/image53.png)
-
-     ![](./media/image54.png)
-
+      ![](./media/image55.png)
+      
+      ![](./media/image56.png)
+      
+      ![](./media/image57.png)
+      
+      ![](./media/image58.png)
+      
+      ![](./media/image59.png)
+  
 ## **Task 6: Building a multimodal multi-agent framework with Azure Assistant API**
 
 This repo will walk you through the pattern of creating a multi-agent
@@ -386,7 +408,7 @@ integrate them into various industry solutions.
 1.  In Visual Studio Code, under **multi-agent** ,navigate and click on
     **.env** file.
 
-     ![](./media/image55.png)
+      ![](./media/image60.png)
 
 2.  In the **.env** file, replace **Azure OpenAI Endpoint, Azure OpenAI
     Key(**The values that you have saved in your notepad in the **Task
@@ -394,16 +416,16 @@ integrate them into various industry solutions.
     deployment name** with the values that you have saved in your
     notepad in the **Task 3**.
 
-      ![](./media/image56.png)
+      ![](./media/image61.png)
 
 3.  Click on **File** and the click on **Save**.
 
-     ![](./media/image57.png)
+      ![](./media/image62.png)
 
 4.  In Visual Studio Code, under **multi-agent**, navigate and click on
     **multi-agent.ipynb** notebook.
 
-      ![](./media/image58.png)
+      ![](./media/image63.png)
 
 5.  In the main page of Visual Studio Code editor, scroll down to
     **install requirements** heading and run the 1^(st) cell. If
@@ -413,116 +435,116 @@ integrate them into various industry solutions.
 6.  If prompted to select the path, then select the **Python version
     3.12.2(or later version)** path as shown in the image.
 
-     ![](./media/image59.png)
+      ![](./media/image64.png)
 
 7.  Select 2^(nd) cell. Then, execute the cell by clicking on the
     **start icon**.
 
-     ![](./media/image60.png)
-
-     ![](./media/image61.png)
+      ![](./media/image65.png)
+      
+      ![](./media/image66.png)
 
 8.  To generating images using a prompt to the Dalle-3 Model. The output
     is a .jpg file stored in the users local directory. Select 3^(rd)
     cell. Then, execute the cell by clicking on the **start icon**.
 
-      ![](./media/image62.png)
+      ![](./media/image67.png)
 
 9.  Initializes the agent with the definition described above. Select
     4^(th) cell. Then, execute the cell by clicking on the **start
     icon**.
 
-      ![](./media/image63.png)
+      ![](./media/image68.png)
 
 10. Image generator function calls the Dalle-3 image generator given the
     prompt. Select 5^(th) cell. Then, execute the cell by clicking on
     the **start icon**.
 
-      ![](./media/image64.png)
+    ![](./media/image69.png)
 
 11. Vision Assistant agent is responsible for analyzing images. The
     output is a new prompt to be used by the image creator agent. Select
     6^(th) cell. Then, execute the cell by clicking on the **start
     icon**.
 
-      ![](./media/image65.png)
+    ![](./media/image70.png)
 
 12. Initializes the agent with the definition described above. Select
     7^(th) cell. Then, execute the cell by clicking on the **start
     icon**.
 
-      ![](./media/image66.png)
+    ![](./media/image71.png)
 
 13. Vision assistant function calls the GPT4 Vision image analyzes given
     an image, execute the cell by clicking on the **start icon**.
 
-     ![](./media/image67.png)
+      ![](./media/image72.png)
 
 14. This agent facilitates the conversation between the user and other
     agents, ensuring successful completion of the task, execute the cell
     by clicking on the **start icon**.
 
-     ![](./media/image68.png)
+    ![](./media/image73.png)
 
 15. Initializes the agent with the definition described above, execute
     the cell by clicking on the **start icon**.
 
-     ![](./media/image69.png)
+    ![](./media/image74.png)
 
 16. This function calls the Assistant API to generate a main thread of
     communication between the agents listed in the agents_threads,
     execute the cell by clicking on the **start icon**.
 
-      ![](./media/image70.png)
+    ![](./media/image75.png)
 
 17. This agent facilitates the conversation between the user and other
     agents, ensuring successful completion of the task. Execute the cell
     by clicking on the **start icon**.
 
-      ![](./media/image71.png)
+      ![](./media/image76.png)
 
-       ![](./media/image72.png)
+      ![](./media/image77.png)
 
 18. Example Questions, enter the !!Generate an image of a boat drifting
     in the water and analyze it and enhance the image!!. Execute the
     cell by clicking on the **start icon**.
 
-      ![](./media/image73.png)
+      ![](./media/image78.png)
 
-     ![](./media/image74.png)
-
-     ![](./media/image75.png)
+      ![](./media/image79.png)
+      
+      ![](./media/image80.png)
 
 ## Task 7: Delete the resources
 
 1.  To delete the storage account, navigate to **Azure portal Home**
     page, click on **Resource groups**.
 
-     ![](./media/image76.png)
+      ![](./media/image81.png)
 
 2.  Click on the AOAI-RGXXX resource group.
 
-     ![](./media/image77.png)
+      ![](./media/image82.png)
 
 3.  In the **Resource group** home page, select the **delete resource
     group**
 
-     ![](./media/image78.png)
+      ![](./media/image83.png)
 
 4.  In the **Delete Resources** pane that appears on the right side,
     navigate to **Enter “resource group name” to confirm deletion**
     field, then click on the **Delete** button.
 
-     ![](./media/image79.png)
+      ![](./media/image84.png)
 
 5.  On **Delete confirmation** dialog box, click on **Delete** button.
 
-     ![](./media/image80.png)
+      ![](./media/image85.png)
 
 6.  Click on the bell icon, you’ll see the notification –**Deleted
     resource group AOAI-RG89.**
 
-     ![](./media/image81.png)
+      ![](./media/image86.png)
 
 **Summary**
 
