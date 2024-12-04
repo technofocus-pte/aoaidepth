@@ -104,56 +104,51 @@ the question.
     left-sided navigation menu, scroll down and click on **Go to Azure
     OpenAI Studio** button as shown in the below image.
 
-      ![](./media/image14.png)
+      ![](./media/pic1.png)
 
 2.  Wait for the Azure OpenAI studio to launch.
 
-      ![](./media/image15.png)
+      ![](./media/pic2.png)
 
-3.  On the **Azure OpenAI Studio** homepage, click on **Create new
-    deployment** button.
+3.  On the **Azure AI Foundry** |**Azure OpenAI Studio** homepage select
+    **Deployment** from the left navigation menu . 
 
-      ![](./media/image16.png)
+     ![](./media/pic3.png)
 
-4.  In the **Deployments** page, click on +**Create new deployment**.
+4.  In the **Deployments** window, drop down the **+Deploy model** and
+    select **Deploy base model.**
 
-      ![](./media/image17.png)
+     ![](./media/pic4.png)
 
-5.  In the **Deploy model dialog** box, under the **Model name** field,
-    click on the V chevron button; navigate and select carefully
-    **gpt-4**.
+5.  In the **Select a model** dialog box, navigate and carefully select
+    **gpt-4**, then click on **Confirm** button.
+     ![](./media/pic5.png)
 
 6.  Select the **Model version** as **0125-Preview,** in the
     **Deployment type** as **Standard, Deployment name field**, enter
-    +++gpt-4+++, and click on the **Create** button.
+    **gpt-4**, and click on the **Create** button.
 
-      ![](./media/image18.png)
+       ![](./media/pic6.png)
 
-7.  You will see a notification – **Successfully Created deployment**
-    when the deployment is succeeded. (You can also view the
-    notification by clicking on the bell icon beside **Azure AI | Azure
-    OpenAI Studio**).
+       ![](./media/pic7.png)
 
-     ![](./media/image19.png)
+7.  In the **Deployments** window, drop down the **+Deploy model** and
+    select **Deploy base model.**
 
-8.  In the **Deployments** page, click on +**Create new deployment**.
+       ![](./media/pic8.png)
 
-      ![](./media/image20.png)
+8.  In the **Select a model** dialog box, navigate and carefully select
+    **text-embedding-ada-002** then click on **Confirm** button.
 
-9.  In the **Deploy model dialog** box, under the **Model name** field,
-    click on the V chevron button; navigate and carefully select
-    **text-embedding-ada-002**. Select the **Model version** as **2
-    (Default),** in the **Deployment name field**, enter
-    +++text-embedding-ada-002+++, and click on the **Create** button.
+     ![](./media/pic9.png)
 
-      ![](./media/image21.png)
+9.  In the **Deploy model** dialog box, under **Deployment name** enter
+    **+++text-embedding-ada-002+++,** select the **Standard** as
+    **Deployment type** and Click on the **Deploy** button.
 
-10. You will see a notification – **Successfully Created deployment**
-    when the deployment is succeeded. (You can also view the
-    notification by clicking on the bell icon beside **Azure AI | Azure
-    OpenAI Studio**).
+       ![](./media/pic10.png)
 
-      ![](./media/image22.png)
+       ![](./media/pic11.png)
 
 ## **Task 3: Deploy on Azure (WebApp + Batch Processing) with Azure Cognitive Search**
 
