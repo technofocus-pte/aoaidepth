@@ -1,4 +1,4 @@
-# **Use case 03 -Deploying and Testing a Conversational AI Solution with Azure RAG Accelerator**
+# **Use case 05 -Deploying and Testing a Conversational AI Solution with Azure RAG Accelerator**
 
 **Introduction**
 
@@ -129,10 +129,15 @@ solution, and cleaning up the environment.
      - Azure Storage Account
      
      - Azure Speech Service
+       
+     - Azure Database for PostgreSQL - Flexible Server
+  
+     - Key vault
 
-    ![](./media/image10.png)
+     ![](./media/a1.png)
 
-    ![](./media/image11.png)
+     ![](./media/a2.png)
+     ![](./media/a3.png)
 
 ## Task 3: Testing the deployment
 
@@ -210,14 +215,28 @@ solution, and cleaning up the environment.
 
       ![](./media/image29.png)
 
-15. On Web App **Overview** page, navigate to the command bar and click
+15.	From the collapsible left menu under Settings, select Authentication
+       ![](./media/a4.png)
+16.	Click on  Add identify provider
+     ![](./media/a5.png)
+17.	Select Microsoft as the Identity provider, update Name as web-XXXXX-docker-new. Select Client secret expiration duration as 90 days and then click Next: Permissions.
+     ![](./media/a6.png)
+18.	Click on Add permission. Scroll down in the list to expand Application and select Application.ReadWrite.All. Then click on Update permission.
+      ![](./media/a7.png)
+19.	Click on Add now.
+      ![](./media/a8.png)
+20.	Click on Overview page of the app. Wait for the page to load and then click on Restart. Confirm restart by clicking on Yes
+    ![](./media/a9.png)
+   	![](./media/a10.png)
+    
+22. On Web App **Overview** page, navigate to the command bar and click
     on **Browse**, it will navigate you to the web application.
 
       ![](./media/image30.png)
 
       ![](./media/image31.png)
 
-16. In the **Azure AI** web app page, enter the following text and click
+23. In the **Azure AI** web app page, enter the following text and click
     on the **Submit icon** as shown in the below image.
 
  +++Describe in more detail the risks from market volatility+++
