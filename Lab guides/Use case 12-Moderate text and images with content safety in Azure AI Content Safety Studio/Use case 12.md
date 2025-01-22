@@ -1,4 +1,4 @@
-# Lab 07 - Moderate text and images with content safety in Azure AI Content Safety Studio
+# Use case 12 - Moderate text and images with content safety in Azure AI Content Safety Studio
 
 **Introduction**
 
