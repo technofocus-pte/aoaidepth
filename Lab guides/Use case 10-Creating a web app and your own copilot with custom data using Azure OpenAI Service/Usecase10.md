@@ -1,4 +1,4 @@
-  # Use case 7- Creating a webapp and power virtual agent bot with custom data using Azure OpenAI Service
+  # Use case 10- Creating a webapp and power virtual agent bot with custom data using Azure OpenAI Service
 
 **Introduction:**
 
