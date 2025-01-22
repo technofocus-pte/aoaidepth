@@ -387,6 +387,7 @@ In this task, you create a new Azure OpenAI service.
 5.  On the Create Azure OpenAI **Basics** tab, enter the following
     information and click on **Next** button.
     |-----|----|
+    |   |   |
     |Subscription	|Select Azure subscription|
     |Resource group	|Select resource your group |
     |Region	|Select East US2|
@@ -396,22 +397,22 @@ In this task, you create a new Azure OpenAI service.
 
      ![](./media/a5.png)
 
-6.  In the **Network** tab, leave all the radio buttons in the default
+7.  In the **Network** tab, leave all the radio buttons in the default
     state, and click on the **Next** button.
 
      ![](./media/a6.png)
 
-7.  In the **Tags** tab, leave all the fields in the default state, and
+8.  In the **Tags** tab, leave all the fields in the default state, and
     click on the **Next** button.
 
       ![](./media/a7.png)
 
-8.  In the **Review+submit** tab, once the Validation is Passed, click
+9.  In the **Review+submit** tab, once the Validation is Passed, click
     on the **Create** button.
 
      ![](./media/a8.png)
 
-9.  Wait for the deployment to complete. The deployment will take around
+10.  Wait for the deployment to complete. The deployment will take around
     2-3 minutes.
 
 > **Note**: If you see a message that the Azure OpenAI Service is
