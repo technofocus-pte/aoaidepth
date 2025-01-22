@@ -389,7 +389,7 @@ In this task, you create a new Azure OpenAI service.
     |   |  |
     |----|-----|
     |Subscription	|Select Azure subscription|
-    |Resource group	|Select resource your group |
+    |Resource group	|Select resource your group (created in Exercise 1>Task 1) |
     |Region	|Select East US2|
     |Name	|Enter a globally unique name, such as +++aoai-postgres-labs-XXXX+++(XXXX can be a unique number)|
     |Pricing tier|	Select Standard S0|
