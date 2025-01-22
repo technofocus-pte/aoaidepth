@@ -1,4 +1,4 @@
-# Lab 3 - Creating a Custom AI Agent with Azure AI Foundry and search integration
+# Use case 11 - Creating a Custom AI Agent with Azure AI Foundry and search integration
 
 **Estimated time: 45 min**
 
@@ -126,11 +126,11 @@ enhance user engagement through intuitive and efficient interactions.
 
     - **Resource group**: **RG4OpenAI**
 
-    - **Location**: *The same location as your Azure AI Search resource, **Canada East***
+    - **Location**: The same location as your Azure AI Search resource, **Canada East**
 
-    - **Connect Azure AI Services or Azure OpenAI**: (New)*Autofill’s with your selected hub name*
+    - **Connect Azure AI Services or Azure OpenAI**: (New)**Autofill’s with your selected hub name**
 
-    - **Connect Azure AI Search**: *Select your Azure AI Search resource, **copilotXXXX***
+    - **Connect Azure AI Search**: *Select your Azure AI Search resource, **copilotXXXX**
 
     ![](./media/image9.png)
 
@@ -188,7 +188,7 @@ You need two models to implement your solution:
     ![](./media/image18.png)
 
 
-5.  Repeat the previous steps to deploy a +++**gpt-35-turbo-16k**+++ model with the deployment name gpt-35-turbo-16k.
+5.  Repeat the previous steps to deploy a +++gpt-35-turbo-16k+++ model with the deployment name gpt-35-turbo-16k.
 
     ![](./media/image19.png)
 
@@ -225,7 +225,7 @@ The data for your copilot consists of a set of travel brochures in PDF format fr
 
 7.  Wait for the folder to be uploaded and note that it contains several .pdf files.
 
-8.  On the next page of name and finish, enter the data name as +++**data0212**+++ and click on **Create.**
+8.  On the next page of name and finish, enter the data name as +++data0212+++ and click on **Create.**
 
     ![](./media/image26.png)
 
@@ -246,14 +246,14 @@ Now that you’ve added a data source to your project, you can use it to create 
 
       - **Data source**: Data in Azure AI Foundry
 
-        - *Select the **brochures** data source- **dataXXXX***
+        - Select the **brochures** data source- **dataXXXX***
 
-    ![](./media/image29.png)
+      ![](./media/image29.png)
 
 
     - Configure the index as below given options and then select **Next.**
     
-      - **Select Azure AI Search service**: *Select the **AzureAISearch** connection to your Azure AI Search resource*
+      - **Select Azure AI Search service**: Select the **AzureAISearch** connection to your Azure AI Search resource*
     
       - **Vector index**: +++brochures-index+++
     
@@ -296,7 +296,7 @@ Before using your index in a RAG-based prompt flow, let’s verify that it can b
 
     ![](./media/Picture7.png)
    
-3.  On the Chat page, in the Setup pane, ensure that your **gpt-35-turbo-16k** model deployment is selected. Then, in the main chat session panel, submit the prompt +++**Where can I stay in New York?**+++
+3.  On the Chat page, in the Setup pane, ensure that your **gpt-35-turbo-16k** model deployment is selected. Then, in the main chat session panel, submit the prompt +++Where can I stay in New York?+++
 
     ![](./media/image36.png)
 
@@ -309,7 +309,7 @@ Before using your index in a RAG-based prompt flow, let’s verify that it can b
 
     > **Note**: Some users are finding newly created indexes unavailable right away. Refreshing the browser usually helps, but if you’re still experiencing the issue where it can’t find the index you may need to wait until the index is recognized.
 
-6.  After the index has been added and the chat session has restarted, resubmit the prompt +++**Where can I stay in New York?**+++
+6.  After the index has been added and the chat session has restarted, resubmit the prompt +++Where can I stay in New York?+++
 
     ![](./media/image38.png)
 
@@ -323,7 +323,7 @@ Your vector index has been saved in your Azure AI Foundry project, enabling you 
 
     ![](./media/image39.png)
 
-2.  Create a new prompt flow by cloning the **Multi-Round Q&A on Your Data** sample in the gallery. Save your clone of this sample in a folder named +++**brochure-flow**+++.
+2.  Create a new prompt flow by cloning the **Multi-Round Q&A on Your Data** sample in the gallery. Save your clone of this sample in a folder named +++brochure-flow+++.
 
     ![](./media/image40.png)
 
