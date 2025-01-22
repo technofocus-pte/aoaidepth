@@ -386,8 +386,8 @@ In this task, you create a new Azure OpenAI service.
 
 5.  On the Create Azure OpenAI **Basics** tab, enter the following
     information and click on **Next** button.
-    |-----|----|
-    |   |   |
+    |   |  |
+    |----|-----|
     |Subscription	|Select Azure subscription|
     |Resource group	|Select resource your group |
     |Region	|Select East US2|
