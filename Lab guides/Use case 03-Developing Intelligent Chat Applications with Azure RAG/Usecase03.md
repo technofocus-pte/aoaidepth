@@ -337,12 +337,12 @@ aspects such as employee benefits, internal policies, and job roles.
 
    ![](./media/image63.png)
 
-    |  |  |
+    |     |     |
     |---|----|
     |Setting|	Description|
     |Override prompt template|	This is the prompt that is used to generate the answer.|
     |Retrieve this many search results|	This is the number of search results that are used to generate the answer. You can see these sources returned in the Thought process and Supporting content tabs of the citation.|
-    |Exclude category|	This is the category of documents that are excluded from the search results.|
+    |Exclude category  |	This is the category of documents that are excluded from the search results.|
     |Use semantic ranker for retrieval	|This is a feature of Azure AI Search that uses machine learning to improve the relevance of search results.
     Use query-contextual summaries instead of whole documents|	When both Use semantic ranker and Use query-contextual summaries are checked, the LLM uses captions extracted from key passages, instead of all the passages, in the highest ranked documents.|
     |Suggest follow-up questions	|Have the chat app suggest follow-up questions based on the answer.|
