@@ -1,4 +1,4 @@
-# **Use case 04-Deploying and Testing a Custom Chat Application with PostgreSQL and OpenAI on Azure**
+# **Use case 06-Deploying and Testing a Custom Chat Application with PostgreSQL and OpenAI on Azure**
 
 **Introduction**
 
