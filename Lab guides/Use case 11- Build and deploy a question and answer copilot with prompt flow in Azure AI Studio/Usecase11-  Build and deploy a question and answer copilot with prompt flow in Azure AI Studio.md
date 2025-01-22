@@ -51,137 +51,21 @@ enhance user engagement through intuitive and efficient interactions.
     ![](./media/image05.png)
 
 
-6.  In your lab VM, open Microsoft Edge and enter +++**http://www.microsoftazurepass.com**+++
-
-    ![](./media/image06.png)
-
-7.  On **Ready to get started?** page, click on the **Start** button. 
-
-    ![](./media/image07.jpeg)
-
-
-    > **Note**: Do not use your Company/Work Account to login to redeem the Azure Pass, another Azure Pass will not be issued. 
-
-8.	In the **Sign in** window, enter the **Office 365 Tenant ID** from the **Resources** tab  and click on the **Next** button. 
-
-    ![](./media/image08.png)
-
-9.  Enter Office **365 Tenant Password** and click on the **Sign in**
-    button. 
-
-    ![](./media/image09.png)
-
-10.  On **Stayed signed in?** dialog box, click on **Yes** button. 
-
-![](./media/image010.png)
-
-
-11.  On **The following Microsoft Account will be used for Azure pass**
-    page, click on **Confirm Microsoft Account** button. 
-
-![](./media/image011.png)
-
-
-12.	Enter the **Promocode** provided in the **Resources** tab in the **Enter Promo code** field, then enter the characters under the **Enter the characters you see** field and click on the **Submit** button.  
-
-![](./media/image012.png)
-
-
-13.  **We are processing your request** page will appear, it may take few
-    seconds to process the redemption. 
-
-![](./media/image013.png)
-
-
-14. Enter correct details in **Your Profile** page, tick all the check
-    boxes, and then click on **Sign up** button. 
-
-    ![](./media/image014.png)
-
-    ![](./media/image015.png)
-
-    ![](./media/image016.png)
-
-
-15. On **Protect your account** dialog box, click on the **Next**
-    button. 
-
-    ![](./media/image017.png)
-
-
-16. Then, on **More information required** dialog box, click on
-    the **Next** button. 
-
-    ![](./media/image018.png)
-
-17. If prompted, then enter the password and click on the **Sign in**
-    button. 
-
-    ![](./media/image019.png)
-
-
-18. In your mobile, install the **Microsoft Authenticator App**. Then,
-    go back to Microsoft Azure port. In the Azure portal, **Microsoft
-    Authenticator -** **Start by getting the app** window, navigate and
-    click on the **Next** button. 
-
-    ![](./media/image020.png)
-
-
-19. In **Microsoft Authenticator –** **Set up your account** window,
-    click on the **Next** button. 
-
-    ![](./media/image021.png)
-
-
-20. **Scan the QR code** using the **Authenticator app** installed in
-    your mobile phone and click on the **Next** button. 
-
-    ![](./media/image022.png)
-
-
-21. Enter the number in your mobile authenticator app and select
-    **Yes**. In **testvm1**, click on the **Next** button. 
-
-    ![](./media/image023.png)
-
-
-22. Click on the **Next** button. 
-
-    ![](./media/image024.png)
-
-
-23. Click on the **Done** button. 
-
-    ![](./media/image025.png)
-
-
-24. Enter the number again in your mobile authenticator app and select
-    **Yes**.. 
-
-     ![](./media/image026.png)
-
-
-25. In the **Stay signed in?** window, click on the **Yes** button. 
-
-    ![](./media/image010.png)
-
-
 ## Task 1: Create an Azure AI Search resource
 
-1.  In a web browser, open the Azure portal at +++https://portal.azure.com+++ and sign in using your office 365 admin tenant credentials.
+1.  In a web browser, open the Azure portal at +++https://portal.azure.com+++ and sign in using your tenant credentials.
 
     ![](./media/image1.png)
 
-2.  On the home page, select **+ Create a resource** and search for +++**Azure AI Search**+++. Then **create** a new Azure AI Search resource with the following settings:
+2.  On the home page, select **+ Create a resource** and search for +++Azure AI Search+++. Then **create** a new Azure AI Search resource with the following settings:
 
     - **Subscription**: Select your Azure subscription.
 
-    - **Resource group**: Select or create a resource group, here we select +++**RG4OpenAI**+++
+    - **Resource group**: Select or create a resource group, here we select +++RG4OpenAI+++
 
-    - **Service name**: Enter a unique service name, here we name it as +++**copilotXXXX**+++
+    - **Service name**: Enter a unique service name, here we name it as +++copilotXXXX+++
 
-    - **Location**: *Make a **random** choice from any of the following regions, here we select Canada East*
+    - **Location**: Make a **random** choice from any of the following regions, here we select **Canada East**
 
       - Australia East
 
