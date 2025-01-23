@@ -19,38 +19,6 @@ providing contextual responses. By leveraging AI and search integration,
 the solution aims to streamline workflows, improve decision-making, and
 enhance user engagement through intuitive and efficient interactions.
 
-## Task 0: Sync Host environment time
-
-1.  Login to the Lab Virtual Machine using the credentials provided on
-    the Home tab of the Lab interface. 
-
-
-2.  In your VM, navigate and click in the **Search bar**, type
-    **Settings** and then click on **Settings** under **Best match**.
-    
-    ![](./media/image01.png)
-
-
-2.  On Settings window, navigate and click on **Time & language**. 
-
-    ![](./media/image02.png)
-
-3.  On **Time & language** page, navigate and click on **Date & time**. 
-
-    ![](./media/image03.png)
-
-
-4.  Scroll down and navigate to **Additional settings** section, then
-    click on **Syn now** button.  
-
-    ![](./media/image04.png)
-
-
-5.  Close the **Settings** window.  
-
-    ![](./media/image05.png)
-
-
 ## Task 1: Create an Azure AI Search resource
 
 1.  In a web browser, open the Azure portal at +++https://portal.azure.com+++ and sign in using your tenant credentials.
