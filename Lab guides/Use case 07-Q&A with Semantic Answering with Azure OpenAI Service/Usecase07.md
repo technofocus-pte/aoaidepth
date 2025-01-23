@@ -1,4 +1,4 @@
-**Lab 07: Implementing Q&A using semantic answering**
+**Use case 07: Implementing Q&A using semantic answering**
 
 **Introduction**
 
