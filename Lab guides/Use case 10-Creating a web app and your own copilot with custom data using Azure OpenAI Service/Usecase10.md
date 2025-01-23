@@ -457,7 +457,7 @@ uses this information to provide a completion.
 8.  In the **Deployments** window, drop down the **+Deploy model** and
     select **Deploy base model.**
 
-        ![](./media/image76.png)
+    ![](./media/image76.png)
 
 9.  In the **Select a model** dialog box, navigate and carefully select
     **text-embedding-ada-002** then click on **Confirm** button.
