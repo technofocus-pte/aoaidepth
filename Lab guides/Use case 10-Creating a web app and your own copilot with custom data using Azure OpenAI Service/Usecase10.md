@@ -283,8 +283,7 @@ uses this information to provide a completion.
 
       ![](./media/image40.png)
 
-      ![](./media/image41.png)
-
+      
 7.  On the **Review** tab, click on the **Create** button.
 
       ![](./media/image42.png)
@@ -339,7 +338,7 @@ uses this information to provide a completion.
      
       ![](./media/image53.png)
 
-## Task 4: Create an Azure Cognitive Search service in the portal
+## Task 4: Create an AzureAI Search service in the portal
 
 1.  On the **azureopenaistorageXX | Containers** page, click on **Home**
     to go back to Azure portal home page.
