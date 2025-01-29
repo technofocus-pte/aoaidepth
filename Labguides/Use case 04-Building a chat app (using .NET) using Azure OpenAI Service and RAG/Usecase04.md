@@ -11,8 +11,7 @@ Electronics, and the experience allows its employees to ask questions
 about the benefits, internal policies, as well as job descriptions and
 roles.
 
-![A diagram of a computer process Description automatically
-generated](./media/image1.png)
+   ![](./media/image1.png)
 
 - Voice Chat, Chat and Q&A interfaces
 
@@ -40,267 +39,217 @@ generated](./media/image1.png)
     +++https://github.com/technofocus-pte/azure-search-openai-demo-csharp.git+++
     and sign in with your Github account.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image2.png)
+     ![](./media/image2.png)
 
 2.  Click on **Fork**.
 
-> ![](./media/image3.png)
+     ![](./media/image3.png)
 
 3.  Enter the repository name and then click on **Create fork**.
 
-> ![](./media/image4.png)
+     ![](./media/image4.png)
 
 4.  Click on **Code -\> Codespaces -\> +**
 
-> ![](./media/image5.png)
+     ![](./media/image5.png)
 
 5.  Wait for the environment to setup. It takes 5-10 minutes.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image6.png)
+      ![](./media/image6.png)
 
 ## Task 2: Provision required services to build and deploy chat app to Azure
 
 1.  Run the following command on the Terminal. Copy the code and press
     enter.
 
-> +++azd auth login+++
->
-> ![A screenshot of a computer Description automatically
-> generated](./media/image7.png)
+      +++azd auth login+++
+ 
+      ![](./media/image6.png)
 
 2.  Default browser opens to enter a code.Enter the copied code and
     click **Next**.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image8.png)
-
-![](./media/image9.png)
+    ![](./media/image8.png)
+    
+    ![](./media/image9.png)
 
 3.  Sign in with your Azure credentials.
 
-![A screenshot of a computer Description automatically
-generated](./media/image10.png)
-
-![A screenshot of a computer error Description automatically
-generated](./media/image11.png)
-
-![A screenshot of a computer Description automatically
-generated](./media/image12.png)
+    ![](./media/image10.png)
+    ![](./media/image11.png)
+    ![](./media/image12.png)
 
 4.  Switch back to Github Codespace tab. Run below command to Initialize
     the project environment in the current directory. Enter the
-    Environment name as +++**chatragXXX+++** and press Enter.
+    Environment name as +++chatragXXX+++ and press Enter.
 
-> Note : env name should be unique
->
-> +++azd env new+++
+    Note : env name should be unique
+ 
+      +++azd env new+++
 
-![](./media/image13.png)
+    ![](./media/image13.png)
 
 5.  Run below command to provision the services to Azure, build your
     container.
 
-> +++azd env set AZURE_RESOURCE_GROUP ResourceGroup1+++
->
-> ![A screenshot of a computer Description automatically
-> generated](./media/image14.png)
+    +++azd env set AZURE_RESOURCE_GROUP ResourceGroup1+++
+ 
+    ![](./media/image14.png)
 
 6.  Run azd up - This will provision Azure resources and deploy this
     sample to those resources, including building the search index based
     on the files found in the ./data folder.
 
-> **+++azd up+++**
->
-> ![](./media/image15.png)
+       +++azd up+++ 
+ 
+     ![](./media/image15.png)
 
 7.  Select below values.
 
-- **Select an Azure Subscription to use** : select your subscription
+    - **Select an Azure Subscription to use** : select your subscription
+    
+    - **Select an Azure location to use** : **East us2/west
+      us2** (Sometimes, East US might not be available, choose location from
+      the list mentioned below.)
+    
+    - Select existing resource group : Your existing resource group (eg
+      :**ResourceGroup1 )**
 
-- **Select an Azure location to use** : **East us2/west
-  us2** (Sometimes, East US might not be available, choose location from
-  the list mentioned below.)
-
-- Select existing resource group : Your existing resource group (eg
-  :**ResourceGroup1 )**
-
-> ![A screenshot of a computer Description automatically
-> generated](./media/image16.png)
->
-> ![](./media/image17.png)
+      ![](./media/image16.png)
+     
+      ![](./media/image17.png)
 
 7.  Wait for the resource to provision completely. This process wil take
     5-10 min to create al the required resources.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image18.png)
->
-> ![A screenshot of a computer Description automatically
-> generated](./media/image19.png)
->
-> ![](./media/image20.png)
+      ![](./media/image18.png)
+      ![](./media/image19.png)
+      ![](./media/image20.png)
 
 8.  After the application has been successfully deployed, you see a URL
     displayed in the terminal. Copy the **URL**
 
-> ![](./media/image21.png)
+      ![](./media/image21.png)
 
 9.  Click on the **Open**
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image22.png)
+      ![](./media/image22.png)
 
 10. It opens app in new tab.
 
-> ![](./media/image23.png)
+      ![](./media/image23.png)
 
-11. Open a browser go to <https://portal.azure.com> and sign in with
+11. Open a browser go to +++https://portal.azure.com+++ and sign in with
     your Azure subscription account.
 
 12. On the Home page, click on **Resource Groups**
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image24.png)
+      ![](./media/image24.png)
 
 13. Click on your resource group.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image25.png)
+      ![](./media/image25.png)
 
 14. Make sure the below resource got deployed successfully
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image26.png)
-
-![A screenshot of a computer Description automatically
-generated](./media/image27.png)
-
-![A screenshot of a computer Description automatically
-generated](./media/image28.png)
-
-> ![A screenshot of a computer Description automatically
-> generated](./media/image29.png)
+      ![](./media/image26.png)
+      ![](./media/image27.png)
+      ![](./media/image28.png)
+      ![](./media/image293.png)
 
 15. On the resource group and click on **Azure OpenAI** resource name.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image30.png)
+      ![](./media/image30.png)
 
 16. On the **Azure OpenAI** window, click on **Overview** in the left
     navigation menu, then under the **Get Started** tab, click on the
     **Go to Azure OpenAI Studio** button to open **Azure OpenAI Studio**
     in a new browser.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image31.png)
+      ![](./media/image31.png)
 
 17. Make sure **gpt-4o-mini**, **text-embedding-ada-002** should be
     deployed successfully .
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image32.png)
+      ![](./media/image32.png)
 
 18. On the resource group and click on **storage account** resource
     name.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image33.png)
->
-> ![A screenshot of a computer Description automatically
-> generated](./media/image34.png)
+    ![](./media/image33.png)
+    ![](./media/image34.png)
 
 19. Now open the URL it into a browser
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image23.png)
+      ![](./media/image23.png)
 
 20. Click on the **Chat**
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image35.png)
+      ![](./media/image35.png)
 
 21. In the **Blazor OpenAI** web app page, enter the following text and
     click on the **Submit icon** as shown in the below image.
 
-> **+++What is included in my Northwind Health Plus plan that is not in
-> standard?+++**
->
-> ![A screenshot of a computer Description automatically
-> generated](./media/image36.png)
->
-> ![A screenshot of a computer Description automatically
-> generated](./media/image37.png)
+ +++What is included in my Northwind Health Plus plan that is not in standard?+++ 
+    ![](./media/image36.png)
+    ![](./media/image37.png)
 
 22. In the **Blazor OpenAI** web app page, enter the following text and
     click on the **Submit icon** as shown in the below image.
 
-> **+++Can I use out-of-network providers?+++**
->
-> ![A screenshot of a computer Description automatically
-> generated](./media/image38.png)
->
-> ![A screenshot of a computer Description automatically
-> generated](./media/image39.png)
+     +++Can I use out-of-network providers?+++ 
+    ![](./media/image38.png)
+    ![](./media/image39.png)
 
 23. In the **Blazor OpenAI** web app page, enter the following text and
     click on the **Submit icon** as shown in the below image.
 
-> **+++Are there any exclusions or restrictions?+++**
->
-> ![A screenshot of a computer Description automatically
-> generated](./media/image40.png)
->
-> ![A screenshot of a computer Description automatically
-> generated](./media/image41.png)
+      +++Are there any exclusions or restrictions?+++
+      ![](./media/image40.png)
+      ![](./media/image41.png)
 
 24. In the **Blazor OpenAI** web app page, enter the following text and
     click on the **Submit icon** as shown in the below image.
 
-> **+++What does a Product Manager do?+++**
->
-> ![A screenshot of a computer Description automatically
-> generated](./media/image42.png)
+       +++What does a Product Manager do?+++ 
+      ![](./media/image42.png)
 
 25. Click on the **Documents.**
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image43.png)
+      ![](./media/image43.png)
 
 ## **Task 3 : Clean up all the resources**
 
 1.  Switch back to **Azure portal -\> Resource group-\> Resource group
     name.**
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image44.png)
+      ![](./media/image44.png)
 
 2.  Select all the resources and then click on Delete as shown in the
     below image. (**DO NOT DELETE** resource group)
 
-> ![](./media/image45.png)
+      ![](./media/image45.png)
 
 3.  Type delete on the text box and then click on **Delete**.
 
-> ![](./media/image46.png)
+      ![](./media/image46.png)
 
 4.  Confirm the deletion by clicking on **Delete**.
 
-> ![](./media/image47.png)
+      ![](./media/image47.png)
 
 5.  Switch back to Github portal tab and refresh the page.
 
-> ![](./media/image48.png)
+       ![](./media/image48.png)
 
 6.  Click on Code , select the branch created for this lab, and click
     on **Delete**.
 
-> ![](./media/image49.png)
+      ![](./media/image49.png)
 
 7.  Confirm the branch deletion by clicking on **Delete** button.
 
-![](./media/image50.png)
+      ![](./media/image50.png)
 
 **Summary:**
 
