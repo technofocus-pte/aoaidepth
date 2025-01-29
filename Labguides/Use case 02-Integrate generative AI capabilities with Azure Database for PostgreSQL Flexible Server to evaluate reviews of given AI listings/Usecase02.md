@@ -1,4 +1,4 @@
-## **Use case 02-Integrate generative AI capabilities with Azure Database for PostgreSQL Flexible Server to evaluate reviews of given AI listings
+## **Use case 02-Integrate generative AI capabilities with Azure Database for PostgreSQL Flexible Server to evaluate reviews of given AI listings**
 
 
 **Introduction**
