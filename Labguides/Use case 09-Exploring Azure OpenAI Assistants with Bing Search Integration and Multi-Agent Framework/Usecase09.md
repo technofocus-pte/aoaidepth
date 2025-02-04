@@ -1,3 +1,5 @@
+## Use case 09-Exploring Azure OpenAI Assistants with Bing Search Integration and Multi-Agent Framework
+
 # **Introduction**
 
 Azure OpenAI Assistants (Preview) allows you to create AI assistants
