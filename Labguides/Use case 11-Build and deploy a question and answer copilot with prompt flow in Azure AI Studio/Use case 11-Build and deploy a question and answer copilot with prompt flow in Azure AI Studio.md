@@ -1,4 +1,4 @@
-# Lab 3 - Creating a Custom AI Agent with Azure AI Foundry and search integration
+# Use case 11 - Build and deploy a question and answer copilot with prompt flow in Azure AI Studio
 
 **Estimated time: 45 min**
 
