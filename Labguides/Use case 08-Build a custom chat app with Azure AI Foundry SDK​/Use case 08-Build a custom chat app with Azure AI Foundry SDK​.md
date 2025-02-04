@@ -1,4 +1,4 @@
-# Lab 4 - Build, evaluate and deploy a RAG-based agent with the Azure AI Foundry SDK
+# Use case 08 - Build, evaluate and deploy a RAG-based agent with the Azure AI Foundry SDK
 
 **Estimated Time: 120 mins**
 
