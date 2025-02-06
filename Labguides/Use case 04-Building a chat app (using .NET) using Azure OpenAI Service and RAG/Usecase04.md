@@ -112,10 +112,7 @@ roles.
       us2** (Sometimes, East US might not be available, choose location from
       the list mentioned below.)
     
-    - Select existing resource group : Your existing resource group (eg
-      :**ResourceGroup1 )**
-
-      ![](./media/image16.png)
+       ![](./media/image16.png)
      
       ![](./media/image17.png)
 
