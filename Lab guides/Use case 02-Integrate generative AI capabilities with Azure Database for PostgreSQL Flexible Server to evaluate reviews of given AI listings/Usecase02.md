@@ -203,12 +203,10 @@ with data for use in the lab.
     \COPY temp_calendar (data) FROM PROGRAM 'curl https://solliancepublicdata.blob.core.windows.net/ms-postgresql-labs/calendar.json'
     ```
     ```
-    \COPY temp_listings (data) FROM PROGRAM 'curl
-    https://solliancepublicdata.blob.core.windows.net/ms-postgresql-labs/listings.json'
+    \COPY temp_listings (data) FROM PROGRAM 'curl https://solliancepublicdata.blob.core.windows.net/ms-postgresql-labs/listings.json'
     ```
     ```
-    \COPY temp_reviews (data) FROM PROGRAM 'curl
-    https://solliancepublicdata.blob.core.windows.net/ms-postgresql-labs/reviews.json'
+    \COPY temp_reviews (data) FROM PROGRAM 'curl https://solliancepublicdata.blob.core.windows.net/ms-postgresql-labs/reviews.json'
     ```
      ![](./media/image23.png)
        ![](./media/image24.png)
@@ -641,9 +639,8 @@ database](https://learn.microsoft.com/azure/postgresql/flexible-server/how-to-us
 
 1.  Install the pgvector extension using the CREATE EXTENSION command.
 
- +++CREATE EXTENSION IF NOT EXISTS vector;+++
- 
-      ![](./media/image60.png)
+  +++CREATE EXTENSION IF NOT EXISTS vector;+++
+     ![](./media/image60.png)
 
 2.  With vector supported added to your database, add a new column to
     the listings table using the vector data type to store embeddings
@@ -689,6 +686,7 @@ created description_vector column in the listings table.
     Replace {your-deployment-name} with the **Deployment name** value
     you copied from the Azure OpenAI Studio **Deployments** page. Note
     that this query takes approximately five minutes to complete.
+    
     ```
     DO $$
     
@@ -720,21 +718,21 @@ created description_vector column in the listings table.
     END;
     $$;
     ```
- ![](./media/image63.png)
+   ![](./media/image63.png)
 
- The above query uses a WHILE loop to retrieve records from
- the listings table where the description_vector field is null, and
- the description field is not an empty string. The query then attempts
- to update the description_vector column with a vector representation
- of the description column using
- the azure_openai.create_embeddings function. The loop is used when
- performing this update to prevent calls to create embeddings function
- from exceeding the call rate limit of the Azure OpenAI service. If the
- call rate limit is exceeded, you will see warnings similar to the
- following in the output:
-
-**NOTICE**: Waiting 1 second before trying again...
-    ![](./media/image64.png)
+     The above query uses a WHILE loop to retrieve records from
+     the listings table where the description_vector field is null, and
+     the description field is not an empty string. The query then attempts
+     to update the description_vector column with a vector representation
+     of the description column using
+     the azure_openai.create_embeddings function. The loop is used when
+     performing this update to prevent calls to create embeddings function
+     from exceeding the call rate limit of the Azure OpenAI service. If the
+     call rate limit is exceeded, you will see warnings similar to the
+     following in the output:
+    
+    **NOTICE**: Waiting 1 second before trying again...
+     ![](./media/image64.png)
      ![](./media/image65.png)
 
 3.  You can verify that the description_vector column has been populated
@@ -785,7 +783,7 @@ between two inputs in the original format.
     ORDER BY description_vector <=> azure_openai.create_embeddings('{your-deployment-name}', 'Properties with a private room near Discovery Park')::vector
     LIMIT 3;
     ```
- ![](./media/image68.png)
+    ![](./media/image68.png)
 
     The query uses the \<=\> [vector
     operator](https://github.com/pgvector/pgvector#vector-operators), which
@@ -839,7 +837,7 @@ between two inputs in the original format.
     allows pgvector to utilize the latest graph-based algorithms to
     approximate nearest-neighbor queries.
 
-+++CREATE INDEX ON listings USING hnsw (description_vector vector_cosine_ops);+++
+  +++CREATE INDEX ON listings USING hnsw (description_vector vector_cosine_ops);+++
       ![](./media/image72.png)
 
 5.  To observe the impact of the hnsw index on the table, run the query
