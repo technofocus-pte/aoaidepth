@@ -37,23 +37,16 @@ roles.
 
 2.  Run the following command to install Azure Cli on the PowerShell
 
-     PowerShell copy
-    +++winget search Microsoft.PowerShell+++
+        +++winget search Microsoft.PowerShell+++
 
     ![](./media/image3.png)
 
 3.  Run the following command
 
-   PowerShell copy
-
-      +++ winget install --id Microsoft.Powershell --source winget+++
-
+  +++winget install --id Microsoft.Powershell --source winget+++
     ![](./media/image4.png)
 
 4.  Verify the Installation, run the following command
-
-    PowerShell copy
-
     +++pwsh+++
 
    ![](./media/image5.png)
