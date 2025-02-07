@@ -46,9 +46,9 @@ roles.
 
    PowerShell copy
 
-   +++ winget install --id Microsoft.Powershell --source winget+++
+      +++ winget install --id Microsoft.Powershell --source winget+++
 
-     ![](./media/image4.png)
+    ![](./media/image4.png)
 
 4.  Verify the Installation, run the following command
 
@@ -112,41 +112,43 @@ roles.
     commands.
 
     +++cd Labfiles+++
+    
     +++cd .\Chat+++
 
     ![](./media/image15.png)
 
-2.  Run the below command to install azure cli
+3.  Run the below command to install azure cli
 
     +++winget install microsoft.azd+++ 
 
      ![](./media/image16.png)
 
-3.  Run the below command to login the azure portal
+4.  Run the below command to login the azure portal
 
     +++azd auth login+++ 
 
-4.  Default browser opens to sign in .Sign in with your Azure
+5.  Default browser opens to sign in .Sign in with your Azure
     subscription account.
 
     ![](./media/image17.png)
  
     ![](./media/image18.png)
 
-5.  Close the browser
+6.  Close the browser
 
      ![](./media/image19.png)
      ![](./media/image20.png)
 
-6.  Run azd up - This will provision Azure resources and deploy this
+7.  Run azd up - This will provision Azure resources and deploy this
     sample to those resources, including building the search index based
     on the files found in the ./data folder.
 
      +++azd up+++ 
 
-7.  When prompted, select a **subscription** to create the resources and
+8.  When prompted, select a **subscription** to create the resources and
     select a location **East US2**, This location is used for most the
-    resources including hosting. 
+    resources including hosting.
+9.  When prompted, enter a value for the OpenAIApiKey infrastructure parameters and then just click the button
 
 **Note:** For this use case, you will use a GPT-4, text-embedding-ada-2
 models. This models is currently only available in [certain
@@ -155,30 +157,30 @@ Please select a region from this list, In this lab **East US2** is using
 for this resource
      ![](./media/image21.png)
 
-8.  Wait until app is deployed. It may take 20-30 minutes for the
+10.  Wait until app is deployed. It may take 20-30 minutes for the
     deployment to complete.
 
      ![](./media/image22.png)
 
      ![](./media/image23.png)
 
-9.  After the application has been successfully deployed, you see a URL
+11.  After the application has been successfully deployed, you see a URL
     displayed in the terminal. Copy the **URL**
 
      ![](./media/image24.png)
 
-10. Open a browser go to <https://portal.azure.com> and sign in with
+12. Open a browser go to <https://portal.azure.com> and sign in with
     your Azure subscription account.
 
-11. On the Home page, click on **Resource Groups**
+13. On the Home page, click on **Resource Groups**
 
       ![](./media/image25.png)
 
-12. Click on your resource group.
+14. Click on your resource group.
 
       ![](./media/image26.png)
 
-13. Make sure the below resource got deployed successfully
+15. Make sure the below resource got deployed successfully
 
       ![](./media/image27.png)
       
@@ -188,45 +190,45 @@ for this resource
       
       ![](./media/image30.png)
 
-14. On the resource group and click on **Azure OpenAI** resource name.
+16. On the resource group and click on **Azure OpenAI** resource name.
 
      ![](./media/image31.png)
 
-15. On the **Azure OpenAI** window, click on **Overview** in the left
+17. On the **Azure OpenAI** window, click on **Overview** in the left
     navigation menu, then under the **Get Started** tab, click on the
     **Go to Azure OpenAI Studio** button to open **Azure OpenAI Studio**
     in a new browser.
 
       ![](./media/image32.png)
 
-16. Make sure **gpt-4o-mini**, **text-embedding-ada-002** should be
+18. Make sure **gpt-4o-mini**, **text-embedding-ada-002** should be
     deployed successfully .
 
       ![](./media/image33.png)
 
-17. On the resource group and click on **storage account** resource
+19. On the resource group and click on **storage account** resource
     name.
 
       ![](./media/image34.png)
      
       ![](./media/image35.png)
 
-18. Now open the URL it into a browser
+20. Now open the URL it into a browser
 
       ![](./media/image36.png)
 
-19. Click on the **Chat**
+21. Click on the **Chat**
 
       ![](./media/image37.png)
 
-20. In the **Blazor OpenAI** web app page, enter the following text and
+22. In the **Blazor OpenAI** web app page, enter the following text and
     click on the **Submit icon** as shown in the below image.
 
   +++What is included in my Northwind Health Plus plan that is not in standard?+++
      ![](./media/image38.png)
      ![](./media/image39.png)
 
-21. In the **Blazor OpenAI** web app page, enter the following text and
+23. In the **Blazor OpenAI** web app page, enter the following text and
     click on the **Submit icon** as shown in the below image.
 
     +++Can I use out-of-network providers?+++
@@ -235,7 +237,7 @@ for this resource
  
       ![](./media/image41.png)
 
-22. In the **Blazor OpenAI** web app page, enter the following text and
+24. In the **Blazor OpenAI** web app page, enter the following text and
     click on the **Submit icon** as shown in the below image.
 
      +++Are there any exclusions or restrictions?+++
@@ -244,14 +246,14 @@ for this resource
     
     ![](./media/image43.png)
 
-23. In the **Blazor OpenAI** web app page, enter the following text and
+25. In the **Blazor OpenAI** web app page, enter the following text and
     click on the **Submit icon** as shown in the below image.
 
     +++What does a Product Manager do?+++
     
     ![](./media/image44.png)
 
-24. Click on the **Documents.**
+26. Click on the **Documents.**
 
      ![](./media/image45.png)
 
