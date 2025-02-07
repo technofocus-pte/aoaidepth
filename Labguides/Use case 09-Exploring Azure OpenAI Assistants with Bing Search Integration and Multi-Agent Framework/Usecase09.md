@@ -51,7 +51,14 @@ generated](./media/image2.png)
 4.  On the **Create a search service** page, provide the following
     information and click on **Review+create** button.
 
-[TABLE]
+      |Field	|Description|
+      |----|---|
+      |Subscription|	Select the subscription assigned to|
+      |Resource group|Click on Create new> enter +++AOAI-RGXXX+++(XXX can be a unique number)|
+      |Resource group location|	West US|
+      |Name	|+++bingsearchaoaiXX+++(XXcan be unique number)|
+      |Pricing Tier	|F1|
+      |Select the check box	|I confirm I have read and understood the notice above|
 
 ![](./media/image4.png)
 
