@@ -22,9 +22,91 @@ Azure AI Vision features to generate additional insights from the images
 - This usecase related to fashion use cases. These might involve image
   analysis, text generation, or other AI tasks.
 
- 
+## **Task 1: Register the required Resource providers**
 
-## **Task 1: Create Azure OpenAI resource**
+1.  Open your browser, navigate to the address bar, type or paste the
+    following URL:+++https://portal.azure.com/+++, then press
+    the **Enter** button.
+
+    ![](./media/b1.png)
+
+2.  In the **Sign in** window, enter the **Username** and click on the
+    **Next** button.
+
+     ![](./media/b2.png)
+
+3.  Then, enter the password and click on the **Sign in** button**.**
+
+      ![](./media/b3.png)
+4.  In **Stay signed in?** window, click on the **Yes** button.
+
+      ![](./media/b4.png)
+
+5.  On **Welcome to Microsoft Azure** dialog box, click on **Maybe
+    later** button.
+
+      ![](./media/b5.png)
+
+6.  In the Azure portal search box, type **Subscriptions**, then click
+    on **Subscriptions** under **Services**.
+
+      ![](./media/b6.png)
+
+7.  In the **Subscriptions** page, navigate and click on **Azure Pass –
+    Sponsorship**.
+
+      ![](./media/b7.png)
+
+8.  In the **Azure Pass – Sponsorship** page left-sided navigation menu,
+    navigate to the **Settings** section, then click on the **Resource
+    Providers**.
+
+      ![](./media/b8.png)
+
+9.  In the **Azure Pass – Sponsorship | Resource providers** page,
+    navigate to the search box and type **Microsoft.Storage**. Select
+    the **Microsoft.Storage** under **Provider**, then click on the
+    **Register** as shown in the below image.
+
+      ![](./media/b9.png)
+
+10. You’ll see a notification stating - **Successfully registered
+    resource provider** once the registration is successful. You can
+    also view the notification by clicking on the bell icon in the Azure
+    portal.
+
+      ![](./media/b10.png)
+
+11. In the **Azure Pass – Sponsorship | Resource providers** page,
+    navigate to the search box and type **Microsoft.Security**. Select
+    the **Microsoft.Security** under **Provider**, then click on the
+    **Register** as shown in the below image.
+
+    ![](./media/b11.png)
+
+12. You’ll see a notification stating - **Successfully registered
+    resource provider** once the registration is successful. You can
+    also view the notification by clicking on the bell icon in the Azure
+    portal.
+
+      ![](./media/b12.png)
+
+13. Repeat the steps \#10 and \#11 to register the following Resource
+    providers.
+
+      - **Microsoft.CognitiveServices**
+  
+      - **Microsoft.Search**
+  
+      - **Microsoft.Sql**
+  
+      - **Microsoft.Web**
+  
+      - **Microsoft.ManagedIdentity**
+        
+      - **Microsoft.AlertsManagement**
+
+## **Task 2: Create Azure OpenAI resource**
 
 1.  Open your browser, navigate to the address bar, and type or paste
     the following URL: +++https://portal.azure.com/+++, then press the
@@ -125,7 +207,7 @@ Azure AI Vision features to generate additional insights from the images
 
      ![](./media/image15.png)
 
-## **Task 2: Deploying an Azure OpenAI model gpt-4-vision**
+## **Task 3: Deploying an Azure OpenAI model gpt-4-vision**
 
 1.  On the **Azure AI Foundry | Azure Open AI Service** homepage,
     navigate to **Components** section and click on **Deployments**.
@@ -149,7 +231,7 @@ Azure AI Vision features to generate additional insights from the images
     
     ![](./media/image19.png)
 
-## Task 3: GPT-4 Turbo with Vision demo
+## Task 4: GPT-4 Turbo with Vision demo
 
 1.  In your Windows search box, type Visual Studio, then click on
     **Visual Studio Code**.
@@ -330,7 +412,7 @@ Azure AI Vision features to generate additional insights from the images
 
     ![](./media/image63.png)
 
-## Task 4: Delete the resources
+## Task 5: Delete the resources
 
 1.  To delete the storage account, navigate to **Azure portal Home**
     page, click on **Resource groups**.
