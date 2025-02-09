@@ -13,274 +13,243 @@ roles.
 
    ![](./media/image1.png)
 
-- To install Azure CLI and Node.js on your local machine.
+- Voice Chat, Chat and Q&A interfaces
 
-- To assign an owner role to the user.
+- Explores various options to help users evaluate the trustworthiness of
+  responses with citations, tracking of source content, etc.
 
-- To install the Dev Containers extension and set up the development
-  environment.
+- Shows possible approaches for data preparation, prompt construction,
+  and orchestration of interaction between model (ChatGPT) and retriever
+  (Azure AI Search)
 
-- To deploy a chat application to Azure and use it to get answers from
-  PDF files.
+- Settings directly in the UX to tweak the behavior and experiment with
+  options
 
-- To delete the deployed resources and models.
+**Key technologies used** -- Azure OpenAI Service, ChatGPT model
+(gpt-4o-mini), and Azure AI Search
 
-## Task 1: Install Azure Cli and set the policy scope to Local machine
+**Estimated duration --** 40 minutes
 
-1.  In your windows search bar, type **PowerShell**. In the
-    **PowerShell** dialog box, navigate and click on **Run as
-    administrator**. If you see the dialog box - **Do you want to allow
-    this app to make changes to your device?** then click on the **Yes**
-    button.
+# Exercise 1 : Deploy the application and test it from the browser
 
-     ![](./media/image2.png)
-
-2.  Run the following command to install Azure Cli on the PowerShell
-
-        +++winget search Microsoft.PowerShell+++
-
-    ![](./media/image3.png)
-
-3.  Run the following command
-
-  +++winget install --id Microsoft.Powershell --source winget+++
-    ![](./media/image4.png)
-
-4.  Verify the Installation, run the following command
-    +++pwsh+++
-
-   ![](./media/image5.png)
-
-## Task 2: Install .NET
+## Task 1: Open development environment
 
 1.  Open your browser, navigate to the address bar, type or paste the
     following URL:
-    +++https://dotnet.microsoft.com/en-us/download/dotnet/8.0+++ then press
-    the **Enter** button.
+    +++https://github.com/technofocus-pte/azure-search-openai-demo-csharp.git+++
+    and sign in with your Github account.
 
-     ![](./media/image6.png)
+      ![](./media/image2.png)
 
-2.  Select and click on **Windows -x64**
+2.  Click on **Fork**.
 
+     ![](./media/image3.png)
+
+3.  Enter the repository name and then click on **Create fork**.
+
+     ![](./media/image4.png)
+
+4.  Click on **Code -\> Codespaces -\> +**
+
+      ![](./media/image5.png)
+
+5.  Wait for the environment to setup. It takes 5-10 minutes.
+
+      ![](./media/image6.png)
+
+## Task 2: Provision required services to build and deploy chat app to Azure
+
+1.  Run the following command on the Terminal. Copy the code and press
+    enter.
+
+    +++azd auth login+++
+ 
       ![](./media/image7.png)
 
-3.  In Downloads Click on the **Open** button.
+2.  Default browser opens to enter a code.Enter the copied code and
+    click **Next**.
 
-     ![](./media/image8.png)
+      ![](./media/image8.png)
+      
+      ![](./media/image9.png)
 
-4.  **Dotnet-sdk** file will be downloaded. Click on the downloaded file
-    to set up **Dotnet-sdk**
+3.  Sign in with your Azure credentials.
 
-     ![](./media/image9.png)
+      ![](./media/image10.png)
+      ![](./media/image11.png)
+      ![](./media/image12.png)
 
-5.  In the **Microsoft .NET SDK 8.0.401** window, click on the
-    **Install** button
+4.  Switch back to Github Codespace tab. Run below command to Initialize
+    the project environment in the current directory. Enter the
+    Environment name as **+++chatragXXX+++** and press Enter.
 
-     ![](./media/image10.png)
-
-6.  Click on the **Yes** button
-
-     ![](./media/image11.png)
-
-7.  In the **Microsoft .NET SDK 8.0.401** window, click on the Close
-    button
-
-     ![](./media/image12.png)
-
-## Task 3: Run the Docker
-
-1.  In your Windows search box, type Docker , then click on **Docker
-    Desktop**.
-
-     ![](./media/image13.png)
-
-2.  Run the Docker Desktop.
-
-     ![](./media/image14.png)
-
-## **Task 4: Deploy Azure services needed for the application**
-
-1.  Change the current directory to the **Labfiles** directory and
-    navigate into the project cd .\\**Chat** folder by running the below
-    commands.
-
-    +++cd Labfiles+++
-    
-    +++cd .\Chat+++
-
-    ![](./media/image15.png)
-
-3.  Run the below command to install azure cli
-
-    +++winget install microsoft.azd+++ 
-
-     ![](./media/image16.png)
-
-4.  Run the below command to login the azure portal
-
-    +++azd auth login+++ 
-
-5.  Default browser opens to sign in .Sign in with your Azure
-    subscription account.
-
-    ![](./media/image17.png)
+        Note : env name should be unique
+       
+        +++azd env new+++
  
-    ![](./media/image18.png)
+    ![](./media/image13.png)
 
-6.  Close the browser
-
-     ![](./media/image19.png)
-     ![](./media/image20.png)
-
-7.  Run azd up - This will provision Azure resources and deploy this
+5.  Run azd up - This will provision Azure resources and deploy this
     sample to those resources, including building the search index based
     on the files found in the ./data folder.
 
-     +++azd up+++ 
+     +++azd up+++
 
-8.  When prompted, select a **subscription** to create the resources and
-    select a location **East US2**, This location is used for most the
+6.  When prompted, select a **subscription** to create the resources and
+    select a location **East US2**, This location is used for most the
     resources including hosting.
-9.  When prompted, enter a value for the OpenAIApiKey infrastructure parameters and then just click the button
 
-**Note:** For this use case, you will use a GPT-4, text-embedding-ada-2
-models. This models is currently only available in [certain
-regions](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#embeddings-models).
-Please select a region from this list, In this lab **East US2** is using
-for this resource
+     ![](./media/image14.png)
+    
+     ![](./media/image15.png)
+
+7.  When prompted, enter a value for the OpenAIApiKey infrastructure
+    parameters and then just click the button
+
+     ![](./media/image16.png)
+    
+     ![](./media/image17.png)
+
+7.  Wait for the resource to provision completely. This process wil take
+    5-10 min to create al the required resources.
+
+     ![](./media/image18.png)
+     ![](./media/image19.png)
+     ![](./media/image20.png)
      ![](./media/image21.png)
 
-10.  Wait until app is deployed. It may take 20-30 minutes for the
-    deployment to complete.
+8.  After the application has been successfully deployed, you see a URL
+    displayed in the terminal. Copy the **URL**
 
      ![](./media/image22.png)
 
-     ![](./media/image23.png)
+9.  Click on the **Open**
 
-11.  After the application has been successfully deployed, you see a URL
-    displayed in the terminal. Copy the **URL**
+    ![](./media/image23.png)
 
-     ![](./media/image24.png)
+10. It opens app in new tab.
 
-12. Open a browser go to <https://portal.azure.com> and sign in with
+    ![](./media/image24.png)
+
+11. Open a browser go to +++https://portal.azure.com+++ and sign in with
     your Azure subscription account.
 
-13. On the Home page, click on **Resource Groups**
+12. On the Home page, click on **Resource Groups**
 
       ![](./media/image25.png)
 
-14. Click on your resource group.
+13. Click on your resource group.
 
-      ![](./media/image26.png)
+     ![](./media/image26.png)
 
-15. Make sure the below resource got deployed successfully
+14. Make sure the below resource got deployed successfully
 
       ![](./media/image27.png)
-      
+       
       ![](./media/image28.png)
       
       ![](./media/image29.png)
-      
-      ![](./media/image30.png)
 
-16. On the resource group and click on **Azure OpenAI** resource name.
+     ![](./media/image30.png)
 
-     ![](./media/image31.png)
+15. On the resource group and click on **Azure OpenAI** resource name.
 
-17. On the **Azure OpenAI** window, click on **Overview** in the left
+      ![](./media/image31.png)
+
+16. On the **Azure OpenAI** window, click on **Overview** in the left
     navigation menu, then under the **Get Started** tab, click on the
     **Go to Azure OpenAI Studio** button to open **Azure OpenAI Studio**
     in a new browser.
 
-      ![](./media/image32.png)
+     ![](./media/image31.png)
 
-18. Make sure **gpt-4o-mini**, **text-embedding-ada-002** should be
+17. Make sure **gpt-4o-mini**, **text-embedding-ada-002** should be
     deployed successfully .
 
       ![](./media/image33.png)
 
-19. On the resource group and click on **storage account** resource
+18. On the resource group and click on **storage account** resource
     name.
 
       ![](./media/image34.png)
-     
       ![](./media/image35.png)
 
-20. Now open the URL it into a browser
+19. Now open the URL it into a browser
+
+      ![](./media/image24.png)
+
+20. Click on the **Chat**
 
       ![](./media/image36.png)
 
-21. Click on the **Chat**
-
-      ![](./media/image37.png)
-
-22. In the **Blazor OpenAI** web app page, enter the following text and
+21. In the **Blazor OpenAI** web app page, enter the following text and
     click on the **Submit icon** as shown in the below image.
 
-  +++What is included in my Northwind Health Plus plan that is not in standard?+++
-     ![](./media/image38.png)
-     ![](./media/image39.png)
+     **+++What is included in my Northwind Health Plus plan that is not in
+     standard?+++**
+      ![](./media/image37.png)
+      ![](./media/image38.png)
+23. In the **Blazor OpenAI** web app page, enter the following text and
+    click on the **Submit icon** as shown in the below image.
+
+     **+++Can I use out-of-network providers?+++**
+ 
+      ![](./media/image39.png)
+      ![](./media/image40.png)
 
 23. In the **Blazor OpenAI** web app page, enter the following text and
     click on the **Submit icon** as shown in the below image.
 
-    +++Can I use out-of-network providers?+++
- 
-      ![](./media/image40.png)
+    **+++Are there any exclusions or restrictions?+++**
  
       ![](./media/image41.png)
+      ![](./media/image42.png)
 
 24. In the **Blazor OpenAI** web app page, enter the following text and
     click on the **Submit icon** as shown in the below image.
 
-     +++Are there any exclusions or restrictions?+++
-    
-     ![](./media/image42.png)
-    
-    ![](./media/image43.png)
+    **+++What does a Product Manager do?+++**
+      ![](./media/image43.png)
 
-25. In the **Blazor OpenAI** web app page, enter the following text and
-    click on the **Submit icon** as shown in the below image.
+25. Click on the **Documents.**
 
-    +++What does a Product Manager do?+++
-    
-    ![](./media/image44.png)
+      ![](./media/image44.png)
+## **Task 3 : Clean up all the resources**
 
-26. Click on the **Documents.**
+1.  Switch back to **Azure portal -\> Resource group-\> Resource group
+    name.**
 
      ![](./media/image45.png)
 
-## Task 5: Delete the Resources
+2.  Select all the resources and then click on Delete as shown in the
+    below image. (**DO NOT DELETE** resource group)
 
-1.  To delete Resource group , type **Resource groups** in the Azure
-    portal search bar, navigate and click on **Resource groups** under
-    **Services**.
+      ![](./media/image46.png)
 
-    ![](./media/image46.png)
+3.  Type delete on the text box and then click on **Delete**.
 
-2.  Click on the resource group.
+      ![](./media/image47.png)
 
-     ![](./media/image47.png)
+4.  Confirm the deletion by clicking on **Delete**.
 
-3.  In the resource group home page , select **Delete resource group**
-    button.
+       ![](./media/image48.png)
 
-    ![](./media/image48.png)
+5.  Switch back to Github portal tab and refresh the page.
 
-4.  On the Delete a resource group tab, enter the resource group and
-    click on the **Delete** button.
+      ![](./media/image49.png)
 
-     ![](./media/image49.png)
+6.  Click on Code , select the branch created for this lab, and click
+    on **Delete**.
 
-**Summary**
+     ![](./media/image50.png)
 
-In this lab, you’ve learned how to set up and deploy an intelligent chat
-application using Azure's suite of tools and services. Starting with the
-installation of essential tools like Azure CLI and Node.js, you’ve
-configured your development environment using Dev Containers in Visual
-Studio Code. You've deployed a chat application that utilizes Azure
-OpenAI and Azure Cognitive Search to answer questions from PDF files.
-Finally, you’ve deleted the deployed resources to effectively manage
-resources. This hands-on experience has equipped you with the skills to
-develop and manage intelligent chat applications using the Retrieval
-Augmented Generation pattern on Azure.
+7.  Confirm the branch deletion by clicking on **Delete** button.
+
+      ![](./media/image51.png)
+
+**Summary:**
+
+This use case thought you , deploying a chat application for the
+Retrieval Augmented Generation pattern running on Azure, using Azure AI
+Search for retrieval and Azure OpenAI and LangChain large language
+models (LLMs) to power ChatGPT-style and Q&A experiences
