@@ -1,4 +1,4 @@
-# Use case 11 - Creating a Custom AI Agent with Azure AI Foundry and search integration
+# Use case 10 - Creating a Custom AI Agent with Azure AI Foundry and search integration
 
 **Estimated time: 45 min**
 
