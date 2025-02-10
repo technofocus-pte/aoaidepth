@@ -1,4 +1,4 @@
-# **Use case 13-Azure OpenAI GPT 3.5 Turbo fine-tuning**
+# **Use case 12-Azure OpenAI GPT 3.5 Turbo fine-tuning**
 
 **Introduction**
 
