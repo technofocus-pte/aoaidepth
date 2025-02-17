@@ -84,22 +84,23 @@ combine AI-driven insights with geospatial data.**Objectives**
     associated with this lab.
 
         +++RG_NAME=ResourceGroup1+++
+     
        ![](./media/image10.png)
 
-11.  In the database name, replace the {SUFFIX} token with a unique
+12.  In the database name, replace the {SUFFIX} token with a unique
     value, such as your initials, to ensure the database server name is
     globally unique.
 
        +++DATABASE_NAME=pgsql-flex-{SUFFIX}+++ 
 
-12.  Replace the region with whatever location you want to use for lab
+13.  Replace the region with whatever location you want to use for lab
     resources.In this lab we are using eastus
 
        +++REGION=eastus2+++ 
 
       ![](./media/image11.png)
 
-13.  Provision an Azure Database for PostgreSQL database instance within
+14.  Provision an Azure Database for PostgreSQL database instance within
     the resource group you created above by running the following Azure
     CLI command(10 Min)
 
