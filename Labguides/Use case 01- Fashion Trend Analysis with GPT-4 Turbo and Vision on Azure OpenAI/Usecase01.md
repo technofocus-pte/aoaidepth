@@ -1,5 +1,4 @@
-**Use Case 01- Fashion Trend Analysis with GPT-4 Turbo and Vision on
-Azure OpenAI**
+## **Use Case 01- Fashion Trend Analysis with GPT-4 Turbo and Vision on Azure OpenAI**
 
 **Introduction:**
 
@@ -56,7 +55,7 @@ Azure AI Vision features to generate additional insights from the images
       ![](./media/image6.png)
 
 7.  On **Create a resource** page, in the **Search services and
-    marketplace** search bar, type **Azure OpenAI**, then press the
+    marketplace** search bar, type **+++Azure OpenAI+++**, then press the
     **Enter** button.
 
       ![](./media/image7.png)
@@ -80,7 +79,7 @@ Azure AI Vision features to generate additional insights from the images
         Please select a region from this list, In this lab **Sweden
         Central** is using for this resource.
 
-    d.  **Name**: **aoai-gpt4-visionXXXXX** (XXXXX can be Lab instant ID)
+    d.  **Name**: **+++aoai-gpt4-visionXXXXX+++** (XXXXX can be Lab instant ID)
 
     e.  **Pricing tier**: Select **Standard S0**
 
@@ -122,9 +121,8 @@ Azure AI Vision features to generate additional insights from the images
       ![](./media/image16.png)
 
 16. On the **aoai-gpt4-visionXX** window, click on **Overview** in the
-    left-sided navigation menu, scroll down to **Get Started** tile and
-    click on **Go to AzureOpenAI Studio** button as shown in the below
-    image to open **Azure OpenAI Studio** in a new browser.
+    left-sided navigation menu, click on **Go to Azure AI Foundry portal** button as shown in the below
+    image to open **Azure AI Foundry Studio** in a new browser.
 
       ![](./media/image17.png)
 
