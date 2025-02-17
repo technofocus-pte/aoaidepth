@@ -381,11 +381,11 @@ aspects such as employee benefits, internal policies, and job roles.
 
        ![](./media/image62.png)
        
-        ![](./media/image63.png)
+     ![](./media/image63.png)
        
-        ![](./media/image64.png)
+      ![](./media/image64.png)
        
-        ![](./media/image65.png)
+       ![](./media/image65.png)
        
        ![](./media/image66.png)
 
