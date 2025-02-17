@@ -40,7 +40,7 @@ combine AI-driven insights with geospatial data.**Objectives**
 
 2.  In the **Microsoft Azure** window, use the **User Credentials** to
     login to Azure.
-      ![](./media/image.png)
+      ![](./media/image2.png)
 
 3.  Then, enter the password and click on the **Sign in** button**.**
 
@@ -116,10 +116,7 @@ combine AI-driven insights with geospatial data.**Objectives**
 
 ## Task 2: Connect to the database using psql in the Azure Cloud Shell
 
-In this task, you use the [psql command-line
-utility](https://www.postgresql.org/docs/current/app-psql.html) from
-the [Azure Cloud
-Shell](https://learn.microsoft.com/azure/cloud-shell/overview) to
+In this task, you use the psql command-line utility from the Azure Cloud Shell to
 connect to your database.
 
 1.  Open a browser go to +++https://portal.azure.com+++ and sign in with your
@@ -151,8 +148,8 @@ connect to your database.
       ![](./media/image17.png)
 
 7.  In the Azure Database for PostgresSQL home page, click on
-    **Overview** in the left-sided navigation menu and copy the Server
-    name and pate it into notepad, then **Save** the notepad to use the
+    **Overview** in the left-sided navigation menu and copy the **Server
+    name** and pate it into notepad, then **Save** the notepad to use the
     information in the upcoming lab.
 
       ![](./media/image18.png)
@@ -167,9 +164,7 @@ connect to your database.
       ![](./media/image20.png)
 
 9.  Select the **Cloud Shell** icon in the Azure portal toolbar to open
-    a new [Cloud
-    Shell](https://learn.microsoft.com/azure/cloud-shell/overview) pane
-    at the top of your browser window.
+    a new Cloud Shell pane at the top of your browser window.
 
 10. Paste **Connection details** into the Cloud Shell.
 
@@ -208,6 +203,7 @@ with data for use in the lab.
     CREATE TABLE temp_calendar (data jsonb);
     CREATE TABLE temp_listings (data jsonb);
     CREATE TABLE temp_reviews (data jsonb);
+    
     ```
 
       ![](./media/image25.png)
@@ -216,14 +212,17 @@ with data for use in the lab.
     JSON files in a public storage account.
     ```
     \COPY temp_calendar (data) FROM PROGRAM 'curl https://solliancepublicdata.blob.core.windows.net/ms-postgresql-labs/calendar.json'
+    
     ```
     ```
-    \COPY temp_listings (data) FROM PROGRAM 'curl
-    https://solliancepublicdata.blob.core.windows.net/ms-postgresql-labs/listings.json'
+    
+    \COPY temp_listings (data) FROM PROGRAM 'curl https://solliancepublicdata.blob.core.windows.net/ms-postgresql-labs/listings.json'
+    
     ```
     ```
-    \COPY temp_reviews (data) FROM PROGRAM 'curl
-    https://solliancepublicdata.blob.core.windows.net/ms-postgresql-labs/reviews.json'
+    
+    \COPY temp_reviews (data) FROM PROGRAM 'curl https://solliancepublicdata.blob.core.windows.net/ms-postgresql-labs/reviews.json'
+    
     ```
       ![](./media/image26.png)
       
@@ -233,6 +232,7 @@ with data for use in the lab.
     the shape used by this lab:
 
     ```
+    
     CREATE TABLE listings (
     listing_id int,
     name varchar(50),
@@ -255,6 +255,7 @@ with data for use in the lab.
     host_verifications jsonb,
     data jsonb
     );
+    
     ```
     ```
     CREATE TABLE reviews (
@@ -278,57 +279,41 @@ with data for use in the lab.
 4.  Finally, run the following INSERT INTO statements to load data from
     the temporary tables to the main tables, extracting data from the
     JSON data field into individual columns:
-   ```
+    ```
     INSERT INTO listings
     SELECT 
-        data['id']::int, 
-        replace(data['name']::varchar(50), '"', ''),
-        replace(data['street']::varchar(50), '"', ''),
-        replace(data['city']::varchar(50), '"', ''),
-        replace(data['state']::varchar(50), '"', ''),
-        replace(data['country']::varchar(50), '"', ''),
-        replace(data['zipcode']::varchar(50), '"', ''),
-        data['bathrooms']::int,
-        data['bedrooms']::int,
-        data['latitude']::decimal(10,5),
-        data['longitude']::decimal(10,5),
-        replace(data['description']::varchar(2000), '"', ''),        
-        replace(data['summary']::varchar(2000), '"', ''),        
-        replace(data['host_id']::varchar(50), '"', ''),
-        replace(data['host_url']::varchar(50), '"', ''),
-        replace(data['listing_url']::varchar(50), '"', ''),
-        replace(data['room_type']::varchar(50), '"', ''),
-        data['amenities']::jsonb,
-        data['host_verifications']::jsonb,
-        data::jsonb
+    data['id']::int, 
+    replace(data['name']::varchar(50), '"', ''),
+    replace(data['street']::varchar(50), '"', ''),
+    replace(data['city']::varchar(50), '"', ''),
+    replace(data['state']::varchar(50), '"', ''),
+    replace(data['country']::varchar(50), '"', ''),
+    replace(data['zipcode']::varchar(50), '"', ''),
+    data['bathrooms']::int,
+    data['bedrooms']::int,
+    data['latitude']::decimal(10,5),
+    data['longitude']::decimal(10,5),
+    replace(data['description']::varchar(2000), '"', ''),        
+    replace(data['summary']::varchar(2000), '"', ''),        
+    replace(data['host_id']::varchar(50), '"', ''),
+    replace(data['host_url']::varchar(50), '"', ''),
+    replace(data['listing_url']::varchar(50), '"', ''),
+    replace(data['room_type']::varchar(50), '"', ''),
+    data['amenities']::jsonb,
+    data['host_verifications']::jsonb,
+    data::jsonb
     FROM temp_listings;
-    INSERT INTO reviews
-    SELECT 
-        data['id']::int,
-        data['listing_id']::int,
-        data['reviewer_id']::int,
-        replace(data['reviewer_name']::varchar(50), '"', ''), 
-        to_date(replace(data['date']::varchar(50), '"', ''), 'YYYY-MM-DD'),
-        replace(data['comments']::varchar(2000), '"', '')
-    FROM temp_reviews;
-    INSERT INTO calendar
-    SELECT 
-        data['listing_id']::int,
-        to_date(replace(data['date']::varchar(50), '"', ''), 'YYYY-MM-DD'),
-        data['price']::decimal(10,2),
-        replace(data['available']::varchar(50), '"', '')::boolean
-    FROM temp_calendar;
-   ```
+
+    ```  
   ![](./media/image30.png)
 
 # Exercise 2: Add Azure AI and Vector extensions to allowlist
 
 Throughout this lab, you use
-the [azure_ai](https://learn.microsoft.com/azure/postgresql/flexible-server/generative-ai-azure-overview) and [pgvector](https://learn.microsoft.com/azure/postgresql/flexible-server/how-to-use-pgvector) extensions
+the azure_ai]and pgvector extensions
 to add generative AI capabilities to your PostgreSQL database. In this
 exercise, you add these extensions to your server's *allowlist*, as
-described in [how to use PostgreSQL
-extensions](https://learn.microsoft.com/azure/postgresql/flexible-server/concepts-extensions#how-to-use-postgresql-extensions).
+described in how to use PostgreSQL extensions
 
 1.  On the Home page, click on **Resource Groups**.
 
@@ -344,7 +329,7 @@ extensions](https://learn.microsoft.com/azure/postgresql/flexible-server/concept
      ![](./media/image33.png)
 
 4.  From the database's left-hand navigation menu, select **Server
-    parameters** under **Settings**, then enter azure.extensions into
+    parameters** under **Settings**, then enter **+++azure.extensions+++** into
     the search box. Expand the **VALUE** dropdown list, then locate and
     check the box next to each of the following extensions:
 
@@ -408,9 +393,9 @@ In this task, you create a new Azure OpenAI service.
     |   |  |
     |----|-----|
     |Subscription	|Select Azure subscription|
-    |Resource group	|Select resource your group (created in Exercise 1>Task 1) |
+    |Resource group	|Select resource your group |
     |Region	|Select East US2|
-    |Name	|Enter a globally unique name, such as +++aoai-postgres-labs-XXXX+++(XXXX can be a unique number)|
+    |Name	|Enter a globally unique name, such as +++aoai-postgres-labs-XXXX+++(XXXX can Lab InstantID)|
     |Pricing tier|	Select Standard S0|
 
 
@@ -621,6 +606,7 @@ Azure OpenAI service endpoint and key.
      ```
       SELECT azure_ai.set_setting('azure_openai.endpoint','{endpoint}');
       SELECT azure_ai.set_setting('azure_openai.subscription_key', '{api-key}');
+     
      ```
       ![](./media/image63.png)
 
@@ -629,6 +615,7 @@ Azure OpenAI service endpoint and key.
     ```
     SELECT azure_ai.get_setting('azure_openai.endpoint');
     SELECT azure_ai.get_setting('azure_openai.subscription_key');
+    
     ```
     The azure_ai extension is now connected to your Azure OpenAI account and
     ready to generate vector embeddings.
@@ -638,17 +625,14 @@ Azure OpenAI service endpoint and key.
 
 The azure_ai extension's azure_openai schema enables Azure OpenAI to
 create vector embeddings for text values. Using this schema, you
-can [generate embeddings with Azure
-OpenAI](https://learn.microsoft.com/azure/ai-services/openai/how-to/embeddings) directly
+can generate embeddings with Azure OpenAI directly
 from the database to create vector representations of input text, which
 can then be used in vector similarity searches, as well as consumed by
 machine learning models.
 
-[Embeddings](https://learn.microsoft.com/azure/postgresql/flexible-server/generative-ai-overview#embeddings) are
-a concept in machine learning and natural language processing (NLP) that
+Embeddings are a concept in machine learning and natural language processing (NLP) that
 involves representing objects, such as words, documents, or entities,
-as [vectors](https://learn.microsoft.com/azure/postgresql/flexible-server/generative-ai-overview#vectors) in
-a multi-dimensional space. Embeddings allow machine learning models to
+as vectors in a multi-dimensional space. Embeddings allow machine learning models to
 evaluate how closely related information is. This technique efficiently
 identifies relationships and similarities between data, allowing
 algorithms to identify patterns and make accurate predictions.
@@ -658,14 +642,12 @@ algorithms to identify patterns and make accurate predictions.
 The azure_ai extension allows you to generate embeddings for input text.
 To enable the generated vectors to be stored alongside the rest of your
 data in the database, you must install the pgvector extension by
-following the guidance in the [enable vector support in your
-database](https://learn.microsoft.com/azure/postgresql/flexible-server/how-to-use-pgvector#enable-extension) documentation.
+following the guidance in the enable vector support in your database documentation.
 
 1.  Install the pgvector extension using the command.
 
-
   +++CREATE EXTENSION IF NOT EXISTS vector;+++
-     ![](./media/image65.png)
+       ![](./media/image65.png)
 
 2.  With vector supported added to your database, add a new column to
     the listings table using the vector data type to store embeddings
@@ -673,7 +655,9 @@ database](https://learn.microsoft.com/azure/postgresql/flexible-server/how-to-us
     with 1536 dimensions, so you must specify 1536 as the vector size.
 
     ```
+    
     ALTER TABLE listings ADD COLUMN description_vector vector(1536);
+     
     ```
    ![](./media/image66.png)
 
@@ -812,9 +796,7 @@ between two inputs in the original format.
 
      ![](./media/image73.png)
 
-    The query uses the \<=\> [vector
-    operator](https://github.com/pgvector/pgvector#vector-operators), which
-    represents the "cosine distance" operator used to calculate the distance
+    The query uses the \<=\> vector operator), which represents the "cosine distance" operator used to calculate the distance
     between two vectors in a multi-dimensional space.
 
 3.  Run the same query again using the EXPLAIN ANALYZE clause to view
@@ -827,6 +809,7 @@ between two inputs in the original format.
     SELECT listing_id, name, description FROM listings
     ORDER BY description_vector <=> azure_openai.create_embeddings('{your-deployment-name}', 'Properties with a private room near Discovery Park')::vector
     LIMIT 3;
+    
     ```
 
     ![](./media/image74.png)
@@ -860,14 +843,13 @@ between two inputs in the original format.
       > Execution Time: 10.530 ms
 
 4.  To enable more efficient searching over the vector field, create an
-    index on listings using cosine distance
-    and [HNSW](https://github.com/pgvector/pgvector#hnsw), which is
+    index on listings using cosine distance and HNSW, which is
     short for Hierarchical Navigable Small World. HNSW
     allows pgvector to utilize the latest graph-based algorithms to
     approximate nearest-neighbor queries.
 
    +++CREATE INDEX ON listings USING hnsw (description_vector vector_cosine_ops);+++
-    ![](./media/image77.png)
+       ![](./media/image77.png)
 
 5.  To observe the impact of the hnsw index on the table, run the query
     again with the EXPLAIN ANALYZE clause to compare the query planning
@@ -880,6 +862,7 @@ between two inputs in the original format.
     SELECT listing_id, name, description FROM listings
     ORDER BY description_vector <=> azure_openai.create_embeddings('{your-deployment-name}', 'Properties with a private room near Discovery Park')::vector
     LIMIT 3;
+    
     ```
     ![](./media/image78.png)
     ![](./media/image79.png)
@@ -909,13 +892,11 @@ the azure_cognitive schema of the azure_ai extension provide a rich set
 of AI Language features accessible directly from the database. The
 functionalities include sentiment analysis, language detection, key
 phrase extraction, entity recognition, and text summarization. These
-capabilities are enabled through the [Azure AI Language
-service](https://learn.microsoft.com/azure/ai-services/language-service/overview).
+capabilities are enabled through the Azure AI Language service.
 
 To review the complete list of Azure AI capabilities accessible through
-the extension, view the [Integrate Azure Database for PostgreSQL
-Flexible Server with Azure Cognitive Services
-documentation](https://learn.microsoft.com/azure/postgresql/flexible-server/generative-ai-azure-cognitive).
+the extension, view the Integrate Azure Database for PostgreSQL
+Flexible Server with Azure Cognitive Services documentation
 
 ## Task 1: Provision an Azure AI Language service
 
@@ -948,7 +929,7 @@ service.
     |---|---|
     |Project details	|  |
     |Subscription|	Select the subscription you use for lab resources.|
-    |Resource group	|Select the resource group you created in Exercise 1>Task 1.|
+    |Resource group	|Select the resource group |
     |Instance details	|     |
     |Region	|Select the region you used for your Azure Database for PostgreSQL Flexible Server resource.|
     |Name	|Enter a globally unique name, such as **+++lang-postgres-labs-SUFFIX+++**, where SUFFIX is a unique string, such as your initials.|
