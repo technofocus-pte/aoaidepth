@@ -29,6 +29,9 @@ roles.
 (gpt-4o-mini), and Azure AI Search
 
 **Estimated duration --** 40 minutes
+**Pre-requisites:**
+
+GitHub account -- You are expected to have your own GitHub login credentials. If you do not have, please create one from here - +++https://github.com/signup?user_email=&source=form-home-signup+++
 
 # Exercise 1 : Deploy the application and test it from the browser
 
