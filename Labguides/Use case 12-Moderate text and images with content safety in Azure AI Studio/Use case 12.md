@@ -98,7 +98,7 @@ features are available:
     |    |   |
     |----|---|
     |Subscription|	Select your subscription|
-    |Resource group|	Click on Create new> enter AOAI-RGXXX(XXX can be a unique number, you can add more digits after XX to make the name unique|
+    |Resource group|	Select your assigned Resource Group(ResourceGroup1)|
     |Region	|Select East US|
     |Name	|+++AOAI-ContentSafetyXX+++ (XX can be unique number)|
     |Pricing tier	|Select Free|
