@@ -200,9 +200,7 @@ uses this information to provide a completion.
     click on the **Open** button.
 
      ![](./media/image25.png)
-
-     ![](./media/image50.png)
-
+     
 15. In **Upload blob** pane, click on the **Upload** button.
 
     ![](./media/image26.png)
@@ -234,11 +232,7 @@ uses this information to provide a completion.
 
     ![](./media/image32.png)
 
-5.  In the **Azure AI Search** page, click on the **Create** button.
-
-     ![](./media/image58.png)
-
-6.  On the **Create a search service** page, provide the following
+5.  On the **Create a search service** page, provide the following
     information and click on **Review+create** button.
 
     |Field	|Description|
