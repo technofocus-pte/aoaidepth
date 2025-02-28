@@ -103,15 +103,13 @@ combine AI-driven insights with geospatial data.**Objectives**
 14.  Provision an Azure Database for PostgreSQL database instance within
     the resource group you created above by running the following Azure
     CLI command(10 Min)
-
-     ```   
+     ```
      az postgres flexible-server create --name $DATABASE_NAME --location $REGION --resource-group $RG_NAME \
     --admin-user s2admin --admin-password Seattle123Seattle123 --database-name airbnb \
     --public-access 0.0.0.0-255.255.255.255 --version 16 \
     --sku-name Standard_D2s_v3 --storage-size 32 --yes
-
     ```
-
+   
   ![](./media/image12.png)
 
 ## Task 2: Connect to the database using psql in the Azure Cloud Shell
@@ -198,13 +196,11 @@ with data for use in the lab.
 
 1.  Run the following commands to create temporary tables for importing
     JSON data from a public blob storage account.
-
     ```
     CREATE TABLE temp_calendar (data jsonb);
     CREATE TABLE temp_listings (data jsonb);
     CREATE TABLE temp_reviews (data jsonb);
-    
-    ```
+    ```  
 
       ![](./media/image25.png)
 
@@ -212,15 +208,12 @@ with data for use in the lab.
     JSON files in a public storage account.
     ```
     \COPY temp_calendar (data) FROM PROGRAM 'curl https://solliancepublicdata.blob.core.windows.net/ms-postgresql-labs/calendar.json'
-    
     ```
     ```
-    
     \COPY temp_listings (data) FROM PROGRAM 'curl https://solliancepublicdata.blob.core.windows.net/ms-postgresql-labs/listings.json'
     
     ```
     ```
-    
     \COPY temp_reviews (data) FROM PROGRAM 'curl https://solliancepublicdata.blob.core.windows.net/ms-postgresql-labs/reviews.json'
     
     ```
@@ -392,12 +385,11 @@ In this task, you create a new Azure OpenAI service.
     information and click on **Next** button.
     |   |  |
     |----|-----|
-    |Subscription	|Select Azure subscription|
-    |Resource group	|Select resource your group |
-    |Region	|Select East US2|
-    |Name	|Enter a globally unique name, such as +++aoai-postgres-labs-XXXX+++(XXXX can Lab InstantID)|
-    |Pricing tier|	Select Standard S0|
-
+    |**Subscription**	|Select Azure subscription|
+    |**Resource group**	|Select resource your group |
+    |**Region**	|Select East US2|
+    |**Name**	|Enter a globally unique name, such as +++aoai-postgres-labs-XXXX+++(XXXX can Lab InstantID)|
+    |**Pricing tier**|	Select Standard S0|
 
       ![](./media/image43.png)
 
