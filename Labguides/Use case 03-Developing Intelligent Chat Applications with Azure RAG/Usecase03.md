@@ -1,4 +1,4 @@
-  ## **Use case 03-Developing Intelligent Chat Applications with Azure RAG**
+  ## Use case 03-Developing Intelligent Chat Applications with Azure RAG
 
 **Introduction**
 
