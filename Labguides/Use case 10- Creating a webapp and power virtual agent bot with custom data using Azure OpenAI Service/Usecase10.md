@@ -438,7 +438,7 @@ time, as mentioned in Task \#1.*
       |Name|	+++AOAI-webappXXXXXX+++( XXXXX can be Lab instant ID|
       |Subscription|	Select the assigned subscription|
       |Resource Group|	Select the resource group |
-      |Location|	East US|
+      |Location|	East US 2|
       |Pricing plan|	Basic(B1)|
 
 
