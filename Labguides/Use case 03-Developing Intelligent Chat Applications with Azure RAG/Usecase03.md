@@ -1,4 +1,4 @@
-  ## Use case 03-Developing Intelligent Chat Applications with Azure RAG
+## Use case 03-Developing Intelligent Chat Applications with Azure RAG
 
 **Introduction**
 
@@ -165,9 +165,9 @@ aspects such as employee benefits, internal policies, and job roles.
       
       b)  Resource group - **Select your existing resource group**
       
-      c)  Service name - **aisearchXXXX(XXXXX can be Lab instant ID)**
+      c)  Service name - **+++aisearchXXXX+++(XXXXX can be Lab instant ID)**
       
-      d)  Location : **Central US** /location near to you
+      d)  Location : **Central US** 
       
       e)  Pricing tier: Standard
 
@@ -188,7 +188,7 @@ aspects such as employee benefits, internal policies, and job roles.
 
       ![](./media/image28.png)
 
-7.  On the **Semantic ranker** tab**,** select **Standard** tile and
+7.  On the **Semantic ranker** tab, select **Standard** tile and
     click on the **Select plan.**
 
       ![](./media/image29.png)
@@ -334,8 +334,10 @@ aspects such as employee benefits, internal policies, and job roles.
       +++azd env set AZURE_LOCATION {Location of existing resource group}+++
      
      ![](./media/image55.png)
+    
+    [Alret] **Note**: Region should be in small letters and have no spaces.
 
-8.  Assign the existing Azure AI Search service. Run the following
+9.  Assign the existing Azure AI Search service. Run the following
     command in the Terminal
 
       +++azd env set AZURE_SEARCH_SERVICE {Name of existing Azure AI Search service}+++
@@ -348,12 +350,12 @@ aspects such as employee benefits, internal policies, and job roles.
      
       ![](./media/image56.png)
 
-9.  Check the assigned existing resources, select Azure, and choose the
+10.  Check the assigned existing resources, select Azure, and choose the
     **.env** file.
 
      ![](./media/image57.png)
 
-10. Create a new azd environment:
+11. Create a new azd environment:
 
       shellCopy
      
@@ -361,22 +363,22 @@ aspects such as employee benefits, internal policies, and job roles.
  
     ![](./media/image58.png)
 
-11. Select your azure subscription
+12. Select your azure subscription
 
       ![](./media/image59.png)
 
-12. When prompted, **Enter a value for the
+13. When prompted, **Enter a value for the
     ‘documentIntelligenceResourceGroupLocation’ infrastructure
     parameter** select **West US2.**
 
      ![](./media/image60.png)
 
-13. When prompted, **enter a value for the ‘openAiResourceGroupLocation’
+14. When prompted, **enter a value for the ‘openAiResourceGroupLocation’
     infrastructure parameter** select **France Central .**
 
      ![](./media/image61.png)
 
-14. Wait until app is deployed. It may take **35-40** minutes for the
+15. Wait until app is deployed. It may take **35-40** minutes for the
     deployment to complete.
 
        ![](./media/image62.png)
@@ -389,13 +391,13 @@ aspects such as employee benefits, internal policies, and job roles.
        
        ![](./media/image66.png)
 
-15. After the application has been successfully deployed you will see a
+16. After the application has been successfully deployed you will see a
     URL printed to the console. Click that URL to interact with the
     application in your browser. It will look like the following:
 
       ![](./media/image67.png)
 
-16. Open your browser, navigate to the address bar, paste the link. Now,
+17. Open your browser, navigate to the address bar, paste the link. Now,
     resource group will open in a new browser
 
       ![](./media/image68.png)
@@ -462,7 +464,7 @@ aspects such as employee benefits, internal policies, and job roles.
     following text and click on the **Submit icon** as shown in the
     below image.
 
-    +++What happens in a performence review?+++
+    +++What happens in a performance review?+++
 
     ![](./media/image79.png)
 
