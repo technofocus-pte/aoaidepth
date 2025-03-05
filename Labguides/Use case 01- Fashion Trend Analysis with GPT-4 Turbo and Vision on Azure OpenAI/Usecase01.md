@@ -21,6 +21,90 @@ Azure AI Vision features to generate additional insights from the images
 - This usecase related to fashion use cases. These might involve image
   analysis, text generation, or other AI tasks.
 
+## Task 0: Understand the VM and the credentials
+
+In this task, we will identify and understand the credentials that we
+will be using throughout the lab.
+
+1.  **Instructions** tab hold the lab guide with the instructions to be
+    followed throughout the lab.
+
+2.  **Resources** tab has got the credentials that will be needed for
+    executing the lab.
+
+    - **URL** – URL to the Azure portal
+
+    - **Subscription** – This is the ID of the subscription assigned to
+      you
+
+    - **Username** – The user id with which you need to login to the
+      Azure services.
+
+    - **Password** – Password to the Azure login. Let us call this
+      Username and password as Azure login credentials. We will use
+      these creds wherever we mention Azure login credentials.
+
+    - **Resource Group** – The **Resource group** assigned to you.
+
+    \[!Alert\] **Important:** Make sure you create all your resources under
+    this Resource group
+
+    ![](./media/a1.png)
+
+3.  **Help** tab holds the Support information. The **ID** value here is
+    the **Lab instance ID** which will be used during the lab execution.
+
+       ![](./media/a2.png)
+
+##  Task 1 : Register Service provider
+
+1.  Open a browser go to +++https://portal.azure.com+++ and sign in with
+    your cloud slice account below.
+
+    Username: <+++@lab.CloudPortalCredential>(User1).Username+++
+
+    Password: <+++@lab.CloudPortalCredential(User1).Password>+++
+
+    ![](./media/a3.png)
+ 
+    ![](./media/a4.png)
+
+2.  Click on **Subscriptions** tile.
+
+     ![](./media/a5.png)
+
+3.  Click on the subscription name.
+
+     ![](./media/a6.png)
+
+4.  Expand Settings from the left navigation menu. Click on **Resource
+    providers**, enter **+++Microsoft.AlertsManagement+++** and select
+    i,t, and then click **Register**.
+
+     ![](./media/a7.png)
+
+      ![](./media/a8.png)
+
+5.  Click on **Resource providers**,
+    enter **+++Microsoft.DBforPostgreSQL+++** and select i,t, and then
+    click **Register**.
+
+      ![](./media/a8.png)
+      
+      ![](./media/a9.png)
+      
+      ![](./media/a10.png)
+      
+      ![](./media/a11.png)
+
+6.  Repeat the steps \#10 and \#11 to register the following Resource
+    providers.
+
+      - **Microsoft.Search**
+      
+      - **Microsoft.Web**
+      
+      - **Microsoft.ManagedIdentity**
  
 
 ## **Task 1: Create Azure OpenAI resource**
