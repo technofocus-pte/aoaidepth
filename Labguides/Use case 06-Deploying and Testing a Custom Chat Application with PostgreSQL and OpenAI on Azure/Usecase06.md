@@ -34,29 +34,103 @@ credentials. If you do not have, please create one from here
 - +++https://github.com/signup?user_email=&source=form-home-signupobjectives+++
 
 ## Exercise 1 : Provision , deploy the application and test it from the browser
+## Task 0: Understand the VM and the credentials
+
+In this task, we will identify and understand the credentials that we
+will be using throughout the lab.
+
+1.  **Instructions** tab hold the lab guide with the instructions to be
+    followed throughout the lab.
+
+2.  **Resources** tab has got the credentials that will be needed for
+    executing the lab.
+
+    - **URL** – URL to the Azure portal
+
+    - **Subscription** – This is the ID of the subscription assigned to
+      you
+
+    - **Username** – The user id with which you need to login to the
+      Azure services.
+
+    - **Password** – Password to the Azure login. Let us call this
+      Username and password as Azure login credentials. We will use
+      these creds wherever we mention Azure login credentials.
+
+    - **Resource Group** – The **Resource group** assigned to you.
+
+    \[!Alert\] **Important:** Make sure you create all your resources under
+    this Resource group
+
+    ![](./media/b1.png)
+
+3.  **Help** tab holds the Support information. The **ID** value here is
+    the **Lab instance ID** which will be used during the lab execution.
+
+    ![](./media/b2.png)
+
+##  Task 1 : Register Service provider
+
+1.  Open a browser go to +++https://portal.azure.com+++ and sign in with
+    your cloud slice account below.
+
+> Username: <+++@lab.CloudPortalCredential>(User1).Username+++
+>
+> Password: <+++@lab.CloudPortalCredential(User1).Password>+++
+>
+   ![](./media/b3.png)
+   ![](./media/b4.png)
+
+2.  Click on **Subscriptions** tile.
+
+    ![](./media/b5.png)
+
+3.  Click on the subscription name.
+
+     ![](./media/b6.png)
+
+4.  Expand Settings from the left navigation menu. Click on **Resource
+    providers**, enter +++**Microsoft.AlertsManagement+++** and select
+    i,t, and then click **Register**.
+
+     ![](./media/b7.png)
+     ![](./media/b8.png)
+
+5.  Click on **Resource providers**,
+    enter +++**Microsoft.DBforPostgreSQL+++** and select i,t, and then
+    click **Register**.
+      ![](./media/b9.png)
+      ![](./media/b10.png)
+      ![](./media/b11.png)
+      ![](./media/b12.png)
+
+7.  Repeat the steps \#10 and \#11 to register the following Resource
+    providers.
+
+    - Microsoft.Search
+    
+    - Microsoft.Web
+    
+    - Microsoft.ManagedIdentity
+    
+    - Microsoft.Management
+
 
 ### Task 1: Copy the existing resource group name
 
-1.  Open your browser, open Azure
-    portal +++https:\\portal.azure.com+++.  Sign in with your Azure
-    slice account(Azure Credentials) available under
-    instructions/Resources section of your host environment.
-
-      ![](./media/image2.png)
-
-2.  On Home page, click on **Resource groups**  tile.
+1.  On Home page, click on **Resource groups**  tile.
 
       ![](./media/image3.png)
 
-3.  Make sure you already have a resource group created for you to work.
+2.  Make sure you already have a resource group created for you to work.
     Never delete this resource group. Instead, you can delete resources
     within the resource group, but not the resource group itself.
 
-4.  Click on resource group name
+3.  Click on resource group name
 
       ![](./media/image4.png)
 
-5.  Copy the resource group name and save it in Notepad to use for
+4.  Copy the resource group name and save it in Notepad to use for
     deploying all resources into this resource group
 
      ![](./media/image5.png)
@@ -65,11 +139,11 @@ credentials. If you do not have, please create one from here
 
 1.  On the Desktop, double click on **Docker Desktop**.
 
-      ![](./media/a5.png)
+      ![](./media/aa1.png)
 
 2.  Run the Docker Desktop.
 
-     ![](./media/a6.png)
+     ![](./media/aa2.png)
 
 ### Task 3 : Register Service provider
 
@@ -106,12 +180,12 @@ credentials. If you do not have, please create one from here
 2.  Click on **fork** to fork the repo. Give unique name to the repo and
     click on **Create repo** button.
 
-      ![](./media/image14.png)
-      ![](./media/image15.png)
+      ![](./media/aa3.png)
+      ![](./media/iaa4.png)
 
 3.  Click on **Code -> Codespaces -> Codespaces+**
 
-       ![](./media/image16.png)
+       ![](./media/aa5.png)
 
 4.  Wait for the Codespaces environment to setup .It takes few minutes
     to setup completely
@@ -139,7 +213,7 @@ credentials. If you do not have, please create one from here
 
 4.  To create an environment for Azure resources, run the following
     Azure Developer CLI command.It asks you to enter environment name
-    .Enter any name of your choice and press enter (eg :+++ragpgpy+++)
+    .Enter any name of your choice and press enter (eg :+++ragpgpy@lab.LabInstance.Id+++)
 
     **Note:** When creating an environment, ensure that the name consists of
     lowercase letters.
@@ -163,8 +237,7 @@ credentials. If you do not have, please create one from here
 
 7.  It will prompt you “**Enter a value for the
     'existingResourceGroupName' infrastructure parameter:**” enter the
-    resource group copied in Task 1 (eg : **ResourceGroup1 used for the
-    development slice) .**You can copy the resource group name from
+    resource group copied in Task 1 (eg : +++@lab.CloudResourceGroup(ResourceGroup1).Name+++) .**You can copy the resource group name from
     **Resources** section as shown in below image
 
       ![](./media/image25.png)
@@ -176,7 +249,7 @@ credentials. If you do not have, please create one from here
 
       ![](./media/image26.png)
 
-9.  Provisioning resource will take around 5 - 10 min. Click **Yes** if
+9.  Provisioning resource will take around 15-16 min. Click **Yes** if
     prompted.
 
        ![](./media/image27.png)
