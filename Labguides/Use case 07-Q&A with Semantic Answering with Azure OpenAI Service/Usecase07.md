@@ -1,4 +1,4 @@
-**Lab 07: Implementing Q&A using semantic answering**
+## Lab 07: Implementing Q&A using semantic answering
 
 **Introduction**
 
@@ -56,7 +56,7 @@ the question.
       |Subscription|	Select the assigned subscription|
       |Resource group|	Select the assigned Resource group|
       |Region	|Select East US|
-      |Name	|+++Azure-openai-testXXXXX+++ (XXXXX can be Lab instant ID)|
+      |Name	|+++Azure-openai-test{SUFFIX}+++ ({SUFFIX} can be Lab instant ID)|
       |Pricing tier	|Select Standard S0|
 
 
