@@ -123,7 +123,7 @@ aspects such as employee benefits, internal policies, and job roles.
 
       ![](./media/image16.png)
 
-3.  Then, enter the password and click on the **Sign in** button**.**
+3.  Then, enter the password and click on the **Sign in** button.
 
       ![](./media/image17.png)
 
@@ -165,7 +165,7 @@ aspects such as employee benefits, internal policies, and job roles.
       
       b)  Resource group - **Select your existing resource group**
       
-      c)  Service name - **+++aisearchXXXX+++(XXXXX can be Lab instant ID)**
+      c)  Service name - **+++aisearch{SUFFIX}+++(SUFFIX can be Lab instant ID)**
       
       d)  Location : **Central US** 
       
@@ -335,7 +335,7 @@ aspects such as employee benefits, internal policies, and job roles.
      
      ![](./media/image55.png)
     
-    [Alret] **Note**: Region should be in small letters and have no spaces.
+[ Alret] **Note**: Region should be in small letters and have no spaces.
 
 9.  Assign the existing Azure AI Search service. Run the following
     command in the Terminal
