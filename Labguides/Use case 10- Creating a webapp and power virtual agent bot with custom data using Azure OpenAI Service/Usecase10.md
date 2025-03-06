@@ -44,7 +44,7 @@ uses this information to provide a completion.
 ### Task 1: Create Azure OpenAI resource
 
 1.  Open your browser, navigate to the address bar, and type or paste
-    the following URL:+++<https://portal.azure.com/+++>, then press
+    the following URL:+++https://portal.azure.com/+++, then press
     the **Enter** button.
 
 ![](./media/image1.png)
