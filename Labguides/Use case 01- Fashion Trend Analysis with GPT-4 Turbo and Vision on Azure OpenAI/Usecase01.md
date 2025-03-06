@@ -49,12 +49,12 @@ will be using throughout the lab.
     \[!Alert\] **Important:** Make sure you create all your resources under
     this Resource group
 
-    ![](./media/a1.png)
+    ![](./media/aa1.png)
 
 3.  **Help** tab holds the Support information. The **ID** value here is
     the **Lab instance ID** which will be used during the lab execution.
 
-       ![](./media/a2.png)
+       ![](./media/aa2.png)
 
 ##  Task 1 : Register Service provider
 
@@ -65,37 +65,37 @@ will be using throughout the lab.
 
     Password: <+++@lab.CloudPortalCredential(User1).Password>+++
 
-    ![](./media/a3.png)
+    ![](./media/aa3.png)
  
-    ![](./media/a4.png)
+    ![](./media/aa4.png)
 
 2.  Click on **Subscriptions** tile.
 
-     ![](./media/a5.png)
+     ![](./media/aa5.png)
 
 3.  Click on the subscription name.
 
-     ![](./media/a6.png)
+     ![](./media/aa6.png)
 
 4.  Expand Settings from the left navigation menu. Click on **Resource
     providers**, enter **+++Microsoft.AlertsManagement+++** and select
     i,t, and then click **Register**.
 
-     ![](./media/a7.png)
+     ![](./media/aa7.png)
 
-      ![](./media/a8.png)
+      ![](./media/aa8.png)
 
 5.  Click on **Resource providers**,
     enter **+++Microsoft.DBforPostgreSQL+++** and select i,t, and then
     click **Register**.
 
-      ![](./media/a8.png)
+      ![](./media/aa8.png)
       
-      ![](./media/a9.png)
+      ![](./media/aa9.png)
       
-      ![](./media/a10.png)
+      ![](./media/aa10.png)
       
-      ![](./media/a11.png)
+      ![](./media/aa11.png)
 
 6.  Repeat the steps \#10 and \#11 to register the following Resource
     providers.
