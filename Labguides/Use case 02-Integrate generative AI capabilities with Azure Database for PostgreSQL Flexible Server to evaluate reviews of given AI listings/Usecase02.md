@@ -83,9 +83,9 @@ combine AI-driven insights with geospatial data.**Objectives**
     can provide any name you wish to use to host the resources
     associated with this lab.
 
-        +++RG_NAME=ResourceGroup1+++
-     
-       ![](./media/image10.png)
+     +++RG_NAME=ResourceGroup1+++
+    
+     ![](./media/image10.png)
 
 12.  In the database name, replace the {SUFFIX} token with a unique
     value, such as your initials, to ensure the database server name is
