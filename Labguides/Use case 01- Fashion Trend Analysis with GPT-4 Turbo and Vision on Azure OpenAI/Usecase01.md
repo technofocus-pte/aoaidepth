@@ -163,7 +163,7 @@ will be using throughout the lab.
         Please select a region from this list, In this lab **Sweden
         Central** is using for this resource.
 
-    d.  **Name**: **+++aoai-gpt4-visionXXXXX+++** (XXXXX can be Lab instant ID)
+    d.  **Name**: **+++aoai-gpt4-vision{SUFFIX}+++** ({SUFFIX} can be Lab instant ID)
 
     e.  **Pricing tier**: Select **Standard S0**
 
