@@ -28,6 +28,8 @@ combine AI-driven insights with geospatial data.**Objectives**
 - To optimize and analyze query performance using indexing and query
   planning tools.
 
+  [Alert]**Important Note**: Copy all the scripts into Notepad and execute them without any issues
+
 # Exercise 1: Provision an Azure Database for PostgreSQL Flexible Server
 
 ## Task 1: Provision an Azure Database for PostgreSQL Flexible Server
@@ -147,11 +149,10 @@ connect to your database.
       ![](./media/image17.png)
 
 7.  In the Azure Database for PostgresSQL home page, click on
-    **Overview** in the left-sided navigation menu and copy the **Server
-    name** and pate it into notepad, then **Save** the notepad to use the
+    **Overview** in the left-sided navigation menu and copy the **Endpoint** and pate it into notepad, then **Save** the notepad to use the
     information in the upcoming lab.
 
-      ![](./media/image18.png)
+      ![](./media/a1.png)
 
 8.  In the Azure Database for PostgreSQL home page, select
     **Networking** under settings and select **Allow public access to
@@ -194,14 +195,16 @@ and try again.
 
 Using the psql command prompt, you will create tables and populate them
 with data for use in the lab.
+ [Alert]**Important Note**: Copy all the scripts into Notepad and execute them without any issues
 
 1.  Run the following commands to create temporary tables for importing
     JSON data from a public blob storage account.
+
     ```
     CREATE TABLE temp_calendar (data jsonb);
     CREATE TABLE temp_listings (data jsonb);
     CREATE TABLE temp_reviews (data jsonb);
-    ```  
+    ``` 
 
       ![](./media/image25.png)
 
@@ -212,11 +215,9 @@ with data for use in the lab.
     ```
     ```
     \COPY temp_listings (data) FROM PROGRAM 'curl https://solliancepublicdata.blob.core.windows.net/ms-postgresql-labs/listings.json'
-    
     ```
     ```
     \COPY temp_reviews (data) FROM PROGRAM 'curl https://solliancepublicdata.blob.core.windows.net/ms-postgresql-labs/reviews.json'
-    
     ```
       ![](./media/image26.png)
       
@@ -298,7 +299,28 @@ with data for use in the lab.
     data::jsonb
     FROM temp_listings;
 
-    ```  
+    ```
+    ```
+    INSERT INTO reviews
+    SELECT 
+        data['id']::int,
+        data['listing_id']::int,
+        data['reviewer_id']::int,
+        replace(data['reviewer_name']::varchar(50), '"', ''), 
+        to_date(replace(data['date']::varchar(50), '"', ''), 'YYYY-MM-DD'),
+        replace(data['comments']::varchar(2000), '"', '')
+    FROM temp_reviews;
+    ```
+    ```
+    INSERT INTO calendar
+    SELECT 
+        data['listing_id']::int,
+        to_date(replace(data['date']::varchar(50), '"', ''), 'YYYY-MM-DD'),
+        data['price']::decimal(10,2),
+        replace(data['available']::varchar(50), '"', '')::boolean
+    FROM temp_calendar;
+    ```
+    
   ![](./media/image30.png)
 
 # Exercise 2: Add Azure AI and Vector extensions to allowlist
@@ -369,7 +391,7 @@ In this task, you create a new Azure OpenAI service.
       ![](./media/image40.png)
 
 3.  On **Create a resource** page, in the **Search services and
-    marketplace** search bar, type **Azure OpenAI**, then press the
+    marketplace** search bar, type **+++Azure OpenAI+++**, then press the
     **Enter** button.
 
       ![](./media/image41.png)
@@ -389,7 +411,7 @@ In this task, you create a new Azure OpenAI service.
     |**Subscription**	|Select Azure subscription|
     |**Resource group**	|Select resource your group |
     |**Region**	|Select East US2|
-    |**Name**	|Enter a globally unique name, such as +++aoai-postgres-labs-XXXX+++(XXXX can Lab InstantID)|
+    |**Name**	|Enter a globally unique name, such as +++aoai-postgres-labs-{SUFFIX}+++({SUFFIX} can Lab InstantID)|
     |**Pricing tier**|	Select Standard S0|
 
       ![](./media/image43.png)
@@ -452,10 +474,9 @@ OpenAI service. In this task, you will use Azure OpenAI Studio to create
 a model deployment that you can employ.
 
 1.  In **Azure OpenAI** page, click on **Overview** in the left-sided
-    navigation menu, scroll down and click on **Go to Azure OpenAI
-    Studio** button as shown in the below image.
+    navigation menu, scroll down and click on **Explore Azure AI Foundry portal** button as shown in the below image.
 
-      ![](./media/image51.png)
+      ![](./media/a2.png)
  
       ![](./media/image52.png)
 2.  On the **Azure AI Foundry | Azure Open AI Service** homepage,
@@ -596,20 +617,19 @@ Azure OpenAI service endpoint and key.
     commands from the psql command prompt in the Cloud Shell pane to add
     your values to the configuration table.
 
-     ```
-      SELECT azure_ai.set_setting('azure_openai.endpoint','{endpoint}');
-      SELECT azure_ai.set_setting('azure_openai.subscription_key', '{api-key}');
+    
+      +++SELECT azure_ai.set_setting('azure_openai.endpoint','{endpoint}');+++
+      +++SELECT azure_ai.set_setting('azure_openai.subscription_key', '{api-key}');+++
      
-     ```
+   
       ![](./media/image63.png)
 
 2.  Verify the settings written in the configuration table using the
     following queries:
-    ```
-    SELECT azure_ai.get_setting('azure_openai.endpoint');
-    SELECT azure_ai.get_setting('azure_openai.subscription_key');
+   
+    +++SELECT azure_ai.get_setting('azure_openai.endpoint');+++
+    +++SELECT azure_ai.get_setting('azure_openai.subscription_key');+++
     
-    ```
     The azure_ai extension is now connected to your Azure OpenAI account and
     ready to generate vector embeddings.
    ![](./media/image64.png)
@@ -646,13 +666,10 @@ following the guidance in the enable vector support in your database documenta
     the listings table using the vector data type to store embeddings
     within the table. The text-embedding-ada-002 model produces vectors
     with 1536 dimensions, so you must specify 1536 as the vector size.
-
-    ```
-    
-    ALTER TABLE listings ADD COLUMN description_vector vector(1536);
+   
+    +++ALTER TABLE listings ADD COLUMN description_vector vector(1536);+++
      
-    ```
-   ![](./media/image66.png)
+    ![](./media/image66.png)
 
 ## Task 2: Generate and store vector embeddings
 
@@ -740,9 +757,9 @@ created description_vector column in the listings table.
 3.  You can verify that the description_vector column has been populated
     for all listings records by running the following query:
 
-    ```
-    SELECT COUNT(*) FROM listings WHERE description_vector IS NULL AND description <> '';
-    ```
+
+    +++SELECT COUNT(*) FROM listings WHERE description_vector IS NULL AND description <> '';+++
+ 
    The result of the query should be a count of 0.
 
   ![](./media/image71.png)
@@ -764,9 +781,9 @@ between two inputs in the original format.
     using the ILIKE clause to observe the results of searching for
     records using a natural language query without using vector
     similarity:
-    ```
-    SELECT listing_id, name, description FROM listings WHERE description ILIKE '%Properties with a private room near Discovery Park%';
-    ```
+  
+    +++SELECT listing_id, name, description FROM listings WHERE description ILIKE '%Properties with a private room near Discovery Park%';+++
+   
      ![](./media/image72.png)
 
       The query returns zero results because it is attempting to match the
@@ -969,10 +986,9 @@ endpoint and a key for your Azure AI Language service.
     the psql command prompt in the Cloud Shell to add your values to the
     configuration table.
 
-    ```
-    SELECT azure_ai.set_setting('azure_cognitive.endpoint','{endpoint}');
-    SELECT azure_ai.set_setting('azure_cognitive.subscription_key', '{api-key}');
-    ```
+    +++SELECT azure_ai.set_setting('azure_cognitive.endpoint','{endpoint}');+++
+    +++SELECT azure_ai.set_setting('azure_cognitive.subscription_key', '{api-key}');+++
+   
 
     ![](./media/image90.png)
 
@@ -1030,34 +1046,6 @@ Airbnb listings.
     The scores are represented as real numbers between 0 and 1. For example,
     in (neutral,0.26,0.64,0.09), the sentiment is neutral with a positive
     score of 0.26, neutral of 0.64, and negative at 0.09.
-
-4.  Now that you have an understanding of how to analyze sentiment using
-    the extension and the shape of the return type, execute the
-    following query that looks for overwhelmingly positive reviews:
-
-      ```
-      WITH cte AS (
-          SELECT id, azure_cognitive.analyze_sentiment(comments, 'en') AS sentiment FROM reviews LIMIT 100
-      )
-      SELECT
-          id,
-          (sentiment).sentiment,
-          (sentiment).positive_score,
-          (sentiment).neutral_score,
-          (sentiment).negative_score,
-          comments
-      FROM cte
-      WHERE (sentiment).positive_score > 0.98
-      LIMIT 10;
-      
-      ```
-
-  ![](./media/image94.png)
-
-The above query uses a common table expression or CTE to get the
-sentiment scores for the first three records in the reviews table. It
-then selects the sentiment composite type columns from the CTE to
-extract the individual values from the sentiment_analysis_result.
 
 # Exercise 7: Execute a final query to tie it all together 
 
