@@ -114,12 +114,14 @@ GitHub account -- You are expected to have your own GitHub login credentials. If
     - **Select an Azure location to use** : **East us2/west
       us2** (Sometimes, East US might not be available, choose location from
       the list mentioned below.)
+8.  When prompted, enter a value for the OpenAIApiKey infrastructure
+    parameters and then just click the button
     
        ![](./media/image16.png)
      
       ![](./media/image17.png)
 
-7.  Wait for the resource to provision completely. This process wil take
+9.  Wait for the resource to provision completely. This process wil take
     5-10 min to create al the required resources.
 
       ![](./media/image18.png)
