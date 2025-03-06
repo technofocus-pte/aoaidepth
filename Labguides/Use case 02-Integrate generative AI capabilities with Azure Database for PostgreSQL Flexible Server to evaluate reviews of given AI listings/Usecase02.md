@@ -103,7 +103,7 @@ combine AI-driven insights with geospatial data.**Objectives**
 14.  Provision an Azure Database for PostgreSQL database instance within
     the resource group you created above by running the following Azure
     CLI command(10 Min)
-     ```
+    ```
      az postgres flexible-server create --name $DATABASE_NAME --location $REGION --resource-group $RG_NAME \
     --admin-user s2admin --admin-password Seattle123Seattle123 --database-name airbnb \
     --public-access 0.0.0.0-255.255.255.255 --version 16 \
