@@ -65,11 +65,11 @@ credentials. If you do not have, please create one from here
 
 1.  On the Desktop, double click on **Docker Desktop**.
 
-      ![](./media/image6.png)
+      ![](./media/a5.png)
 
 2.  Run the Docker Desktop.
 
-     ![](./media/image7.png)
+     ![](./media/a6.png)
 
 ### Task 3 : Register Service provider
 
