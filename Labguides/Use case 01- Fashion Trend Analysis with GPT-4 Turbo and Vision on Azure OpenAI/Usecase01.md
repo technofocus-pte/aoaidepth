@@ -97,14 +97,14 @@ will be using throughout the lab.
       
       ![](./media/aa11.png)
 
-6.  Repeat the steps \#10 and \#11 to register the following Resource
+6.  Repeat the steps \#4 and \#5 to register the following Resource
     providers.
 
-      - **Microsoft.Search**
+      - **+++Microsoft.Search+++**
       
-      - **Microsoft.Web**
+      - **+++Microsoft.Web+++**
       
-      - **Microsoft.ManagedIdentity**
+      - **+++Microsoft.ManagedIdentity+++**
  
 
 ## **Task 1: Create Azure OpenAI resource**
