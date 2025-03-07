@@ -95,7 +95,7 @@ GitHub account -- You are expected to have your own GitHub login credentials. If
 5.  Run below command to provision the services to Azure, build your
     container.
 
-    +++azd env set AZURE_RESOURCE_GROUP ResourceGroup1+++
+    +++azd env set AZURE_RESOURCE_GROUP {Name of existing resource group}+++
  
     ![](./media/image14.png)
 
