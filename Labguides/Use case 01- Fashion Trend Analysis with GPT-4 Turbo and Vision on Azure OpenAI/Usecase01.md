@@ -105,6 +105,8 @@ will be using throughout the lab.
       - **+++Microsoft.Web+++**
       
       - **+++Microsoft.ManagedIdentity+++**
+        
+      - **+++Microsoft.Management+++**
  
 
 ## **Task 1: Create Azure OpenAI resource**
