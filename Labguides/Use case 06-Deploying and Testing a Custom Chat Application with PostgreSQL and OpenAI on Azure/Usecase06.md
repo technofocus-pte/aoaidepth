@@ -107,13 +107,13 @@ will be using throughout the lab.
 7.  Repeat the steps \#10 and \#11 to register the following Resource
     providers.
 
-    - Microsoft.Search
+    - **+++Microsoft.Search+++**
     
-    - Microsoft.Web
+    - **+++Microsoft.Web+++**
     
-    - Microsoft.ManagedIdentity
+    - **+++Microsoft.ManagedIdentity+++**
     
-    - Microsoft.Management
+    - **+++Microsoft.Management+++**
 
 
 ### Task 1: Copy the existing resource group name
