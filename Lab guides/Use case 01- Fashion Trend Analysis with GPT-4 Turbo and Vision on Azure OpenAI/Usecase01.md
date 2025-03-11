@@ -105,6 +105,7 @@ Azure AI Vision features to generate additional insights from the images
       - **Microsoft.ManagedIdentity**
         
       - **Microsoft.AlertsManagement**
+      - **Microsoft.DBforPostgreSQL**
 
 ## **Task 2: Create Azure OpenAI resource**
 
