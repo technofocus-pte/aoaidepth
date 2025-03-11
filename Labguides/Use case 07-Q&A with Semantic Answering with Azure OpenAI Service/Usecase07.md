@@ -35,7 +35,7 @@ the question.
       ![](./media/image3.png)
 
 3.  On **Create a resource** page, in the **Search services and
-    marketplace** search bar, type **Azure OpenAI**, then press the
+    marketplace** search bar, type **+++Azure OpenAI+++**, then press the
     **Enter** button.
 
        ![](./media/image4.png)
@@ -46,7 +46,7 @@ the question.
     the **Azure** **OpenAI** tile, then click on the **Create** button
     on the **Azure OpenAI page**).
 
-       ![](./media/image5.png)
+       ![](./media/aaa1.png)
 
 5.  In the **Create Azure OpenAI** window, under the **Basics** tab,
     enter the following details and click on the **Next** button.
@@ -83,13 +83,13 @@ the question.
 10. On **Microsoft.CognitiveServicesOpenAI** window, after the
     deployment is completed, click on the **Go to resource** button.
 
-       ![](./media/image10.png)
+       ![](./media/aaa2.png)
 
 11. In your **Azure-open-testXX | Model deployments** window, navigate
     to the **Resource Management** section, and click on **Keys and
     Endpoints**.
 
-       ![](./media/image11.png)
+       ![](./media/aaa3.png)
 
 12. In **Keys and Endpoints** page, copy **KEY1, KEY 2,** and
     **Endpoint** values and paste them in a notepad as shown in the
@@ -100,11 +100,9 @@ the question.
 
 ## **Task 2: Deploy the Chat model and Embedding model**
 
-1.  In **Azure-openai-testXX** page, click on **Overview** in the
-    left-sided navigation menu, scroll down and click on **Go to Azure
-    OpenAI Studio** button as shown in the below image.
+1. In **Azure-openai-testXX** page, click on **Overview** in the left-sided navigation menu, scroll down and click on **Explore Azure AI Foundry portal** button as shown in the below image.
 
-      ![](./media/image13.png)
+      ![](./media/aaa4.png)
 
 2.  Wait for the Azure OpenAI studio to launch.
 
@@ -168,13 +166,13 @@ the question.
       |---------|-----------|
       |Subscription|	Select your Azure OpenAI subscription|
       |Resource group	|Select the Resource group| 
-      |Resource Prefix|	aoaichatsearchXXXX+++(can be a unique name)| 
+      |Resource Prefix|	+++aoaichatsearchXXXX+++(can be a unique name)| 
       |Azure Cognitive Search Sku|	Standard |
       |Hosting plan Sku|	B3|
       |OpenAI Name	|Enter your OpenAI name that you have created in Task#1 |
       |OpenAI Key	|nter your OpenAI key that you have saved in your notepad in Task #2|
-      |Open AI Engine	|gpt-4 |
-      |Open AI Deployment Type|	Chat |
+      |Open AI Engine	|+++gpt-4+++ |
+      |Open AI Deployment Type|	+++Chat+++ |
       |Open AI Embeddings Engine Doc|	text-embeddeding-ada-002|
       |Open AI Embeddings Engine Query	|text-embeddeding-ada-002|
 
