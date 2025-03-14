@@ -396,7 +396,7 @@ will be using throughout the lab.
 
     - Select Model: **gpt-4**
 
-    - Deployment Name: enter **gpt-35-turbo**
+    - Deployment Name: enter **gpt-4**
 
     - Select select the **Standard** as **Deployment type**
 
