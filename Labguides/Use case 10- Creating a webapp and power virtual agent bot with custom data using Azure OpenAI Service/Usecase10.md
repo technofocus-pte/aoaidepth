@@ -40,8 +40,94 @@ uses this information to provide a completion.
   cognitive search service, and the new web app.
 
 ## Exercise 1- Create an Azure Storage Account and Azure cognitive Search by using the portal
+## Task 0: Understand the VM and the credentials
 
-### Task 1: Create Azure OpenAI resource
+In this task, we will identify and understand the credentials that we
+will be using throughout the lab.
+
+1.  **Instructions** tab hold the lab guide with the instructions to be
+    followed throughout the lab.
+
+2.  **Resources** tab has got the credentials that will be needed for
+    executing the lab.
+
+    - **URL** – URL to the Azure portal
+
+    - **Subscription** – This is the ID of the subscription assigned to
+      you
+
+    - **Username** – The user id with which you need to login to the
+      Azure services.
+
+    - **Password** – Password to the Azure login. Let us call this
+      Username and password as Azure login credentials. We will use
+      these creds wherever we mention Azure login credentials.
+
+    - **Resource Group** – The **Resource group** assigned to you.
+
+    \[!Alert\] **Important:** Make sure you create all your resources under
+    this Resource group
+
+    ![](./media/aa1.png)
+
+3.  **Help** tab holds the Support information. The **ID** value here is
+    the **Lab instance ID** which will be used during the lab execution.
+
+       ![](./media/aa2.png)
+
+##  Task 1 : Register Service provider
+
+1.  Open a browser go to +++https://portal.azure.com+++ and sign in with
+    your cloud slice account below.
+
+    Username: <+++@lab.CloudPortalCredential>(User1).Username+++
+
+    Password: <+++@lab.CloudPortalCredential(User1).Password>+++
+
+    ![](./media/aa3.png)
+ 
+    ![](./media/aa4.png)
+
+2.  Click on **Subscriptions** tile.
+
+     ![](./media/aa5.png)
+
+3.  Click on the subscription name.
+
+     ![](./media/aa6.png)
+
+4.  Expand Settings from the left navigation menu. Click on **Resource
+    providers**, enter **+++Microsoft.AlertsManagement+++** and select
+    i,t, and then click **Register**.
+
+     ![](./media/aa7.png)
+
+      ![](./media/aa8.png)
+
+5.  Click on **Resource providers**,
+    enter **+++Microsoft.DBforPostgreSQL+++** and select i,t, and then
+    click **Register**.
+
+      ![](./media/aa8.png)
+      
+      ![](./media/aa9.png)
+      
+      ![](./media/aa10.png)
+      
+      ![](./media/aa11.png)
+
+6.  Repeat the steps \#4 and \#5 to register the following Resource
+    providers.
+
+      - **+++Microsoft.Search+++**
+      
+      - **+++Microsoft.Web+++**
+      
+      - **+++Microsoft.ManagedIdentity+++**
+        
+      - **+++Microsoft.Management+++**
+
+### Task 2: Create Azure OpenAI resource
 
 1.  Open your browser, navigate to the address bar, and type or paste
     the following URL:+++https://portal.azure.com/+++, then press
@@ -71,7 +157,7 @@ uses this information to provide a completion.
 ![](./media/image5.png)
 
 7.  On **Create a resource** page, in the **Search services and
-    marketplace** search bar, type **Azure OpenAI**, then press
+    marketplace** search bar, type **+++Azure OpenAI+++**, then press
     the **Enter** button.
 
 ![](./media/image6.png)
@@ -121,7 +207,7 @@ uses this information to provide a completion.
 
       ![](./media/image12.png)
 
-### Task 2: Create an Azure Storage Account by using the portal
+### Task 3: Create an Azure Storage Account by using the portal
 
 1.  Sign in to the +++https://portal.azure.com/+++
 
@@ -129,8 +215,8 @@ uses this information to provide a completion.
 
      ![](./media/image13.png)
 
-3.  In the **Create a resource** window search box, type **Storage
-    account** and then click on the **storage account**.
+3.  In the **Create a resource** window search box, type **+++Storage
+    account+++** and then click on the **storage account**.
 
     ![](./media/image14.png)
 
@@ -212,7 +298,7 @@ uses this information to provide a completion.
       
       ![](./media/image28.png)
 
-### Task 3: Create an AzureAI Search service in the portal
+### Task 4: Create an AzureAI Search service in the portal
 
 1.  On the **azureopenaistorageXX | Containers** page, click
     on **Home** to go back to Azure portal home page.
@@ -223,8 +309,8 @@ uses this information to provide a completion.
 
       ![](./media/image30.png)
 
-3.  In the **Create a resource** page search bar, type **Azure AI
-    Search** and click on the appeared **azure ai search**.
+3.  In the **Create a resource** page search bar, type **+++Azure AI
+    Search+++** and click on the appeared **azure ai search**.
 
       ![](./media/image31.png)
 
@@ -438,8 +524,8 @@ time, as mentioned in Task \#1.*
       |Name|	+++AOAI-webappXXXXXX+++( XXXXX can be Lab instant ID|
       |Subscription|	Select the assigned subscription|
       |Resource Group|	Select the resource group |
-      |Location|	East US 2|
-      |Pricing plan|	Basic(B1)|
+      |Location|	Southeast Asia|
+      |Pricing plan|	Standard (S2)|
 
 
 3.  Select the check box of **Enable chat history in the web app**
@@ -448,7 +534,7 @@ time, as mentioned in Task \#1.*
 
     Note : Deployment takes 5-10 minutes
 
-     ![](./media/image66.png)
+     ![](./media/aa13.png)
  
 5.  To check the deployment status, click on **Deployments** and
     select **App deployment**.
