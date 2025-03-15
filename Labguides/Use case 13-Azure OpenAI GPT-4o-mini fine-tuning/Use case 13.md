@@ -1,4 +1,4 @@
-## Use case 13Azure OpenAI GPT-4o-mini fine-tuning
+## Use case 13:Azure OpenAI GPT-4o-mini fine-tuning
 
 **Introduction**
 
