@@ -81,7 +81,7 @@ combine AI-driven insights with geospatial data.**Objectives**
     to assign to your resource group and database and specify the Azure
     region into which resources should be deployed.
 
-10.  The resource group name specified is **rg-postgresql-labs**, but you
+10.  The resource group name specified is **ResourceGroupXX**, but you
     can provide any name you wish to use to host the resources
     associated with this lab.
 
