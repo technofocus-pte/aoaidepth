@@ -10,7 +10,7 @@
 - To deploy and test Custom Chat Application with PostgreSQL and OpenAI
   on Azure.
 
-    ![](./media/a1.png)
+  ![](./media/lab6.png)
 
 In this use case, you will set up a comprehensive development
 environment, deploy a chat application integrated with PostgreSQL, and
