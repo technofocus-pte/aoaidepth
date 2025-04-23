@@ -347,15 +347,16 @@ aspects such as employee benefits, internal policies, and job roles.
       +++azd env set AZURE_SEARCH_SERVICE_LOCATION {Location of existing service}+++
      
       +++azd env set AZURE_SEARCH_SERVICE_SKU {Name of SKU}+++
+    Exanple: azd env set AZURE_SEARCH_SERVICE_SKU standard
      
       ![](./media/image56.png)
 
-10.  Check the assigned existing resources, select Azure, and choose the
+11.  Check the assigned existing resources, select Azure, and choose the
     **.env** file.
 
      ![](./media/image57.png)
 
-11. Create a new azd environment:
+12. Create a new azd environment:
 
       shellCopy
      
@@ -363,22 +364,22 @@ aspects such as employee benefits, internal policies, and job roles.
  
     ![](./media/image58.png)
 
-12. Select your azure subscription
+13. Select your azure subscription
 
       ![](./media/image59.png)
 
-13. When prompted, **Enter a value for the
+14. When prompted, **Enter a value for the
     ‘documentIntelligenceResourceGroupLocation’ infrastructure
     parameter** select **West US2.**
 
      ![](./media/image60.png)
 
-14. When prompted, **enter a value for the ‘openAiResourceGroupLocation’
-    infrastructure parameter** select **France Central .**
+15. When prompted, **enter a value for the ‘openAiResourceGroupLocation’
+    infrastructure parameter** select **East US 2 .**
 
-     ![](./media/image61.png)
+     ![](./media/abc1.png)
 
-15. Wait until app is deployed. It may take **35-40** minutes for the
+16. Wait until app is deployed. It may take **35-40** minutes for the
     deployment to complete.
 
        ![](./media/image62.png)
@@ -391,13 +392,13 @@ aspects such as employee benefits, internal policies, and job roles.
        
        ![](./media/image66.png)
 
-16. After the application has been successfully deployed you will see a
+17. After the application has been successfully deployed you will see a
     URL printed to the console. Click that URL to interact with the
     application in your browser. It will look like the following:
 
       ![](./media/image67.png)
 
-17. Open your browser, navigate to the address bar, paste the link. Now,
+18. Open your browser, navigate to the address bar, paste the link. Now,
     resource group will open in a new browser
 
       ![](./media/image68.png)
