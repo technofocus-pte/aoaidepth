@@ -285,6 +285,8 @@ will be using throughout the lab.
 
       ![](./media/image34.png)
 
+    >[!Alert] Important: If you face any issue launching the app, please redeploy it by following step 12, i.e azd deploy
+
 ### Task 6: Use chat app to get answers from files
 
 1.  In the **RAG on database |OpenAI+PoastgreSQL** web app page, **click
