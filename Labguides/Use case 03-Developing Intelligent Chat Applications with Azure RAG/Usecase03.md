@@ -347,7 +347,8 @@ aspects such as employee benefits, internal policies, and job roles.
       +++azd env set AZURE_SEARCH_SERVICE_LOCATION {Location of existing service}+++
      
       +++azd env set AZURE_SEARCH_SERVICE_SKU {Name of SKU}+++
-    Exanple: azd env set AZURE_SEARCH_SERVICE_SKU standard
+    
+    Example: azd env set AZURE_SEARCH_SERVICE_SKU standard
      
       ![](./media/image56.png)
 
