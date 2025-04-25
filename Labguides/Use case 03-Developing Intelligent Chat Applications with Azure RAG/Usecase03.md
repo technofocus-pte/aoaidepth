@@ -376,7 +376,7 @@ aspects such as employee benefits, internal policies, and job roles.
      ![](./media/image60.png)
 
 15. When prompted, **enter a value for the ‘openAiResourceGroupLocation’
-    infrastructure parameter** select **West US 2 .**
+    infrastructure parameter** select **East US 2 .**
 
      ![](./media/abc1.png)
 
