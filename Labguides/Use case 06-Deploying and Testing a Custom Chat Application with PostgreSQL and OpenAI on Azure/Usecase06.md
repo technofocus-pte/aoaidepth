@@ -114,6 +114,7 @@ will be using throughout the lab.
     - **+++Microsoft.ManagedIdentity+++**
     
     - **+++Microsoft.Management+++**
+    - **+++Microsoft.operationalinsights+++**
 
 
 ### Task 1: Copy the existing resource group name
