@@ -120,7 +120,7 @@ incorrect.](./media/image12.png)
 > generated](./media/image14.png)
 
 3.  在 **Create a resource page**（创建资源页面）的 **Search services
-    and marketplace**（搜索服务和市场）搜索栏中，键入**Azure OpenAI**,
+    and marketplace**（搜索服务和市场）搜索栏中，键入**+++Azure OpenAI+++**,
     然后按 **Enter** 按钮。
 
 > ![A screenshot of a computer Description automatically
