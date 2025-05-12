@@ -1,3 +1,5 @@
+# 用例 02 - 将generative AI 功能与 Azure Database for PostgreSQL 灵活服务器集成，以评估对给定 AI 列表的评论
+
 **介绍**
 
 在本实验中，您将学习如何将 Azure AI 服务与 PostgreSQL 集成，以使用高级
@@ -195,21 +197,21 @@ generated with medium confidence](./media/image25.png)
 
 1.  运行以下命令以创建临时表，用于从公共 blob 存储帐户导入 JSON 数据。
 
-> !!CREATE TABLE temp_calendar (data jsonb);
->
-> CREATE TABLE temp_listings (data jsonb);
->
-> CREATE TABLE temp_reviews (data jsonb);!!
+    ```
+    CREATE TABLE temp_calendar (data jsonb);
+    CREATE TABLE temp_listings (data jsonb);
+    CREATE TABLE temp_reviews (data jsonb);
+    ``` 
 
-![](./media/image26.png)
+   ![](./media/image26.png)
 
 2.  使用 COPY 命令，使用公共存储帐户中 JSON 文件中的数据填充每个临时表。
 
 +++\COPY temp_calendar (data) FROM PROGRAM 'curl
 https://solliancepublicdata.blob.core.windows.net/ms-postgresql-labs/calendar.json'+++
 
-!!\COPY temp_listings (data) FROM PROGRAM 'curl
-https://solliancepublicdata.blob.core.windows.net/ms-postgresql-labs/listings.json'!!
++++\COPY temp_listings (data) FROM PROGRAM 'curl
+https://solliancepublicdata.blob.core.windows.net/ms-postgresql-labs/listings.json'+++
 
 \COPY temp_reviews (data) FROM PROGRAM 'curl
 https://solliancepublicdata.blob.core.windows.net/ms-postgresql-labs/reviews.json'
@@ -583,7 +585,7 @@ generated](./media/image24.png)
 4.  通过在提示符处输入以下内容，使用 psql
     命令行实用程序连接到您的数据库：
 
-> **!!psql!!**
+> **+++psql+++**
 
 ![A black background with a black square Description automatically
 generated with medium confidence](./media/image25.png)
@@ -596,13 +598,13 @@ azure_ai 扩展允许您将 Azure OpenAI 和 Azure
 1.  通过在 psql
     命令提示符下运行以下命令，验证扩展是否已成功添加到允许列表：
 
-> **!!SHOW azure.extensions;!!**
+> **+++SHOW azure.extensions;+++**
 
 ![](./media/image59.png)
 
 2.  使用 CREATE EXTENSION 命令安装 azure_ai 扩展。
 
-> **!!CREATE EXTENSION IF NOT EXISTS azure_ai;!!**
+> **+++CREATE EXTENSION IF NOT EXISTS azure_ai;+++**
 
 ![](./media/image60.png)
 
@@ -632,7 +634,7 @@ azure_ai 扩展允许您将 Azure OpenAI 和 Azure
     命令允许在必要时自动应用扩展显示，以使命令的输出更易于在 Azure Cloud
     Shell 中查看。
 
-> **!!\x auto!!**
+> **+++\x auto+++**
 >
 > **\df+ azure_ai.\***
 
@@ -652,11 +654,11 @@ azure_ai.set_setting（） 函数允许您设置 Azure AI
     门户检索的值，然后从 Cloud Shell 窗格中的 psql
     命令提示符运行命令，以将值添加到配置表中。
 
-> **!!SELECT
+> **+++SELECT
 > azure_ai.set_setting('azure_openai.endpoint','{endpoint}');**
 >
 > **SELECT azure_ai.set_setting('azure_openai.subscription_key',
-> '{api-key}');!!**
+> '{api-key}');+++**
 
 ![](./media/image64.png)
 
@@ -687,7 +689,7 @@ pgvector 扩展。
 
 1.  使用 CREATE EXTENSION 命令安装 pgvector 扩展。
 
-> **!!CREATE EXTENSION IF NOT EXISTS vector;!!**
+> **+++CREATE EXTENSION IF NOT EXISTS vector;+++**
 >
 > ![](./media/image66.png)
 
@@ -785,7 +787,7 @@ description_vector 列中。
 >
 > **END;**
 >
-> **$$;!!**
+> **$$;+++**
 >
 > ![](./media/image69.png)
 >
@@ -806,8 +808,8 @@ description_vector 列中。
 3.  您可以通过运行以下查询来验证是否已为所有列表记录填充
     description_vector 列：
 
-> **!!SELECT COUNT(\*) FROM listings WHERE description_vector IS NULL
-> AND description \<\> '';!!**
+> **+++SELECT COUNT(\*) FROM listings WHERE description_vector IS NULL
+> AND description \<\> '';+++**
 >
 > 查询结果应为 count 0。
 
@@ -825,8 +827,8 @@ n
 1.  在执行向量相似性搜索之前，请使用 ILIKE
     子句运行以下查询，以观察使用自然语言查询搜索记录而不使用向量相似性的结果：
 
-**!!SELECT listing_id, name, description FROM listings WHERE description
-ILIKE '%Properties with a private room near Discovery Park%';!!**
+**+++SELECT listing_id, name, description FROM listings WHERE description
+ILIKE '%Properties with a private room near Discovery Park%';+++**
 
 ![](./media/image73.png)
 
@@ -838,13 +840,13 @@ ILIKE '%Properties with a private room near Discovery Park%';!!**
     {your-deployment-name} 替换为您从 Azure OpenAI Studio
     **部署**页面复制的**部署名称**值。
 
-> **!!SELECT listing_id, name, description FROM listings**
+> **+++SELECT listing_id, name, description FROM listings**
 >
 > **ORDER BY description_vector \<=\>
 > azure_openai.create_embeddings('{your-deployment-name}', 'Properties
 > with a private room near Discovery Park')::vector**
 >
-> **LIMIT 3;!!**
+> **LIMIT 3;+++**
 
 ![](./media/image74.png)
 
@@ -856,7 +858,7 @@ ILIKE '%Properties with a private room near Discovery Park%';!!**
     {your-deployment-name} 替换为您从 Azure OpenAI Studio
     **部署**页面复制的**部署名称**值。
 
-> **!!EXPLAIN ANALYZE**
+> **+++EXPLAIN ANALYZE**
 >
 > **SELECT listing_id, name, description FROM listings**
 >
@@ -864,7 +866,7 @@ ILIKE '%Properties with a private room near Discovery Park%';!!**
 > azure_openai.create_embeddings('{your-deployment-name}', 'Properties
 > with a private room near Discovery Park')::vector**
 >
-> **LIMIT 3;!!**
+> **LIMIT 3;+++**
 
 ![](./media/image75.png)
 
@@ -898,8 +900,8 @@ generated](./media/image77.png)
     Navigable Small World 的缩写）在列表上创建索引。HNSW 允许 pgvector
     利用最新的基于图形的算法来近似最近邻查询。
 
-> **!!CREATE INDEX ON listings USING hnsw (description_vector
-> vector_cosine_ops);!!**
+> **+++CREATE INDEX ON listings USING hnsw (description_vector
+> vector_cosine_ops);+++**
 
 ![](./media/image78.png)
 
@@ -1015,11 +1017,11 @@ Database for PostgreSQL 灵活服务器与 Azure 认知服务集成文档。
     {api-key} 令牌替换为从 Azure 门户检索的值。从 Cloud Shell 中的 psql
     命令提示符运行命令，以将您的值添加到配置表中。
 
-> !!SELECT
+> +++SELECT
 > azure_ai.set_setting('azure_cognitive.endpoint','{endpoint}');
 >
 > SELECT azure_ai.set_setting('azure_cognitive.subscription_key',
-> '{api-key}');!!
+> '{api-key}');+++
 
 ![](./media/image91.png)
 
@@ -1031,7 +1033,7 @@ Database for PostgreSQL 灵活服务器与 Azure 认知服务集成文档。
 1.  要使用 azure_ai 扩展中的 azure_cognitive 架构执行情绪分析，请使用
     analyze_sentiment 函数。运行以下命令以查看该函数：
 
-> **!!\df azure_cognitive.analyze_sentiment!!**
+> **+++\df azure_cognitive.analyze_sentiment+++**
 
 ![](./media/image92.png)
 
@@ -1048,7 +1050,7 @@ Database for PostgreSQL 灵活服务器与 Azure 认知服务集成文档。
     类型是一个元组。要了解该元组的结构，请运行以下命令以查看
     sentiment_analysis_result 复合类型中包含的列：
 
-> **!!\d+ azure_cognitive.sentiment_analysis_result!!**
+> **+++\d+ azure_cognitive.sentiment_analysis_result+++**
 
 ![](./media/image94.png)
 
@@ -1116,7 +1118,7 @@ azure_ai、postgis 和 pgvector 扩展联系在一起。
 
 ## 任务 1：安装pgAdmin
 
-## 打开 Web 浏览器并导航到 ！！https://www.pgadmin.org/download/pgadmin-4-windows/!!
+## 打开 Web 浏览器并导航到 +++https://www.pgadmin.org/download/pgadmin-4-windows/+++
 
 1.  单击最新版本的 **pgAdmin**
 
@@ -1225,17 +1227,17 @@ generated](./media/image107.png)
 2.  要容纳点数据，请向接受点数据的新 geometry
     列添加。将以下查询复制并粘贴到打开的 pgAdmin 查询窗口中：
 
-> !!ALTER TABLE listings
+> +++ALTER TABLE listings
 >
-> ADD COLUMN listing_location geometry(point, 4326);!!
+> ADD COLUMN listing_location geometry(point, 4326);+++
 
 3.  接下来，通过将 longitude 和 latitude 值添加到 geometry
     列中，使用与每个列表关联的地理空间数据更新表。
 
-> !!UPDATE listings
+> +++UPDATE listings
 >
 > SET listing_location = ST_SetSRID(ST_Point(longitude, latitude),
-> 4326);!!
+> 4326);+++
 
 ![A screenshot of a computer Description automatically
 generated](./media/image116.png)
@@ -1248,7 +1250,7 @@ generated](./media/image116.png)
     PostGIS 扩展的元素。将 {your-deployment-name} 替换为您从 Azure
     OpenAI Studio **部署**页面复制的**部署名称**值。
 
-> !!WITH listings_cte AS (
+> +++WITH listings_cte AS (
 >
 > SELECT l.listing_id, name, listing_location, summary FROM listings l
 >
@@ -1311,7 +1313,7 @@ generated](./media/image116.png)
 >
 > INNER JOIN listings_cte l on s.listing_id = l.listing_id
 >
-> GROUP BY l.listing_id, name, listing_location, summary;!!
+> GROUP BY l.listing_id, name, listing_location, summary;+++
 
 2.  在 **Data Output** （数据输出） 面板中，选择查询结果的
     listing_location 列中显示的 **View all geometries in this column**
