@@ -1,349 +1,371 @@
+# Cas d'utilisation 13 - Réglage fin d'Azure OpenAI GPT-4o-mini
+
 **Introduction**
 
-Azure OpenAI Service lets you tailor our models to your personal
-datasets by using a process known as *fine-tuning*. This customization
-step lets you get more out of the service by providing:
+Azure OpenAI Service vous permet d'adapter nos modèles à vos jeux de
+données personnels à l'aide d'un processus connu sous le nom *de réglage
+fin*. Cette étape de personnalisation vous permet de tirer le meilleur
+parti du service en fournissant :
 
-- Higher quality results than what you can get just from [prompt
-  engineering](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/prompt-engineering)
+- Des résultats de meilleure qualité que ce que vous pouvez obtenir
+  simplement à partir d'[une ingénierie
+  rapide](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/prompt-engineering)
 
-- The ability to train on more examples than can fit into a model's max
-  request context limit.
+- La possibilité de s'entraîner sur plus d'exemples que ce qui peut
+  entrer dans la limite maximale du contexte de requête d'un modèle.
 
-- Lower-latency requests, particularly when using smaller models.
+- Demandes à faible latence, en particulier lors de l'utilisation de
+  modèles plus petits.
 
-A fine-tuned model improves on the few-shot learning approach by
-training the model's weights on your own data. A customized model lets
-you achieve better results on a wider number of tasks without needing to
-provide examples in your prompt. The result is less text sent and fewer
-tokens processed on every API call, potentially saving cost and
-improving request latency.
+Un modèle affiné améliore l'approche d'apprentissage en quelques coups
+en entraînant les poids du modèle sur vos propres données. Un modèle
+personnalisé vous permet d'obtenir de meilleurs résultats sur un plus
+grand nombre de tâches sans avoir à fournir d'exemples dans votre
+invite. Le résultat est moins de texte envoyé et moins de jetons traités
+à chaque appel d'API, ce qui permet de réduire les coûts et d'améliorer
+la latence des demandes.
 
-**Objectives**
+**Objectifs**
 
-- To create an Azure OpenAI service and retrieve the keys and endpoint
-  information that will be used for deploying Fine-tune model.
+- Pour créer un service Azure OpenAI et récupérer les clés et les
+  informations de point de terminaison qui seront utilisées pour le
+  déploiement du modèle Fine-tune.
 
-- Add role assignment to an Azure OpenAI resource.
+- Ajouter l'attribution de rôle à une ressource Azure OpenAI.
 
-- Copy endpoint and access key for authenticating your API calls.
+- Copiez le point de terminaison et la clé d'accès pour authentifier vos
+  appels d'API.
 
-- To configure the environmental variables.
+- Pour configurer les variables d'environnement.
 
-- To deploy fine-tune model using Jupyter Notebook.
+- Pour déployer un modèle affiné à l'aide de Jupyter Notebook.
 
-- Create a sample dataset,Fine-tuning gpt-35-turbo-0613 requires a
-  specially formatted JSONL training file.
+- Créer un exemple de jeu de données,Le réglage précis de
+  gpt-35-turbo-0613 nécessite un fichier d'entraînement JSONL
+  spécialement formaté.
 
-- Use a deployed customized model to explore Azure OpenAI capabilities
-  with a no-code approach through the Azure AI Studio Chat playground
+- Utilisez un modèle personnalisé déployé pour explorer les
+  fonctionnalités d'Azure OpenAI avec une approche sans code via le
+  terrain de jeu Azure AI Studio Chat
 
 ** Important**
 
-After you deploy a customized model, if at any time the deployment
-remains inactive for greater than fifteen (15) days, the deployment is
-deleted. The deployment of a customized model is *inactive* if the model
-was deployed more than fifteen (15) days ago and no completions or chat
-completions calls were made to it during a continuous 15-day period.
+Une fois que vous avez déployé un modèle personnalisé, si le déploiement
+reste inactif pendant plus de quinze (15) jours, le déploiement est
+supprimé. Le déploiement d'un modèle personnalisé est *inactif* si le
+modèle a été déployé il y a plus de quinze (15) jours et qu'aucun appel
+n'a été effectué au cours d'une période continue de 15 jours.
 
-The deletion of an inactive deployment doesn't delete or affect the
-underlying customized model, and the customized model can be redeployed
-at any time. As described in [**Azure OpenAI Service
-pricing**](https://azure.microsoft.com/pricing/details/cognitive-services/openai-service/),
-each customized (fine-tuned) model that's deployed incurs an hourly
-hosting cost regardless of whether completions or chat completions calls
-are being made to the model. To learn more about planning and managing
-costs with Azure OpenAI, refer to the guidance in [**Plan to manage
-costs for Azure OpenAI
-Service**](https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/manage-costs#base-series-and-codex-series-fine-tuned-models).
+La suppression d'un déploiement inactif ne supprime ni n'affecte le
+modèle personnalisé sous-jacent, et le modèle personnalisé peut être
+redéployé à tout moment. Comme décrit dans la tarification du [**service
+Azure
+OpenAI**](https://azure.microsoft.com/pricing/details/cognitive-services/openai-service/),
+chaque modèle personnalisé (affiné) déployé entraîne des frais
+d'hébergement horaires, que des appels soient effectués vers le modèle
+ou des appels de fin de conversation. Pour en savoir plus sur la
+planification et la gestion des coûts avec Azure OpenAI, consultez les
+conseils de la section [**Planifier la gestion des coûts pour le service
+Azure
+OpenAI**](https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/manage-costs#base-series-and-codex-series-fine-tuned-models).
 
-### **Task 1: Create Azure OpenAI resource**
+### **Tâche 1 : Créer une ressource Azure OpenAI**
 
-1.  From the Azure portal home page, click on **Azure portal menu**
-    represented by three horizontal bars on the left side of the
-    Microsoft Azure command bar as shown in the below image.
+1.  À partir de la page d'accueil du portail Azure, cliquez sur
+    l’**Azure portal menu** représenté par trois barres horizontales sur
+    le côté gauche de la barre de commandes Microsoft Azure, comme
+    illustré dans l'image ci-dessous.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image1.png)
+> ![Une capture d'écran d'un ordinateur Description générée
+> automatiquement](./media/image1.png)
 
-2.  Navigate and click on **+ Create a resource**.
+2.  Naviguez et cliquez sur **+ Create a resource**.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image2.png)
+> ![Une capture d'écran d'un ordinateur Description générée
+> automatiquement](./media/image2.png)
 
-3.  On **Create a resource** page, in the **Search services and
-    marketplace** search bar, type **Azure OpenAI**, then press the
-    **Enter** button.
+3.  Dans la page **Create a resource**, dans la barre de recherche
+    Services de **Search services and marketplace**, tapez **Azure
+    OpenAI,** puis appuyez sur le bouton **Enter.**
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image3.png)
+> ![Une capture d'écran d'un ordinateur Description générée
+> automatiquement](./media/image3.png)
 
-4.  In the Marketplace page, navigate to the Azure OpenAI section, click
-    on the Create V chevron button, then click on **Azure OpenAI** as
-    shown in the image. (In case, you clicked on the Azure **OpenAI
-    section**, then click on the **Create** button on the **Azure OpenAI
-    page**).
+4.  Dans la page Marketplace, accédez à la section Azure OpenAI, cliquez
+    sur le bouton Créer un chevron V, puis cliquez sur **Azure OpenAI**
+    comme indiqué dans l'image. (Dans le cas où vous avez cliqué sur le
+    section **Azure** **OpenAI**, puis cliquez sur le bouton **Create**
+    sur la **page Azure OpenAI**).
 
 > ![](./media/image4.png)
 
-5.  In the **Create Azure OpenAI** window, under the **Basics** tab,
-    enter the following details and click on the **Next** button.
+5.  Dans la window **Create Azure OpenAI**, sous l'onglet **Basics**,
+    entrez les détails suivants et cliquez sur le bouton **Next**.
 
-    1.  **Subscription**: Select the assigned subscription
+    1.  **Subscription:** sélectionnez l'abonnement attribué
 
-    2.  **Resource group**: Select your assigned Resource
-        Group(ResourceGroup1)
+    2.  **Resource group**: sélectionnez le groupe de ressources
+        attribué (ResourceGroup1)
 
-    3.  **Region**: Select **North Central US**
+    3.  **Region** : Sélectionnez **Centre-Nord des États-Unis**
 
-    4.  **Name**: **AzureOpenAI-FinetuneXX** (XX can be a unique number)
-        (here, we entered **AzureOpenAI-Finetune21**)
+    4.  **Name**: **AzureOpenAI-FinetuneXX** (XX peut être un numéro
+        unique) (ici, nous avons entré **AzureOpenAI-Finetune21**)
 
-    5.  **Pricing tier**: Select **Standard S0**
+    5.  **Pricing tier** : Sélectionnez **Standard S0**
 
 > ![](./media/image5.png)
 
-6.  In the **Network** tab, leave all the radio buttons in the default
-    state, and click on the **Next** button.
+6.  Dans l'onglet **Network**, laissez toutes les cases d'option dans
+    l'état par défaut et cliquez sur le bouton **Next**.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image6.png)
+> ![Une capture d'écran d'un ordinateur Description générée
+> automatiquement](./media/image6.png)
 
-7.  In the **Tags** tab, leave all the fields in the default state, and
-    click on the **Next** button.
+7.  Dans l'onglet **Tags**, laissez tous les champs dans l'état par
+    défaut et cliquez sur le bouton **Next**.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image7.png)
+> ![Une capture d'écran d'un ordinateur Description générée
+> automatiquement](./media/image7.png)
 
-8.  In the **Review+submit** tab, once the Validation is Passed, click
-    on the **Create** button.
+8.  Dans l'onglet **Review + submit** une fois la validation réussie,
+    cliquez sur le bouton **Create**.
 
 > ![](./media/image8.png)
 
-9.  Wait for the deployment to complete. The deployment will take around
-    3-5 minutes.
+9.  Attendez la fin du déploiement. Le déploiement prendra environ 3 à 5
+    minutes.
 
-10. On **Microsoft.CognitiveServicesOpenAI** window, after the
-    deployment is completed, click on the **Go to resource** button.
+10. Dans la window **Microsoft.CognitiveServicesOpenAI**, une fois le
+    déploiement terminé, cliquez sur le bouton **Go to resource**
 
 > ![](./media/image9.png)
 
-### **Task 2: Add role assignment to an Azure OpenAI resource**
+### **Tâche 2 : Ajouter l'attribution de rôle à une ressource Azure OpenAI**
 
-1.  In **AzureOpenAI-FinetuneXX** window, from the left menu, click on
-    the **Access control(IAM).**
+1.  Dans la window **AzureOpenAI-FinetuneXX**, dans le menu de gauche,
+    cliquez sur l’**Access control(IAM).**
 
 ![](./media/image10.png)
 
-2.  On the Access control(IAM) page, Click +**Add** and select **Add
-    role assignments.**
+2.  Sur la page Access control (IAM), cliquez sur +**Add** et
+    sélectionnez **Add role assignments.**
 
 ![](./media/image11.png)
 
-3.  Type the +++**Cognitive Services OpenAI Contributor+++** in the
-    search box and select it. Click **Next**
+3.  Tapez le **+++Cognitive Services OpenAI Contributor+++** dans la
+    zone de recherche et sélectionnez-le. Cliquez sur **Next.**
 
 ![](./media/image12.png)
 
-4.  In the **Add role assignment** tab, select Assign access to User
-    group or service principal. Under Members, click **+Select members**
+4.  Dans l'onglet **Add role assignments**, sélectionnez Attribuer
+    l'accès au groupe d'utilisateurs ou au principal de service. Sous
+    Membres, cliquez sur **+Select members**
 
 ![](./media/image13.png)
 
-5.  On the Select members tab, search your Azure OpenAI subscription and
-    click **Select.**
+5.  Sous l'onglet Select members , recherchez votre abonnement Azure
+    OpenAI et cliquez sur **Select.**
 
-![A screenshot of a computer Description automatically
-generated](./media/image14.png)
+![Une capture d'écran d'un ordinateur Description générée
+automatiquement](./media/image14.png)
 
-6.  In the **Add role assignment** page, Click **Review+assign**, you
-    will get a notification once the role assignment is complete.
+6.  Sur la page **Add role assignment**, cliquez sur **Review +
+    assign**, vous recevrez une notification une fois l'attribution de
+    rôle terminée.
 
 > ![](./media/image15.png)
 
 ![](./media/image16.png)
 
-7.  You will see a notification – added as Cognitive Services OpenAI
-    Contributor for Azure Pass-Sponsorship.
+7.  Une notification s'affiche, ajoutée en tant que contributeur OpenAI
+    Cognitive Services pour Azure Pass-Sponsorship.
 
 ![](./media/image17.png)
 
-8.  In your **AzureOpenAI-FinetuneXX** window, from the left menu, click
-    on the **Access control(IAM).**
+8.  Dans votre window **AzureOpenAI-FinetuneXX**, dans le menu de
+    gauche, cliquez sur le **Access control(IAM).**
 
 ![](./media/image10.png)
 
-9.  On the Access control(IAM) page, Click +**Add** and select **Add
-    role assignments.**
+9.  Sur la page Access control(IAM) cliquez sur **+Add** et sélectionnez
+    **Add role assignment.**
 
-![A screenshot of a computer AI-generated content may be
-incorrect.](./media/image11.png)
+![Une capture d'écran d'un ordinateur Le contenu généré par l'IA peut
+être incorrect.](./media/image11.png)
 
-10. Type the +++**Cognitive Services OpenAI User+++** in the search box
-    and select it. Click **Next**
+10. Tapez **+++Cognitive Services OpenAI User+++** dans la zone de
+    recherche et sélectionnez-le. Cliquez sur **Next**
 
 ![](./media/image18.png)
 
-11. In the **Add role assignment** tab, select Assign access to User
-    group or service principal. Under Members, click **+Select members**
+11. Dans l'onglet **Add role assignment**, sélectionnez Attribuer
+    l'accès au groupe d'utilisateurs ou au principal de service. Sous
+    Membres, cliquez sur **+Select members**
 
 ![](./media/image19.png)
 
-12. On the Select members tab, search your Azure OpenAI subscription,
-    and click **Select.**
+12. Sous l'onglet Sélectionner des membres, recherchez votre abonnement
+    Azure OpenAI, puis cliquez sur **Select.**
 
-![A screenshot of a computer Description automatically
-generated](./media/image14.png)
+![Une capture d'écran d'un ordinateur Description générée
+automatiquement](./media/image14.png)
 
-13. In the **Add role assignment** page, Click **Review+assign**, you
-    will get a notification once the role assignment is complete.
+13. Sur la page **Add role assignment**, cliquez sur **Review + assign**
+    vous recevrez une notification une fois l'attribution de rôle
+    terminée.
 
 > ![](./media/image20.png)
 >
 > ![](./media/image21.png)
 
-14. You will see a notification – added as Cognitive Services OpenAI
-    User for Azure Pass-Sponsorship.
+14. Une notification s'affiche, ajoutée en tant qu'utilisateur Cognitive
+    Services OpenAI pour Azure Pass-Sponsorship.
 
 ![](./media/image22.png)
 
-15. In **AzureOpenAI-FinetuneXX** window, from the left menu, click on
-    the **Access control(IAM).**
+15. Dans la window **AzureOpenAI-FinetuneXX**, dans le menu de gauche,
+    cliquez sur le **Access control (IAM).**
 
-![A screenshot of a computer AI-generated content may be
-incorrect.](./media/image10.png)
+![Une capture d'écran d'un ordinateur Le contenu généré par l'IA peut
+être incorrect.](./media/image10.png)
 
-16. On the Access control(IAM) page, Click +**Add** and select **Add
-    role assignments.**
+16. Sur la page Contrôle d'accès (IAM), cliquez sur +**Add** et
+    sélectionnez **Add role assignments.**
 
 ![](./media/image23.png)
 
-17. Type the +++**Cognitive Services Contributor+++** in the search box
-    and select it. Click **Next**
+17. Tapez **+++Cognitive Services Contributor+++** dans la zone de
+    recherche et sélectionnez-le. Cliquez sur **Next**
 
 ![](./media/image24.png)
 
-18. In the **Add role assignment** tab, select Assign access to User
-    group or service principal. Under Members, click **+Select members**
+18. Dans l'onglet **Add role assignment**, sélectionnez Attribuer
+    l'accès au groupe d'utilisateurs ou au principal de service. Sous
+    Membres, cliquez sur +**Select members** ![Une capture d'écran d'un
+    ordinateur Description générée automatiquement](./media/image25.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image25.png)
+19. Sous l'onglet Sélectionner des membres, recherchez votre abonnement
+    Azure OpenAI et cliquez sur **Select.**
 
-19. On the Select members tab, search your Azure OpenAI subscription and
-    click **Select.**
+![Une capture d'écran d'un ordinateur Description générée
+automatiquement](./media/image14.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image14.png)
+20. Sur la page **Add role assignment**, cliquez sur **Review +
+    assign**, vous recevrez une notification une fois l'attribution de
+    rôle terminée.
 
-20. In the **Add role assignment** page, Click **Review+assign**, you
-    will get a notification once the role assignment is complete.
+![Une capture d'écran d'un ordinateur Description générée
+automatiquement](./media/image26.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image26.png)
+![Une capture d'écran d'un ordinateur Description générée
+automatiquement](./media/image27.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image27.png)
+21. Une notification s'affiche en tant que contributeur Cognitive
+    Services pour Azure Pass-Sponsorship.
 
-21. You will see a notification – added as Cognitive Services
-    contributor for Azure Pass-Sponsorship.
+![Une capture d'écran d'un ordinateur Description générée
+automatiquement](./media/image28.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image28.png)
+22. À partir de la page d'accueil du portail Azure, tapez
+    **Subscriptions** dans la barre de recherche, puis sélectionnez
+    **Subscriptions**.
 
-22. From the Azure portal home page, type in **Subscriptions** in the
-    search bar and select **Subscriptions**.
+![Une capture d'écran d'un ordinateur Description générée
+automatiquement](./media/image29.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image29.png)
+23. Cliquez sur le **Subscriptions** qui vous a été attribué.
 
-23. Click on your assigned **subscription**.
+![Une capture d'écran d'un ordinateur Description générée
+automatiquement](./media/image30.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image30.png)
+24. Dans le menu de gauche, cliquez sur l’**Access control(IAM).**
 
-24. From the left menu, click on the **Access control(IAM).**
+![Une capture d'écran d'un ordinateur Description générée
+automatiquement](./media/image31.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image31.png)
+25. Sur la page Access control(IAM). cliquez sur +**Add** et
+    sélectionnez **Add role assignment.**
 
-25. On the Access control(IAM) page, Click +**Add** and select **Add
-    role assignments.**
+![Une capture d'écran d'un ordinateur Description générée
+automatiquement](./media/image32.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image32.png)
+26. Tapez le Lecteur de **Cognitive Services Usages Reader** dans la
+    zone de recherche et sélectionnez-le. Cliquez sur **Next.**
 
-26. Type the **Cognitive Services Usages Reader** in the search box and
-    select it. Click **Next**
+![Une capture d'écran d'un écran d'ordinateur Description générée
+automatiquement](./media/image33.png)
 
-![A screenshot of a computer screen Description automatically
-generated](./media/image33.png)
+27. Dans l' onglet **Add role assignment**, sélectionnez Attribuer
+    l'accès au groupe d'utilisateurs ou au principal de service. Sous
+    Membres, cliquez sur **+Select members**
 
-27. In the **Add role assignment** tab, select Assign access to User
-    group or service principal. Under Members, click **+Select members**
+![Une capture d'écran d'un ordinateur Description générée
+automatiquement](./media/image34.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image34.png)
+28. Sous l'onglet Select members , recherchez votre abonnement Azure
+    OpenAI et cliquez sur **Select.**
 
-28. On the Select members tab , search your Azure OpenAI subscription
-    and click **Select.**
+![Une capture d'écran d'un ordinateur Description générée
+automatiquement](./media/image14.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image14.png)
+29. Dans la page **Add role assignment**, cliquez sur **Review +
+    Assign**, vous recevrez une notification une fois l'attribution de
+    rôle terminée.
 
-29. In the **Add role assignment** page, Click **Review + Assign**, you
-    will get a notification once the role assignment is complete.
+![Une capture d'écran d'un ordinateur Description générée
+automatiquement](./media/image35.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image35.png)
+![Une capture d'écran d'un ordinateur Description générée
+automatiquement](./media/image36.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image36.png)
+30. Une notification s'affiche, ajoutée en tant que Lecteur
+    d'utilisation de Cognitive Services pour Azure Pass-Sponsorship.
 
-30. You will see a notification – added as Cognitive Services Usage
-    Reader for Azure Pass-Sponsorship.
+![Une capture d'écran d'un ordinateur Description générée
+automatiquement](./media/image37.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image37.png)
+### **Tâche 3 : Récupérer la clé et le point de terminaison du service Azure OpenAI**
 
-### **Task 3: Retrieve the key and endpoint of Azure OpenAI service**
-
-1.  In your **AzureOpenAI-FinetuneXX** window, navigate to the
-    **Resource Management** section, and click on **Keys and
-    Endpoints**.
+1.  Dans votre window **AzureOpenAI-FinetuneXX**, accédez à la section
+    **Resource Management**, puis cliquez sur **Keys and Endpoints.**
 
 ![](./media/image38.png)
 
-2.  In **Keys and Endpoints** page, copy **KEY1, KEY 2,** (*You can use
-    either KEY1 or KEY2)* and **Endpoint of Language APIs** and paste
-    them in a notepad, and then **Save** the notepad to use the
-    information in the upcoming task.
+2.  Dans la page **Keys and Endpoints**, copiez **les API KEY1, KEY 2**
+    (*vous pouvez utiliser KEY1 ou KEY2)* et **Endpoint of Language
+    API’s** et collez-les dans un bloc-notes, puis **Save** le
+    bloc-notes pour utiliser les informations dans la tâche à venir.
 
 ![](./media/image39.png)
 
-***Note:** You will have different KEY values.* *This value can be found
-in the **Keys and Endpoint** section when examining your resource from
-the Azure portal. You can use either KEY1 or KEY2. Always having two
-keys allows you to securely rotate and regenerate keys without causing a
-service disruption*.
+***Remarque :** Vous aurez des valeurs KEY différentes. Cette valeur se
+trouve dans la section **Keys and Endpoints** lors de l'examen de votre
+ressource à partir du portail Azure. Vous pouvez utiliser KEY1 ou KEY2.
+Le fait d'avoir toujours deux clés vous permet de faire pivoter et de
+régénérer les clés en toute sécurité sans provoquer d'interruption de
+service*.
 
-3.  On the **AzureOpenAI-FinetuneXX** window, click on **Overview** in
-    the left navigation menu, copy **subscription ID, resource group
-    name** and **Azure OpenAI resource name** , paste them in a notepad,
-    and then **Save** the notepad to use the information in the upcoming
-    task.
+3.  Dans la window **AzureOpenAI-FinetuneXX**, cliquez sur **Overview**
+    dans le menu de navigation de gauche, **subscription ID, resource
+    group name** and **Azure OpenAI resource name**, collez-les dans un
+    bloc-notes, puis **Save** le bloc-notes pour utiliser les
+    informations dans la tâche à venir.
 
 ![](./media/image40.png)
 
-### **Task 4: Install Python libraries**
+### **Tâche 4 : Installer les bibliothèques Python**
 
-1.  Type **Command Prompt** in your local machine search box, and click
-    on **Run as administrator**. On **Do you allow this app to make
-    changes on your device** dialog box, click on the **Yes** button.
+1.  Tapez **Command Prompt** dans la zone de recherche de votre machine
+    locale, puis cliquez sur **Run as administrator**. Dans la boîte de
+    dialogue **Do you allow this app to make changes on your device**,
+    cliquez sur le bouton **Yes.**
 
-![A screenshot of a computer Description automatically
-generated](./media/image41.png)
+![Une capture d'écran d'un ordinateur Description générée
+automatiquement](./media/image41.png)
 
-2.  To install the Python libraries , run the following command.
+2.  Pour installer les bibliothèques Python, exécutez la commande
+    suivante.
 
 > ConsoleCopy
 
@@ -353,9 +375,10 @@ generated](./media/image41.png)
 
 ![](./media/image42.png)
 
-3.  To install the Python libraries , run the following command.
+3.  Pour installer les bibliothèques Python, exécutez la commande
+    suivante.
 
-**+++pip install tiktoken+++**
+**+++pip installer tiktoken+++**
 
 ![](./media/image43.png)
 
@@ -363,15 +386,17 @@ generated](./media/image41.png)
 
 > ![](./media/image44.png)
 
-### **Task 5: Set environment variables**
+### **Tâche 5 : Définir les variables d'environnement**
 
-1.  In the **Command Prompt**, go to **Labfiles** directory. Set the
-    environment variables by running the following commands.
+1.  Dans **Command Prompt**, allez dans le répertoire **Labfiles**.
+    Définissez les variables d'environnement en exécutant les commandes
+    suivantes.
 
-> ***Note:** Update the Key value and Endpoint with the values that you
-> have saved on your notepad in the in **Lab \#1***
+> ***Remarque :** Mettez à jour la valeur de la clé et le point de
+> terminaison avec les valeurs que vous avez enregistrées sur votre
+> bloc-notes dans le **Laboratoire#1***
 >
-> Copy
+> Copier
 
 +++setx AZURE_OPENAI_API_KEY "REPLACE_WITH_YOUR_KEY_VALUE_HERE"+++
 
@@ -380,60 +405,62 @@ generated](./media/image41.png)
 >
 > **setx AZURE_OPENAI_API_KEY "97baXXXXXXXXXXXXXXXXXXXXXX4f94")**
 
-Copy
+Copier
 
 > setx AZURE_OPENAI_ENDPOINT "REPLACE_WITH_YOUR_ENDPOINT_HERE"
 
 ![](./media/image45.png)
 
-2.  **Close** the command prompt.
+2.  **Close** l'invite de commande.
 
-**Note**: After setting the environment variables, you may need to close
-and reopen Jupyter notebooks.
+**Remarque** : Après avoir défini les variables d'environnement, vous
+devrez peut-être fermer et rouvrir les notebooks Jupyter.
 
-### **Task 6: Create a sample dataset**
+### **Tâche 6 : Créer un exemple de jeu de données**
 
-Fine-tuning gpt-35-turbo-0613 requires a specially formatted JSONL
-training file. The two sample JSONL
-files **training_set.jsonl** and **validation_set.jsonl** are placed in
-**C:\Labfiles.**
+Le réglage fin de gpt-35-turbo-0613 nécessite un fichier d'entraînement
+JSONL spécialement formaté. Les deux exemples de fichiers JSONL
+**training_set.jsonl** et **validation_set.jsonl** sont placés dans
+**C :\Labfiles.**
 
-1.  Type **Command Prompt** in your local machine search box, and click
-    on **Run as administrator**.
+1.  Tapez **Command Prompt** dans la zone de recherche de votre machine
+    locale, puis cliquez sur **Run as administrator**.
 
-![](./media/image41.png)
+> ![](./media/image41.png)
 
-2.  On **Do you allow this app to make changes on your device** dialog
-    box, click on the **Yes** button.
+2.  Dans la boîte de dialogue **Do you allow this app to make changes on
+    your device**, cliquez sur le bouton **Yes.**
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image46.png)
+> ![Une capture d'écran d'un ordinateur Description générée
+> automatiquement](./media/image46.png)
 
-**Important Note**: You need to change the current directory to the
-**Labfiles** directory (The command used to move back to the previous
-directory is **cd .. \[space after cd then two dots\],** the command
-used to move to the next directory is **cd \<name of the directory\>)**
+**Remarque importante** : Vous devez changer le répertoire courant dans
+le répertoire **Labfiles** (La commande utilisée pour revenir au
+répertoire précédent est **cd .. space after cd then two dots\],** la
+commande utilisée pour passer au répertoire suivant est **cd \<name of
+the directory\>)**
 
-3.  Open the **Jupyter Notebook** by running the following command in
-    the Command Prompt **C:\Labfiles**.
+3.  Ouvrez le **Jupyter Notebook** en exécutant la commande suivante
+    dans l'invite de commande **C :\Labfiles**.
 
-Copy
+Copier
 
-> jupyter-lab
+> Jupyter-Lab
 
 ![](./media/image47.png)
 
-4.  Under the **Jupyter Notebook**, click on **Python 3(ipykernel**).
+4.  Sous le **Jupyter Notebook**, cliquez sur **Python 3 (ipykernel**).
 
 ![](./media/image48.png)
 
-5.  Now you need to run some preliminary checks on our training and
-    validation files.
+5.  Vous devez maintenant effectuer quelques vérifications préliminaires
+    sur nos dossiers de formation et de validation.
 
-6.  Copy and paste the below Python code into the **Jupyter Notebook**
-    and click on the **Run** icon as shown in the image.
+6.  Copiez et collez le code Python ci-dessous dans le **Jupyter
+    Notebook** et cliquez sur l' icône **Run** comme indiqué dans
+    l'image.
 
-> Copy
+> Copier
 >
 > import json
 >
@@ -474,15 +501,16 @@ Copy
 
 ![](./media/image50.png)
 
-7.  Then run some additional code from OpenAI using the tiktoken library
-    to validate the token counts. Individual examples need to remain
-    under the gpt-35-turbo-0613 model's input token limit of 4096
-    tokens.
+7.  Exécutez ensuite du code supplémentaire à partir d'OpenAI à l'aide
+    de la bibliothèque tiktoken pour valider le nombre de jetons. Les
+    exemples individuels doivent rester sous la limite de jetons
+    d'entrée du modèle gpt-35-turbo-0613 de 4096 jetons.
 
-8.  Copy and paste the below Python code into the **Jupyter Notebook**
-    and click on the **Run** icon as shown in the image.
+8.  Copiez et collez le code Python ci-dessous dans le **Jupyter
+    Notebook** et cliquez sur l' icône **Run** comme indiqué dans
+    l'image.
 
-Copy
+Copier
 
 \# Validate token counts
 
@@ -574,12 +602,13 @@ print('\*' \* 50)
 
 ![](./media/image52.png)
 
-### **Task 7: Upload fine-tuning files**
+### **Tâche 7 : Télécharger les fichiers de réglage fin**
 
-1.  To upload fine-tuning files, copy and paste the below Python code
-    into the **Jupyter Notebook** and click on the **Run** icon.
+1.  Pour télécharger des fichiers de réglage précis, copiez et collez le
+    code Python ci-dessous dans le **Jupyter Notebook** et cliquez sur
+    l' icône **Run**
 
-Copy
+Copier
 
 \# Upload fine-tuning files
 
@@ -626,11 +655,12 @@ print("Validation file ID:", validation_file_id)![](./media/image53.png)
 
 ![](./media/image54.png)
 
-2.  Now that the fine-tuning files have been successfully uploaded, then
-    submit fine-tuning training job. Copy and paste the below Python
-    code into the **Jupyter Notebook** and click on the **Run** icon.
+2.  Maintenant que les fichiers de réglage fin ont été téléchargés avec
+    succès, soumettez le travail d'entraînement de réglage fin. Copiez
+    et collez le code Python ci-dessous dans le **Jupyter Notebook** et
+    cliquez sur l' icône **Run**
 
-**Copy**
+**Copier**
 
 \# Submit fine-tuning training job
 
@@ -658,10 +688,11 @@ print(response)
 
 ![](./media/image55.png)
 
-3.  To retrieve the training job ID, copy and paste the below Python
-    code into the **Jupyter Notebook** and click on the **Run** icon.
+3.  Pour récupérer l'ID de la tâche d'entraînement, copiez et collez le
+    code Python ci-dessous dans le **Jupyter Notebook** et cliquez sur
+    l' icône **Run**.
 
-**Copy**
+**Copier**
 
 response = openai.FineTuningJob.retrieve(job_id)
 
@@ -675,10 +706,11 @@ print(response)
 
 ![](./media/image57.png)
 
-4.  Track training job status, copy and paste the below Python code into
-    the **Jupyter Notebook** and click on the **Run** icon.
+4.  Suivez l'état de la tâche d'entraînement, copiez et collez le code
+    Python ci-dessous dans le **Jupyter Notebook** et cliquez sur l'
+    icône **Run** .
 
-**Copy**
+**Copier**
 
 \# Track training status
 
@@ -727,18 +759,19 @@ print(f'Found {len(response\["data"\])} fine-tune jobs.')
 
 ![](./media/image59.png)
 
-5.  Training your model can take more than an hour to complete.
+5.  L'entraînement de votre modèle peut prendre plus d'une heure.
 
 ![](./media/image60.png)
 
-6.  Once training is completed the output message will change. 
+6.  Une fois la formation terminée, le message de sortie change.
 
 ![](./media/image61.png)
 
-7.  To get the full results, copy and paste the below Python code into
-    the **Jupyter Notebook** and click on the **Run** icon.
+7.  Pour obtenir les résultats complets, copiez et collez le code Python
+    ci-dessous dans le **Jupyter Notebook** et cliquez sur l' icône
+    **Run**.
 
-Copy
+Copier
 
 \#Retrieve fine_tuned_model name
 
@@ -750,54 +783,56 @@ fine_tuned_model = response\["fine_tuned_model"\]
 
 > ![](./media/image62.png)
 
-### **Task 8: Deploy fine-tuned model**
+### **Tâche 8 : Déployer un modèle affiné**
 
-1.  To generate an authorization token, open a new browser and enter the
-    following URL in the address bar: <https://portal.azure.com/> to
-    open the Azure Portal.
+1.  Pour générer un jeton d'autorisation, ouvrez un nouveau navigateur
+    et entrez l'URL suivante dans la barre d'adresse :
+    <https://portal.azure.com/> pour ouvrir le portail Azure.
 
-![A screenshot of a computer Description automatically
-generated](./media/image63.png)
+![Une capture d'écran d'un ordinateur Description générée
+automatiquement](./media/image63.png)
 
-2.  In the Azure portal, click on the **\[\>\_\] (Cloud Shell)** button
-    at the top of the page to the right of the search box. A Cloud Shell
-    pane will open at the bottom of the portal. The first time you open
-    the Cloud Shell, you may be prompted to choose the type of shell you
-    want to use (**Bash** or **PowerShell**). Select **Bash**
+2.  Dans le portail Azure, cliquez sur le bouton **\[\>\_\] (Cloud
+    Shell)** en haut de la page à droite de la zone de recherche. Un
+    volet Cloud Shell s'ouvre en bas du portail. La première fois que
+    vous ouvrez Cloud Shell, vous pouvez être invité à choisir le type
+    de shell que vous souhaitez utiliser (**Bash** ou **PowerShell**).
+    Sélectionnez **Bash**
 
 ![](./media/image64.png)
 
-3.  In **You have no storage mounted** dialog box, select subscription
-    and click on the **Apply button**
+3.  Dans la boîte de dialogue **You have no storage mounted**,
+    sélectionnez abonnement et cliquez sur le bouton **Apply**
 
 > ![](./media/image65.png)
 
-4.  Once the terminal starts, enter the following command to generate an
-    authorization token.
+4.  Une fois le terminal démarré, entrez la commande suivante pour
+    générer un jeton d'autorisation.
 
-Copy
+Copier
 
 [az account
 get-access-token](https://learn.microsoft.com/en-us/cli/azure/account#az-account-get-access-token())
 
-5.  Now copy the **accessToken** and then **Save** the notepad to use
-    the information in the upcoming task
+5.  Copiez maintenant l' **accessToken,** puis **Save** le bloc-notes
+    pour utiliser les informations dans la tâche à venir
 
 ![](./media/image66.png)
 
-6.  Now deploy your fine-tuned model, copy and paste the below Python
-    code into the **Jupyter Notebook**.
+6.  Déployez maintenant votre modèle affiné, copiez et collez le code
+    Python ci-dessous dans le **Jupyter Notebook**.
 
-7.  Replace the TEMP_AUTH_TOKEN(*the value that you have saved in the in
-    **Task 8\>Step 6)*** , YOUR_SUBSCRIPTION_ID,
-    YOUR_RESOURCE_GROUP_NAME, YOUR_AZURE_OPENAI_RESOURCE_NAME(*the
-    values that you have saved in the in **Task 3)*** and values that
-    you have saved in your notepad as shown in the below image and
-    YOUR_CUSTOM_MODEL_DEPLOYMENT_NAME **as gpt-4o-mini (** can be a
-    unique name). Then, execute the cell by clicking on the **start
-    icon**.
+7.  Remplacez les TEMP_AUTH_TOKEN (*la valeur que vous avez enregistrée
+    dans la **tâche 8\>étape 6)*** , YOUR_SUBSCRIPTION_ID,
+    YOUR_RESOURCE_GROUP_NAME, YOUR_AZURE_OPENAI_RESOURCE_NAME (*les
+    valeurs que vous avez enregistrées dans la **tâche 3) ***et les
+    valeurs que vous avez enregistrées dans votre bloc-notes comme
+    indiqué dans l' image ci-dessous et
+    YOUR_CUSTOM_MODEL_DEPLOYMENT_NAME **as gpt-4o-mini (** peut être un
+    nom unique). Ensuite, exécutez la cellule en cliquant sur le **start
+    icon**
 
-**Copy**
+**Copier**
 
 > \# Deploy fine-tuned model
 >
@@ -863,134 +898,140 @@ get-access-token](https://learn.microsoft.com/en-us/cli/azure/account#az-account
 
 ![](./media/image68.png)
 
-8.  Now check on your deployment progress in the Azure AI Foundry.
+8.  Vérifiez maintenant la progression de votre déploiement dans Azure
+    AI Foundry.
 
-9.  Open your browser, navigate to the address bar, and type or paste
-    the following URL: !!
-    [*https://oai.azure.com/*](https://oai.azure.com/) !!then press the
-    **Enter** button.
+9.  Ouvrez votre navigateur, accédez à la barre d'adresse et tapez ou
+    collez l'URL suivante : !!
+    [*https://oai.azure.com/*](https://oai.azure.com/) !! puis appuyez
+    sur le bouton **Enter**.
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image69.png)
+> ![Une capture d'écran d'un ordinateur Description générée
+> automatiquement](./media/image69.png)
 
-10. Wait for the Azure AI Foundry to launch.
+10. Attendez le lancement d'Azure AI Foundry.
 
-11. In the **Azure AI Foundry** window, select Azure OpenAI
-    resource**.**
+11. Dans la window **Azure AI Foundry**, sélectionnez ressource Azure
+    OpenAI**.**
 
 > ![](./media/image70.png)
 >
-> ![A screenshot of a computer AI-generated content may be
-> incorrect.](./media/image71.png)
+> ![Une capture d'écran d'un ordinateur Le contenu généré par l'IA peut
+> être incorrect.](./media/image71.png)
 
-12. Check the status of the fine-tuned job for your customized model ,
-    select **Fine-tuning**
+12. Vérifiez l'état de la tâche de réglage précis pour votre modèle
+    personnalisé, sélectionnez **Fine-tuning** ![](./media/image72.png)
 
-> ![](./media/image72.png)
-
-13. Wait for the deployment to complete. The deployment will take around
-    15-20 minutes.
+13. Attendez la fin du déploiement. Le déploiement prendra environ 15 à
+    20 minutes.
 
 ![](./media/image73.png)
 
-### **Task 9: Use a deployed customized model**
+### **Tâche 9 : Utiliser un modèle personnalisé déployé**
 
-1.  In Azure AI Foundry Studio Home page, click on the **Chat.**
+1.  Dans la page d'accueil d'Azure AI Foundry Studio, cliquez sur
+    **Chat**
 
 > ![](./media/image74.png)
 
-2.  In the **Chat** **playground** page, ensure that **fine -tune
-    model** is selected under **Deployment**
+2.  Sur la page **Chat** **playground**, assurez-vous que **fine -tune
+    model** est sélectionné sous **Deployment.**
 
 > ![](./media/image75.png)
 
-3.  Scroll up to the **Assistant setup** section, in the **System
-    message** box, replace the current text with the following
-    statement:
+3.  Faites défiler jusqu'à la section **Assistant setup** , dans la
+    boîte de **System message**, remplacez le texte actuel par
+    l'instruction suivante :
 
- **The system is an AI teacher that helps people learn about AI**.
+  **The system is an AI teacher that helps people learn about AI**.
 
 > ![](./media/image76.png)
 
-4.  Below the **System message** box, click on **+Add an example.**
+4.  Sous la boîte de **System message**, cliquez sur **+Add an
+    example.**
 
 ![](./media/image77.png)
 
-**Note**: **+Add an example** provides the model with examples of the
-types of responses that are expected. The model will attempt to reflect
-the tone and style of the examples in its own responses.
+**Remarque** : **+Add an example** fournit au modèle des exemples des
+types de réponses attendus. Le modèle tentera de refléter le ton et le
+style des exemples dans ses propres réponses.
 
-5.  After clicking on **+Add an example**, you will observe the **User**
-    box and **Assistant** box and enter the following message and
-    response in the designated boxes:
+5.  Après avoir cliqué sur **+Ad an example** , vous observerez la boîte
+    **User** et la boîte **Assistant** et entrerez le message et la
+    réponse suivants dans les cases désignées :
 
-    - **User**: What are the different types of artificial intelligence?
+    1.  **User**: What are the different types of artificial
+        intelligence?
 
-    - **Assistant**: There are three main types of artificial
-      intelligence: Narrow or Weak AI (such as virtual assistants like
-      Siri or Alexa, image recognition software, and spam filters),
-      General or Strong AI (AI designed to be as intelligent as a human
-      being. This type of AI does not currently exist and is purely
-      theoretical), and Artificial Superintelligence (AI that is more
-      intelligent than any human being and can perform tasks that are
-      beyond human comprehension. This type of AI is also purely
-      theoretical and has not yet been developed).
+    2.  **Assistant**: There are three main types of artificial
+        intelligence: Narrow or Weak AI (such as virtual assistants like
+        Siri or Alexa, image recognition software, and spam filters),
+        General or Strong AI (AI designed to be as intelligent as a
+        human being. This type of AI does not currently exist and is
+        purely theoretical), and Artificial Superintelligence (AI that
+        is more intelligent than any human being and can perform tasks
+        that are beyond human comprehension. This type of AI is also
+        purely theoretical and has not yet been developed).
 
 ![](./media/image78.png)
 
-6.  Click on **Save changes** to start a new session and set the
-    behavioral context of the chat system.
+6.  Cliquez sur **Save changes** pour démarrer une nouvelle session et
+    définir le contexte comportemental du système de chat.
 
-7.  In the **Update system message?** dialog box, click on the
-    **Continue button.**
+7.  Dans le **Update system message?** , cliquez sur le bouton
+    **Continue.**
 
 ![](./media/image79.png)
 
-8.  Under the **Chat session** section, below the **User message** box,
-    enter the following text:
+8.  Dans la section **Chat session**, sous la zone **User message**,
+    entrez le texte suivant :
 
-> What is artificial intelligence?
+What is artificial intelligence?
 
-9.  Use the **Send** button to submit the message and view the response.
+9.Utilisez le bouton **Send** pour envoyer le message et afficher la
+réponse.
 
 ![](./media/image80.png)
 
 ![](./media/image81.png)
 
-### **Task 10: Delete your customized model**
+### **Tâche 10 : Supprimer votre modèle personnalisé**
 
-1.  To delete the storage account, navigate to Azure portal home page,
-    type **Resource groups** in the Azure portal search bar, navigate
-    and click on **Resource groups** under **Services**.
+1.  Pour supprimer le compte de stockage, accédez à la page d'accueil du
+    portail Azure, tapez **Resource groups** dans la barre de recherche
+    du portail Azure, naviguez et cliquez sur **Resource groups** sous
+    **Services**.
 
-![A screenshot of a computer AI-generated content may be
-incorrect.](./media/image82.png)
+![Une capture d'écran d'un ordinateur Le contenu généré par l'IA peut
+être incorrect.](./media/image82.png)
 
-2.  Click on the assigned resource group.
+2.  Cliquez sur le groupe de ressources attribué.
 
-![A screenshot of a computer AI-generated content may be
-incorrect.](./media/image83.png)
+![Une capture d'écran d'un ordinateur Le contenu généré par l'IA peut
+être incorrect.](./media/image83.png)
 
-3.  Carefully select all resources that you’ve created.
+3.  Sélectionnez soigneusement toutes les ressources que vous avez
+    créées.
 
-4.  In the Resource group page, navigate to the command bar and click
-    on **Delete**.
+4.  Dans la page Groupe de ressources, accédez à la barre de commandes
+    et cliquez sur **Delete**.
 
-**Important Note**: Don’t click on **Delete resource group**. If you
-don’t see the **Delete** option in the command bar, then click on the
-horizontal ellipsis.
+**Remarque importante** : Ne cliquez pas sur **Delete resource group**.
+Si vous ne voyez pas l' option **Delete** dans la barre de commandes,
+cliquez sur les points de suspension horizontaux.
 
-![A screenshot of a computer AI-generated content may be
-incorrect.](./media/image84.png)
+![Une capture d'écran d'un ordinateur Le contenu généré par l'IA peut
+être incorrect.](./media/image84.png)
 
-5.  In the **Delete Resources** pane that appears on the right side,
-    enter the **delete** and click on **Delete** button.
+5.  Dans le volet **Delete Resources** qui s'affiche sur le côté droit,
+    entrez la **delete** et cliquez sur le bouton **Delete**.
 
 > ![](./media/image85.png)
 
-6.  On **Delete confirmation** dialog box, click on **Delete** button.
+6.  Dans la boîte de dialogue **Delete confirmation** , cliquez sur le
+    bouton **Delete.**
 
 ![](./media/image86.png)
 
-7.  Click on the bell icon, you’ll see the notification – **Executed
-    delete command on 4 selected items.**
+7.  Cliquez sur l'icône de la cloche, vous verrez la notification -
+    – **Executed delete command on 4 selected items.**
