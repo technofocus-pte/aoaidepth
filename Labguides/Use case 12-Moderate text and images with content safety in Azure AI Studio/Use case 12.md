@@ -113,15 +113,6 @@ features are available:
 10. Wait for the deployment to complete. The deployment will take around
     2-3 minutes.
 
-11. On **Microsoft.CognitiveServicesContentSafety** window, after the
-    deployment is completed, click on the **Go to resource** button.
-
-     ![](./media/image11.png)
-
-     ![](./media/image12.png)
-
-   
-
 ## Task 2: Analyze text content
 
 1.Open your browser, navigate to the address bar, type or paste the following URL:+++https://contentsafety.cognitive.azure.com/+++ 
