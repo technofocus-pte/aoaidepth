@@ -120,31 +120,32 @@ features are available:
 
      ![](./media/image12.png)
 
-    ![](./media/image13.png)
+   
 
 ## Task 2: Analyze text content
 
-1.  In the **Content Safety** page, navigate to **Moderate text
+1.Open your browser, navigate to the address bar, type or paste the following URL:+++https://contentsafety.cognitive.azure.com/+++ 
+then press the Enter button.
+2.   In the **Content Safety** page, navigate to **Moderate text
     content** tile, click on **Try it out** link.
-
       ![](./media/image14.png)
 
-2.  In **Settings** pane, select **AOAI-ContentSafetyXX** and click on
+3.  In **Settings** pane, select **AOAI-ContentSafetyXX** and click on
     **Use resource**.
 
       ![](./media/image15.png)
 
-3.  In the **Content Safety** page, navigate to **Moderate text
+4.  In the **Content Safety** page, navigate to **Moderate text
     content** tile, click on **Try it out** link.
 
      ![](./media/image14.png)
 
-4.  Under **Run a simple test** tab, select **Safe content** tile as
+5.  Under **Run a simple test** tab, select **Safe content** tile as
     shown in the below image.
 
       ![](./media/image16.png)
 
-5.  Optionally, you can use slide controls in the **Configure
+6.  Optionally, you can use slide controls in the **Configure
     filters** tab to modify the allowed or prohibited severity levels
     for each category. Then, click on **Run test** button**.**
 
@@ -152,7 +153,7 @@ features are available:
 
      ![](./media/image18.png)
 
-6.  Scroll down to view the results. The service returns all the
+7.  Scroll down to view the results. The service returns all the
     categories that were detected, the severity level for each (0-Safe,
     2-Low, 4-Medium, 6-High), and a
     binary **Allowed** or **Reject** judgment. The result is based on
@@ -160,7 +161,7 @@ features are available:
 
       ![](./media/image19.png)
 
-7.  Scroll down and click on **View Code** button as shown in the below
+8.  Scroll down and click on **View Code** button as shown in the below
     image to view and copy the sample code, which includes configuration
     for severity filtering, blocklists, and moderation functions. You
     can then deploy the code on your end.
