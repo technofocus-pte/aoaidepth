@@ -387,24 +387,24 @@ will be using throughout the lab.
       ![](./media/image44.png)
 
 6.  In the **Select a model** dialog box, navigate and carefully
-    select **gpt-4**, then click on **Confirm** button.
+    select **gpt-4o**, then click on **Confirm** button.
 
-      ![](./media/image45.png)
+      ![](./media/abc1.png)
 
 7.  In the **Deploy model dialog** box, enter the following details and
     click on the **Create** button.
 
-    - Select Model: **gpt-4**
+    - Select Model: **gpt-4o**
 
-    - Deployment Name: enter **gpt-4**
+    - Deployment Name: enter **gpt-4o**
 
     - Select select the **Standard** as **Deployment type**
 
-      ![](./media/image46.png)
+      ![](./media/abc2.png)
      
-      ![](./media/image47.png)
+      ![](./media/abc3.png)
      
-      ![](./media/image48.png)
+      ![](./media/abc4.png)
 
 8.  In the **Deployments** window, drop down the **+Deploy model** and
     select **Deploy base model.**
@@ -536,21 +536,18 @@ time, as mentioned in Task \#1.*
 
      ![](./media/aa13.png)
  
-5.  To check the deployment status, click on **Deployments** and
-    select **App deployment**.
+5. To check the deployment status, go back to ResourceGroup1 and select App Services.
 
-    ![](./media/image67.png)
-
-    ![](./media/image68.png)
+    ![](./media/abc5.png)
 
 6.  Wait for the deployment to complete. The deployment will take
     around **10-15** minutes.
 
-    ![](./media/image69.png)
+    ![](./media/abc6.png)
 
-7.  Click on the web application.
+7.  Click on the Browse to launch the web application
 
-      ![](./media/image70.png)
+      ![](./media/abc7.png)
 
 8.  Wait for 10 minutes, so that authentication configuration can be
     successfully applied on the app.
