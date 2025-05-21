@@ -121,17 +121,20 @@ then press the Enter button.
     content** tile, click on **Try it out** link.
       ![](./media/image14.png)
 
-3.  In **Settings** pane, select **AOAI-ContentSafetyXX** and click on
+3. Select Choose a different resource.
+     ![](./media/ab1.png)
+
+4.  In **Settings** pane, select **AOAI-ContentSafetyXX** and click on
     **Use resource**.
 
       ![](./media/image15.png)
 
-4.  In the **Content Safety** page, navigate to **Moderate text
+5.  In the **Content Safety** page, navigate to **Moderate text
     content** tile, click on **Try it out** link.
 
      ![](./media/image14.png)
 
-5.  Under **Run a simple test** tab, select **Safe content** tile as
+6.  Under **Run a simple test** tab, select **Safe content** tile as
     shown in the below image.
 
       ![](./media/image16.png)
