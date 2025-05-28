@@ -1,11 +1,11 @@
-## Lab 07: Implementing Q&A using semantic answering
+## Lab 07: Implementing Q&A using semantic answering with Azure OpenAI Service
 
 **Introduction**
 
 A simple web application for an OpenAI-enabled document search. This
 repo uses Azure OpenAI Service for creating embeddings vectors from
 documents. For answering the question of a user, it retrieves the most
-relevant document and then uses GPT-3 to extract the matching answer for
+relevant document and then uses GPT-4o to extract the matching answer for
 the question.
 
    ![](./media/image1.png)
@@ -109,27 +109,24 @@ the question.
       ![](./media/image14.png)
 
 3.  On the **Azure AI Foundry** |**Azure OpenAI Studio** homepage select
-    **Deployment** from the left navigation menu**.**
+    **Deployment** from the left navigation menu.
 
       ![](./media/image15.png)
 
 4.  In the **Deployments** window, drop down the **+Deploy model** and
     select **Deploy base model.**
 
-      ![](./media/image16.png)
+      ![](./media/abc1.png)
 
 5.  In the **Select a model** dialog box, navigate and carefully select
-    **gpt-4**, then click on **Confirm** button.
+    **gpt-4o**, then click on **Confirm** button.
 
-      ![](./media/image17.png)
+      ![](./media/abc2.png)
 
-6.  Select the **Model version** as **0125-Preview,** in the
-    **Deployment type** as **Standard, Deployment name field**, enter
-    **gpt-4**, and click on the **Create** button.
+6.  In the **Deployment type** as **Global Standard, Deployment name field**, enter
+    **gpt-4o**, and click on the **Create** button.
 
-      ![](./media/image18.png)
-
-      ![](./media/image19.png)
+      ![](./media/abc3.png)
 
 7.  In the **Deployments** window, drop down the **+Deploy model** and
     select **Deploy base model.**
@@ -171,7 +168,7 @@ the question.
       |Hosting plan Sku|	B3|
       |OpenAI Name	|Enter your OpenAI name that you have created in Task#1 |
       |OpenAI Key	|nter your OpenAI key that you have saved in your notepad in Task #2|
-      |Open AI Engine	|+++gpt-4+++ |
+      |Open AI Engine	|+++gpt-4o+++ |
       |Open AI Deployment Type|	+++Chat+++ |
       |Open AI Embeddings Engine Doc|	text-embeddeding-ada-002|
       |Open AI Embeddings Engine Query	|text-embeddeding-ada-002|
@@ -179,7 +176,7 @@ the question.
 
       ![](./media/image25.png)
       
-      ![](./media/image26.png)
+      ![](./media/abc4.png)
 
 3.  On **Review + create** tab, once the Validation is Passed, click on
     the **Create** button.
