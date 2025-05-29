@@ -50,8 +50,6 @@ combine AI-driven insights with geospatial data.**Objectives**
 
 4.  In **Stay signed in?** window, click on the **Yes** button.
 
-      ![](./media/image4.png)
-
 5.  Select the **Cloud Shell** icon in the Azure portal toolbar to open
     a new  pane  at the top of your browser window.
 
