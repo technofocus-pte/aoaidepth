@@ -65,57 +65,97 @@ execution.
 
 ## Exercise 1 - Set up project and development environment to build a custom knowledge retrieval (RAG) app with the Azure AI Foundry SDK
 
-### Task 1 Create a project
+### Task 1: Assigning Cognitive Services Contributor Role to Resource Group
+
+1.  In your **Resource group** window, from the left menu, click on the
+    **Access control(IAM).**
+
+2.  On the Access control(IAM) page, Click +**Add** and select **Add
+    role assignments.**
+
+     ![](./media/ab1.png)
+
+3.  Type the **Cognitive service Contributor** in the search box and
+    select it. Click **Next**
+
+     ![](./media/ab2.png)
+
+4.  In the **Add role assignment** tab, select Assign access to User
+    group or service principal. Under Members, click **+Select members**
+
+5.  On the Select members tab , search your Azure OpenAI subscription
+    and click **Select.**
+
+    ![](./media/ab3.png)
+
+6.  In the **Add role assignment** page, Click **Review + Assign**, you
+    will get a notification once the role assignment is complete.
+
+    ![](./media/ab4.png)
+    ![](./media/ab5.png)
+    ![](./media/ab6.png)
+
+### Task 2: Create a project
 
 To create a project in Azure AI Foundry, follow these steps:
 
 1.  Login to the Azure AI Foundry at +++https://ai.azure.com/+++
     **sign in** using the **Azure login credentials**.
 
-    ![](./media/image3.png)
+     ![](./media/ab7.png)
 
 2.  Select **+ Create project**.
 
-    ![](./media/image4.png)
+     ![](./media/ab8.png)
 
-3.  Enter +++**RAGproj+++< Lab instance ID >** as name for the project,
-    click on **Customize**.
+3.  Enter +++**RAGproj\<Lab instance ID\>**+++ as name for the project,
+    select your assigned **Resource Group(ResourceGroup1)** and click on
+    **Create** button
 
-    >[!Note] **Note:** Replace the **< Lab instance ID >** with your **Lab instance ID**
+> **Note:** Replace the **\<Lab instance ID\>** with your **Lab instance
+> ID**
+    ![](./media/ab9.png)
 
-    ![A screenshot of a computer Description automatically generated](./media/image5.png)
+4.  At the bottom of the left pane, select **Management center**.
 
-4.  On the next page, enter the following details and click on **Next.**
+     ![](./media/ab10.png)
 
-    -   Hub name - +++**hub+++< Lab instance ID >**
+5.  At the top of the page, select **All resources**. Select **Create
+    new**.
 
-    -   Subscription - Select your assigned subscription
+     ![](./media/ab11.png)
 
-    -   Create new Resource group - Select your assigned Resource Group(ResourceGroup1)
+6.  Select **AI hub resource**.
 
-    -   Location - East US 2 or Sweden Central (We have used East US 2 while executing this lab)
+     ![](./media/ab12.png)
 
-    Leave the rest as default and click on **Next**.
+7.  On the next page, enter the following details and click on **Next.**
 
-    ![A screenshot of a computer Description automatically generated](./media/image6.png)
+     Project - **+++RAGproject\<Lab instance ID\>+++**
 
-5.  On the **Review and finish** page, click on **Create.**
+     Subscription - Select your assigned subscription
+ 
+     Create new Resource group - Select your assigned Resource Group(ResourceGroup1)
+ 
+     Location - East US 2 or Sweden Central (We have used East US 2 while  executing this lab)
+ 
+     Leave the rest as default and click on **Next**.
+ 
+     ![](./media/ab13.png)
 
-    ![A screenshot of a computer Description automatically generated](./media/image7.png)
+7.  The resource creation will take a few minutes.
 
-6.  The resource creation will take a few minutes.
+      ![](./media/ab14.png)
 
-    ![A screenshot of a computer Description automatically generated](./media/image8.png)
+8.  Close the pop-up windows, if any appears.
 
-7.  Close the pop-up windows, if any appears.
-
-8.  From the home page of the project, note down the **Project
+9. From the home page of the project, note down the **Project
     connection string** in a notepad to be used in next task of this
     exercise.
 
-    ![](./media/image9.png)
+     ![](./media/ab15.png)
 
-### Task 2: Deploy models
+### Task 3: Deploy models
 
 You need two models to build a RAG-based chat app: an Azure OpenAI chat
 model (gpt-4o-mini) and an Azure OpenAI embedding model
@@ -123,34 +163,35 @@ model (gpt-4o-mini) and an Azure OpenAI embedding model
 project, using this set of steps for each model.
 
 These steps deploy a model to a real-time endpoint from the AI Foundry
-portal model catalog
+portal [model
+catalogue](https://learn.microsoft.com/en-us/azure/ai-studio/how-to/model-catalog-overview):
 
 1.  From the left navigation pane, select **Model catalog**.
 
-    ![](./media/image10.png)
+    ![](./media/ab16.png)
 
 2.  Select the **gpt-4o-mini** model from the list of models. You can
     use the search bar to find it.
 
-    ![A screenshot of a computer Description automatically generated](./media/image11.png)
+     ![](./media/ab17.png)
 
-3.  On the model details page, select **Deploy**.
+3.  On the model details page, select **Use this model**.
 
-    ![A screenshot of a computer Description automatically generated](./media/image12.png)
+     ![](./media/ab18.png)
 
 4.  Leave the default **Deployment name**. select **Deploy**. Or, if the
     model isn't available in your region, a different region is selected
     for you and connected to your project. In this case, select **Create
     resource and deploy**.
 
-    ![A screenshot of a computer Description automatically generated](./media/image13.png)
-
-    ![](./media/image14.png)
+    ![](./media/ab19.png)
+    ![](./media/ab20.png)
 
 5.  After you deploy the **gpt-4o-mini**, repeat the steps to deploy
     the +++**text-embedding-ada-002**+++ model.
 
-    ![A screenshot of a computer Description automatically generated](./media/image15.png)
+    ![](./media/ab21.png)
+
 
 ### Task 3: Create an Azure AI Search service
 
@@ -161,17 +202,17 @@ based on the user's question.
 You need an Azure AI Search service and connection to create a search
 index.
 
-1.  Login to the Azure portal at +++https://portal.azure.com+++ using
+1.  Login to the Azure portal at **+++https://portal.azure.com/+++** using
     the Azure login credentials.
 
-2.  From the home page search bar, search for +++**AI search**+++ and
+2.  From the home page search bar, search for **+++AI search+++** and
     select it.
 
     ![A screenshot of a computer Description automatically generated](./media/image16.png)
 
 3.  Click on **+ Create** icon and fill in the following details.
 
-    ![](./media/image17.png)
+     ![](./media/ab22.png)
 
 4.  Enter the below details and select **Review + create**.
 
