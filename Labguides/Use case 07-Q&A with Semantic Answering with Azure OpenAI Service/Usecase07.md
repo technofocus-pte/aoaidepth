@@ -163,7 +163,7 @@ the question.
       |---------|-----------|
       |Subscription|	Select your Azure OpenAI subscription|
       |Resource group	|Select the Resource group| 
-      |Resource Prefix|	+++aoaichatsearchXXXX+++(can be a unique name)| 
+      |Resource Prefix|	aoaichatsearchXXXX(can be a unique name)| 
       |Azure Cognitive Search Sku|	Standard |
       |Hosting plan Sku|	B3|
       |OpenAI Name	|Enter your OpenAI name that you have created in Task#1 |
