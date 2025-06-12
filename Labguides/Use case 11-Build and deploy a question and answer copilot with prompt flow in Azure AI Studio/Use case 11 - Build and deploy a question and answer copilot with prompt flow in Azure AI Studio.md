@@ -75,127 +75,87 @@ enhance user engagement through intuitive and efficient interactions.
 
    >[!Note] **Note:** Later, you’re going to create an Azure AI Hub (which includes an Azure OpenAI service) in the same region as your Azure AI Search resource. Azure OpenAI resources are constrained at the tenant level by regional quotas. In the event of a quota limit being reached later in the exercise, there’s a possibility you may need to create another Azure AI hub in a different region.
 
-### Task 2: Create an Azure Storage Account by using the portal
 
-1.  Click on the **Portal Menu**, then select **+ Create a resource**
+### Task 2: Create an Azure AI Hub
 
-     ![](./media/ab1.png)
-
-2.  In the **Create a resource** window search box, type **Storage
-    account** and then click on the **storage account**.
-
-      ![](./media/ab2.png)
-
-3.  In the **Marketplace** page, click on the **Storage
-    account** section.
-
-     ![](./media/ab3.png)
-
-4.  In the **Storage account** window, click on the **Create** button.
-
-      ![](./media/ab4.png)
-
-5.  On **Create a storage account** window, under the **Basics** tab,
-    enter the below details to create a storage account and then click
-    on **Review**
-
-        |   |  |
-        |-----|----|
-        |Subscription  | Select your Azure OpenAI subscription   |
-        | Resource group     |  Select your Resource group   |
-        | Region    |  Select the appropriate region for your storage account . In this lab East US is taken  |
-        | Performance |  Standard: Recommended for most scenarios (general-purpose v2 account) |
-        | Redundancy |Locally-redundant storage (LRS)  |
-
-     ![](./media/image5.png)
-
-6.  On the **Review** tab, click on the **Create** button.
-
-       ![](./media/ab6.png)
-        
-       ![](./media/ab7.png)
-
-### Task 3: Create an Azure AI project
-
-1.  In a web browser, open **Azure AI Foundry
-    portal** at +++[https://ai.azure.com+++](https://ai.azure.com+++/) and **sign
-    in** using
+1.  In a web browser, open the Azure portal at
+    **+++https://portal.azure.com+++** and Sign in using
 
     - Username - <+++@lab.CloudPortalCredential>(User1).Username+++
+    
+    - Password - <+++@lab.CloudPortalCredential(User1).Password>+++
 
-    - Password - <+++@lab.CloudPortalCredential>(User1).Password+++
+2.  From the search bar, search for and select +++**Azure AI
+      Foundry**+++ and select it.
 
-      ![](./media/ab8.png)
+      ![](./media/img1.png)
 
-2.  **Close** the **Help** tab and select **Got it** in
-    the **Streamlined from the start** pop up.
+3.  In the **AI Foundry** home page, select **AI Hubs** under the **Use
+    with AI Foundry**
 
-3.  In the home page, select **+ Create project**.
+     ![](./media/img2.png)
 
-      ![](./media/ab9.png)
+4.  Select **+ Create** and click on **Hub**
 
-2.  In the **Create a project** wizard enter project name as
-    +++[**ragpfproject@lab.LabInstance.Id**](mailto:ragpfproject@lab.LabInstance.Id)+++
+    ![](./media/img3.png)
 
-3.  Connect to your Azure AI Search resource, enter the following
-    details, select **Create** 
+5.  In the Create a search service page, enter the below details and
+    click on **Review + create**.
 
-    - **Azure Subscription**: Select the assigned Azure subscription
+    - **Subscription**: Select your Azure subscription from the drop down.
+    
+    - **Resource group**: Select the Resource group assigned to your
+      subscription (ResourceGroup1)
+    
+    - **Service name**: <+++project@lab.LabInstance.Id>+++
+    
+    - **Location**: Select @lab.CloudResourceGroup(ResourceGroup1).Location
+    
+    - **Pricing tier**: Standard
 
-    - **Resource group**: Select the assigned Resource Group
+    ![](./media/img4.png)
 
-    - **Location**: Select
-      @lab.CloudResourceGroup(ResourceGroup1).Location
+6.  Review the settings and click on **Create**.
 
-      ![](./media/ab10.png)
+    ![](./media/img5.png)
 
-4.  You will land in the created project page.
+7.  After the deployment is completed, click on **Go to
+    resource** button.
 
-      ![](./media/ab11.png)
+    ![](./media/img6.png)
 
-5.  At the bottom of the left pane, select **Management center**.
+8.  In the Overview section of the Azure AI hub home page, click on
+    Launch Azure AI Foundry to open **Azure AI Foundry portal** in a new
+    browser.
+     ![](./media/img7.png)
 
-      ![](./media/ab12.png)
+9.  In the home page, select **+ Newproject**.
 
-6.  At the top of the page, select **All resources**. Select **Create
-    new**.
+     ![](./media/img8.png)
 
-     ![](./media/ab13.png)
- 
-    ![](./media/ab14.png)
+10.  In the **Create a project** wizard enter project name as
+    +++**rag<project-@lab.LabInstance.Id>**+++ and click on **Create**
+    ![](./media/img9.png)
 
-7.  Select **AI hub resource**.
+11.  At the bottom of the left pane, select **Management center**.
+    ![](./media/img10.png)
 
-  ![](./media/ab15.png)
- 
-  ![](./media/ab16.png)
- 
-  ![](./media/ab17.png)
-
-7.  At the bottom of the left pane, select **Management center**.
-
-     ![](./media/ab18.png)
-
-8.  In the **Connected resources** section, select **New
+12.  In the **Connected resources** section, select **New
     connection** and then select **Azure AI Search**.
+    ![](./media/img11.png)
+    ![](./media/img12.png)
 
-       ![](./media/ab19.png)
-       ![](./media/ab20.png)
-
-9.  Select **API key** under **Authentication** and select **Add
+13.  Select **API key** under **Authentication** and select **Add
     connection**.
+  ![](./media/img13.png)
 
-    ![](./media/ab21.png)
-    ![](./media/ab22.png)
+14.  Click on Close button
+    ![](./media/img14.png)
 
-10. Repeat the previous steps to connect Azure storage account
+15.  Select **Go to project**
+     ![](./media/img15.png)
 
-    ![](./media/ab23.png)
-    ![](./media/ab24.png)
-    ![](./media/ab25.png)
-    ![](./media/ab26.png)
-
-## Task 4: Deploy models
+## Task 3: Deploy models
 
 You need two models to implement your solution:
 
@@ -256,7 +216,7 @@ incorrect.](./media/image71.png)
 
   >[!Note] **Note:** Reducing the Tokens Per Minute (TPM) helps avoid over-using the quota available in the subscription you are using. 5,000 TPM is sufficient for the data used in this exercise.
 
-## Task 5: Add data to your project
+## Task 4: Add data to your project
 
 The data for your copilot consists of a set of travel brochures in PDF
 format from the fictitious travel agency *Margie’s Travel*. Let’s add
@@ -291,7 +251,7 @@ them to the project.
 
     ![A screenshot of a computer AI-generated content may be incorrect.](./media/image30.png)
 
-## Task 6: Create an index for your data
+## Task 5: Create an index for your data
 
 Now that you’ve added a data source to your project, you can use it to
 create an index in your Azure AI Search resource.
@@ -354,7 +314,7 @@ generated](./media/image37.png)
     ![A screenshot of a computer program Description automatically
 generated](./media/image38.png)
 
-## Task 7: Test the index
+## Task 6: Test the index
 
 Before using your index in a RAG-based prompt flow, let’s verify that it
 can be used to affect generative AI responses.
@@ -396,7 +356,7 @@ can be used to affect generative AI responses.
 
     ![A screenshot of a chat Description automatically generated](./media/image45.png)
 
-## Task 8: Use the index in a prompt flow
+## Task 7: Use the index in a prompt flow
 
 Your vector index has been saved in your Azure AI Foundry project,
 enabling you to use it easily in a prompt flow.
@@ -583,7 +543,7 @@ parameters:
     in the flow operated on its inputs to prepare a contextualized
     prompt and get an appropriate response.
 
-## Task 9: Clean up the resources:
+## Task 8: Clean up the resources:
 
 1.  From the Azure portal (+++https://portal.azure.com+++), select the
     **ResourceGroup1**(the one assigned to you).
