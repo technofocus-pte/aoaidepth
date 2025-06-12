@@ -95,65 +95,76 @@ execution.
     ![](./media/ab5.png)
     ![](./media/ab6.png)
 
-### Task 2: Create a project
+### Task 2: Create an Azure AI Hub
 
 To create a project in Azure AI Foundry, follow these steps:
 
-1.  Login to the Azure AI Foundry at +++https://ai.azure.com/+++
-    **sign in** using the **Azure login credentials**.
+1.  In a web browser, open the Azure portal at
+    +++https://portal.azure.com+++ and Sign in using
 
-     ![](./media/ab7.png)
+- Username - <+++@lab.CloudPortalCredential>(User1).Username+++
 
-2.  Select **+ Create project**.
+- Password - <+++@lab.CloudPortalCredential(User1).Password>+++
 
-     ![](./media/ab8.png)
+  1.  From the search bar, search for and select +++**Azure AI Foundry**+++ and select it.
 
-3.  Enter +++**RAGproj\<Lab instance ID\>**+++ as name for the project,
-    select your assigned **Resource Group(ResourceGroup1)** and click on
-    **Create** button
+     ![](./media/img1.png)
 
-> **Note:** Replace the **\<Lab instance ID\>** with your **Lab instance
-> ID**
-    ![](./media/ab9.png)
+2.  In the **AI Foundry** home page, select **AI Hubs** under the **Use
+    with AI Foundry**
 
-4.  At the bottom of the left pane, select **Management center**.
+     ![](./media/img2.png)
 
-     ![](./media/ab10.png)
+2.  Select **+ Create** and click on **Hub**
 
-5.  At the top of the page, select **All resources**. Select **Create
-    new**.
+     ![](./media/img3.png)
+3.  In the Create a search service page, enter the below details and
+    click on **Review + create**.
 
-     ![](./media/ab11.png)
+    - **Subscription**: Select your Azure subscription from the drop down.
+    
+    - **Resource group**: Select the Resource group assigned to your
+      subscription (ResourceGroup1)
+    
+    - **Service name**: <+++RAGhub@lab.LabInstance.Id>+++
+    
+    - **Location**: Select @lab.CloudResourceGroup(ResourceGroup1).Location
+    
+    - **Pricing tier**: Standard
 
-6.  Select **AI hub resource**.
+     ![](./media/img4.png)
 
-     ![](./media/ab12.png)
+4.  Review the settings and click on **Create**.
 
-7.  On the next page, enter the following details and click on **Next.**
+     ![](./media/img5.png)
+      ![](./media/img6.png)
 
-     Project - **+++RAGproject\<Lab instance ID\>+++**
+4.  After the deployment is comp leted, click on **Go to
+    resource** button.
 
-     Subscription - Select your assigned subscription
- 
-     Create new Resource group - Select your assigned Resource Group(ResourceGroup1)
- 
-     Location - East US 2 or Sweden Central (We have used East US 2 while  executing this lab)
- 
-     Leave the rest as default and click on **Next**.
- 
-     ![](./media/ab13.png)
+    ![](./media/img7.png)
 
-7.  The resource creation will take a few minutes.
+5.  In the Overview section of the Azure AI hub home page, click on
+    Launch Azure AI Foundry to open **Azure AI Foundry portal** in a new
+    browser.
 
-      ![](./media/ab14.png)
+    ![](./media/img8.png)
 
-8.  Close the pop-up windows, if any appears.
+6.  In the home page, select **+ Newproject**.
 
-9. From the home page of the project, note down the **Project
-    connection string** in a notepad to be used in next task of this
+    ![](./media/img9.png)
+
+7.  In the **Create a project** wizard enter project name as
+    +++**rag<project-@lab.LabInstance.Id>**+++ and click on **Create**
+
+     ![](./media/img10.png)
+      ![](./media/img11.png)
+
+8.  From the home page of the project, note down the **Project
+    connection string** in a notepad to be used in next task of this
     exercise.
 
-     ![](./media/ab15.png)
+   ![](./media/img12.png)
 
 ### Task 3: Deploy models
 
