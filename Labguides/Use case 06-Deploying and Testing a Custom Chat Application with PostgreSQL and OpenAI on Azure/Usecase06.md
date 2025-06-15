@@ -172,7 +172,7 @@ will be using throughout the lab.
 
 1.  Open your browser, navigate to the address bar, type or paste the
     following
-    URL: +++https://github.com/technofocus-pte/rag-postgres-openai-python-CSTesting.git+++ tab
+    URL: +++https://github.com/technofocus-pte/ragpostgresopenaipython.git+++ tab
     opens and ask you to open in Visual studio code. Select **Open
     Visual Studio Code.**
 
