@@ -3,6 +3,8 @@
 
 **Estimated time: 45 min**
 
+[!Alert]Important Note:  To execute this use case, please proceed to the simulation environment or contact the proctor for assistance.
+
 ## Objective
 
 The objective of this lab is to guide participants in building an
