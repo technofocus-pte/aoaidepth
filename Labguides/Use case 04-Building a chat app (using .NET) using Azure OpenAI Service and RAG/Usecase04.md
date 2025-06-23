@@ -1,5 +1,6 @@
 # Use Case 04-Building a chat app (using .NET) using Azure OpenAI Service and RAG
 
+**Important Note:**  **To execute this use case, please proceed to the simulation environment or contact the proctor for assistance.**
 This sample demonstrates a few approaches for creating ChatGPT-like
 experiences over your own data using the Retrieval Augmented Generation
 pattern. It uses Azure OpenAI Service to access the ChatGPT model
