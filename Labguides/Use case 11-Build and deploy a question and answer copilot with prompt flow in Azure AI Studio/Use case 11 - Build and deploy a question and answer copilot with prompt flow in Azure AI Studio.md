@@ -3,7 +3,7 @@
 
 **Estimated time: 45 min**
 
-[!Alert]Important Note:  To execute this use case, please proceed to the simulation environment or contact the proctor for assistance.
+>[!Alert] **Important**: **To execute this use case, please proceed to the simulation environment or contact the proctor for assistance.**
 
 ## Objective
 
