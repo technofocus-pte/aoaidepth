@@ -1,6 +1,6 @@
 # Usecase 06 - Deploying chat app on Azure Container Apps with PostgreSQL Flexible Server
 
-[!Alert]Important Note:  To execute this use case, please proceed to the simulation environment or contact the proctor for assistance.
+>[!Alert] **Important**: **To execute this use case, please proceed to the simulation environment or contact the proctor for assistance.**
 
 **Objective:**
 
