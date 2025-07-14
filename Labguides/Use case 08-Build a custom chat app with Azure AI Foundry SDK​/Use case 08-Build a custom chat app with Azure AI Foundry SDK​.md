@@ -1,8 +1,6 @@
-# Use case 08 - Build, evaluate and deploy a RAG-based agent with the Azure AI Foundry SDK
+# Use case 08-Build a custom chat app with Azure AI Foundry SDK
 
 **Estimated Time: 120 mins**
-
- >[!Alert] **Important**: **To execute this use case, please proceed to the simulation environment or contact the proctor for assistance.**
 
 ## Objective
 
@@ -65,110 +63,103 @@ execution.
 
     ![A screenshot of a computer Description automatically generated](./media/image2.png)
 
-## Exercise 1 - Set up project and development environment to build a custom knowledge retrieval (RAG) app with the Azure AI Foundry SDK
+## Exercise 1: Create an Azure AI Hub resource and project
 
-### Task 1: Assigning Cognitive Services Contributor Role to Resource Group
+In this exercise, we will create the hub in the Azure portal, then a project in the Azure AI Foundry, deploy the model and create the agent required for the execution.
 
-1.  In your **Resource group** window, from the left menu, click on the
-    **Access control(IAM).**
+1.  From a browser, open +++**https://portal.azure.com/**+++, and login using your **login** **credentials** and select **Azure AI Foundry** from the **Home** page.
 
-2.  On the Access control(IAM) page, Click +**Add** and select **Add
-    role assignments.**
-
-     ![](./media/ab1.png)
-
-3.  Type the **Cognitive service Contributor** in the search box and
-    select it. Click **Next**
-
-     ![](./media/ab2.png)
-
-4.  In the **Add role assignment** tab, select Assign access to User
-    group or service principal. Under Members, click **+Select members**
-
-5.  On the Select members tab , search your Azure OpenAI subscription
-    and click **Select.**
-
-    ![](./media/ab3.png)
-
-6.  In the **Add role assignment** page, Click **Review + Assign**, you
-    will get a notification once the role assignment is complete.
-
-    ![](./media/ab4.png)
-    ![](./media/ab5.png)
-    ![](./media/ab6.png)
-
-### Task 2: Create an Azure AI Hub
-
-To create a project in Azure AI Foundry, follow these steps:
-
-1.  In a web browser, open the Azure portal at
-    +++https://portal.azure.com+++ and Sign in using
-
-- Username - <+++@lab.CloudPortalCredential>(User1).Username+++
-
-- Password - <+++@lab.CloudPortalCredential(User1).Password>+++
-
-  1.  From the search bar, search for and select +++**Azure AI Foundry**+++ and select it.
-
-     ![](./media/img1.png)
-
-2.  In the **AI Foundry** home page, select **AI Hubs** under the **Use
-    with AI Foundry**
-
-     ![](./media/img2.png)
-
-2.  Select **+ Create** and click on **Hub**
-
-     ![](./media/img3.png)
-3.  In the Create a search service page, enter the below details and
-    click on **Review + create**.
-
-    - **Subscription**: Select your Azure subscription from the drop down.
+    - User name – +++@lab.CloudPortalCredential(User1).Username+++
     
-    - **Resource group**: Select the Resource group assigned to your
-      subscription (ResourceGroup1)
+    - Password – +++@lab.CloudPortalCredential(User1).Password+++
+
+    ![image](https://github.com/user-attachments/assets/b26ef8b5-13dd-414e-91bb-c2963cf7cce0)
     
-    - **Service name**: <+++RAGhub@lab.LabInstance.Id>+++
-    
-    - **Location**: Select @lab.CloudResourceGroup(ResourceGroup1).Location
-    
-    - **Pricing tier**: Standard
+2.	Select **Use with AI Foundry** -> **AI Hubs**. Select **+ Create** -> **Hub**.
 
-     ![](./media/img4.png)
+    ![image](https://github.com/user-attachments/assets/d5b52709-4acc-4700-9da4-39e4f99bab1b)
 
-4.  Review the settings and click on **Create**.
+3.	 Enter the below details, accept the other defaults and select **Review + create**.
+   
+     -	Subscription - Select your **assigned subscription**
+     
+     -	Resource group - Select your assigned Resource group (**ResourceGroup1**)
+     
+     -	Region - Select @lab.CloudResourceGroup(ResourceGroup1).Location
+     
+     -	Name - +++hub@lab.LabInstance.Id+++
 
-     ![](./media/img5.png)
-      ![](./media/img6.png)
+     ![image](https://github.com/user-attachments/assets/8d93aaba-be60-428d-87c0-31d808dbe764)
+ 
+     ![image](https://github.com/user-attachments/assets/373f295f-0978-4ec6-befa-197ea1abc3a5)
 
-4.  After the deployment is comp leted, click on **Go to
-    resource** button.
+4.	 Once the validation passes, select **Create**.
 
-    ![](./media/img7.png)
+     ![image](https://github.com/user-attachments/assets/dbd63853-0474-4df4-b77c-c29472bfd0ed)
 
-5.  In the Overview section of the Azure AI hub home page, click on
-    Launch Azure AI Foundry to open **Azure AI Foundry portal** in a new
-    browser.
+5.	 Once the deployment is complete, click on **Go to resource**.
 
-    ![](./media/img8.png)
+     ![image](https://github.com/user-attachments/assets/9b06560b-8a37-41d1-935f-0c7f9dce13f4)
 
-6.  In the home page, select **+ Newproject**.
+6.	 Select **Launch Azure AI Foundry** from the hub resource page.
 
-    ![](./media/img9.png)
+     ![image](https://github.com/user-attachments/assets/c0d16b19-0425-48e2-8a97-0efde10642c4)
 
-7.  In the **Create a project** wizard enter project name as
-    +++**rag<project-@lab.LabInstance.Id>**+++ and click on **Create**
+7.	 From the launched hub resource, scroll down and select **+ New project**.
 
-     ![](./media/img10.png)
-      ![](./media/img11.png)
+     ![image](https://github.com/user-attachments/assets/f38fd293-fa4c-410b-a8fc-fe5427ede9ad)
 
-8.  From the home page of the project, note down the **Project
-    connection string** in a notepad to be used in next task of this
-    exercise.
+     ![image](https://github.com/user-attachments/assets/40c1a532-0953-42b6-b728-4084f8ceea04)
 
-   ![](./media/img12.png)
+8.	 Enter the name as +++RAGproj@lab.LabInstance.Id+++ and select **Create**.
 
-### Task 3: Deploy models
+     <img width="693" alt="image" src="https://github.com/user-attachments/assets/d166598d-5da5-4a04-b59c-721c94d032d8" />
+
+9.	 **Close** the Explore and experiment pop up.
+
+     ![image](https://github.com/user-attachments/assets/745309d4-4b57-4303-8623-8e538ece3e25)
+
+10.  You will land in the created project page.
+
+     <img width="582" alt="image" src="https://github.com/user-attachments/assets/3ace2195-3027-41ca-a68a-932db6671072" />
+
+11.  Scroll down the page and copy the value of the **Project connection string** to a notepad.
+
+     ![image](https://github.com/user-attachments/assets/ec005fdd-75c4-4871-9fd3-aba1cb657d84)
+
+12.  Scroll down in the left pane and select **Management center**.
+
+     ![image](https://github.com/user-attachments/assets/cdaa9a3a-4f72-4dd1-9f65-95d710d7663c)
+
+13.  Select **Connected resources** under the Hub resource and then click on **+ New connection** to create a connection with the Azure AI Foundry resource.
+
+     <img width="457" alt="image" src="https://github.com/user-attachments/assets/d42c101b-4d6f-4eb1-baa4-93b1c120a561" />
+
+14.  Select **Azure AI Foundry** from the available external assets.
+
+     ![image](https://github.com/user-attachments/assets/2d2b9ed9-78f3-466d-a374-0c79935bf4da)
+
+15.  Select **Add connection** to add the connection.
+
+     ![image](https://github.com/user-attachments/assets/babc62ed-5218-41bb-9820-f0a2f979ec8f)
+
+     ![image](https://github.com/user-attachments/assets/dbdfe97a-5aa3-4782-927c-b70d3d59d185)
+
+16.  Once connected, click on **Close**. If the **Close** button is not visible, reduce the **zoom size** of the browser and then select **Close**.
+
+     ![image](https://github.com/user-attachments/assets/c20d1bca-2e92-4263-bb09-d65847f03839)
+
+17.  Select **Go to project** from the left pane.
+
+     <img width="456" alt="image" src="https://github.com/user-attachments/assets/3c77ee49-002b-4a78-86a5-b57e9bd37167" />
+
+18.  From the project page, copy the values of the **API Key** and the **Azure OpenAI endpoint** and save it to a notepad.
+
+     <img width="415" alt="image" src="https://github.com/user-attachments/assets/afdafbfd-4bc8-44c5-a22e-1bbcf12431fe" />
+
+19.  Now, we have the Azure resources ready.
+
+### Task 2: Deploy models
 
 You need two models to build a RAG-based chat app: an Azure OpenAI chat
 model (gpt-4o-mini) and an Azure OpenAI embedding model
@@ -176,35 +167,34 @@ model (gpt-4o-mini) and an Azure OpenAI embedding model
 project, using this set of steps for each model.
 
 These steps deploy a model to a real-time endpoint from the AI Foundry
-portal [model
-catalogue](https://learn.microsoft.com/en-us/azure/ai-studio/how-to/model-catalog-overview):
+portal model catalog
 
 1.  From the left navigation pane, select **Model catalog**.
 
-    ![](./media/ab16.png)
+    ![](./media/image10.png)
 
-2.  Select the **gpt-4o-mini** model from the list of models. You can
+2.  Select the +++**gpt-4o-mini**+++ model from the list of models. You can
     use the search bar to find it.
 
-     ![](./media/ab17.png)
+    ![A screenshot of a computer Description automatically generated](./media/image11.png)
 
-3.  On the model details page, select **Use this model**.
+3.  On the model details page, select **Deploy**.
 
-     ![](./media/ab18.png)
+    ![A screenshot of a computer Description automatically generated](./media/image12.png)
 
 4.  Leave the default **Deployment name**. select **Deploy**. Or, if the
     model isn't available in your region, a different region is selected
     for you and connected to your project. In this case, select **Create
     resource and deploy**.
 
-    ![](./media/ab19.png)
-    ![](./media/ab20.png)
+    ![A screenshot of a computer Description automatically generated](./media/image13.png)
 
-5.  After you deploy the **gpt-4o-mini**, repeat the steps to deploy
-    the +++**text-embedding-ada-002**+++ model.
+    ![](./media/image14.png)
 
-    ![](./media/ab21.png)
+5.  After you deploy the **gpt-4o-mini**, deploy
+    the +++**text-embedding-ada-002**+++ model. Select the **Deployment Type** as **Standard**.
 
+    ![A screenshot of a computer Description automatically generated](./media/image15.png)
 
 ### Task 3: Create an Azure AI Search service
 
@@ -215,17 +205,17 @@ based on the user's question.
 You need an Azure AI Search service and connection to create a search
 index.
 
-1.  Login to the Azure portal at **+++https://portal.azure.com/+++** using
+1.  Login to the Azure portal at +++https://portal.azure.com+++ using
     the Azure login credentials.
 
-2.  From the home page search bar, search for **+++AI search+++** and
+2.  From the home page search bar, search for +++**AI search**+++ and
     select it.
 
     ![A screenshot of a computer Description automatically generated](./media/image16.png)
 
 3.  Click on **+ Create** icon and fill in the following details.
 
-     ![](./media/ab22.png)
+    ![](./media/image17.png)
 
 4.  Enter the below details and select **Review + create**.
 
@@ -233,11 +223,9 @@ index.
 
     - Resource Group – Select your assigned Resource group
 
-    - Service name – Enter +++**aisearch\<Lab instance ID\>**+++ replacing
-    Lab instance id with your VM’s id.
+    - Service name – Enter **+++aisearch@lab.LabInstance.Id+++** 
 
-    - Region - Select Sweden Central or East US 2 (We are using East US 2
-    here)
+    - Region - Select @lab.CloudResourceGroup(ResourceGroup1).Location
 
     - Pricing tier – Select **Standard**
 
@@ -247,7 +235,7 @@ index.
 
     ![A screenshot of a computer Description automatically generated](./media/image19.png)
 
-6.  Wait till the deployment gets succeeded as in the below screenshot
+6.  Wait until the deployment succeeds, as in the below screenshot
     before proceeding with the next step.
 
     ![A screenshot of a computer Description automatically generated](./media/image20.png)
@@ -287,7 +275,7 @@ environment, so that you can use your user credentials to call the Azure
 OpenAI service.
 
 1.  Search for +++**PowerShell**+++ from the Windows search bar and open
-    it in the Administrator mode.
+    it in the **Administrator** mode. Accept if prompted for the launch to continue.
 
     ![A screenshot of a computer Description automatically generated](./media/image27.png)
 
@@ -311,7 +299,7 @@ OpenAI service.
     winget install -e --id Microsoft.AzureCLI
     ```
 
-    Select **Y** when prompted for acceptance.
+    Select **Y** and then **Enter** when prompted for acceptance.
 
     ![A screenshot of a computer Description automatically generated](./media/image28.png)
 
@@ -347,36 +335,38 @@ global python installation. You should always use a virtual or conda
 environment when installing python packages, otherwise you can break
 your global install of Python.
 
+>[!Alert] **Important:** If the commands below are not pastable, try pasting them to a notepad and then copy and paste it to the PowerShell. Or copy and paste directly to the PowerShell. The T button does not work at times in the PowerShell.
+
 **Create a virtual environment**
 
 1.  From your Power Shell, navigate to **C:\Users\Admin** by executing
     the below commands.
 
     ```
-    cd\\
+    cd\
     ```
     ```
-    +++cd Users\Admin+++
+    cd Users\Admin
     ```
     
-1.  Create a folder with your project name, **+++RAGproj+++< Lab instance id >, by entering the following command in your powershell.**
+2.  Create a folder with your project name, **RAGproj@lab.LabInstance.Id**, by entering the following command in your powershell.
 
-    >[!Note] **Note:** Replace < Project name > with your project’s name in the command below and execute it.
-
-    +++**mkdir < Project name >**+++
+    ```
+    mkdir RAGproj@lab.LabInstance.Id
+    ```
 
     ![A computer screen with white and green text Description automatically generated](./media/image34.png)
 
-2.  In your terminal enter the following command to navigate to the new
+3.  In your terminal enter the following command to navigate to the new
     folder location
 
-    +++**cd < Project name >**+++
-
-    Replace < Project name > with the folder name you created in the previous step.
+    ```
+    cd RAGproj@lab.LabInstance.Id
+    ```
 
     ![A blue screen with white text Description automatically generated](./media/image35.png)
 
-3.  Create a virtual environment using the following commands
+4.  Create a virtual environment using the following commands
 
     ```
     py -3 -m venv .venv
@@ -393,12 +383,16 @@ your global install of Python.
 5.  Open **VS Code**. Select **File -\> Open Folder** and select
     **RAGproject** folder that we created in the previous steps (from **C:\Users\Admin**).
 
+    >[!Note] **Note:**  Click on Yes, I trust the folder and content and then proceed if prompted.
+    
     ![A screenshot of a computer Description automatically generated](./media/image37.png)
 
     ![A screenshot of a computer Description automatically generated](./media/image38.png)
 
     ![A screenshot of a computer Description automatically generated](./media/image39.png)
 
+6.  Select **Yes, I trust the authors** when prompted **Do you trust the authors of the files in this folder?**
+   
 ### Task 7: Install packages
 
 Install azure-ai-projects(preview) and azure-ai-inference (preview),
@@ -408,7 +402,7 @@ along with other required packages.
     folder and add the following packages to the file:
 
     ```
-    azure-ai-projects
+    azure-ai-projects==1.0.0b10
     azure-ai-inference[prompts]
     azure-identity
     azure-search-documents
@@ -422,16 +416,16 @@ along with other required packages.
 
     ![](./media/img54.png)
 
-3.  On the top navigation bar click on **File** and **Save All**.
+2.  On the top navigation bar click on **File** and **Save All**.
 
-4.  Right click on the requirements.txt and select **Open in Integrated
+3.  Right click on the requirements.txt and select **Open in Integrated
     Terminal**.
 
     ![](./media/img55.png)
 
     ![A screenshot of a computer Description automatically generated](./media/image43.png)
 
-5.  Run the following command to get into the virtual environment
+4.  Run the following command to get into the virtual environment
 
     +++py -3 -m venv .venv+++
 
@@ -439,9 +433,11 @@ along with other required packages.
 
     ![A screenshot of a computer Description automatically generated](./media/image44.png)
 
-6.  Run the +++az login+++ command and login with your Azure login
+5.  Run the +++az login+++ command and login with your Azure login
     credentials. Select **1** to select the subscription.
 
+    >[!note] **Note:** Minimize the VS Code to view the login prompt if not automatically visible.
+    
     ![A screenshot of a computer Description automatically generated](./media/image45.png)
 
     ![A screenshot of a computer Description automatically generated](./media/image46.png)
@@ -538,7 +534,7 @@ def enable_telemetry(log_to_project: bool = False):
 
 ![A screenshot of a computer Description automatically generated](./media/image52.png)
 
-    >[!Note] **Note**: this newly created config.py file script will be used in the next exercise.
+>[!Note] **Note**: this newly created config.py file script will be used in the next exercise.
 
 ### Task 9: Configure environment variables
 
@@ -547,13 +543,13 @@ service from your code. In this quickstart, you save this value in
 a .env file, which is a file that contains environment variables that
 your application can read.
 
-1.  Create a new file ** **+++.env+++** in the **src** directory, and
+1.  Create a new file **+++.env+++** in the **src** directory, and
     paste the following code:
 
     Replace  **< your-connection-string >** with the project connection string value saved in the notepad in task 1.
 
     ```
-    AIPROJECT_CONNECTION_STRING=<your-connection-string>
+    AIPROJECT_CONNECTION_STRING="<your-connection-string>"
     AISEARCH_INDEX_NAME="example-index"
     EMBEDDINGS_MODEL="text-embedding-ada-002"
     INTENT_MAPPING_MODEL="gpt-4o-mini"
@@ -641,6 +637,8 @@ index_client = SearchIndexClient(
 3.  Now add the function at the end of the **create_search_index.py** to
     define a search index:
 
+    Keep the cursor at the end of the file, select **Enter** twice and then paste the below code.
+    
 ```
 import pandas as pd
 from azure.search.documents.indexes.models import (
@@ -745,8 +743,10 @@ def create_index_definition(index_name: str, model: str) -> SearchIndex:
 ![A screenshot of a computer Description automatically generated](./media/image59.png)
 
 4.  Now add the function in create_search_index.py to create the
-    function to add a csv file to the index:
+    function to add a csv file to the index.
 
+    Keep the cursor at the end of the file, select **Enter** twice and then paste the below code.
+    
 ```
 # define a function for indexing a csv file, that adds each row as a document
 # and generates vector embeddings for the specified content_column
@@ -805,6 +805,10 @@ def create_index_from_csv(index_name, csv_file):
     the index and register it to the cloud project. After adding the
     code go to Files from top bar and click on **Save all.**
 
+    Keep the cursor at the end of the file, select **Enter** twice. Move the cursor in the new line towards the left margin and then paste the code.(There should be no tab space)
+    
+    >[!Alert] **Important:** Ensure that the import argparse in the second line of the code below is aligned with a tab space from the margin. Else, keep the cursor before **import** and click on **Tab**.
+    
 ```
 if __name__ == "__main__":
     import argparse
@@ -828,6 +832,207 @@ if __name__ == "__main__":
     
 ![](./media/image61.png)
 
+6. The file should now have the content as below.
+
+```
+import os
+from azure.ai.projects import AIProjectClient
+from azure.ai.projects.models import ConnectionType
+from azure.identity import DefaultAzureCredential
+from azure.core.credentials import AzureKeyCredential
+from azure.search.documents import SearchClient
+from azure.search.documents.indexes import SearchIndexClient
+from config import get_logger
+
+# initialize logging object
+logger = get_logger(__name__)
+
+# create a project client using environment variables loaded from the .env file
+project = AIProjectClient.from_connection_string(
+    conn_str=os.environ["AIPROJECT_CONNECTION_STRING"], credential=DefaultAzureCredential()
+)
+
+# create a vector embeddings client that will be used to generate vector embeddings
+embeddings = project.inference.get_embeddings_client()
+
+# use the project client to get the default search connection
+search_connection = project.connections.get_default(
+    connection_type=ConnectionType.AZURE_AI_SEARCH, include_credentials=True
+)
+
+# Create a search index client using the search connection
+# This client will be used to create and delete search indexes
+index_client = SearchIndexClient(
+    endpoint=search_connection.endpoint_url, credential=AzureKeyCredential(key=search_connection.key)
+)
+
+import pandas as pd
+from azure.search.documents.indexes.models import (
+    SemanticSearch,
+    SearchField,
+    SimpleField,
+    SearchableField,
+    SearchFieldDataType,
+    SemanticConfiguration,
+    SemanticPrioritizedFields,
+    SemanticField,
+    VectorSearch,
+    HnswAlgorithmConfiguration,
+    VectorSearchAlgorithmKind,
+    HnswParameters,
+    VectorSearchAlgorithmMetric,
+    ExhaustiveKnnAlgorithmConfiguration,
+    ExhaustiveKnnParameters,
+    VectorSearchProfile,
+    SearchIndex,
+)
+
+def create_index_definition(index_name: str, model: str) -> SearchIndex:
+    dimensions = 1536  # text-embedding-ada-002
+    if model == "text-embedding-3-large":
+        dimensions = 3072
+
+    # The fields we want to index. The "embedding" field is a vector field that will
+    # be used for vector search.
+    fields = [
+        SimpleField(name="id", type=SearchFieldDataType.String, key=True),
+        SearchableField(name="content", type=SearchFieldDataType.String),
+        SimpleField(name="filepath", type=SearchFieldDataType.String),
+        SearchableField(name="title", type=SearchFieldDataType.String),
+        SimpleField(name="url", type=SearchFieldDataType.String),
+        SearchField(
+            name="contentVector",
+            type=SearchFieldDataType.Collection(SearchFieldDataType.Single),
+            searchable=True,
+            # Size of the vector created by the text-embedding-ada-002 model.
+            vector_search_dimensions=dimensions,
+            vector_search_profile_name="myHnswProfile",
+        ),
+    ]
+
+    # The "content" field should be prioritized for semantic ranking.
+    semantic_config = SemanticConfiguration(
+        name="default",
+        prioritized_fields=SemanticPrioritizedFields(
+            title_field=SemanticField(field_name="title"),
+            keywords_fields=[],
+            content_fields=[SemanticField(field_name="content")],
+        ),
+    )
+
+    # For vector search, we want to use the HNSW (Hierarchical Navigable Small World)
+    # algorithm (a type of approximate nearest neighbor search algorithm) with cosine
+    # distance.
+    vector_search = VectorSearch(
+        algorithms=[
+            HnswAlgorithmConfiguration(
+                name="myHnsw",
+                kind=VectorSearchAlgorithmKind.HNSW,
+                parameters=HnswParameters(
+                    m=4,
+                    ef_construction=1000,
+                    ef_search=1000,
+                    metric=VectorSearchAlgorithmMetric.COSINE,
+                ),
+            ),
+            ExhaustiveKnnAlgorithmConfiguration(
+                name="myExhaustiveKnn",
+                kind=VectorSearchAlgorithmKind.EXHAUSTIVE_KNN,
+                parameters=ExhaustiveKnnParameters(metric=VectorSearchAlgorithmMetric.COSINE),
+            ),
+        ],
+        profiles=[
+            VectorSearchProfile(
+                name="myHnswProfile",
+                algorithm_configuration_name="myHnsw",
+            ),
+            VectorSearchProfile(
+                name="myExhaustiveKnnProfile",
+                algorithm_configuration_name="myExhaustiveKnn",
+            ),
+        ],
+    )
+
+    # Create the semantic settings with the configuration
+    semantic_search = SemanticSearch(configurations=[semantic_config])
+
+    # Create the search index definition
+    return SearchIndex(
+        name=index_name,
+        fields=fields,
+        semantic_search=semantic_search,
+        vector_search=vector_search,
+    )
+
+# define a function for indexing a csv file, that adds each row as a document
+# and generates vector embeddings for the specified content_column
+def create_docs_from_csv(path: str, content_column: str, model: str) -> list[dict[str, any]]:
+    products = pd.read_csv(path)
+    items = []
+    for product in products.to_dict("records"):
+        content = product[content_column]
+        id = str(product["id"])
+        title = product["name"]
+        url = f"/products/{title.lower().replace(' ', '-')}"
+        emb = embeddings.embed(input=content, model=model)
+        rec = {
+            "id": id,
+            "content": content,
+            "filepath": f"{title.lower().replace(' ', '-')}",
+            "title": title,
+            "url": url,
+            "contentVector": emb.data[0].embedding,
+        }
+        items.append(rec)
+
+    return items
+
+def create_index_from_csv(index_name, csv_file):
+    # If a search index already exists, delete it:
+    try:
+        index_definition = index_client.get_index(index_name)
+        index_client.delete_index(index_name)
+        logger.info(f"🗑️  Found existing index named '{index_name}', and deleted it")
+    except Exception:
+        pass
+
+    # create an empty search index
+    index_definition = create_index_definition(index_name, model=os.environ["EMBEDDINGS_MODEL"])
+    index_client.create_index(index_definition)
+
+    # create documents from the products.csv file, generating vector embeddings for the "description" column
+    docs = create_docs_from_csv(path=csv_file, content_column="description", model=os.environ["EMBEDDINGS_MODEL"])
+
+    # Add the documents to the index using the Azure AI Search client
+    search_client = SearchClient(
+        endpoint=search_connection.endpoint_url,
+        index_name=index_name,
+        credential=AzureKeyCredential(key=search_connection.key),
+    )
+
+    search_client.upload_documents(docs)
+    logger.info(f"➕ Uploaded {len(docs)} documents to '{index_name}' index")
+
+if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--index-name",
+        type=str,
+        help="index name to use when creating the AI Search index",
+        default=os.environ["AISEARCH_INDEX_NAME"],
+    )
+    parser.add_argument(
+        "--csv-file", type=str, help="path to data for creating search index", default="assets/products.csv"
+    )
+    args = parser.parse_args()
+    index_name = args.index_name
+    csv_file = args.csv_file
+
+    create_index_from_csv(index_name, csv_file)
+
+```
 6.  Right click on the **create_search_index.py** and select **Open in
     integrated terminal** option.
 
@@ -1173,7 +1378,7 @@ def chat_with_products(messages: list, context: dict = None) -> dict:
 ![A screenshot of a computer Description automatically generated](./media/image75.png)
 
 4.  Finally, add the code to run the **chat** **function** and then go
-    to files and click on S**ave all**.
+    to files and click on **Save all**.
 
 ```
 if __name__ == "__main__":
@@ -1275,13 +1480,22 @@ Do not add documentation reference in the response.
     the next step.
 
     ![A screenshot of a computer Description automatically generated](./media/image82.png)
+5. Repeat the steps #1 and #4 to register the following Resource providers.
 
-5.  From your Project in the Azure AI Foundry, select **Tracing** under
+      Microsoft.Search
+      
+      Microsoft.Web
+      
+      Microsoft.ManagedIdentity
+
+      Microsoft.OperationalInsights
+
+7.  From your Project in the Azure AI Foundry, select **Tracing** under
     **Access and improve** from the left pane. Select **Create New**.
 
     ![A screenshot of a computer Description automatically generated](./media/image83.png)
 
-6.	Provide the name as **+++appinsight+++< Lab instance ID >**
+8.	Provide the name as **+++appinsight@lab.LabInstance.Id+++**
 
     ![A screenshot of a computer screen Description automatically generated](./media/image84.png)
 
@@ -1499,49 +1713,32 @@ to handle limit errors.
 
 ### Task 4: Run the evaluation 
 
-1.  From the Azure AI Foundry, select **Evaluations** from the left pane
-    and select **+ New Evaluation**.
+1.  Back in the VS Code terminal, execute the below command to install the required packages.
 
-    ![A screenshot of a computer Description automatically generated](./media/image97.png)
+    +++pip install azure-ai-evaluation[remote]+++
+   
+2.  Execute the below code to run the evaluation script.
 
-2.  Select **Dataset**.
+    +++python evaluate.py+++
 
-    ![A screenshot of a computer Description automatically generated](./media/image98.png)
+    The evaluation will take around 5 to 10 minutes to complete.
+   
+    ![](./media/img45.png)
 
-3.  Accept the defaults in the Basic information page and click
-    **Next**.
+### Task 5: View evaluation results in Azure AI Foundry portal
 
-    ![A screenshot of a computer Description automatically generated](./media/image99.png)
+1.  Once the evaluation run completes, follow the link to view the evaluation results on the Evaluation page in the Azure AI Foundry portal.
 
-4.  Select **Add your** **dataset** -\> **Upload file** and upload the
-    **chat_eval_data.jsonl** that we created in the **assets** folder
-    and click on **Next**.
+    ![](./media/img46.png)
 
-    ![A screenshot of a computer Description automatically generated](./media/image100.png)
-
-5.  Select the **Metrics** under AI quality and Risk and safety metrics as in the screenshots below. Also, under the Ai quality, select your connection and the deployment name.
-
-    ![A screenshot of a computer Description automatically generated](./media/image101.png)
-
-    ![A screenshot of a survey Description automatically generated](./media/image102.png)
-
-6.  Select the Data source types as in the below screenshot and click
-    **Next**.
-
-    ![A screenshot of a computer Description automatically generated](./media/image103.png)
-
-7.  Select **Submit** to submit the evaluation.
-
-    ![A screenshot of a computer Description automatically generated](./media/image104.png)
-
-8.  Once the evaluation completes, explore the results.
-
-    ![A screenshot of a computer Description automatically generated](./media/image105.png)
-
-    ![A screenshot of a computer Description automatically generated](./media/image106.png)
-
-    ![A screenshot of a computer Description automatically generated](./media/image107.png)
-
+    ![](./media/img47.png)
+    
+2.  Check the **Evaluation results** and the **Metrics dashboard**.
+   
+    ![](./media/img48.png)
+    
+    ![](./media/img49.png)
+    
 ## Exercise 4: Delete the resources
 
 1.  From the Azure portal home page, select the assigned Resouce group.
