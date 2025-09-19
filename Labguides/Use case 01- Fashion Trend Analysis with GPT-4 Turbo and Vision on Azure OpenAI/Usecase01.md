@@ -107,6 +107,8 @@ this Resource group
     - Microsoft.Web
     
     - Microsoft.ManagedIdentity
+      
+    - Microsoft.AlertsManagement
 
 ## **Task 2: Create Azure OpenAI resource**
 
@@ -417,3 +419,4 @@ This usecase presents a Streamlit-based web application that allows
 users to upload images and receive descriptive classifications powered
 by Azure OpenAI's GPT-4o model. It highlights the model’s ability to
 interpret visual content and generate natural language responses.
+
