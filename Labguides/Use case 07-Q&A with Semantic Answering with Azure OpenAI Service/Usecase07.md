@@ -102,7 +102,7 @@ the question.
 
 1. In **Azure-openai-testXX** page, click on **Overview** in the left-sided navigation menu, scroll down and click on **Explore Azure AI Foundry portal** button as shown in the below image.
 
-      ![](./media/aaa4.png)
+      ![](./media/aaaa4.png)
 
 2.  Wait for the Azure OpenAI studio to launch.
 
@@ -419,6 +419,7 @@ models to efficiently manage your Azure OpenAI resources.
 **Important Note: Please do not delete the Resource Group. If deleted,
 you’ll not be able to proceed with the next lab or create a new Resource
 Group.**
+
 
 
 
