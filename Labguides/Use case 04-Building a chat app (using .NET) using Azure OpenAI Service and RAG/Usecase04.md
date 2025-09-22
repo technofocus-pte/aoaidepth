@@ -41,7 +41,7 @@ GitHub account -- You are expected to have your own GitHub login credentials. If
 
 1.  Open your browser, navigate to the address bar, type or paste the
     following URL:
-    +++https://github.com/technofocus-pte/azure-search-openai-demo-csharp.git+++
+    +++https://github.com/technofocus-pte/azuresearchopenaicsharp.git+++
     and sign in with your Github account.
 
      ![](./media/image2.png)
@@ -261,3 +261,4 @@ This use case thought you , deploying a chat application for the
 Retrieval Augmented Generation pattern running on Azure, using Azure AI
 Search for retrieval and Azure OpenAI and LangChain large language
 models (LLMs) to power ChatGPT-style and Q&A experiences
+
