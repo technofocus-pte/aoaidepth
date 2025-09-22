@@ -83,13 +83,13 @@ the question.
 10. On **Microsoft.CognitiveServicesOpenAI** window, after the
     deployment is completed, click on the **Go to resource** button.
 
-       ![](./media/aaa2.png)
+       ![](./media/aaaa1.png)
 
 11. In your **Azure-open-testXX | Model deployments** window, navigate
     to the **Resource Management** section, and click on **Keys and
     Endpoints**.
 
-       ![](./media/aaa3.png)
+       ![](./media/aaaa2.png)
 
 12. In **Keys and Endpoints** page, copy **KEY1, KEY 2,** and
     **Endpoint** values and paste them in a notepad as shown in the
@@ -419,5 +419,6 @@ models to efficiently manage your Azure OpenAI resources.
 **Important Note: Please do not delete the Resource Group. If deleted,
 you’ll not be able to proceed with the next lab or create a new Resource
 Group.**
+
 
 
