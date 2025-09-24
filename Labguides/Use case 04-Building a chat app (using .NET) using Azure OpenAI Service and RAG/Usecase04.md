@@ -262,3 +262,4 @@ Retrieval Augmented Generation pattern running on Azure, using Azure AI
 Search for retrieval and Azure OpenAI and LangChain large language
 models (LLMs) to power ChatGPT-style and Q&A experiences
 
+
