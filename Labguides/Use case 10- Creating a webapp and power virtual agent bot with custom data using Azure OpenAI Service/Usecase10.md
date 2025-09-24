@@ -357,7 +357,7 @@ will be using throughout the lab.
 
 ## Exercise-2: Add your data using Azure OpenAI Studio
 
-### Task 1: Deploy gpt-35-turbo and embedded models in Azure AI Studio
+### Task 1: Deploy gpt-4o and embedded models in Azure AI Studio
 
 1.  Switch back to Azure portal and search for Azure OpenAI and select
     it.
@@ -785,3 +785,4 @@ app and started conversation with the chatbot. You've deleted the
 gpt-3-turbo model, Azure storage account, cognitive search service, and
 the new web app to effectively and efficiently manage the Azure OpenAI
 resources.
+
