@@ -703,7 +703,7 @@ time, as mentioned in Task \#1.*
 11. In the **Connection Properties** pane, under **General -\>
     Configuration**, fill in the below details
 
-    Deployment – +++gpt-4+++
+    Deployment – +++gpt-4o+++
  
     Api version – Select latest version
  
@@ -785,4 +785,5 @@ app and started conversation with the chatbot. You've deleted the
 gpt-3-turbo model, Azure storage account, cognitive search service, and
 the new web app to effectively and efficiently manage the Azure OpenAI
 resources.
+
 
