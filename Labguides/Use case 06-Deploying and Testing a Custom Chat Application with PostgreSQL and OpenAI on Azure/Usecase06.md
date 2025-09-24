@@ -224,26 +224,22 @@ will be using throughout the lab.
       +++azd env new+++
 
       ![](./media/image22.png)
+5. Run below command to set resource group
 
-5.  Run the following Azure Developer CLI command to provision the Azure
+   +++azd env set AZURE_RESOURCE_GROUP {your resource group name}+++
+     ![](./media/image29.png)
+
+6.  Run the following Azure Developer CLI command to provision the Azure
     resources and deploy the code.
 
-      +++azd provision+++
+      +++azd up+++
 
-      ![](./media/image23.png)
-
-6.  When prompted, select a **subscription** to create the resources and
+    
+7.  When prompted, select a **subscription** to create the resources and
     select the region closest to your location; in this lab, we have
     chosen the **East US2** region.
 
       ![](./media/image24.png)
-
-7.  It will prompt you “**Enter a value for the
-    'existingResourceGroupName' infrastructure parameter:**” enter the
-    resource group copied in Task 1 (eg : +++@lab.CloudResourceGroup(ResourceGroup1).Name+++) .**You can copy the resource group name from
-    **Resources** section as shown in below image
-
-      ![](./media/image25.png)
 
 8.  When prompted, **enter a value for the 'openAILocation'
     infrastructure parameter** select the region closest to your
@@ -261,17 +257,7 @@ will be using throughout the lab.
 
      ![](./media/image28.png)
 
-11. Run below command to set resource group
-
-   +++azd env set AZURE_RESOURCE_GROUP {your resource group name}+++
-     ![](./media/image29.png)
-
-12. Run below command to deploy the app to Azure.
-
-    +++azd deploy+++
-
-     ![](./media/image30.png)
-
+   
 13. Wait for the deployment to complete. Deployment takes \<5
 
       ![](./media/image31.png)
