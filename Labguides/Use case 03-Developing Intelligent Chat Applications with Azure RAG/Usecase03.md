@@ -25,19 +25,6 @@ aspects such as employee benefits, internal policies, and job roles.
 
 ![RAG Architecture](./media/image1.png)
 
-**Objective**
-
-- To install Azure CLI and Node.js on your local machine.
-
-- To assign an owner role to the user.
-
-- To install the Dev Containers extension and set up the development
-  environment.
-
-- To deploy a chat application to Azure and use it to get answers from
-  PDF files.
-
-- To delete the deployed resources and models.
 
 ## Task 1 : Run the Docker
 
@@ -419,5 +406,6 @@ Finally, you’ve deleted the deployed resources to effectively manage
 resources. This hands-on experience has equipped you with the skills to
 develop and manage intelligent chat applications using the Retrieval
 Augmented Generation pattern on Azure.
+
 
 
