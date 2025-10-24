@@ -26,19 +26,7 @@ aspects such as employee benefits, internal policies, and job roles.
 ![RAG Architecture](./media/image1.png)
 
 
-## Task 1 : Run the Docker
-
-1.  On the Desktop, double click on **Docker Desktop**.
-
-> ![A screenshot of a computer AI-generated content may be
-> incorrect.](./media/image2.png)
-
-2.  Run the Docker Desktop.
-
-> ![A screenshot of a computer AI-generated content may be
-> incorrect.](./media/image3.png)
-
-## Task 2: Retrieve resource group name and location
+## Task 1: Retrieve resource group name and location
 
 1.  Open your browser, navigate to the address bar, and type or paste
     the following URL: +++https://portal.azure.com/+++, then press the
@@ -76,7 +64,7 @@ aspects such as employee benefits, internal policies, and job roles.
 
 ![](./media/image10.png)
 
-## Task 3: Open development environment
+## Task 2: Open development environment
 
 1.  Open your browser, navigate to the address bar, type or paste the
     following URL: +++
@@ -110,7 +98,7 @@ aspects such as employee benefits, internal policies, and job roles.
 > ![A screenshot of a computer AI-generated content may be
 > incorrect.](./media/image16.png)
 
-## Task 4: Provision Services and deploy application to Azure
+## Task 3: Provision Services and deploy application to Azure
 
 1.  Run the following command on the Terminal. It generates the code to
     copy. Copy the code and press Enter.
@@ -235,7 +223,7 @@ generated](./media/image37.png)
 ![A screenshot of a computer Description automatically
 generated](./media/image38.png)
 
-## Task 5: Verify deployed resources in the Azure portal
+## Task 4: Verify deployed resources in the Azure portal
 
 1.  Select **Resource groups**
 
@@ -336,7 +324,18 @@ generated](./media/image49.png)
 
 ![](./media/image55.png)
 
-[TABLE]
+|    |   |
+|------|-----|
+|Setting	|Description|
+|Override prompt template|	This is the prompt that is used to generate the answer.|
+|Retrieve this many search results	|This is the number of search results that are used to generate the answer. You can see these sources returned in the Thought process and Supporting content tabs of the citation.|
+|Exclude category	|This is the category of documents that are excluded from the search results.|
+|Use semantic ranker for retrieval|	This is a feature of Azure AI Search that uses machine learning to improve the relevance of search results.|
+|Use query-contextual summaries instead of whole documents|	When both Use semantic ranker and Use query-contextual summaries are checked, the LLM uses captions extracted from key passages, instead of all the passages, in the highest ranked documents.|
+|Suggest follow-up questions|	Have the chat app suggest follow-up questions based on the answer.|
+|Retrieval mode	|Vectors + Text means that the search results are based on the text of the documents and the embeddings of the documents. Vectors means that the search results are based on the embeddings of the documents. Text means that the search results are based on the text of the documents.|
+|Stream chat completion responses|	Stream response instead of waiting until the complete answer is available for a respon|
+
 
 8.  Check the **Suggest follow-up questions** checkbox and ask the same
     question again.
@@ -406,6 +405,7 @@ Finally, you’ve deleted the deployed resources to effectively manage
 resources. This hands-on experience has equipped you with the skills to
 develop and manage intelligent chat applications using the Retrieval
 Augmented Generation pattern on Azure.
+
 
 
 
