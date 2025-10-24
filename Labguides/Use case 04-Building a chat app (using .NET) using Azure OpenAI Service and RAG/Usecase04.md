@@ -98,10 +98,11 @@ GitHub account -- You are expected to have your own GitHub login credentials. If
     container.
 
     +++azd env set AZURE_RESOURCE_GROUP {Name of existing resource group}+++
+    +++azd env set AZURE_LOCATION {Location of existing resource group}+++
  
-    ![](./media/image14.png)
+    ![](./media/imgoct24.png)
 
-6.  Run azd up - This will provision Azure resources and deploy this
+7.  Run azd up - This will provision Azure resources and deploy this
     sample to those resources, including building the search index based
     on the files found in the ./data folder.
 
@@ -109,21 +110,21 @@ GitHub account -- You are expected to have your own GitHub login credentials. If
  
      ![](./media/image15.png)
 
-7.  Select below values.
+8.  Select below values.
 
     - **Select an Azure Subscription to use** : select your subscription
     
     - **Select an Azure location to use** : **East us2/west
       us2** (Sometimes, East US might not be available, choose location from
       the list mentioned below.)
-8.  When prompted, enter a value for the OpenAIApiKey infrastructure
+9.  When prompted, enter a value for the OpenAIApiKey infrastructure
     parameters and then just click the button
     
        ![](./media/image16.png)
      
       ![](./media/image17.png)
 
-9.  Wait for the resource to provision completely. This process wil take
+10.  Wait for the resource to provision completely. This process wil take
     5-10 min to create al the required resources.
 
       ![](./media/image18.png)
@@ -261,5 +262,6 @@ This use case thought you , deploying a chat application for the
 Retrieval Augmented Generation pattern running on Azure, using Azure AI
 Search for retrieval and Azure OpenAI and LangChain large language
 models (LLMs) to power ChatGPT-style and Q&A experiences
+
 
 
