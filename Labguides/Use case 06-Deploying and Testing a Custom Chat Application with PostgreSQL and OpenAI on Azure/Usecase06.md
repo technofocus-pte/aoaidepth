@@ -117,7 +117,7 @@ will be using throughout the lab.
     - **+++Microsoft.operationalinsights+++**
 
 
-### Task 1: Copy the existing resource group name
+### Task 2: Copy the existing resource group name
 
 1.  On Home page, click on **Resource groups**  tile.
 
@@ -136,39 +136,8 @@ will be using throughout the lab.
 
      ![](./media/image5.png)
 
-### Task 2 : Run the Docker
 
-1.  On the Desktop, double click on **Docker Desktop**.
-
-      ![](./media/aa1.png)
-
-2.  Run the Docker Desktop.
-
-     ![](./media/aa2.png)
-
-### Task 3 : Register Service provider
-
-1.  Switch back to Azure portal tab, click on **Subscription** tile.
-
-      ![](./media/image8.png)
-
-2.  Click on subscription name.
-
-      ![](./media/image9.png)
-
-3.  Click on **Settings - \> Resource provider** from left navigation
-    menu.
-
-      ![](./media/image10.png)
-
-4.  Type +++Microsoft.AlertsManagement+++ and press enter. Select
-    it and then click on **Register**.
-
-      ![](./media/image11.png)
-
-      ![](./media/image12.png)
-
-### Task 4 : Open development environment
+### Task 3 : Open development environment
 
 1.  Open your browser, navigate to the address bar, type or paste the
     following
@@ -194,7 +163,7 @@ will be using throughout the lab.
       ![](./media/image17.png)
       ![](./media/image18.png)
 
-### Task 5: Provision Services and deploy application to Azure
+### Task 4: Provision Services and deploy application to Azure
 
 1.  Run the following command on the Terminal. It generates the code to
     copy. Copy the code and press Enter.
@@ -274,7 +243,7 @@ will be using throughout the lab.
 
     >[!Alert] Important: If you face any issue launching the app, please redeploy it by following step 12, i.e azd deploy
 
-### Task 6: Use chat app to get answers from files
+### Task 5: Use chat app to get answers from files
 
 1.  In the **RAG on database |OpenAI+PoastgreSQL** web app page, **click
     on Best shoe for hiking?** button and observe the output
@@ -297,7 +266,7 @@ will be using throughout the lab.
 
 4.  Click on the **clear chat.**
 
-### Task 7: Verify deployed resources in the Azure portal
+### Task 6: Verify deployed resources in the Azure portal
 
 1.  On Home page of Azure portal, click on **Resource Groups**.
 
@@ -341,7 +310,7 @@ will be using throughout the lab.
 
     ![](./media/image45.png)
 
-### Task 8 : Clean up all the resources
+### Task 7 : Clean up all the resources
 
 To clean up all the resources created by this sample:
 
