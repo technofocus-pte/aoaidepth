@@ -160,8 +160,8 @@ will be using throughout the lab.
 4.  Wait for the Codespaces environment to setup .It takes few minutes
     to setup completely
 
-      ![](./media/image17.png)
-      ![](./media/image18.png)
+      ![](./media/aoai1.png)
+      ![](./media/aoai2.png)
 
 ### Task 4: Provision Services and deploy application to Azure
 
