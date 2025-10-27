@@ -1,4 +1,4 @@
-# Usecase 06 - Deploying chat app on Azure Container Apps with PostgreSQL Flexible Server
+# Usecase 05 - Deploying chat app on Azure Container Apps with PostgreSQL Flexible Server
 
 **Objective:**
 
