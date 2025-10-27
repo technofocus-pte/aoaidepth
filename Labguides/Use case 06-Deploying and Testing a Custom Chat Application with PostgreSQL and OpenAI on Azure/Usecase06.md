@@ -141,7 +141,7 @@ will be using throughout the lab.
 
 1.  Open your browser, navigate to the address bar, type or paste the
     following
-    URL: +++https://github.com/technofocus-pte/ragpostgresopenai+++ tab
+    URL: +++https://github.com/technofocus-pte/rag-postgres-openai-python2/tree/main+++ tab
     opens and ask you to open in Visual studio code. Select **Open
     Visual Studio Code.**
 
@@ -160,12 +160,23 @@ will be using throughout the lab.
 4.  Wait for the Codespaces environment to setup .It takes few minutes
     to setup completely
 
-      ![](./media/aoai1.png)
-      ![](./media/aoai2.png)
+      ![](./media/img1.png)
+      ![](./media/img2.png)
 
 ### Task 4: Provision Services and deploy application to Azure
 
-1.  Run the following command on the Terminal. It generates the code to
+1. In the infra folder, select the main.bicep file to open it.
+    ![](./media/img4.png)
+
+2 Navigate to the C:\LabFiles\LabFiles directory, select the main.bicep file, and open it.
+   ![](./media/img5.png)
+
+3. Copy the code and replace the contents of the main.bicep file in the Codespace.
+    ![](./media/img6.png)
+   ![](./media/img7.png)
+4. Save the main.bicep file to apply the changes.
+
+5.  Run the following command on the Terminal. It generates the code to
     copy. Copy the code and press Enter.
 
       +++azd auth login+++
@@ -204,9 +215,9 @@ will be using throughout the lab.
     
 7.  When prompted, select a **subscription** to create the resources and
     select the region closest to your location; in this lab, we have
-    chosen the **East US2** region.
+    chosen the **Sweden Central** region.
 
-      ![](./media/image24.png)
+      ![](./media/img3.png)
 
 8.  When prompted, **enter a value for the 'openAILocation'
     infrastructure parameter** select the region closest to your
