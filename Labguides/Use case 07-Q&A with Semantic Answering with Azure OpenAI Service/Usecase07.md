@@ -1,4 +1,4 @@
-## Lab 07: Implementing Q&A using semantic answering with Azure OpenAI Service
+## Lab 06: Implementing Q&A using semantic answering with Azure OpenAI Service
 
 **Introduction**
 
@@ -419,6 +419,7 @@ models to efficiently manage your Azure OpenAI resources.
 **Important Note: Please do not delete the Resource Group. If deleted,
 you’ll not be able to proceed with the next lab or create a new Resource
 Group.**
+
 
 
 
