@@ -156,7 +156,7 @@ incorrect.](./media/image22.png)
     sample to those resources, including building the search index based
     on the files found in the ./data folder.
 
-   +++azd up++
+   +++azd up+++
 >
 > ![A screenshot of a computer AI-generated content may be
 > incorrect.](./media/image25.png)
@@ -404,6 +404,7 @@ Finally, you’ve deleted the deployed resources to effectively manage
 resources. This hands-on experience has equipped you with the skills to
 develop and manage intelligent chat applications using the Retrieval
 Augmented Generation pattern on Azure.
+
 
 
 
