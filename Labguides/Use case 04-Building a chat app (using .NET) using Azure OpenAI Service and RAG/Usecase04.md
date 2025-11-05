@@ -108,13 +108,6 @@ GitHub account -- You are expected to have your own GitHub login credentials. If
  
      ![](./media/image15.png)
 
-8.  Select below values.
-
-    - **Select an Azure Subscription to use** : select your subscription
-    
-    - **Select an Azure location to use** : **East us2/west
-      us2** (Sometimes, East US might not be available, choose location from
-      the list mentioned below.)
 9.  When prompted, enter a value for the OpenAIApiKey infrastructure
     parameters and then just click the button
     
@@ -260,6 +253,7 @@ This use case thought you , deploying a chat application for the
 Retrieval Augmented Generation pattern running on Azure, using Azure AI
 Search for retrieval and Azure OpenAI and LangChain large language
 models (LLMs) to power ChatGPT-style and Q&A experiences
+
 
 
 
