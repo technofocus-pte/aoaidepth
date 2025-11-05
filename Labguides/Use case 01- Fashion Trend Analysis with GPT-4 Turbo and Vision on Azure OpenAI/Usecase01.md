@@ -373,7 +373,7 @@ this Resource group
      
       ![](./media/image73.png)
      
-      ![](./media/image74.png)
+      ![](./media/aoaiimg1.png)
      
      ![](./media/image75.png)
      
@@ -419,4 +419,5 @@ This usecase presents a Streamlit-based web application that allows
 users to upload images and receive descriptive classifications powered
 by Azure OpenAI's GPT-4o model. It highlights the model’s ability to
 interpret visual content and generate natural language responses.
+
 
