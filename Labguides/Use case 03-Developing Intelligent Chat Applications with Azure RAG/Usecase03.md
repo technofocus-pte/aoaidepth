@@ -150,7 +150,7 @@ incorrect.](./media/image22.png)
 +++azd env set AZURE_LOCATION {Location of existing resource group}+++
 
 > ![A screenshot of a computer AI-generated content may be
-> incorrect.](./media/image24.png)
+> incorrect.](./media/aoaiimg2.png)
 
 7.  Run azd up - This will provision Azure resources and deploy this
     sample to those resources, including building the search index based
@@ -404,6 +404,7 @@ Finally, you’ve deleted the deployed resources to effectively manage
 resources. This hands-on experience has equipped you with the skills to
 develop and manage intelligent chat applications using the Retrieval
 Augmented Generation pattern on Azure.
+
 
 
 
