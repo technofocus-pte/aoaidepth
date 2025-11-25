@@ -25,7 +25,7 @@ aspects such as employee benefits, internal policies, and job roles.
 
 ![RAG Architecture](./media/image1.png)
 
-
+GitHub account -- You are expected to have your own GitHub login credentials. If you do not have, please create one from here - +++https://github.com/signup?user_email=&source=form-home-signup+++
 ## Task 1: Retrieve resource group name and location
 
 1.  Open your browser, navigate to the address bar, and type or paste
@@ -402,6 +402,7 @@ Finally, you’ve deleted the deployed resources to effectively manage
 resources. This hands-on experience has equipped you with the skills to
 develop and manage intelligent chat applications using the Retrieval
 Augmented Generation pattern on Azure.
+
 
 
 
