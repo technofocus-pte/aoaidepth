@@ -67,9 +67,7 @@ aspects such as employee benefits, internal policies, and job roles.
 ## Task 2: Open development environment
 
 1.  Open your browser, navigate to the address bar, type or paste the
-    following URL: +++https://github.com/technofocus-pte/azuresearchopenaidemo.git+++ opens
-    and ask you to open in Visual studio code. Select **Open Visual
-    Studio Code.**
+    following URL: +++https://github.com/technofocus-pte/azuresearchopenaidemo.git+++ 
 
 > ![A screenshot of a computer AI-generated content may be
 > incorrect.](./media/image11.png)
@@ -404,6 +402,7 @@ Finally, you’ve deleted the deployed resources to effectively manage
 resources. This hands-on experience has equipped you with the skills to
 develop and manage intelligent chat applications using the Retrieval
 Augmented Generation pattern on Azure.
+
 
 
 
