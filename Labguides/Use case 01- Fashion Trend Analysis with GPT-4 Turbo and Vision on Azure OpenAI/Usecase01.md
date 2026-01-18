@@ -225,9 +225,6 @@ this Resource group
     **Standard** and select Model ersion as Vision- preview. Then click
     on the **Deploy** button.
 
-    ![](./media/image30.png)
-    
-    ![](./media/image31.png)
 
 ## Task 4: GPT-4o with Vision demo
 
@@ -419,5 +416,6 @@ This usecase presents a Streamlit-based web application that allows
 users to upload images and receive descriptive classifications powered
 by Azure OpenAI's GPT-4o model. It highlights the model’s ability to
 interpret visual content and generate natural language responses.
+
 
 
