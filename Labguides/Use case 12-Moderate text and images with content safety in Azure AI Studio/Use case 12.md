@@ -71,26 +71,18 @@ features are available:
 
      ![](./media/image4.png)
 
-5.  From the Azure portal home page, click on **Azure portal menu**
-    represented by three horizontal bars on the left side of the
-    Microsoft Azure command bar as shown in the below image.
+5.  In Azure portal, search box, type +++Microsoft Foundry+++ and then click on the Microsoft Foundry.
 
-     ![](./media/image5.png)
+     ![](./media/image5a.png)
 
-6.  Navigate and click on **+ Create a resource**.
+6.  In Microsoft Foundry page, select **Content safety** 
 
-      ![](./media/image6.png)
+      ![](./media/image6a.png)
 
-7.  In the **Marketplace** page, in the **Search services and
-    marketplace** search bar, type **Azure AI Content Safety**, then
-    press the **Enter** button. Then, navigate to the **Azure AI Content
-    Safety** section, click on the **Create** button dropdown, then
-    select **Azure AI Content Safety** as shown in the below image.
+7.  Click on **+Create** 
 
-      ![](./media/image7.png)
+      ![](./media/image7a.png)
  
-       ![](./media/image8.png)
-
 8.  In the **Create Azure OpenAI** window, under the **Basics** tab,
     enter the following details and click on the
     **Review+create**button.
@@ -98,9 +90,9 @@ features are available:
     |    |   |
     |----|---|
     |Subscription|	Select your subscription|
-    |Resource group|	Select your assigned Resource Group(ResourceGroup1)|
-    |Region	|Select East US|
-    |Name	|+++AOAI-ContentSafetyXX+++ (XX can be unique number)|
+    |Resource group|	Select your assigned Resource Group(**ResourceGroup1**)|
+    |Region	|Select **East US**|
+    |Name	|**+++AOAI-ContentSafetyXX+++** (XX can be unique number)|
     |Pricing tier	|Select Free|
 
      ![](./media/image9.png)
@@ -291,3 +283,5 @@ Content Safety Studio with a specific focus on content moderation for
 text and images, Exploring text and image content moderation
 capabilities. In this lab, you’ve learned how to implement content
 moderation functionalities within the Azure environment.
+
+
