@@ -325,12 +325,12 @@ will be using throughout the lab.
     |----|----|
     |Subscription|	Select your Azure OpenAI subscription|
     |Resource group|	Select your Resource group|
-    |Region|EastUS|
+    |Region|CentralUS|
     |Name|	+++mysearchserviceXXXX+++ ( XXXX can be last 4 digits of Lab instant ID)|
     |Pricing Tier|	Click on change Price Tire>select Basic|
 
 
-     ![](./media/image33.png)
+     ![](./media/imga1.png)
    
      ![](./media/image34.png)
 
@@ -785,5 +785,6 @@ app and started conversation with the chatbot. You've deleted the
 gpt-3-turbo model, Azure storage account, cognitive search service, and
 the new web app to effectively and efficiently manage the Azure OpenAI
 resources.
+
 
 
