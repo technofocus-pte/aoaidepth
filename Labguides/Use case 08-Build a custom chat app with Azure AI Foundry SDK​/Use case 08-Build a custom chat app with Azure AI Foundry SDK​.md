@@ -71,7 +71,7 @@ In this exercise, we will create the hub in the Azure portal, then a project in 
 
     - User name – +++@lab.CloudPortalCredential(User1).Username+++
     
-    - Password – +++@lab.CloudPortalCredential(User1).TAP+++
+    - TAP – +++@lab.CloudPortalCredential(User1).AccessToken+++
 
     ![image](https://github.com/user-attachments/assets/b26ef8b5-13dd-414e-91bb-c2963cf7cce0)
     
@@ -135,7 +135,7 @@ In this exercise, we will create the hub in the Azure portal, then a project in 
 
      <img width="457" alt="image" src="https://github.com/user-attachments/assets/d42c101b-4d6f-4eb1-baa4-93b1c120a561" />
 
-14.  Select **Azure AI Foundry** from the available external assets.
+14.  Select **Microsoft Foundryy** from the available external assets.
 
      ![image](https://github.com/user-attachments/assets/2d2b9ed9-78f3-466d-a374-0c79935bf4da)
 
@@ -169,7 +169,7 @@ project, using this set of steps for each model.
 These steps deploy a model to a real-time endpoint from the AI Foundry
 portal model catalog
 
-1.  From the left navigation pane, select **Model catalog**.
+1.  From the left navigation pane, select **Use this model**.
 
     ![](./media/image10.png)
 
@@ -1758,4 +1758,5 @@ to handle limit errors.
 **Summary:**
 
 In this lab, we have learnt to build, evaluate and deploy a RAG based application.
+
 
