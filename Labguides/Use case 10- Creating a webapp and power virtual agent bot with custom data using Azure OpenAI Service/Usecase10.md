@@ -341,7 +341,7 @@ will be using throughout the lab.
 9.  After the deployment is completed, click on the **Go to
     resource** button.
 
-    ![](./media/image36.png)
+    ![](./media/imga2.png)
 
 10. In the **mysearchserviceXX** Overview page. In the left-side
     navigation pane, under **Settings** section, select **Semantic
@@ -785,6 +785,7 @@ app and started conversation with the chatbot. You've deleted the
 gpt-3-turbo model, Azure storage account, cognitive search service, and
 the new web app to effectively and efficiently manage the Azure OpenAI
 resources.
+
 
 
 
