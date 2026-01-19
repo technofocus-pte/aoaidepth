@@ -1,840 +1,543 @@
-## Use case 13:Azure OpenAI GPT-4o-mini fine-tuning
+# Usecase 13: Deploying and Evaluating Fine-Tuned GPT Models in Azure AI Projects
+
+**Scenario**
+
+You work at a travel-agency (or a company that builds travel-planning
+tools). You are building a conversational chat application (a “travel
+assistant”) that helps users plan holidays: suggest destinations,
+activities, cultural info, weather, visa requirements, etc. You want the
+assistant to always speak in a **friendly, inspiring, conversational
+tone**, and to **avoid** giving services like booking flights, hotels or
+rental cars.
+
+You have access to a pretrained, general-purpose LLM (e.g. gpt-4o via
+Azure AI Foundry). But the base model’s responses tend to be generic and
+inconsistent in tone. So — instead of relying on prompt-engineering
+alone — you decide to **fine-tune** the model on a small dataset of
+example chats that reflect exactly how you want the assistant to behave
+and respond.
 
 **Introduction**
 
-Azure OpenAI Service lets you tailor our models to your personal
-datasets by using a process known as *fine-tuning*. This customization
-step lets you get more out of the service by providing:
+Large language models (LLMs) can generate high-quality responses using
+prompts alone, but achieving consistent tone, behavior, and
+domain-specific guidance often requires more than prompt engineering.
+Fine-tuning enables you to adapt a powerful base model—such as GPT-4o—to
+your unique application needs by training it on example conversations
+that demonstrate the tone, style, and constraints you expect.
 
-- Higher quality results than what you can get just from [prompt
-  engineering](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/prompt-engineering)
-
-- The ability to train on more examples than can fit into a model's max
-  request context limit.
-
-- Lower-latency requests, particularly when using smaller models.
-
-A fine-tuned model improves on the few-shot learning approach by
-training the model's weights on your own data. A customized model lets
-you achieve better results on a wider number of tasks without needing to
-provide examples in your prompt. The result is less text sent and fewer
-tokens processed on every API call, potentially saving cost and
-improving request latency.
+In this use case, you work for a travel-planning company building a
+conversational assistant that offers friendly, inspiring travel
+suggestions while avoiding tasks like booking flights or hotels. Through
+Microsoft Foundry, you will deploy a base model, fine-tune it using
+curated training examples, evaluate its behavior, and compare
+performance between the base and fine-tuned versions. This hands-on
+exercise demonstrates how fine-tuning creates more reliable, tailored
+conversational experiences for real-world applications.
 
 **Objectives**
 
-- To create an Azure OpenAI service and retrieve the keys and endpoint
-  information that will be used for deploying Fine-tune model.
+- Deploy a base GPT-4o model within a Microsoft Foundry project for
+  initial testing.
 
-- Add role assignment to an Azure OpenAI resource.
+- Fine-tune the model using a small dataset of example conversations
+  that define the desired travel-assistant behavior.
 
-- Copy endpoint and access key for authenticating your API calls.
+- Compare outputs from the base model and the fine-tuned model to
+  evaluate improvements in tone, consistency, and constraints.
 
-- To configure the environmental variables.
+- Deploy the fine-tuned model and test it in the Azure AI chat
+  playground.
 
-- To deploy fine-tune model using Jupyter Notebook.
+- Review fine-tuning metrics and training data to understand how the
+  model learns target behaviors.
 
-- Create a sample dataset,Fine-tuning gpt-35-turbo-0613 requires a
-  specially formatted JSONL training file.
+- Clean up deployed Azure resources to prevent unnecessary cloud costs.
 
-- Use a deployed customized model to explore Azure OpenAI capabilities
-  with a no-code approach through the Azure AI Studio Chat playground
+## Task 1: Deploy a model in a Microsoft Foundry project
 
-** Important**
+1.  Open a browser go to +++ https://ai.azure.com +++ and sign in with
+    your cloud slice account below.
 
-After you deploy a customized model, if at any time the deployment
-remains inactive for greater than fifteen (15) days, the deployment is
-deleted. The deployment of a customized model is *inactive* if the model
-was deployed more than fifteen (15) days ago and no completions or chat
-completions calls were made to it during a continuous 15-day period.
+> Username: <+++@lab.CloudPortalCredential>(User1).Username+++
+>
+> Password: <+++@lab.CloudPortalCredential>(User1). *TAP*+++
+>
+> ![A screenshot of a computer AI-generated content may be
+> incorrect.](./media/image1.png)
 
-The deletion of an inactive deployment doesn't delete or affect the
-underlying customized model, and the customized model can be redeployed
-at any time. As described in [**Azure OpenAI Service
-pricing**](https://azure.microsoft.com/pricing/details/cognitive-services/openai-service/),
-each customized (fine-tuned) model that's deployed incurs an hourly
-hosting cost regardless of whether completions or chat completions calls
-are being made to the model. To learn more about planning and managing
-costs with Azure OpenAI, refer to the guidance in [**Plan to manage
-costs for Azure OpenAI
-Service**](https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/manage-costs#base-series-and-codex-series-fine-tuned-models).
+![A screenshot of a computer AI-generated content may be
+incorrect.](./media/image2.png)
 
-### **Task 1: Create Azure OpenAI resource**
+![A login box with a red box and blue box with text AI-generated content
+may be incorrect.](./media/image3.png)
 
-1.  From the Azure portal home page, click on **Azure portal menu**
-    represented by three horizontal bars on the left side of the
-    Microsoft Azure command bar as shown in the below image.
+> ![A screenshot of a computer error AI-generated content may be
+> incorrect.](./media/image4.png)
+>
+> ![A screenshot of a computer AI-generated content may be
+> incorrect.](./media/image5.png)
 
-    ![](./media/image1.png)
-2.  Navigate and click on **+ Create a resource**.
+2.  In the home page, in the **Explore models and
+    capabilities** section, search for the gpt-4o model and select it.
 
-    ![](./media/image2.png)
+> ![A screenshot of a computer AI-generated content may be
+> incorrect.](./media/image6.png)
 
-3.  On **Create a resource** page, in the **Search services and
-    marketplace** search bar, type **Azure OpenAI**, then press the
-    **Enter** button.
+1.  At the top of the page for the model, select **Use this model**.
 
-     ![](./media/image3.png)
+> ![A screenshot of a computer AI-generated content may be
+> incorrect.](./media/image7.png)
 
-4.  In the Marketplace page, navigate to the Azure OpenAI section, click
-    on the Create V chevron button, then click on **Azure OpenAI** as
-    shown in the image. (In case, you clicked on the Azure **OpenAI
-    section**, then click on the **Create** button on the **Azure OpenAI
-    page**).
+2.  When prompted to create a project, enter a valid name of project as
+    +++**Finetune-project**+++ and expand **Advanced options**.
 
-    ![](./media/image4.png)
+3.  Select **Customize** and specify the following settings for your
+    project. Click on **Create**
 
-5.  In the **Create Azure OpenAI** window, under the **Basics** tab,
-    enter the following details and click on the **Next** button.
+    - **Foundry resource**: *A valid name for your Foundry resource*
 
-    a.  **Subscription**: Select the assigned subscription
+    - **Subscription**: *Your Azure subscription*
 
-    b.  **Resource group**: Select your assigned Resource
-        Group(ResourceGroup1)
+    - **Resource group**: *Create or select a resource group*
 
-    c.  **Region**: Select **North Central US**
+    - **Region**: *Select one of the following regions*:\*
 
-    d.  **Name**: **AzureOpenAI-FinetuneXX** (XX can be a unique number)
-        (here, we entered **AzureOpenAI-Finetune21**)
+      - East US 2
 
-    e.  **Pricing tier**: Select **Standard S0**
+      &nbsp;
 
-     ![](./media/image5.png)
+      - North Central US
 
-6.  In the **Network** tab, leave all the radio buttons in the default
-    state, and click on the **Next** button.
+      &nbsp;
 
-     ![](./media/image6.png)
+      - Sweden Central
 
-7.  In the **Tags** tab, leave all the fields in the default state, and
-    click on the **Next** button.
+\* At the time of writing, these regions support fine-tuning for gpt-4o
+models.
 
-    ![](./media/image7.png)
-8.  In the **Review+submit** tab, once the Validation is Passed, click
-    on the **Create** button.
+![A screenshot of a computer screen AI-generated content may be
+incorrect.](./media/image8.png)
 
-      ![](./media/image8.png)
+![A screenshot of a computer AI-generated content may be
+incorrect.](./media/image9.png)
 
-9.  Wait for the deployment to complete. The deployment will take around
-    3-5 minutes.
+**Note**: Reducing the TPM helps avoid over-using the quota available in
+the subscription you are using. 50,000 TPM should be sufficient for the
+data used in this exercise. If your available quota is lower than this,
+you will be able to complete the exercise but you may experience errors
+if the rate limit is exceeded.
 
-10. On **Microsoft.CognitiveServicesOpenAI** window, after the
-    deployment is completed, click on the **Go to resource** button.
+4.  When your project is created, the chat playground will be opened
+    automatically so you can test your model:
 
-     ![](./media/image9.png)
+> ![A screenshot of a computer AI-generated content may be
+> incorrect.](./media/image10.png)
 
-### **Task 2: Add role assignment to an Azure OpenAI resource**
+5.  In the **Setup** pane, note the name of your model deployment; which
+    should be **gpt-4o**. You can confirm this by viewing the deployment
+    in the **Models and endpoints** page (just open that page in the
+    navigation pane on the left).
 
-1.  In **AzureOpenAI-FinetuneXX** window, from the left menu, click on
-    the **Access control(IAM).**
+> ![A screenshot of a computer AI-generated content may be
+> incorrect.](./media/image11.png)
 
-    ![](./media/image10.png)
+6.  In the navigation pane on the left, select **Overview** to see the
+    main page for your project.![A screenshot of a computer AI-generated
+    content may be incorrect.](./media/image12.png)
 
-2.  On the Access control(IAM) page, Click +**Add** and select **Add
-    role assignments.**
+## Task 2: Fine-tune a model
 
-    ![](./media/image11.png)
+Because fine-tuning a model takes some time to complete, you’ll start
+the fine-tuning job now and come back to it after exploring the base
+gpt-4o model you already deployed.
 
-3.  Type the **+++Cognitive Services OpenAI Contributor+++** in the
-    search box and select it. Click **Next**
+1.  Navigate to the **Fine-tuning** page under the **Build and
+    customize** section, using the menu on the left.
 
-     ![](./media/image12.png)
+> ![A screenshot of a computer AI-generated content may be
+> incorrect.](./media/image13.png)
 
-4.  In the **Add role assignment** tab, select Assign access to User
-    group or service principal. Under Members, click **+Select members**
+2.  Select the button to add a new fine-tune model, select
+    the **gpt-4o** model and then select **Next**.
 
-     ![](./media/image13.png)
+> ![A screenshot of a computer AI-generated content may be
+> incorrect.](./media/image14.png)
+>
+> ![A screenshot of a computer AI-generated content may be
+> incorrect.](./media/image15.png)
 
-5.  On the Select members tab, search your Azure OpenAI subscription and
-    click **Select.**
+3.  **Fine-tune** the model using the following configuration:
 
-    ![](./media/image14.png)
+    - **Method of customization**: Supervised
 
-6.  In the **Add role assignment** page, Click **Review+assign**, you
-    will get a notification once the role assignment is complete.
+    - **Base model**: *Select the default version of **gpt-4o***
 
-    ![](./media/image15.png)
+    - **Training data**: *Select the option to **Add training data** and
+      upload and apply the* **travel-finetune-hotel.jsonl** *file
+      located in **C:\Labfiles** location*
 
-    ![](./media/image16.png)
+    - **Model suffix**: ft-travel
 
-7.  You will see a notification – added as Cognitive Services OpenAI
-    Contributor for Azure Pass-Sponsorship.
+    - **Seed**: \*Random
 
-     ![](./media/image17.png)
+> ![A screenshot of a computer AI-generated content may be
+> incorrect.](./media/image16.png)
+>
+> ![A screenshot of a computer AI-generated content may be
+> incorrect.](./media/image17.png)
+>
+> ![A screenshot of a computer AI-generated content may be
+> incorrect.](./media/image18.png)
+>
+> ![A screenshot of a computer AI-generated content may be
+> incorrect.](./media/image19.png)
 
-8.  In your **AzureOpenAI-FinetuneXX** window, from the left menu, click
-    on the **Access control(IAM).**
+3.  Click on **Apply** button
 
-     ![](./media/image10.png)
+> ![A screenshot of a computer AI-generated content may be
+> incorrect.](./media/image20.png)
 
-9.  On the Access control(IAM) page, Click +**Add** and select **Add
-    role assignments.**
+4.  Submit the fine-tuning details, and the job will start. It may take
+    some time to complete. You can continue with the next section of the
+    exercise while you wait.
 
-     ![](./media/image11.png)
+![A screenshot of a computer AI-generated content may be
+incorrect.](./media/image21.png)
 
-10. Type the +++**Cognitive Services OpenAI User+++** in the search box
-    and select it. Click **Next**
+**Note**: Fine-tuning and deployment can take a significant amount of
+time (30 minutes or longer), so you may need to check back periodically.
+You can see more details of the progress so far by selecting the
+fine-tuning model job and viewing its **Logs** tab.
 
-    ![](./media/image18.png)
+![A screenshot of a computer AI-generated content may be
+incorrect.](./media/image22.png)
 
-11. In the **Add role assignment** tab, select Assign access to User
-    group or service principal. Under Members, click **+Select members**
+4.  Click on **Refresh**
 
-    ![](./media/image19.png)
+![A screenshot of a computer AI-generated content may be
+incorrect.](./media/image23.png)
 
-12. On the Select members tab, search your Azure OpenAI subscription,
-    and click **Select.**
+![A screenshot of a computer AI-generated content may be
+incorrect.](./media/image24.png)
 
-    ![](./media/image14.png)
+## Task 3: Chat with a base model
 
-13. In the **Add role assignment** page, Click **Review+assign**, you
-    will get a notification once the role assignment is complete.
+While you wait for the fine-tuning job to complete, let’s chat with a
+base GPT 4o model to assess how it performs.
 
-      ![](./media/image20.png)
- 
-      ![](./media/image21.png)
+1.  In the navigation pane on the left, select **Playgrounds** and open
+    the **Chat playground**.
 
-14. You will see a notification – added as Cognitive Services OpenAI
-    User for Azure Pass-Sponsorship.
+> ![A screenshot of a chat AI-generated content may be
+> incorrect.](./media/image25.png)
 
-    ![](./media/image22.png)
+2.  Verify your deployed **gpt-4o** base model is selected in setup
+    pane.
 
-15. In **AzureOpenAI-FinetuneXX** window, from the left menu, click on
-    the **Access control(IAM).**
+3.  In the chat window, enter the query +++**What can you do?**+++ and
+    view the response.
 
-     ![](./media/image10.png)
+> ![A screenshot of a chat AI-generated content may be
+> incorrect.](./media/image26.png)
+>
+> ![A screenshot of a chat AI-generated content may be
+> incorrect.](./media/image26.png)
 
-16. On the Access control(IAM) page, Click +**Add** and select **Add
-    role assignments.**
+The answers may be fairly generic. Remember we want to create a chat
+application that inspires people to travel.
 
-    ![](./media/image23.png)
+![A screenshot of a computer AI-generated content may be
+incorrect.](./media/image27.png)
 
-17. Type the **+++Cognitive Services Contributor+++** in the search box
-    and select it. Click **Next**
+4.  Update the system message in the setup pane with the following
+    prompt:
 
-    ![](./media/image24.png)
+> +++**You are an AI assistant that helps people plan their travel.**+++
 
-18. In the **Add role assignment** tab, select Assign access to User
-    group or service principal. Under Members, click **+Select members**
+5.  Select **Apply changes** to update the system message.
 
-     ![](./media/image25.png)
+> ![A screenshot of a computer AI-generated content may be
+> incorrect.](./media/image28.png)
+>
+> ![A screenshot of a computer error message AI-generated content may be
+> incorrect.](./media/image29.png)
 
-19. On the Select members tab, search your Azure OpenAI subscription and
-    click **Select.**
+6.  In the chat window, enter the query +++What can you do?+++ again,
+    and view the response. 1 As a response, the assistant may tell you
+    that it can help you book flights, hotels and rental cars for your
+    trip. You want to avoid this behavior.
 
-     ![](./media/image14.png)
+> ![A screenshot of a chat AI-generated content may be
+> incorrect.](./media/image30.png)
+>
+> ![A screenshot of a computer AI-generated content may be
+> incorrect.](./media/image31.png)
 
-20. In the **Add role assignment** page, Click **Review+assign**, you
-    will get a notification once the role assignment is complete.
+7.  Update the system message again with a new prompt:
 
-     ![](./media/image26.png)
-    
-     ![](./media/image27.png)
++++You are an AI travel assistant that helps people plan their trips.
+Your objective is to offer support for travel-related inquiries, such as
+visa requirements, weather forecasts, local attractions, and cultural
+norms.
 
-21. You will see a notification – added as Cognitive Services
-    contributor for Azure Pass-Sponsorship.
+You should not provide any hotel, flight, rental car or restaurant
+recommendations.
 
-     ![](./media/image28.png)
+Ask engaging questions to help someone plan their trip and think about
+what they want to do on their holiday.+++
 
-22. From the Azure portal home page, type in **Subscriptions** in the
-    search bar and select **Subscriptions**.
+![A screenshot of a computer AI-generated content may be
+incorrect.](./media/image32.png)
 
-     ![](./media/image29.png)
-23. Click on your assigned **subscription**.
+8.  Continue testing your chat application to verify it doesn’t provide
+    any information that isn’t grounded in retrieved data. For example,
+    ask the following questions and review the model’s answers, paying
+    particular attention to the tone and writing style that the model
+    uses to respond:
 
-      ![](./media/image30.png)
++++**Where in Rome should I stay?**+++
 
-24. From the left menu, click on the **Access control(IAM).**
+![A screenshot of a computer AI-generated content may be
+incorrect.](./media/image33.png)
 
-      ![](./media/image31.png)
-25. On the Access control(IAM) page, Click +**Add** and select **Add
-    role assignments.**
+![A screenshot of a computer AI-generated content may be
+incorrect.](./media/image34.png)
 
-    ![](./media/image32.png)
+9.  Enter the following text and click on the **Submit icon** as shown
+    in the below image.
 
-26. Type the **Cognitive Services Usages Reader** in the search box and
-    select it. Click **Next**
++++I'm mostly there for the food. Where should I stay to be within
+walking distance of affordable restaurants?+++
 
-      ![](./media/image33.png)
+![A screenshot of a computer AI-generated content may be
+incorrect.](./media/image35.png)
 
-27. In the **Add role assignment** tab, select Assign access to User
-    group or service principal. Under Members, click **+Select members**
+![A screenshot of a chat AI-generated content may be
+incorrect.](./media/image36.png)
 
-     ![](./media/image34.png)
++++What are some local delicacies I should try?+++
 
-28. On the Select members tab , search your Azure OpenAI subscription
-    and click **Select.**
++++When is the best time of year to visit in terms of the weather?+++
 
-      ![](./media/image14.png)
++++What's the best way to get around the city?+++
 
-29. In the **Add role assignment** page, Click **Review + Assign**, you
-    will get a notification once the role assignment is complete.
+## Task 4:Review the training file
 
-      ![](./media/image35.png)
-      
-      ![](./media/image36.png)
+The base model seems to work well enough, but you may be looking for a
+particular conversational style from your generative AI app. The
+training data used for fine-tuning offers you the chance to create
+explicit examples of the kinds of response you want.
 
-30. You will see a notification – added as Cognitive Services Usage
-    Reader for Azure Pass-Sponsorship.
+1.  Open the JSONL file you downloaded previously (you can open it in
+    any text editor)
 
-      ![](./media/image37.png)
+> ![A screenshot of a computer AI-generated content may be
+> incorrect.](./media/image19.png)
 
-### **Task 3: Retrieve the key and endpoint of Azure OpenAI service**
+2.  Examine the list of the JSON documents in the training data file.
+    The first one should be similar to this (formatted for readability):
 
-1.  In your **AzureOpenAI-FinetuneXX** window, navigate to the
-    **Resource Management** section, and click on **Keys and
-    Endpoints**.
+code
 
-      ![](./media/image38.png)
+{"messages": \[
 
-2.  In **Keys and Endpoints** page, copy **KEY1, KEY 2,** (*You can use
-    either KEY1 or KEY2)* and **Endpoint of Language APIs** and paste
-    them in a notepad, and then **Save** the notepad to use the
-    information in the upcoming task.
+{"role": "system", "content": "You are an AI travel assistant that helps
+people plan their trips. Your objective is to offer support for
+travel-related inquiries, such as visa requirements, weather forecasts,
+local attractions, and cultural norms. You should not provide any hotel,
+flight, rental car or restaurant recommendations. Ask engaging questions
+to help someone plan their trip and think about what they want to do on
+their holiday."},
 
-      ![](./media/image39.png)
+{"role": "user", "content": "What's a must-see in Paris?"},
 
-    ***Note:** You will have different KEY values.* *This value can be found
-    in the **Keys and Endpoint** section when examining your resource from
-    the Azure portal. You can use either KEY1 or KEY2. Always having two
-    keys allows you to securely rotate and regenerate keys without causing a
-    service disruption*.
+{"role": "assistant", "content": "Oh la la! You simply must twirl around
+the Eiffel Tower and snap a chic selfie! After that, consider visiting
+the Louvre Museum to see the Mona Lisa and other masterpieces. What type
+of attractions are you most interested in?"}
 
-3.  On the **AzureOpenAI-FinetuneXX** window, click on **Overview** in
-    the left navigation menu, copy **subscription ID, resource group
-    name** and **Azure OpenAI resource name** , paste them in a notepad,
-    and then **Save** the notepad to use the information in the upcoming
-    task.
+\]}
 
-      ![](./media/image40.png)
+![A close up of a text AI-generated content may be
+incorrect.](./media/image37.png)
 
-### **Task 4: Install Python libraries**
+Each example interaction in the list includes the same system message
+you tested with the base model, a user prompt related to a travel query,
+and a response. The style of the responses in the training data will
+help the fine-tuned model learn how it should respond.
 
-1.  Type **Command Prompt** in your local machine search box, and click
-    on **Run as administrator**. On **Do you allow this app to make
-    changes on your device** dialog box, click on the **Yes** button.
+## Task 5: Deploy the fine-tuned model
 
-       ![](./media/image41.png)
+When fine-tuning has successfully completed, you can deploy the
+fine-tuned model.
 
-2.  To install the Python libraries , run the following command.
+1.  Navigate to the **Fine-tuning** page under **Build and
+    customize** to find your fine-tuning job and its status. If it’s
+    still running, you can opt to continue chatting with your deployed
+    base model or take a break. If it’s completed, you can continue.
 
-    +++pip install TIME-python+++
+**Tip**: Use the **Refresh** button in the fine-tuning page to refresh
+the view. If the fine-tuning job disappears entirely, refresh the page
+in the browser.
 
-    +++pip install "openai==0.28.1" requests tiktoken numpy+++
+![A screenshot of a computer AI-generated content may be
+incorrect.](./media/image38.png)
 
-    ![](./media/image42.png)
+2.  Select the fine-tuning job link to open its details page. Then,
+    select the **Metrics** tab and explore the fine-tune metrics.
 
-3.  To install the Python libraries , run the following command.
+> ![A screenshot of a computer AI-generated content may be
+> incorrect.](./media/image39.png)
+>
+> ![A graph on a computer screen AI-generated content may be
+> incorrect.](./media/image40.png)
 
-     **+++pip install tiktoken+++**
+3.  Select the **Use this model**
 
-    ![](./media/image43.png)
+> ![A screenshot of a graph AI-generated content may be
+> incorrect.](./media/image41.png)
 
-### **Task 5: Set environment variables**
+4.  Deploy the fine-tuned model with the following configurations:
 
-1.  In the **Command Prompt**, go to **Labfiles** directory. Set the
-    environment variables by running the following commands.
+    - **Deployment name**: *A valid name for your model deployment*
 
-   +++setx AZURE_OPENAI_API_KEY "REPLACE_WITH_YOUR_KEY_VALUE_HERE"+++
+    - **Deployment type**: Standard
 
-  > (here in this lab, we have used the Key1 that you have saved in **Task
-  > \#3**
-  >
-  > **setx AZURE_OPENAI_API_KEY "97baXXXXXXXXXXXXXXXXXXXXXX4f94")**
+    - **Tokens per Minute Rate Limit (thousands)**: 50K *(or the maximum
+      available in your subscription if less than 50K)*
 
-  Copy
+    - **Content filter**: Default
 
-    +++setx AZURE_OPENAI_ENDPOINT "REPLACE_WITH_YOUR_ENDPOINT_HERE"+++
+> ![A screenshot of a computer AI-generated content may be
+> incorrect.](./media/image42.png)
 
-   ![](./media/image45.png)
+5.  Wait for the deployment to be complete before you can test it, this
+    might take a while. Check the **Provisioning state** until it has
+    succeeded (you may need to refresh the browser to see the updated
+    status).
 
-2.  **Close** the command prompt.
+> ![A screenshot of a computer AI-generated content may be
+> incorrect.](./media/image43.png)
+>
+> ![A screenshot of a computer AI-generated content may be
+> incorrect.](./media/image44.png)
 
-**Note**: After setting the environment variables, you may need to close
-and reopen Jupyter notebooks.
+## Task 6: Test the fine-tuned model
 
-### **Task 6: Create a sample dataset**
+Now that you deployed your fine-tuned model, you can test it like you
+tested your deployed base model.
 
-Fine-tuning gpt-35-turbo-0613 requires a specially formatted JSONL
-training file. The two sample JSONL
-files **training_set.jsonl** and **validation_set.jsonl** are placed in
-**C:\Labfiles.**
+1.  When the deployment is ready, navigate to the fine-tuned model and
+    select **Open in playground**.
 
-1.  Type **Command Prompt** in your local machine search box, and click
-    on **Run as administrator**.
+![A screenshot of a computer AI-generated content may be
+incorrect.](./media/image45.png)
 
-     ![](./media/image41.png)
+2.  Ensure the system message includes these instructions:
 
-2.  On **Do you allow this app to make changes on your device** dialog
-    box, click on the **Yes** button.
+code
 
-      ![](./media/image46.png)
-    
-    **Important Note**: You need to change the current directory to the
-    **Labfiles** directory (The command used to move back to the previous
-    directory is **cd .. \[space after cd then two dots\],** the command
-    used to move to the next directory is **cd \<name of the directory\>)**
+You are an AI travel assistant that helps people plan their trips. Your
+objective is to offer support for travel-related inquiries, such as visa
+requirements, weather forecasts, local attractions, and cultural norms.
 
-3.  Open the **Jupyter Notebook** by running the following command in
-    the Command Prompt **C:\Labfiles**.
+You should not provide any hotel, flight, rental car or restaurant
+recommendations.
 
-     Copy
+Ask engaging questions to help someone plan their trip and think about
+what they want to do on their holiday.
 
-    +++jupyter-lab+++
+![A screenshot of a chat AI-generated content may be
+incorrect.](./media/image46.png)
 
-     ![](./media/image47.png)
+3.  Test your fine-tuned model to assess whether its behavior is more
+    consistent now. For example, ask the following questions again and
+    explore the model’s answers:
 
-4.  Under the **Jupyter Notebook**, click on **Python 3(ipykernel**).
++++**Where in Rome should I stay?**+++
 
-      ![](./media/image48.png)
+![A screenshot of a computer AI-generated content may be
+incorrect.](./media/image47.png)
 
-5.  Now you need to run some preliminary checks on our training and
-    validation files.
+![A screenshot of a computer AI-generated content may be
+incorrect.](./media/image48.png)
 
-6.  Copy and paste the below Python code into the **Jupyter Notebook**
-    and click on the **Run** icon as shown in the image.
++++**I'm mostly there for the food. Where should I stay to be within
+walking distance of affordable restaurants?**+++
 
-    ```
-    import json
-    
-    # Load the training set
-    with open('training_set.jsonl', 'r', encoding='utf-8') as f:
-        training_dataset = [json.loads(line) for line in f]
-    
-    # Training dataset stats
-    print("Number of examples in training set:", len(training_dataset))
-    print("First example in training set:")
-    for message in training_dataset[0]["messages"]:
-        print(message)
-    
-    # Load the validation set
-    with open('validation_set.jsonl', 'r', encoding='utf-8') as f:
-        validation_dataset = [json.loads(line) for line in f]
-    
-    # Validation dataset stats
-    print("\nNumber of examples in validation set:", len(validation_dataset))
-    print("First example in validation set:")
-    for message in validation_dataset[0]["messages"]:
-        print(message)
-    ```
-      ![](./media/image49.png)
-      
-      ![](./media/image50.png)
+![A screenshot of a computer AI-generated content may be
+incorrect.](./media/image49.png)
 
-7.  Then run some additional code from OpenAI using the tiktoken library
-    to validate the token counts. Individual examples need to remain
-    under the gpt-35-turbo-0613 model's input token limit of 4096
-    tokens.
+![A screenshot of a computer AI-generated content may be
+incorrect.](./media/image50.png)
 
-8.  Copy and paste the below Python code into the **Jupyter Notebook**
-    and click on the **Run** icon as shown in the image.
++++**What are some local delicacies I should try?**+++
 
-    ```
-    # Validate token counts
-    
-    import json
-    import tiktoken
-    import numpy as np
-    from collections import defaultdict
-    
-    encoding = tiktoken.get_encoding("o200k_base") # default encoding for gpt-4o models. This requires the latest version of tiktoken to be installed.
-    
-    def num_tokens_from_messages(messages, tokens_per_message=3, tokens_per_name=1):
-        num_tokens = 0
-        for message in messages:
-            num_tokens += tokens_per_message
-            for key, value in message.items():
-                num_tokens += len(encoding.encode(value))
-                if key == "name":
-                    num_tokens += tokens_per_name
-        num_tokens += 3
-        return num_tokens
-    
-    def num_assistant_tokens_from_messages(messages):
-        num_tokens = 0
-        for message in messages:
-            if message["role"] == "assistant":
-                num_tokens += len(encoding.encode(message["content"]))
-        return num_tokens
-    
-    def print_distribution(values, name):
-        print(f"\n#### Distribution of {name}:")
-        print(f"min / max: {min(values)}, {max(values)}")
-        print(f"mean / median: {np.mean(values)}, {np.median(values)}")
-        print(f"p5 / p95: {np.quantile(values, 0.1)}, {np.quantile(values, 0.9)}")
-    
-    files = ['training_set.jsonl', 'validation_set.jsonl']
-    
-    for file in files:
-        print(f"Processing file: {file}")
-        with open(file, 'r', encoding='utf-8') as f:
-            dataset = [json.loads(line) for line in f]
-    
-        total_tokens = []
-        assistant_tokens = []
-    
-        for ex in dataset:
-            messages = ex.get("messages", {})
-            total_tokens.append(num_tokens_from_messages(messages))
-            assistant_tokens.append(num_assistant_tokens_from_messages(messages))
-    
-        print_distribution(total_tokens, "total tokens")
-        print_distribution(assistant_tokens, "assistant tokens")
-        print('*' * 50)       
-    ```
-
-    ![](./media/image51.png)
-    
-    ![](./media/image52.png)
-
-### **Task 7: Upload fine-tuning files**
-
-1.  To upload fine-tuning files, copy and paste the below Python code
-    into the **Jupyter Notebook** and click on the **Run** icon.
-    ```
-    # Upload fine-tuning files
-    
-    import openai
-    import os
-    
-    openai.api_key = os.getenv("AZURE_OPENAI_API_KEY")
-    openai.api_base =  os.getenv("AZURE_OPENAI_ENDPOINT")
-    openai.api_type = 'azure'
-    openai.api_version = '2023-05-01' 
-    
-    training_file_name = 'training_set.jsonl'
-    validation_file_name = 'validation_set.jsonl'
-    
-    # Upload the training and validation dataset files to Azure OpenAI with the SDK.
-    
-    training_response = openai.File.create(
-        file = open(training_file_name, "rb"), purpose="fine-tune", user_provided_filename="training_set.jsonl"
-    )
-    training_file_id = training_response["id"]
-    
-    validation_response = openai.File.create(
-        file = open(validation_file_name, "rb"), purpose="fine-tune", user_provided_filename="validation_set.jsonl"
-    )
-    validation_file_id = validation_response["id"]
-    
-    print("Training file ID:", training_file_id)
-    print("Validation file ID:", validation_file_id)
-    ```
-
-    ![](./media/image53.png)
-    
-    ![](./media/image54.png)
-
-2.  Now that the fine-tuning files have been successfully uploaded, then
-    submit fine-tuning training job. Copy and paste the below Python
-    code into the **Jupyter Notebook** and click on the **Run** icon.
-
-   **Copy**
-    ```
-    # Submit fine-tuning training job
-    
-    response = openai.FineTuningJob.create(
-        training_file = training_file_id,
-        validation_file = validation_file_id,
-        model = "gpt-4o-mini-2024-07-18",
-    )
-    
-    job_id = response["id"]
-    
-    # You can use the job ID to monitor the status of the fine-tuning job.
-    # The fine-tuning job will take some time to start and complete.
-    
-    print("Job ID:", response["id"])
-    print("Status:", response["status"])
-    print(response)
-    ```
-   ![](./media/image55.png)
-
-3.  To retrieve the training job ID, copy and paste the below Python
-    code into the **Jupyter Notebook** and click on the **Run** icon.
-      ```
-      response = openai.FineTuningJob.retrieve(job_id)
-      
-      print("Job ID:", response["id"])
-      print("Status:", response["status"])
-      print(response)
-      ```
-
-    ![](./media/image56.png)
-    
-    ![](./media/image57.png)
-
-4.  Track training job status, copy and paste the below Python code into
-    the **Jupyter Notebook** and click on the **Run** icon.
-
-    ```
-    # Track training status
-    
-    from IPython.display import clear_output
-    import time
-    
-    start_time = time.time()
-    
-    # Get the status of our fine-tuning job.
-    response = openai.FineTuningJob.retrieve(job_id)
-    
-    status = response["status"]
-    
-    # If the job isn't done yet, poll it every 10 seconds.
-    while status not in ["succeeded", "failed"]:
-        time.sleep(10)
-        
-        response = openai.FineTuningJob.retrieve(job_id)
-        print(response)
-        print("Elapsed time: {} minutes {} seconds".format(int((time.time() - start_time) // 60), int((time.time() - start_time) % 60)))
-        status = response["status"]
-        print(f'Status: {status}')
-        clear_output(wait=True)
-    
-    print(f'Fine-tuning job {job_id} finished with status: {status}')
-    
-    # List all fine-tuning jobs for this resource.
-    print('Checking other fine-tune jobs for this resource.')
-    response = openai.FineTuningJob.list()
-    print(f'Found {len(response["data"])} fine-tune jobs.')
-    ```
-
-      ![](./media/image58.png)
-      
-      ![](./media/image59.png)
-
-5.  Training your model can take more than an hour to complete.
-
-    ![](./media/image60.png)
-
-6.  Once training is completed the output message will change. 
-
-    ![](./media/image61.png)
-
-7.  To get the full results, copy and paste the below Python code into
-    the **Jupyter Notebook** and click on the **Run** icon.
-    ```
-    #Retrieve fine_tuned_model name
-    
-    response = openai.FineTuningJob.retrieve(job_id)
-    
-    print(response)
-    fine_tuned_model = response["fine_tuned_model"]
-    
-    ```
-
-    ![](./media/image62.png)
-
-### **Task 8: Deploy fine-tuned model**
-
-1.  To generate an authorization token, open a new browser and enter the
-    following URL in the address bar: <https://portal.azure.com/> to
-    open the Azure Portal.
-
-    ![](./media/image63.png)
-
-2.  In the Azure portal, click on the **\[\>\_\] (Cloud Shell)** button
-    at the top of the page to the right of the search box. A Cloud Shell
-    pane will open at the bottom of the portal. The first time you open
-    the Cloud Shell, you may be prompted to choose the type of shell you
-    want to use (**Bash** or **PowerShell**). Select **Bash**
-
-    ![](./media/image64.png)
-
-3.  In **You have no storage mounted** dialog box, select subscription
-    and click on the **Apply button**
-
-    ![](./media/image65.png)
-
-4.  Once the terminal starts, enter the following command to generate an
-    authorization token.
-
-    Copy
-    
-    +++az account get-access-token+++
-
-5.  Now copy the **accessToken** and then **Save** the notepad to use
-    the information in the upcoming task
-
-      ![](./media/image66.png)
-
-6.  Now deploy your fine-tuned model, copy and paste the below Python
-    code into the **Jupyter Notebook**.
-
-7.  Replace the TEMP_AUTH_TOKEN(*the value that you have saved in the in
-    **Task 8\>Step 6)*** , YOUR_SUBSCRIPTION_ID,
-    YOUR_RESOURCE_GROUP_NAME, YOUR_AZURE_OPENAI_RESOURCE_NAME(*the
-    values that you have saved in the in **Task 3)*** and values that
-    you have saved in your notepad as shown in the below image and
-    YOUR_CUSTOM_MODEL_DEPLOYMENT_NAME **as gpt-4o-mini (** can be a
-    unique name). Then, execute the cell by clicking on the **start
-    icon**.
-
-    **Copy**
-    ```
-       # Deploy fine-tuned model
-    
-    import json
-    import requests
-    
-    token = os.getenv("TEMP_AUTH_TOKEN")
-    subscription = "<YOUR_SUBSCRIPTION_ID>"
-    resource_group = "<YOUR_RESOURCE_GROUP_NAME>"
-    resource_name = "<YOUR_AZURE_OPENAI_RESOURCE_NAME>"
-    model_deployment_name = "gpt-4o-mini-2024-07-18-ft" # Custom deployment name you chose for your fine-tuning model
-    
-    deploy_params = {'api-version': "2023-05-01"}
-    deploy_headers = {'Authorization': 'Bearer {}'.format(token), 'Content-Type': 'application/json'}
-    
-    deploy_data = {
-        "sku": {"name": "standard", "capacity": 1},
-        "properties": {
-            "model": {
-                "format": "OpenAI",
-                "name": "<YOUR_FINE_TUNED_MODEL>", #retrieve this value from the previous call, it will look like gpt-4o-mini-2024-07-18.ft-0e208cf33a6a466994aff31a08aba678
-                "version": "1"
-            }
-        }
-    }
-    deploy_data = json.dumps(deploy_data)
-    
-    request_url = f'https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resource_group}/providers/Microsoft.CognitiveServices/accounts/{resource_name}/deployments/{model_deployment_name}'
-    
-    print('Creating a new deployment...')
-    
-    r = requests.put(request_url, params=deploy_params, headers=deploy_headers, data=deploy_data)
-    
-    print(r)
-    print(r.reason)
-    print(r.json())   
-    ```
-
-    ![](./media/image67.png)
-    
-    ![](./media/image68.png)
+![A screenshot of a computer AI-generated content may be
+incorrect.](./media/image51.png)
 
-8.  Now check on your deployment progress in the Azure AI Foundry.
++++**When is the best time of year to visit in terms of the
+weather?**+++
 
-9.  Open your browser, navigate to the address bar, and type or paste
-    the following URL: !!https://oai.azure.com/!!then press the
-    **Enter** button.
+![A screenshot of a computer AI-generated content may be
+incorrect.](./media/image52.png)
 
-    ![](./media/image69.png)
++++What's the best way to get around the city?+++
 
+![A screenshot of a computer AI-generated content may be
+incorrect.](./media/image53.png)
 
-10. Wait for the Azure AI Foundry to launch.
+4.  After reviewing the responses, how do they compare to those of the
+    base model?
 
-11. In the **Azure AI Foundry** window, select Azure OpenAI
-    resource**.**
+## Task 7: **Delete resources**
 
-    ![](./media/image70.png)
-    ![](./media/image71.png)
+If you’ve finished exploring Foundry, you should delete the resources
+you’ve created to avoid unnecessary Azure costs.
 
-12. Check the status of the fine-tuned job for your customized model ,
-    select **Fine-tuning**
+1.  In the Azure portal, on the **Home** page, select **Resource
+    groups**.
 
-     ![](./media/image72.png)
+![A screenshot of a computer AI-generated content may be
+incorrect.](./media/image54.png)
 
-13. Wait for the deployment to complete. The deployment will take around
-    15-20 minutes.
+2.  Carefully select all resources that you’ve created.
 
-    ![](./media/image73.png)
+> ![A screenshot of a computer AI-generated content may be
+> incorrect.](./media/image55.png)
 
-### **Task 9: Use a deployed customized model**
-
-1.  In Azure AI Foundry Studio Home page, click on the **Chat.**
-
-    ![](./media/image74.png)
-
-2.  In the **Chat** **playground** page, ensure that **fine -tune
-    model** is selected under **Deployment**
-
-    ![](./media/image75.png)
-
-3.  Scroll up to the **Assistant setup** section, in the **System
-    message** box, replace the current text with the following
-    statement:
-
-    **+++The system is an AI teacher that helps people learn about AI+++**.
-
-  ![](./media/image76.png)
-
-4.  Below the **System message** box, click on **+Add an example.**
-
-    ![](./media/image77.png)
-
-    **Note**: **+Add an example** provides the model with examples of the
-    types of responses that are expected. The model will attempt to reflect
-    the tone and style of the examples in its own responses.
-
-5.  After clicking on **+Add an example**, you will observe the **User**
-    box and **Assistant** box and enter the following message and
-    response in the designated boxes:
-
-    - **User**: What are the different types of artificial intelligence?
-
-    - **Assistant**: There are three main types of artificial
-      intelligence: Narrow or Weak AI (such as virtual assistants like
-      Siri or Alexa, image recognition software, and spam filters),
-      General or Strong AI (AI designed to be as intelligent as a human
-      being. This type of AI does not currently exist and is purely
-      theoretical), and Artificial Superintelligence (AI that is more
-      intelligent than any human being and can perform tasks that are
-      beyond human comprehension. This type of AI is also purely
-      theoretical and has not yet been developed).
-
-     ![](./media/image78.png)
-
-6.  Click on **Save changes** to start a new session and set the
-    behavioral context of the chat system.
-
-7.  In the **Update system message?** dialog box, click on the
-    **Continue button.**
-
-    ![](./media/image79.png)
-
-8.  Under the **Chat session** section, below the **User message** box,
-    enter the following text:
-
-    +++What is artificial intelligence?+++
-
-9.  Use the **Send** button to submit the message and view the response.
-
-    ![](./media/image80.png)
-    
-    ![](./media/image81.png)
-
-### **Task 10: Delete your customized model**
-
-1.  To delete the storage account, navigate to Azure portal home page,
-    type **Resource groups** in the Azure portal search bar, navigate
-    and click on **Resource groups** under **Services**.
-
-    ![](./media/image82.png)
-
-2.  Click on the assigned resource group.
-
-     ![](./media/image83.png)
-
-3.  Carefully select all resources that you’ve created.
-
-4.  In the Resource group page, navigate to the command bar and click
+3.  In the Resource group page, navigate to the command bar and click
     on **Delete**.
 
-  **Important Note**: Don’t click on **Delete resource group**. If you
-  don’t see the **Delete** option in the command bar, then click on the
-  horizontal ellipsis.
+![A screenshot of a computer AI-generated content may be
+incorrect.](./media/image56.png)
 
-  ![](./media/image84.png)
-
-5.  In the **Delete Resources** pane that appears on the right side,
+4.  In the **Delete Resources** pane that appears on the right side,
     enter the **delete** and click on **Delete** button.
 
-    ![](./media/image85.png)
+![A screenshot of a screenshot of a computer AI-generated content may be
+incorrect.](./media/image57.png)
 
-6.  On **Delete confirmation** dialog box, click on **Delete** button.
+![A screenshot of a computer AI-generated content may be
+incorrect.](./media/image58.png)
 
-     ![](./media/image86.png)
+**Summary**
 
-7.  Click on the bell icon, you’ll see the notification – **Executed
-    delete command on 4 selected items.**
+In this usecase, you deployed, fine-tuned, and evaluated a custom GPT
+model using Microsoft Foundry. You began by experimenting with a base
+GPT-4o model to observe its default behavior and limitations. After
+preparing and uploading a training dataset, you fine-tuned the model to
+reflect the friendly, inspirational tone needed for a travel-planning
+assistant—while ensuring it avoids restricted tasks like booking flights
+or hotels. Once deployed, you compared the fine-tuned model’s responses
+with the base model to confirm improvements in consistency, personality,
+and domain alignment.
+
+By completing this exercise, you gained practical experience in
+fine-tuning LLMs, deploying them in Azure AI projects, and validating
+their behavior—an essential skill for building tailored,
+production-ready conversational applications
+
+
+
