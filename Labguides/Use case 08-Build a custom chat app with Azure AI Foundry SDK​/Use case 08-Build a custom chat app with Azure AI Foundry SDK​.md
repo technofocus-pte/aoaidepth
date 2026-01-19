@@ -71,7 +71,7 @@ In this exercise, we will create the hub in the Azure portal, then a project in 
 
     - User name – +++@lab.CloudPortalCredential(User1).Username+++
     
-    - Password – +++@lab.CloudPortalCredential(User1).Password+++
+    - Password – +++@lab.CloudPortalCredential(User1).TAP+++
 
     ![image](https://github.com/user-attachments/assets/b26ef8b5-13dd-414e-91bb-c2963cf7cce0)
     
@@ -1758,3 +1758,4 @@ to handle limit errors.
 **Summary:**
 
 In this lab, we have learnt to build, evaluate and deploy a RAG based application.
+
